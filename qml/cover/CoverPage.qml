@@ -287,7 +287,7 @@ CoverBackground {
                                     width: parent.width / 2
                                     /// 10
                                     height: parent.height
-                                    text: Functions.renderPrice(price, "\u20AC");
+                                    text: Functions.renderPrice(price, currency);
                                         //price
 
 //                                                                        (price
