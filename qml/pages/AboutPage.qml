@@ -45,8 +45,7 @@ Page {
 
         Column {
             PageHeader {
-                //: About page title - header
-                //% "About Watchlist"
+                //: AboutPage title - header
                 title: qsTr("About Watchlist")
             }
 
@@ -59,11 +58,9 @@ Page {
                     left: parent.left
                     margins: Theme.paddingLarge
                 }
-                //: About page title - about text title
-                //% "About Watchlist"
+                //: AboutPage title - about text title
                 label: qsTr("About Watchlist")
-                //: About page text - about text
-                //% "This is app is a native Sailfish OS client for DukeCon. SailCon is open source and licensed under the GPL v3."
+                //: AboutPage text - about text
                 text: qsTr("This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.")
                 separator: true
             }
@@ -73,8 +70,7 @@ Page {
                     left: parent.left
                     margins: Theme.paddingLarge
                 }
-                //: About page version label
-                //% "Version"
+                //: AboutPage version label
                 label: qsTr("Version")
                 text: Constants.VERSION
                 separator: true
@@ -85,8 +81,7 @@ Page {
                     left: parent.left
                     margins: Theme.paddingLarge
                 }
-                //: About page author label
-                //% "Author"
+                //: AboutPage author label
                 label: qsTr("Author")
                 text: "Andreas Wüst"
                 separator: true
@@ -107,10 +102,9 @@ Page {
                         left: parent.left
                         margins: Theme.paddingLarge
                     }
-                    //: About page about source label
-                    //% "Source code"
+                    //: AboutPage about source label
                     label: qsTr("Source code")
-                    text: "tba" // "https://github.com/andywuest/Watchlist"
+                    text: "https://github.com/andywuest/harbour-watchlist"
                     color: clickableUrl.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
                 onClicked: Qt.openUrlExternally(labelUrl.text);
