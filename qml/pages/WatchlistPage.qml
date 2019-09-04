@@ -355,9 +355,21 @@ Page {
 
         stockQuotePage.maxChange = calculateMaxChange(stocks)
 
+        var triggerUpdateQuotes = false;
+        // when stockmodel is not empty and the number of stocks in the db is different -> stock has been added
+        // is there a more transparent way to find out that a stock was added?
+        if (stocksModel.count > 0 && stocksModel.count < stocks.length)  {
+            console.log(" most like stock was added -> trigger reload");
+            triggerUpdateQuotes = true;
+        }
+
         stocksModel.clear()
         for (var i = 0; i < stocks.length; i++) {
             stocksModel.append(stocks[i])
+        }
+
+        if (triggerUpdateQuotes) {
+            updateQuotes();
         }
     }
 
