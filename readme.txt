@@ -25,3 +25,11 @@ after release
 + backend.sortByChangeDesc -pruefen, ob noch benoetig
 + todo doppelte urls im backend fixen
 + konfigurierbare notifications lower / upper limit
+
+
+# generate or remove license header -via maven plugin
+mvn license:format
+mvn license:remove
+
+
+
