@@ -52,27 +52,21 @@ Page {
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
-//            MenuItem {
-//                text: qsTr("Reset")
-//                onClicked: {
-//                    Database.resetApplication()
-//                    Database.initApplicationTables()
-//                    // reload the model to make sure we have the latest state
-//                    //flickable.reloadModelFromDatabase(listView.model);
-//                }
-//            }
             MenuItem {
+                //: WatchlistPage about menu item
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
-                text: qsTr("Add Stock")
+                //: WatchlistPage add stock menu item
+                text: qsTr("Add stock")
                 onClicked: {
                     var dialog = pageStack.push(Qt.resolvedUrl("AddStockPage.qml"))
                 }
             }
             MenuItem {
-                text: qsTr("Refresh all Quotes")
+                //: WatchlistPage refresh all quotes menu item
+                text: qsTr("Refresh all quotes")
                 onClicked: {
                     console.log("Refresh quotes ")
                     updateQuotes()
@@ -108,7 +102,8 @@ Page {
 
             PageHeader {
                 id: stockQuotesHeader
-                title: qsTr("Stock Quotes")
+                //: WatchlistPage page header
+                title: qsTr("Stock quotes")
             }
 
             SilicaListView {
@@ -135,6 +130,7 @@ Page {
 
                     menu: ContextMenu {
                         MenuItem {
+                            //: WatchlistPage remove menu item
                             text: qsTr("Remove")
                             onClicked: deleteStockData(index)
                         }
@@ -389,8 +385,10 @@ Page {
         function allStocksFinished(count, failed) {
             console.log("All updated! count : " + count + ", failed : " + failed);
             if (count === failed) {
+                //: WatchlistPage error message network error
                 stockUpdateProblemNotification.show(qsTr("Network error"));
             } else if (failed > 0) {
+                //: WatchlistPage error message some quotes
                 stockUpdateProblemNotification.show(qsTr("Some quotes not updated"));
             }
             loaded = true;
