@@ -18,7 +18,6 @@ SOURCES += src/watchlist.cpp
 
 OTHER_FILES += qml/watchlist.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/SecondPage.qml \
     rpm/watchlist.changes.in \
     rpm/watchlist.spec \
     rpm/watchlist.yaml \
