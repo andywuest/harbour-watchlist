@@ -107,9 +107,9 @@ function persistStockData(data, watchlistId) {
                         [data.id, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
                          data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, finalWatchlistId])
         })
-        result = qsTr("Stock added.")
+        result = qsTr("Stock added")
     } catch (err) {
-        result = qsTr("Error adding stock.")
+        result = qsTr("Error adding stock")
         console.log(result + err)
     }
     return result
