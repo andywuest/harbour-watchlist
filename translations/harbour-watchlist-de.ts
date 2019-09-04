@@ -129,24 +129,24 @@ AboutPage title - about text title</extracomment>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="389"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="399"/>
         <source>Network error</source>
         <extracomment>WatchlistPage error message network error</extracomment>
         <translation>Netzwerkfehler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="392"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="402"/>
         <source>Some quotes not updated</source>
         <extracomment>WatchlistPage error message some quotes</extracomment>
         <translation>Einige Kurse wurden nicht aktualisiert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="448"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="458"/>
         <source>hh:mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="450"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="460"/>
         <source>dd.MM.yyyy</source>
         <translation type="unfinished"></translation>
     </message>
