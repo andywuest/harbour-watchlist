@@ -59,6 +59,7 @@ Page {
                     noResultsColumn.visible = false
                 }
             } else if (returnCode === 2) {
+                //: AddStockPage network error
                 stockAddedNotification.show(qsTr("Network error"))
             }
         }
@@ -101,12 +102,14 @@ Page {
 
             PageHeader {
                 id: searchHeader
+                //: AddStockPage search result header
                 title: qsTr("Search Results")
             }
 
             SearchField {
                 id: searchField
                 width: parent.width
+                //: AddStockPage search result input field
                 placeholderText: qsTr("Find your Stock...")
                 focus: true
 
@@ -142,6 +145,7 @@ Page {
                 Label {
                     id: noResultsLabel
                     anchors.horizontalCenter: parent.horizontalCenter
+                    //: AddStockPage no results label
                     text: qsTr("No results found")
                     color: Theme.secondaryColor
                 }
@@ -178,6 +182,7 @@ Page {
                     menu: ContextMenu {
                         MenuItem {
                             visible: true
+                            //: AddStockPage add menu item
                             text: qsTr("Add")
                             onClicked: {
                                 var selectedItem = searchResultListModel.get(
