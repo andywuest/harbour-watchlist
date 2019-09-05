@@ -16,13 +16,11 @@ CONFIG += sailfishapp
 
 SOURCES += src/watchlist.cpp
 
-OTHER_FILES += qml/watchlist.qml \
-    qml/cover/CoverPage.qml \
-    rpm/watchlist.changes.in \
-    rpm/watchlist.spec \
-    rpm/watchlist.yaml \
+OTHER_FILES += rpm/harbour-watchlist.changes.in \
+    rpm/harbour-watchlist.spec \
+    rpm/harbour-watchlist.yaml \
     translations/*.ts \
-    watchlist.desktop
+    harbour-watchlist.desktop
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -34,7 +32,9 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-watchlist-de.ts
+TRANSLATIONS += translations/harbour-watchlist-de.ts \
+    harbour-watchlist-zh_CN.ts
+
 
 DISTFILES += \
     qml/components/LabelText.qml \
