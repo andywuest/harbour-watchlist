@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutPage.qml" line="65"/>
         <source>About Watchlist</source>
         <extracomment>AboutPage title - header
 ----------
@@ -18,25 +18,31 @@ AboutPage title - about text title</extracomment>
         <translation>Über Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutPage.qml" line="67"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
-        <translation type="unfinished">Diese Anwendung ist eine kleine Aktien-Watchlist für Sailfish OS. Watchlist ist Open Source und unter der GPL v3 lizensiert.</translation>
+        <translation>Diese Anwendung ist eine kleine Aktien-Watchlist für Sailfish OS. Watchlist ist Open Source und unter der GPL v3 lizensiert.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="74"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Version</source>
         <extracomment>AboutPage version label</extracomment>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="85"/>
+        <location filename="../qml/pages/AboutPage.qml" line="88"/>
         <source>Author</source>
         <extracomment>AboutPage author label</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="99"/>
+        <source>Translators</source>
+        <extracomment>AboutPage translators label</extracomment>
+        <translation>Übersetzer</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Quellcode</translation>
@@ -129,24 +135,24 @@ AboutPage title - about text title</extracomment>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="399"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="401"/>
         <source>Network error</source>
         <extracomment>WatchlistPage error message network error</extracomment>
         <translation>Netzwerkfehler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="402"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="404"/>
         <source>Some quotes not updated</source>
         <extracomment>WatchlistPage error message some quotes</extracomment>
         <translation>Einige Kurse wurden nicht aktualisiert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="458"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="460"/>
         <source>hh:mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="460"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="462"/>
         <source>dd.MM.yyyy</source>
         <translation type="unfinished"></translation>
     </message>
