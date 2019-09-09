@@ -7,7 +7,8 @@
 
 * FIXME TBA Wed Aug 28 2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.0.1-1
 - fixed currency display on cover page for non EUR currencies
-- added german translation
+- added German translation
+- added Chinese translation
 - auto refresh when adding stock and returning the watchlist page
 
 
