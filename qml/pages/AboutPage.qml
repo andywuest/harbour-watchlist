@@ -50,7 +50,10 @@ Page {
             }
 
             id: aboutColumn
-            anchors { left: parent.left; right: parent.right }
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
             height: childrenRect.height
 
             LabelText {
@@ -87,6 +90,17 @@ Page {
                 separator: true
             }
 
+            LabelText {
+                anchors {
+                    left: parent.left
+                    margins: Theme.paddingLarge
+                }
+                //: AboutPage translators label
+                label: qsTr("Translators")
+                text: "@KhanPuking (zh_CN)"
+                separator: true
+            }
+
             BackgroundItem {
                 id: clickableUrl
                 contentHeight: labelUrl.height
@@ -107,10 +121,16 @@ Page {
                     text: "https://github.com/andywuest/harbour-watchlist"
                     color: clickableUrl.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
-                onClicked: Qt.openUrlExternally(labelUrl.text);
+                onClicked: {
+                    // openInDefaultApp("https://github.com/steffen-foerster/sailfish-barcode");
+                    Qt.openUrlExternally(labelUrl.text)
+                    // Qt.openUrlExternally(labelUrl.text)
+                }
             }
         }
     }
 
-    VerticalScrollDecorator { flickable: aboutPageFlickable }
+    VerticalScrollDecorator {
+        flickable: aboutPageFlickable
+    }
 }
