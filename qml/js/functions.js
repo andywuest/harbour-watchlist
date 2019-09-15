@@ -13,12 +13,17 @@ function renderChange(price, change, symbol) {
     if (change > 0.0) {
         prefix = "+"
     }
-    var locale = Qt.locale("de_DE");
+    var locale = Qt.locale();
     return prefix + Number(change).toLocaleString(locale) + " " + symbol
 }
 
+function renderPriceOnly(price) {
+    var locale = Qt.locale();
+    return ((price !== undefined && price !== 0.0) ? Number(price).toLocaleString(locale) : "");
+}
+
 function renderPrice(price, currencyString) {
-    var locale = Qt.locale("de_DE"); // TODO read current locale
+    var locale = Qt.locale();
     return ((price !== undefined && price !== 0.0) ? Number(price).toLocaleString(locale) + " " + resolveCurrencySymbol(currencyString) : "-")
 }
 
