@@ -49,4 +49,6 @@ DISTFILES += \
     qml/pages/WatchlistPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/AboutPage.qml \
-    readme.txt
+    readme.txt \
+    qml/pages/NotificationTest.qml \
+    qml/pages/StockAlarmDialog.qml
