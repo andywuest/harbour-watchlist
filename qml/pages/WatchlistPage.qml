@@ -130,6 +130,14 @@ Page {
 
                     menu: ContextMenu {
                         MenuItem {
+                            //: WatchlistPage configure alarm menu item
+                            text: qsTr("Configure alarm")
+                            onClicked: {
+                                var selectedStock = stockQuotesListView.model.get(index);
+                                pageStack.push(Qt.resolvedUrl("StockAlarmDialog.qml"), { stock: selectedStock })
+                            }
+                        }
+                        MenuItem {
                             //: WatchlistPage remove menu item
                             text: qsTr("Remove")
                             onClicked: deleteStockData(index)
