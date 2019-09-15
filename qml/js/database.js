@@ -8,8 +8,8 @@ var SORT_BY_CHANGE_DESC = " changeRelative DESC ";
 
 function getOpenDatabase() {
     var db = LocalStorage.openDatabaseSync(
-                "DukeConApp", "1.0",
-                "Database for the DukeConApp Conference data!", 10000000)
+                "WatchlistApp", "1.0",
+                "Database for the WatchlistApp!", 10000000)
     return db
 }
 
@@ -52,10 +52,89 @@ function initApplicationTables() {
                         + ' price real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
                         + ' quoteTimestamp text, lastChangeTimestamp text, watchlistId INTEGER NOT NULL, '
                         +' PRIMARY KEY(id), FOREIGN KEY(watchlistId) REFERENCES watchlist(id))');
+            // alarm
+            tx.executeSql(
+                        'CREATE TABLE IF NOT EXISTS alarm'
+                        + ' (id INTEGER, minimumPrice real DEFAULT null, maximumPrice real DEFAULT null, '
+                        +' PRIMARY KEY(id))');
         })
     } catch (err) {
         console.log("Error creating tables for application in database : " + err)
     }
+}
+
+function loadAlarm(id) {
+    var result = null;
+    try {
+        var db = Database.getOpenDatabase();
+        db.transaction(function (tx) {
+            var dbResult = tx.executeSql(
+                        'SELECT minimumPrice, maximumPrice FROM alarm WHERE id = ?',
+                        [id]);
+            if (dbResult.rows.length > 0) {
+                console.log("alarm row count : " + dbResult.rows.length);
+                var alarm = {};
+                alarm.id = id;
+                alarm.minimumPrice = dbResult.rows.item(0).minimumPrice;
+                alarm.maximumPrice = dbResult.rows.item(0).maximumPrice;
+                console.log("alarm is " + JSON.stringify(alarm));
+                result = alarm;
+            } else {
+                console.log("alarm not found !");
+            }
+        })
+    } catch (err) {
+        console.log("Error selecting alarm id from database: " + err)
+    }
+    return result;
+}
+
+function saveAlarm(alarm) {
+    var result = ""
+    try {
+        var db = getOpenDatabase()
+        console.log("trying to insert row for alarm  " + alarm.id + ", " + alarm.minimumPrice + ", and maxprice : " + alarm.minimumPrice);
+        console.log("final alarm id " + alarm.id);
+
+        var numberOfPersistedAlarms = 0;
+
+        db.transaction(function (tx) {
+            var results = tx.executeSql('SELECT COUNT(*) as count FROM alarm');
+            numberOfPersistedAlarms = results.rows.item(0).count;
+        })
+
+        console.log("number of persisted alarms : " + numberOfPersistedAlarms)
+
+        db.transaction(function (tx) {
+            tx.executeSql(
+                        'INSERT OR REPLACE INTO alarm(id, minimumPrice, maximumPrice) '
+                        + 'VALUES (?, ?, ?)',
+                        [alarm.id, alarm.minimumPrice, alarm.maximumPrice])
+        })
+        result = qsTr("Alarm added")
+    } catch (err) {
+        result = qsTr("Error adding alarm")
+        console.log(result + err)
+    }
+    return result
+}
+
+function removeAlarm(alarm) {
+    var result = ""
+    try {
+        var db = getOpenDatabase()
+
+        db.transaction(function (tx) {
+            tx.executeSql(
+                        'DELETE FROM alarm WHERE id = ?',
+                        [alarm.id])
+        })
+        result = qsTr("Alarm deleted")
+    } catch (err) {
+        result = qsTr("Error deleting alarm")
+        console.log(result + err)
+    }
+    return result
 }
 
 function getCurrentWatchlistId() {
