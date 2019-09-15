@@ -1,9 +1,4 @@
 "use strict";
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 var DownloadData = /** @class */ (function () {
     function DownloadData() {
         this.contentType = "application/json;charset=utf-8"; // by default json
@@ -11,23 +6,18 @@ var DownloadData = /** @class */ (function () {
     }
     return DownloadData;
 }());
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 var DownloadService = /** @class */ (function () {
     function DownloadService() {
     }
     DownloadService.prototype.execute = function (data, callback) {
         var httpRequest = new XMLHttpRequest();
         console.log("trying to fetch data from : " + data.url);
-        httpRequest.open('GET', data.url);
+        httpRequest.open("GET", data.url);
         if (data.contentType !== null) {
-            httpRequest.setRequestHeader('Content-Type', data.contentType);
+            httpRequest.setRequestHeader("Content-Type", data.contentType);
         }
         if (data.eTag) {
-            httpRequest.setRequestHeader('If-None-Match', data.eTag);
+            httpRequest.setRequestHeader("If-None-Match", data.eTag);
         }
         httpRequest.timeout = data.timeout;
         console.log("timeout defined : " + httpRequest.timeout);
@@ -62,76 +52,6 @@ var DownloadService = /** @class */ (function () {
             callback(3, error);
         }
     };
-    //  var url = currentPhotoId;
-    //        var xhr = new XMLHttpRequest();
-    //        xhr.open('GET', url, true);
-    //        xhr.responseType = 'arraybuffer';
-    //        xhr.onreadystatechange = function() {
-    //            if (xhr.readyState === XMLHttpRequest.DONE) {
-    //                if (xhr.status === 200) {
-    //                    var response = new Uint8Array(xhr.response);
-    //                    var raw = "";
-    //                    for (var i = 0; i < response.byteLength; i++) {
-    //                        raw += String.fromCharCode(response[i]);
-    //                    }
-    //
-    //                    console.log("image fetched !");
-    //
-    //                    var image = 'data:image/png;base64,' +Constants.base64Encode(raw);
-    //                            //
-    //                    img.source = image;
-    //                    fetchImages(photoIdUrls);
-    //                }
-    //            }
-    //        }
-    //        xhr.send();
-    DownloadService.prototype.executeBinary = function (data, callback) {
-        var httpRequest = new XMLHttpRequest();
-        console.log("trying to fetch data from : " + data.url);
-        httpRequest.open('GET', data.url);
-        httpRequest.responseType = 'arraybuffer';
-        // httpRequest.setRequestHeader('Content-Type', data.contentType);
-        if (data.eTag) {
-            httpRequest.setRequestHeader('If-None-Match', data.eTag);
-        }
-        httpRequest.timeout = data.timeout;
-        console.log("timeout defined : " + httpRequest.timeout);
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                if (httpRequest.status && httpRequest.status === 200 && httpRequest.responseText !== "undefined") {
-                    console.log("return status : " + httpRequest.status);
-                    console.log("Resposne Headers : " + httpRequest.getAllResponseHeaders());
-                    console.log("Resposne ETag : " + httpRequest.getResponseHeader("ETag"));
-                    console.log("return responseText : " + httpRequest.responseText.substring(0, 200));
-                    console.log("executing success callback !");
-                    var response = new Uint8Array(httpRequest.response);
-                    var raw = "";
-                    for (var i = 0; i < response.byteLength; i++) {
-                        raw += String.fromCharCode(response[i]);
-                    }
-                    callback(0, httpRequest, raw);
-                    console.log("executing success done !");
-                }
-                else if (httpRequest.status && httpRequest.status === 304) {
-                    callback(1, httpRequest);
-                }
-                else {
-                    console.log("executing failure callback - data : " + httpRequest.response + " " + httpRequest.responseURL + " " + httpRequest.responseText);
-                    callback(2, httpRequest);
-                }
-            }
-        };
-        httpRequest.onerror = function (ev) {
-            console.log("error code : " + httpRequest.status);
-            console.log("event : " + ev.currentTarget);
-        };
-        try {
-            httpRequest.send();
-        }
-        catch (error) {
-            callback(3, error);
-        }
-    };
     return DownloadService;
 }());
 var EuroinvestorBackend = /** @class */ (function () {
@@ -141,11 +61,11 @@ var EuroinvestorBackend = /** @class */ (function () {
         var downloadService = new DownloadService();
         var downloadData = new DownloadData();
         downloadData.contentType = null;
-        downloadData.url = 'https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=' + key;
+        downloadData.url = "https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=" + key;
         downloadService.execute(downloadData, callback);
     };
     EuroinvestorBackend.prototype.convertSearchResponse = function (responseText) {
-        var lines = responseText.split('\n');
+        var lines = responseText.split("\n");
         var result = lines.filter(function (line) { return line.length > 0; }).map(function (line) { return new SearchResultStockData(line); });
         return result;
     };
@@ -190,10 +110,10 @@ var EuroinvestorBackend = /** @class */ (function () {
         return null;
     };
     EuroinvestorBackend.prototype.convertQuoteResponse = function (responseText, symbol) {
-        var lines = responseText.split('\n');
+        var lines = responseText.split("\n");
         var result = lines
             .filter(function (line) { return line.length > 0; })
-            .filter(function (line) { return line.indexOf('|' + symbol + '|') !== -1; })
+            .filter(function (line) { return line.indexOf("|" + symbol + "|") !== -1; })
             .map(function (line) { return new QuoteResultStockQuote(line); });
         if (result.length > 0) {
             // get first symbol may not be unique (e.g Airbus E:AIR)
@@ -204,6 +124,7 @@ var EuroinvestorBackend = /** @class */ (function () {
     EuroinvestorBackend.prototype.convertSearchResponseToStockData = function (searchResponse) {
         return new StockData(searchResponse);
     };
+    // TODO move -> independent of backend
     EuroinvestorBackend.prototype.getMaxChange = function (stocks) {
         // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
         // added handling for negative ones
