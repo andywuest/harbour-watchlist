@@ -18,6 +18,7 @@
 import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
+import Nemo.Notifications 1.0
 
 // QTBUG-34418
 import "."
@@ -40,6 +41,14 @@ Page {
 
     AppNotification {
         id: stockUpdateProblemNotification
+    }
+
+    Item {
+        Notification {
+            id: stockAlarmNotification
+            appName: "Watchlist"
+            appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-watchlist.png"
+        }
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -392,6 +401,19 @@ Page {
         return 0.0
     }
 
+    function createNotification(alarmNotification) {
+        stockAlarmNotification.summary = qsTr("%1").arg(alarmNotification.name)
+        var minimumPrice = Functions.renderPrice(alarmNotification.minimumPrice, alarmNotification.currency);
+        stockAlarmNotification.body = qsTr("Just dropped below %1.").arg(minimumPrice);
+        // TODO fix preview
+        stockAlarmNotification.previewSummary = qsTr("Stock Notification x2")
+        stockAlarmNotification.previewBody = qsTr("Stock %1 is below configured price !").arg(alarmNotification.name)
+        stockAlarmNotification.replacesId = alarmNotification.id;
+        stockAlarmNotification.publish();
+        // TODO set the triggered flag to true
+        // TODO replacesid seems not to work properly -> shows up multiple times -> replacedId 0 ??
+    }
+
     function updateQuotes() {
         loaded = false;
 
@@ -413,6 +435,18 @@ Page {
             }
             loaded = true;
             reloadAllStocks();
+
+            // get lower
+            var alarmsHitLowerPrice = Database.loadTriggeredAlarms(1, true); // TODO set watchlistid
+
+            if (alarmsHitLowerPrice !== undefined && alarmsHitLowerPrice.length > 0) {
+                alarmsHitLowerPrice.forEach(createNotification);
+            }
+
+            console.log("lower : " + alarmsHitLowerPrice);
+            // get higher
+            var alarmsHitHigherPrice = Database.loadTriggeredAlarms(1, false); // TODO set watchlistid
+            console.log("highter : " + alarmsHitHigherPrice);
         }
 
         function persistQuoteFunction(stockQuote, stock) {
