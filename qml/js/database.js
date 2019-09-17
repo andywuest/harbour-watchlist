@@ -22,6 +22,7 @@ function resetApplication() {
             tx.executeSql('DROP TABLE IF EXISTS stockdata');
             tx.executeSql('DROP TABLE IF EXISTS watchlist');
             tx.executeSql('DROP TABLE IF EXISTS backend');
+            tx.executeSql('DROP TABLE IF EXISTS alarm');
         })
     } catch (err) {
         console.log("Error deleting tables for application in database : " + err)
@@ -55,12 +56,46 @@ function initApplicationTables() {
             // alarm
             tx.executeSql(
                         'CREATE TABLE IF NOT EXISTS alarm'
-                        + ' (id INTEGER, minimumPrice real DEFAULT null, maximumPrice real DEFAULT null, '
+                        + ' (id INTEGER, minimumPrice real DEFAULT null, maximumPrice real DEFAULT null, triggered INTEGER NOT NULL, '
                         +' PRIMARY KEY(id))');
         })
     } catch (err) {
         console.log("Error creating tables for application in database : " + err)
     }
+}
+
+function loadTriggeredAlarms(watchlistId, lower) {
+    var result = null;
+    try {
+        var db = Database.getOpenDatabase();
+        db.transaction(function (tx) {
+            var dbResult = tx.executeSql(
+                        'SELECT s.id AS id, s.name AS name, s.currency as currency, a.minimumPrice as minimumPrice, a.maximumPrice as maximumPrice '
+                        + ' FROM alarm a INNER JOIN stockdata s ON a.id = s.id'
+                        + ' WHERE s.watchlistId = ? AND s.price > 0.0 AND a.triggered = ? '
+                        + ' AND ' + (lower ? ' a.minimumPrice < s.price ' : ' a.maximumPrice > s.price'),
+                        [watchlistId, SQL_FALSE]);
+            if (dbResult.rows.length > 0) {
+                result = [];
+                console.log("triggers alarm row count : " + dbResult.rows.length);
+                for (var i = 0; i < dbResult.rows.length; i++) {
+                    var triggeredAlarm = {};
+                    triggeredAlarm.id = dbResult.rows.item(i).id;
+                    triggeredAlarm.name = dbResult.rows.item(i).name;
+                    triggeredAlarm.currency = dbResult.rows.item(i).currency;
+                    triggeredAlarm.maximumPrice = dbResult.rows.item(i).maximumPrice;
+                    triggeredAlarm.minimumPrice = dbResult.rows.item(i).minimumPrice;
+                    console.log("triggered alarm is " + JSON.stringify(triggeredAlarm));
+                    result.push(triggeredAlarm);
+                }
+            } else {
+                console.log("alarms  not triggered !");
+            }
+        })
+    } catch (err) {
+        console.log("Error selecting triggred alarms id from database: " + err)
+    }
+    return result;
 }
 
 function loadAlarm(id) {
@@ -77,6 +112,7 @@ function loadAlarm(id) {
                 alarm.id = id;
                 alarm.minimumPrice = dbResult.rows.item(0).minimumPrice;
                 alarm.maximumPrice = dbResult.rows.item(0).maximumPrice;
+                alarm.triggered = dbResult.rows.item(0).triggered;
                 console.log("alarm is " + JSON.stringify(alarm));
                 result = alarm;
             } else {
@@ -107,9 +143,9 @@ function saveAlarm(alarm) {
 
         db.transaction(function (tx) {
             tx.executeSql(
-                        'INSERT OR REPLACE INTO alarm(id, minimumPrice, maximumPrice) '
-                        + 'VALUES (?, ?, ?)',
-                        [alarm.id, alarm.minimumPrice, alarm.maximumPrice])
+                        'INSERT OR REPLACE INTO alarm(id, minimumPrice, maximumPrice, triggered) '
+                        + 'VALUES (?, ?, ?, ?)',
+                        [alarm.id, alarm.minimumPrice, alarm.maximumPrice, SQL_FALSE])
         })
         result = qsTr("Alarm added")
     } catch (err) {
