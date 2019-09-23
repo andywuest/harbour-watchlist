@@ -65,7 +65,7 @@ function initApplicationTables() {
 }
 
 function loadTriggeredAlarms(watchlistId, lower) {
-    var result = null;
+    var result = [];
     try {
         var db = Database.getOpenDatabase();
         db.transaction(function (tx) {
@@ -76,7 +76,6 @@ function loadTriggeredAlarms(watchlistId, lower) {
                         + ' AND ' + (lower ? ' a.minimumPrice < s.price ' : ' a.maximumPrice > s.price'),
                         [watchlistId, SQL_FALSE]);
             if (dbResult.rows.length > 0) {
-                result = [];
                 console.log("triggers alarm row count : " + dbResult.rows.length);
                 for (var i = 0; i < dbResult.rows.length; i++) {
                     var triggeredAlarm = {};
