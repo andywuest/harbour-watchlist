@@ -45,6 +45,24 @@ function determineChangeColor(change) {
     return color
 }
 
+function determineQuoteDate(dateTimeString) {
+    if (dateTimeString !== null && dateTimeString !== "undefined"
+            && dateTimeString !== "") {
+        var date = Date.fromLocaleString(Qt.locale("de_DE"), dateTimeString, "yyyy-MM-dd hh:mm:ss")
+
+        var currentDateString = new Date().toLocaleDateString(Qt.locale(), "yyyy-MM-dd")
+        var quoteDateString = date.toLocaleDateString(Qt.locale(), "yyyy-MM-dd")
+
+        // if quote is from today - show only time - else show date
+        if (currentDateString === quoteDateString) {
+            return date.toLocaleTimeString(Qt.locale(), qsTr("hh:mm"))
+        } else {
+            return date.toLocaleDateString(Qt.locale(), qsTr("dd.MM.yyyy"))
+        }
+    }
+    return "-"
+}
+
 function calculateVisibleStringLength(value) {
    return (value !== undefined) ? value.replace(/\s/g, "").length : 0;
 }
