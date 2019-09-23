@@ -299,7 +299,7 @@ Page {
                                         id: changeDateText
                                         width: parent.width / 2
                                         height: parent.height
-                                        text: determineQuoteDate(quoteTimestamp)
+                                        text: Functions.determineQuoteDate(quoteTimestamp)
                                         color: Theme.primaryColor
                                         font.pixelSize: Theme.fontSizeExtraSmall
                                         horizontalAlignment: Text.AlignLeft
@@ -438,10 +438,7 @@ Page {
 
             // get lower
             var alarmsHitLowerPrice = Database.loadTriggeredAlarms(1, true); // TODO set watchlistid
-
-            if (alarmsHitLowerPrice !== undefined && alarmsHitLowerPrice.length > 0) {
-                alarmsHitLowerPrice.forEach(createNotification);
-            }
+            alarmsHitLowerPrice.forEach(createNotification);
 
             console.log("lower : " + alarmsHitLowerPrice);
             // get higher
@@ -485,28 +482,6 @@ Page {
         }
     }
 
-    function determineQuoteDate(dateTimeString) {
-        if (dateTimeString !== null && dateTimeString !== "undefined"
-                && dateTimeString !== "") {
-            var date = Date.fromLocaleString(Qt.locale("de_DE"),
-                                             dateTimeString,
-                                             "yyyy-MM-dd hh:mm:ss")
-
-            var currentDateString = new Date().toLocaleDateString(Qt.locale(),
-                                                                  "yyyy-MM-dd")
-            var quoteDateString = date.toLocaleDateString(Qt.locale(),
-                                                          "yyyy-MM-dd")
-
-            // if quote is from today - show only time - else show date
-            if (currentDateString === quoteDateString) {
-                return date.toLocaleTimeString(Qt.locale(), qsTr("hh:mm"))
-            } else {
-                return date.toLocaleDateString(Qt.locale(), qsTr("dd.MM.yyyy"))
-            }
-        }
-        return "-"
-    }
-
 //    function determineChangeColor(change) {
 //        var color = Theme.primaryColor
 //        if (change < 0.0) {
@@ -528,7 +503,7 @@ Page {
 //                    Qt.locale("de_DE")) + " " + symbol
 //    }
 
-    function removeStockQuote(index) {
-        console.log("removing stock quote : " + index)
-    }
+//    function removeStockQuote(index) {
+//        console.log("removing stock quote : " + index)
+//    }
 }
