@@ -19,9 +19,9 @@ import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
+
 // QTBUG-34418
 //import "."
-
 import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
@@ -31,6 +31,7 @@ Dialog {
     property bool alarmEnabled: false
 
     Column {
+        id: topColumn
         width: parent.width
 
         DialogHeader {
@@ -46,15 +47,27 @@ Dialog {
             }
         }
 
-        // TODO properly align the text with padding
-        // TODO dialog is not display when alaram does not yet exist
-        Text {
-            id: priceHinText
-            width: parent.width
+        SectionHeader {
+            text: qsTr("Configuration hint")
             visible: stockAlarmTextSwitch.checked
-            color: Theme.primaryColor
-            font.bold: true
+        }
+
+        Label {
+            id: priceHintText
             text: ""
+            visible: stockAlarmTextSwitch.checked
+            font.pixelSize: Theme.fontSizeSmall
+            wrapMode: Text.Wrap
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: Theme.paddingLarge
+            }
+        }
+
+        SectionHeader {
+            text: qsTr("Prices")
+            visible: stockAlarmTextSwitch.checked
         }
 
         // TODO validate and show error message
@@ -78,7 +91,6 @@ Dialog {
             // color: errorHighlight? "red" : Theme.primaryColor
             inputMethodHints: Qt.ImhDigitsOnly
         }
-
     }
 
     Component.onCompleted: {
@@ -87,14 +99,17 @@ Dialog {
             var locale = Qt.locale()
             alarmEnabled = true
             if (alarm.minimumPrice !== null && alarm.minimumPrice !== "") {
-                minimumPriceTextField.text = Number(alarm.minimumPrice).toLocaleString(locale)
+                minimumPriceTextField.text = Number(
+                            alarm.minimumPrice).toLocaleString(locale)
             }
             if (alarm.maximumPrice !== null && alarm.maximumPrice !== "") {
-                maximumPriceTextField.text = Number(alarm.maximumPrice).toLocaleString(locale)
+                maximumPriceTextField.text = Number(
+                            alarm.maximumPrice).toLocaleString(locale)
             }
-            priceHinText.text = qsTr("The latest price for the stock was %0 %1.")
-                .arg(Functions.renderPriceOnly(stock.price))
-                .arg(Functions.resolveCurrencySymbol(stock.currency));
+            priceHintText.text = qsTr(
+                        "The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alaram again.").arg(
+                        Functions.renderPriceOnly(stock.price)).arg(
+                        Functions.resolveCurrencySymbol(stock.currency))
         }
     }
 
@@ -102,8 +117,10 @@ Dialog {
         if (DialogResult.Accepted == result) {
             console.log("Save ")
             // TODO validation
-            var alarm = {}
-            alarm.id = stock.id;
+            var alarm = {
+
+            }
+            alarm.id = stock.id
             if (stockAlarmTextSwitch.checked) {
                 alarm.minimumPrice = minimumPriceTextField.text
                 alarm.maximumPrice = maximumPriceTextField.text
@@ -113,5 +130,4 @@ Dialog {
             }
         }
     }
-
 }
