@@ -69,12 +69,12 @@ function loadTriggeredAlarms(watchlistId, lower) {
     try {
         var db = Database.getOpenDatabase();
         db.transaction(function (tx) {
-            var dbResult = tx.executeSql(
-                        'SELECT s.id AS id, s.name AS name, s.currency as currency, a.minimumPrice as minimumPrice, a.maximumPrice as maximumPrice '
-                        + ' FROM alarm a INNER JOIN stockdata s ON a.id = s.id'
-                        + ' WHERE s.watchlistId = ? AND s.price > 0.0 AND a.triggered = ? '
-                        + ' AND ' + (lower ? ' a.minimumPrice < s.price ' : ' a.maximumPrice > s.price'),
-                        [watchlistId, SQL_FALSE]);
+            var query = 'SELECT s.id AS id, s.name AS name, s.price as price, s.currency as currency, a.minimumPrice as minimumPrice, a.maximumPrice as maximumPrice '
+                    + ' FROM alarm a INNER JOIN stockdata s ON a.id = s.id'
+                    + ' WHERE s.watchlistId = ? AND s.price > 0.0 AND a.triggered = ? '
+                    + ' AND ' + (lower ? ' a.minimumPrice < s.price ' : ' a.maximumPrice < s.price');
+            console.log("query : " + query);
+            var dbResult = tx.executeSql(query, [watchlistId, SQL_FALSE]);
             if (dbResult.rows.length > 0) {
                 console.log("triggers alarm row count : " + dbResult.rows.length);
                 for (var i = 0; i < dbResult.rows.length; i++) {
@@ -149,6 +149,23 @@ function saveAlarm(alarm) {
         result = qsTr("Alarm added")
     } catch (err) {
         result = qsTr("Error adding alarm")
+        console.log(result + err)
+    }
+    return result
+}
+
+function disableAlarm(id) {
+    var result = ""
+    try {
+        var db = getOpenDatabase()
+        var query = 'UPDATE alarm SET triggered = ? WHERE id = ?';
+
+        db.transaction(function (tx) {
+            tx.executeSql(query, [SQL_TRUE, id]);
+        })
+        result = qsTr("Alarm disabled")
+    } catch (err) {
+        result = qsTr("Error disabling alarm")
         console.log(result + err)
     }
     return result
