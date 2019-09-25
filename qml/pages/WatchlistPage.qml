@@ -35,6 +35,7 @@ Page {
     id: stockQuotePage
     property real maxChange: 0.0
     property bool loaded : false
+    property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
@@ -366,7 +367,7 @@ Page {
     }
 
     function reloadAllStocks() {
-        var stocks = Database.loadAllStockData(1, Database.SORT_BY_CHANGE_DESC) // TODO watchlist id
+        var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_DESC)
         // var backend = Backend.createEuroinvestorBackend()
         // stocks = backend.sortByChangeDesc(stocks)
 
@@ -401,16 +402,29 @@ Page {
         return 0.0
     }
 
-    function createNotification(alarmNotification) {
-        stockAlarmNotification.summary = qsTr("%1").arg(alarmNotification.name)
+    function createMinimumAlarm(alarmNotification) {
         var minimumPrice = Functions.renderPrice(alarmNotification.minimumPrice, alarmNotification.currency);
-        stockAlarmNotification.body = qsTr("Just dropped below %1.").arg(minimumPrice);
-        // TODO fix preview
-        stockAlarmNotification.previewSummary = qsTr("Stock Notification x2")
-        stockAlarmNotification.previewBody = qsTr("Stock %1 is below configured price !").arg(alarmNotification.name)
-        stockAlarmNotification.replacesId = alarmNotification.id;
+        var summary = qsTr("%1").arg(alarmNotification.name);
+        var body = qsTr("The share has just dropped below %1.").arg(minimumPrice);
+        publishNotification(alarmNotification.id, summary, body);
+    }
+
+    function createMaximumAlarm(alarmNotification) {
+        var maximumPrice = Functions.renderPrice(alarmNotification.maximumPrice, alarmNotification.currency);
+        var summary = qsTr("%1").arg(alarmNotification.name);
+        var body = qsTr("The share has just risen above %1.").arg(maximumPrice);
+        publishNotification(alarmNotification.id, summary, body);
+    }
+
+    function publishNotification(id, summary, body) {
+        stockAlarmNotification.summary = summary;
+        stockAlarmNotification.body = body;
+        stockAlarmNotification.previewSummary = summary;
+        stockAlarmNotification.previewBody = body;
+        stockAlarmNotification.replacesId = id;
         stockAlarmNotification.publish();
-        // TODO set the triggered flag to true
+        Database.disableAlarm(id);
+        // TODO timestamp also?
         // TODO replacesid seems not to work properly -> shows up multiple times -> replacedId 0 ??
     }
 
@@ -436,14 +450,9 @@ Page {
             loaded = true;
             reloadAllStocks();
 
-            // get lower
-            var alarmsHitLowerPrice = Database.loadTriggeredAlarms(1, true); // TODO set watchlistid
-            alarmsHitLowerPrice.forEach(createNotification);
-
-            console.log("lower : " + alarmsHitLowerPrice);
-            // get higher
-            var alarmsHitHigherPrice = Database.loadTriggeredAlarms(1, false); // TODO set watchlistid
-            console.log("highter : " + alarmsHitHigherPrice);
+            // check for alarms and show the notification
+            Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
+            Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
         }
 
         function persistQuoteFunction(stockQuote, stock) {
@@ -482,28 +491,4 @@ Page {
         }
     }
 
-//    function determineChangeColor(change) {
-//        var color = Theme.primaryColor
-//        if (change < 0.0) {
-//            color = Constants.NEGATIVE_COLOR
-//        } else if (change > 0.0) {
-//            color = Constants.POSITIVE_COLOR
-//        }
-//        return color
-//    }
-
-//    function renderChange(change, symbol) {
-//        console.log("change : " + change)
-//        console.log("change : " + Number(change))
-//        var prefix = ""
-//        if (change > 0.0) {
-//            prefix = "+"
-//        }
-//        return prefix + Number(change).toLocaleString(
-//                    Qt.locale("de_DE")) + " " + symbol
-//    }
-
-//    function removeStockQuote(index) {
-//        console.log("removing stock quote : " + index)
-//    }
 }
