@@ -60,66 +60,63 @@ var EuroinvestorBackend = /** @class */ (function () {
     EuroinvestorBackend.prototype.search = function (key, callback) {
         var downloadService = new DownloadService();
         var downloadData = new DownloadData();
-        downloadData.contentType = null;
-        downloadData.url = "https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=" + key;
+        downloadData.url = this.getSearchUrl(key);
         downloadService.execute(downloadData, callback);
     };
     EuroinvestorBackend.prototype.convertSearchResponse = function (responseText) {
-        var lines = responseText.split("\n");
-        var result = lines.filter(function (line) { return line.length > 0; }).map(function (line) { return new SearchResultStockData(line); });
-        return result;
+        var response = JSON.parse(responseText);
+        return response.map(function (item) { return new SearchResultStockData(item); });
     };
     EuroinvestorBackend.prototype.store = function (stockData) {
         throw new Error("Method not implemented.");
     };
-    EuroinvestorBackend.prototype.updateQuotes = function (stocks, stockFinisheCallback, allStocksFinishedCallback, timeoutInSeconds) {
-        if (stocks !== null && stocks.length > 0) {
-            var downloadService = new DownloadService();
-            // copy array and use it to track the finished stocks (sync object)
-            var finishedStocks = stocks.slice(0);
-            // create array with the stocks for which the update failed
-            var failedStocks = new Array();
-            var _loop_1 = function () {
-                var stock = stocks[i];
-                console.log("Looking up quote for " + stock.name);
-                quoteFunction = function (returnCode, responseText) {
-                    if (returnCode === 0) {
-                        var result = new EuroinvestorBackend().convertQuoteResponse(responseText.responseText, stock.symbol1);
-                        stockFinisheCallback(result, stock);
+    EuroinvestorBackend.prototype.getSearchUrl = function (searchKey) {
+        return "https://search.euroinvestor.dk/instruments?q=" + searchKey;
+    };
+    EuroinvestorBackend.prototype.getQuoteUrl = function (quoteKey) {
+        return "https://api.euroinvestor.dk/instruments?ids=" + quoteKey;
+    };
+    // TODO wird der return wert ueberhaupt benoetigt?
+    EuroinvestorBackend.prototype.updateQuotes = function (stocks, stockFinishedCallback, allStocksFinishedCallback, timeoutInSeconds) {
+        var downloadService = new DownloadService();
+        var quoteKeys = stocks.map(function (stock) { return stock.extRefId; }).join(",");
+        console.log("query keys : " + quoteKeys);
+        var quoteFunction = function (returnCode, responseText) {
+            if (returnCode === 0) {
+                var response = JSON.parse(responseText.responseText);
+                var results = response.map(function (item) { return new QuoteResultStockQuote(item); });
+                // TODO simplify                
+                results.forEach(function (resultQuote) { return stocks.forEach(function (stock) {
+                    if ("" + resultQuote.extRefId === stock.extRefId) {
+                        stockFinishedCallback(resultQuote, stock);
                     }
-                    var currentStock = finishedStocks.pop();
-                    if (returnCode === 2) {
-                        failedStocks.push(currentStock);
-                    }
-                    console.log("still running : " + finishedStocks.length);
-                    if (finishedStocks.length === 0) {
-                        allStocksFinishedCallback(stocks.length, failedStocks.length);
-                    }
-                };
-                var downloadData = new DownloadData();
-                downloadData.contentType = null;
-                downloadData.timeout = timeoutInSeconds * 1000;
-                downloadData.url = 'https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=' + stock.name;
-                downloadService.execute(downloadData, quoteFunction);
-            };
-            var quoteFunction;
-            for (var i = 0; i < stocks.length; i++) {
-                _loop_1();
+                }); });
+                var numberOfFailedStocks = stocks.length - response.length;
+                allStocksFinishedCallback(stocks.length, numberOfFailedStocks);
             }
-        }
+            else if (returnCode === 2) {
+                allStocksFinishedCallback(stocks.length, stocks.length);
+            }
+        };
+        var downloadData = new DownloadData();
+        downloadData.contentType = null;
+        downloadData.timeout = timeoutInSeconds * 1000;
+        downloadData.url = this.getQuoteUrl(quoteKeys);
+        downloadService.execute(downloadData, quoteFunction);
         return null;
     };
+    // TIDI wird das ueberhaupt benoetigt?
     EuroinvestorBackend.prototype.convertQuoteResponse = function (responseText, symbol) {
-        var lines = responseText.split("\n");
-        var result = lines
-            .filter(function (line) { return line.length > 0; })
-            .filter(function (line) { return line.indexOf("|" + symbol + "|") !== -1; })
-            .map(function (line) { return new QuoteResultStockQuote(line); });
-        if (result.length > 0) {
-            // get first symbol may not be unique (e.g Airbus E:AIR)
-            return result[0];
-        }
-        throw new Error("Unexpected number of results : " + result);
+        //        let lines: string[] = responseText.split("\n");
+        //        let result: Array<IStockQuote> = lines
+        //            .filter(line => line.length > 0)
+        //            .filter(line => line.indexOf("|" + symbol + "|") !== -1)
+        //            .map(line => new QuoteResultStockQuote(line));
+        //        if (result.length > 0) {
+        //            // get first symbol may not be unique (e.g Airbus E:AIR)
+        //            return result[0];
+        //        }
+        throw new Error("Unexpected number of results : " /*+ result*/);
     };
     EuroinvestorBackend.prototype.convertSearchResponseToStockData = function (searchResponse) {
         return new StockData(searchResponse);
@@ -139,35 +136,22 @@ var EuroinvestorBackend = /** @class */ (function () {
     return EuroinvestorBackend;
 }());
 var QuoteResultStockQuote = /** @class */ (function () {
-    function QuoteResultStockQuote(responseLine) {
-        var tokens = responseLine.split('|');
-        this.price = parseFloat(tokens[6]);
-        this.changeAbsolute = parseFloat(tokens[7]);
-        this.changeRelative = parseFloat(tokens[8]);
+    function QuoteResultStockQuote(response) {
+        this.price = response.last;
+        this.changeAbsolute = response.change;
+        this.changeRelative = response.changeInPercentage;
+        this.quoteTimestamp = response.updatedAt;
+        this.extRefId = "" + response.id;
+        this.lastChangeTimestamp = new Date();
     }
     return QuoteResultStockQuote;
 }());
 var SearchResultStockData = /** @class */ (function () {
-    function SearchResultStockData(responseLine) {
-        var stockExchangeMap = {};
-        stockExchangeMap["FSE"] = "Frankfurt Stock Exchange";
-        stockExchangeMap["LSE"] = "London Stock Exchange";
-        stockExchangeMap["LSI"] = "London Stock Exchange";
-        stockExchangeMap["MIL"] = "Milano Stock Exchange";
-        stockExchangeMap["NAQ"] = "Nasdaq";
-        stockExchangeMap["NYS"] = "New York Stock Exchange";
-        stockExchangeMap["PAR"] = "Euronext Paris";
-        stockExchangeMap["SPS"] = "Madrid Stock Exchange";
-        stockExchangeMap["STK"] = "Nasdaq OMX Copenhagen";
-        stockExchangeMap["SWI"] = "Swiss Electronic Bourse (EBS)";
-        stockExchangeMap["TOR"] = "Toronto Stock Exchange";
-        stockExchangeMap["XET"] = "Xetra";
-        var tokens = responseLine.split('|');
-        this.stockMarketSymbol = tokens[0];
-        this.stockMarketName = stockExchangeMap[tokens[0]];
-        this.symbol1 = tokens[4];
-        this.name = tokens[5];
-        this.currency = tokens[10];
+    function SearchResultStockData(responseItem) {
+        this.name = responseItem._source.name;
+        this.isin = responseItem._source.isin;
+        this.symbol1 = responseItem._source.symbol;
+        this.extRefId = "" + responseItem._source.id;
     }
     return SearchResultStockData;
 }());
@@ -180,6 +164,7 @@ var StockData = /** @class */ (function () {
         this.isin = searchStockData.isin;
         this.symbol1 = searchStockData.symbol1;
         this.symbol2 = searchStockData.symbol2;
+        this.extRefId = searchStockData.extRefId;
         this.price = null;
         this.changeAbsolute = null;
         this.changeRelative = null;
@@ -194,6 +179,7 @@ function createEuroinvestorBackend() {
 /// <reference path="../../DownloadData" />
 /// <reference path="../../DownloadService" />
 /// <reference path="../../WatchlistInterfaces" />
+/// <reference path="EuroinvestorInterfaces" />
 /// <reference path="EuroinvestorBackend" />
 /// <reference path="EuroinvestorFactories" />
 // aggregation of all the modules needed for the server!
