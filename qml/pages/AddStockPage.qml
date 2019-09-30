@@ -225,7 +225,8 @@ Page {
                                 width: parent.width * 2 / 3
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
-                                text: stockMarketName
+                                text: symbol1
+                                    // stockMarketName
                                 //qsTr("Bank ID: %1").arg(modelData.blz)
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
@@ -236,8 +237,9 @@ Page {
                                 width: parent.width / 3
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
-                                text: symbol1 + (currency
-                                                 !== undefined ? " (" + currency + ")" : "")
+                                text: isin
+                                    //symbol1 + (currency
+//                                                 !== undefined ? " (" + currency + ")" : "")
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
