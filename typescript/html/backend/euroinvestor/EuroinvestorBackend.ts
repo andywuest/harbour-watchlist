@@ -4,72 +4,76 @@ class EuroinvestorBackend implements IStockDataBackend {
     search(key: string, callback: (returnCode: number, httpRequest: XMLHttpRequest) => void): void {
         let downloadService = new DownloadService();
         let downloadData = new DownloadData();
-        downloadData.contentType = null;
-        downloadData.url = 'https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=' + key;
-
+        downloadData.url = this.getSearchUrl(key);
         downloadService.execute(downloadData, callback);
     }
 
     convertSearchResponse(responseText: string): Array<IStockData> {
-        let lines: string[] = responseText.split('\n');
-        let result: Array<IStockData> = lines.filter(line => line.length > 0).map(line => new SearchResultStockData(line));
-        return result;
+        const response: (Array<ISearchResult>) = JSON.parse(responseText);
+        return response.map(item => new SearchResultStockData(item));
     }
 
     store(stockData: IStockData): void {
         throw new Error("Method not implemented.");
     }
 
-    updateQuotes(stocks: Array<IStock>, stockFinisheCallback: (param1: IStockQuote, param2: IStock) => void,
-        allStocksFinishedCallback: (count:number, failed:number) => void, timeoutInSeconds: number): Array<IStock> {
-        if (stocks !== null && stocks.length > 0) {
-            let downloadService = new DownloadService();
+    private getSearchUrl(searchKey: string): string {
+        return `https://search.euroinvestor.dk/instruments?q=${searchKey}`;
+    }
 
-            // copy array and use it to track the finished stocks (sync object)
-            var finishedStocks = stocks.slice(0);
-            // create array with the stocks for which the update failed
-            var failedStocks = new Array<IStock>();
+    private getQuoteUrl(quoteKey: string): string {
+        return `https://api.euroinvestor.dk/instruments?ids=${quoteKey}`;
+    }
 
-            for (var i = 0; i < stocks.length; i++) {
-                let stock: IStock = stocks[i];
-                console.log(`Looking up quote for ${stock.name}`);
+    // TODO wird der return wert ueberhaupt benoetigt?
+    updateQuotes(stocks: Array<IStock>, stockFinishedCallback: (param1: IStockQuote, param2: IStock) => void,
+        allStocksFinishedCallback: (count: number, failed: number) => void, timeoutInSeconds: number): Array<IStock> {
 
-                var quoteFunction = function (returnCode: number, responseText: XMLHttpRequest) {
-                    if (returnCode === 0) {
-                        let result: IStockQuote = new EuroinvestorBackend().convertQuoteResponse(responseText.responseText, stock.symbol1);
-                        stockFinisheCallback(result, stock);
+        const downloadService = new DownloadService();
+        const quoteKeys: string = stocks.map(stock => stock.extRefId).join(",");
+
+        console.log("query keys : " + quoteKeys);
+
+        var quoteFunction = function (returnCode: number, responseText: XMLHttpRequest) {
+            if (returnCode === 0) {
+                const response: (Array<IStockEuroinvestor>) = JSON.parse(responseText.responseText);
+
+                const results: Array<QuoteResultStockQuote> = response.map(item => new QuoteResultStockQuote(item));
+
+                // TODO simplify                
+                results.forEach(resultQuote => stocks.forEach(stock => {
+                    if ("" + resultQuote.extRefId === stock.extRefId) {
+                        stockFinishedCallback(resultQuote, stock);
                     }
-                    let currentStock = finishedStocks.pop();
-                    if (returnCode === 2) {
-                        failedStocks.push(currentStock);
-                    }
-                    console.log("still running : " + finishedStocks.length);
-                    if (finishedStocks.length === 0) {
-                        allStocksFinishedCallback(stocks.length, failedStocks.length);
-                    }
-                }
+                }));
 
-                let downloadData = new DownloadData();
-                downloadData.contentType = null;
-                downloadData.timeout = timeoutInSeconds * 1000;
-                downloadData.url = 'https://www.euroinvestor.com/completion/instrumentvertical2.aspx?q=' + stock.name;
-                downloadService.execute(downloadData, quoteFunction);
+                const numberOfFailedStocks: number = stocks.length - response.length;
+                allStocksFinishedCallback(stocks.length, numberOfFailedStocks);
+            } else if (returnCode === 2) {
+                allStocksFinishedCallback(stocks.length, stocks.length);
             }
         }
+
+        const downloadData = new DownloadData();
+        downloadData.contentType = null;
+        downloadData.timeout = timeoutInSeconds * 1000;
+        downloadData.url = this.getQuoteUrl(quoteKeys);
+        downloadService.execute(downloadData, quoteFunction);
         return null;
     }
 
+    // TIDI wird das ueberhaupt benoetigt?
     convertQuoteResponse(responseText: string, symbol: string): IStockQuote {
-        let lines: string[] = responseText.split('\n');
-        let result: Array<IStockQuote> = lines
-            .filter(line => line.length > 0)
-            .filter(line => line.indexOf('|' + symbol + '|') !== -1)
-            .map(line => new QuoteResultStockQuote(line));
-        if (result.length > 0) {
-            // get first symbol may not be unique (e.g Airbus E:AIR)
-            return result[0];
-        }
-        throw new Error("Unexpected number of results : " + result);
+        //        let lines: string[] = responseText.split("\n");
+        //        let result: Array<IStockQuote> = lines
+        //            .filter(line => line.length > 0)
+        //            .filter(line => line.indexOf("|" + symbol + "|") !== -1)
+        //            .map(line => new QuoteResultStockQuote(line));
+        //        if (result.length > 0) {
+        //            // get first symbol may not be unique (e.g Airbus E:AIR)
+        //            return result[0];
+        //        }
+        throw new Error("Unexpected number of results : " /*+ result*/);
     }
 
     convertSearchResponseToStockData(searchResponse: SearchResultStockData): StockData {
@@ -95,14 +99,17 @@ class EuroinvestorBackend implements IStockDataBackend {
 
 class QuoteResultStockQuote implements IStockQuote {
 
-    constructor(responseLine: string) {
-        let tokens: string[] = responseLine.split('|');
-        this.price = parseFloat(tokens[6]);
-        this.changeAbsolute = parseFloat(tokens[7]);
-        this.changeRelative = parseFloat(tokens[8]);
+    constructor(response: IStockEuroinvestor) {
+        this.price = response.last;
+        this.changeAbsolute = response.change;
+        this.changeRelative = response.changeInPercentage;
+        this.quoteTimestamp = response.updatedAt;
+        this.extRefId = "" + response.id;
+        this.lastChangeTimestamp = new Date();
     }
 
     id: number;
+    extRefId: string;
     price: number;
     changeAbsolute: number;
     changeRelative: number;
@@ -112,29 +119,11 @@ class QuoteResultStockQuote implements IStockQuote {
 
 class SearchResultStockData implements IStockData {
 
-    constructor(responseLine: string) {
-        var stockExchangeMap: {[key: string]: string;} = {};
-
-        stockExchangeMap["FSE"] = "Frankfurt Stock Exchange";
-        stockExchangeMap["LSE"] = "London Stock Exchange";
-        stockExchangeMap["LSI"] = "London Stock Exchange";
-        stockExchangeMap["MIL"] = "Milano Stock Exchange";
-        stockExchangeMap["NAQ"] = "Nasdaq";
-        stockExchangeMap["NYS"] = "New York Stock Exchange";
-        stockExchangeMap["PAR"] = "Euronext Paris";
-        stockExchangeMap["SPS"] = "Madrid Stock Exchange";
-        stockExchangeMap["STK"] = "Nasdaq OMX Copenhagen";
-        stockExchangeMap["SWI"] = "Swiss Electronic Bourse (EBS)";
-        stockExchangeMap["TOR"] = "Toronto Stock Exchange";
-        stockExchangeMap["XET"] = "Xetra";
-
-        let tokens: string[] = responseLine.split('|');
-        this.stockMarketSymbol = tokens[0];
-        this.stockMarketName = stockExchangeMap[tokens[0]];
-        this.symbol1 = tokens[4];
-        this.name = tokens[5];
-        this.currency = tokens[10];
-
+    constructor(responseItem: ISearchResult) {
+        this.name = responseItem._source.name;
+        this.isin = responseItem._source.isin;
+        this.symbol1 = responseItem._source.symbol;
+        this.extRefId = "" + responseItem._source.id
     }
 
     id: number;
@@ -145,6 +134,7 @@ class SearchResultStockData implements IStockData {
     isin: string;
     symbol1: string;
     symbol2: string;
+    extRefId: string
 
 }
 
@@ -158,6 +148,7 @@ class StockData implements IStockData {
         this.isin = searchStockData.isin;
         this.symbol1 = searchStockData.symbol1;
         this.symbol2 = searchStockData.symbol2;
+        this.extRefId = searchStockData.extRefId;
         this.price = null;
         this.changeAbsolute = null;
         this.changeRelative = null;
@@ -173,6 +164,7 @@ class StockData implements IStockData {
     isin: string;
     symbol1: string
     symbol2: string
+    extRefId: string
     price: number;
     changeAbsolute: number;
     changeRelative: number;
@@ -180,3 +172,5 @@ class StockData implements IStockData {
     lastChangeTimestamp: Date;
 
 }
+
+

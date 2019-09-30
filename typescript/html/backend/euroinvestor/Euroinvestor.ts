@@ -1,6 +1,7 @@
 /// <reference path="../../DownloadData" />
 /// <reference path="../../DownloadService" />
 /// <reference path="../../WatchlistInterfaces" />
+/// <reference path="EuroinvestorInterfaces" />
 /// <reference path="EuroinvestorBackend" />
 /// <reference path="EuroinvestorFactories" />
 
