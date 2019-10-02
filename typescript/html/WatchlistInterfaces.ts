@@ -13,7 +13,13 @@ interface IStockData {
 interface IStockQuote {
     id: number;
     extRefId: string;
+    stockMarketName: string;
     price: number;
+    currency: string;
+    high: number;
+    low: number;
+    ask: number;
+    bid: number
     changeAbsolute: number;
     changeRelative: number;
     quoteTimestamp: Date;
