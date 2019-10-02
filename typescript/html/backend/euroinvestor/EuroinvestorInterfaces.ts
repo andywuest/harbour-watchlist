@@ -46,7 +46,7 @@ interface IStockEuroinvestor {
     change: number;
     changeInPercentage: number;
     last: number;
-    updatedAt: Date;
+    updatedAt: string;
     crypto?: any;
     exchange: IExchange;
 }
