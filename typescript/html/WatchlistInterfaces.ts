@@ -7,10 +7,12 @@ interface IStockData {
     isin: string;
     symbol1: string
     symbol2: string
+    extRefId: string // the most important value - key to use for the search
 }
 
 interface IStockQuote {
     id: number;
+    extRefId: string;
     price: number;
     changeAbsolute: number;
     changeRelative: number;
