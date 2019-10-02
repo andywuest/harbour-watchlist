@@ -8,8 +8,8 @@ var SORT_BY_CHANGE_DESC = " changeRelative DESC ";
 
 function getOpenDatabase() {
     var db = LocalStorage.openDatabaseSync(
-                "WatchlistApp", "1.0",
-                "Database for the WatchlistApp!", 10000000)
+                "harbour-watchlist", "1.0",
+                "Database for the harbour-watchlist!", 10000000)
     return db
 }
 
@@ -49,8 +49,11 @@ function initApplicationTables() {
             // stockdata
             tx.executeSql(
                         'CREATE TABLE IF NOT EXISTS stockdata'
-                        + ' (id INTEGER, name text, currency text, stockMarketSymbol text, stockMarketName text, isin text, symbol1 text, symbol2 text, '
+                        + ' (id INTEGER, name text, extRefId text NOT NULL, currency text, stockMarketSymbol text, stockMarketName text, '
+                        + ' isin text, symbol1 text, symbol2 text, '
                         + ' price real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
+                        + ' ask real DEFAULT 0.0, bid real DEFAULT 0.0, high real DEFAULT 0.0, low real DEFAULT 0.0, '
+                        + ' open real DEFAULT 0.0, previousClose real DEFAULT 0.0, volume INTEGER DEFAULT 0, '
                         + ' quoteTimestamp text, lastChangeTimestamp text, watchlistId INTEGER NOT NULL, '
                         +' PRIMARY KEY(id), FOREIGN KEY(watchlistId) REFERENCES watchlist(id))');
             // alarm
@@ -232,11 +235,12 @@ function persistStockData(data, watchlistId) {
 
         db.transaction(function (tx) {
             tx.executeSql(
-                        'INSERT OR REPLACE INTO stockdata(id, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
-                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        [data.id, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
-                         data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, finalWatchlistId])
+                        'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
+                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, watchlistId) '
+                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        [data.id, data.extRefId, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
+                         data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, data.currency, data.high,
+                         data.low, finalWatchlistId])
         })
         result = qsTr("Stock added")
     } catch (err) {
@@ -265,7 +269,9 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
     try {
         var db = Database.getOpenDatabase()
         db.transaction(function (tx) {
-            var query = 'SELECT id, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId '
+            var query = 'SELECT id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, price, changeAbsolute '
+                    +' ,changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId '
+                    +' ,ask, bid, high, low, volume '
                     +' FROM stockdata ORDER BY ' + sortString;
             console.log("query : " + query);
             var dbResult = tx.executeSql(query, [])
@@ -277,6 +283,7 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     var entry = {};
                     console.log("row : " + row.name + ", change rel : " + row.changeRelative);
                     entry.id = row.id;
+                    entry.extRefId = row.extRefId;
                     entry.name = row.name;
                     entry.currency = row.currency;
                     entry.stockMarketSymbol = row.stockMarketSymbol;
@@ -284,6 +291,11 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     entry.isin = row.isin;
                     entry.symbol1 = row.symbol1;
                     entry.symbol2 = row.symbol2;
+                    entry.ask = row.ask;
+                    entry.bid = row.bid;
+                    entry.high = row.high;
+                    entry.low = row.low;
+                    entry.volume = row.volume;
                     // nicht gesetzt attribute koennen speater nicht mehr gesetzt werden (wenn mal als model verwendet)
                     entry.price = (row.price === null ? 0.0 : row.price);
                     entry.changeAbsolute = (row.changeAbsolute === null ? 0.0 : row.changeAbsolute);
