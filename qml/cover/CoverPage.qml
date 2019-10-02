@@ -24,6 +24,9 @@ import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
 CoverBackground {
+    id: coverBackground
+    property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
+
 
     //    Label {
     //        id: label
@@ -413,7 +416,7 @@ CoverBackground {
 
     function reloadAllStocks() {
         coverModel.clear()
-        var stocks = Database.loadAllStockData(1, Database.SORT_BY_CHANGE_ASC)
+        var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_ASC)
         if (coverActionPrevious.enabled) {
             stocks.reverse();
         }
