@@ -455,30 +455,39 @@ Page {
             Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
         }
 
-        function persistQuoteFunction(stockQuote, stock) {
+        function persistQuoteFunction(stockQuote, modelStock) {
             console.log("stock quote : " + stockQuote)
-            console.log("stock : " + stock)
-            if (stockQuote !== null && stock !== null) {
+            console.log("stock : " + modelStock)
+
+            if (stockQuote !== null && modelStock !== null) {
+                // dateString for the current time
+                var dateString = Functions.toDatabaseTimeString(new Date());
+                // create a new JSON object - because the modelStock contains some other stuff
+                // and some values cannot be properly set :-(
+                var stock = {};
+                stock.id = modelStock.id;
+                stock.watchlistId = modelStock.watchlistId;
+                stock.symbol1 = modelStock.symbol1;
+                stock.symbol2 = modelStock.symbol2;
+                stock.name = modelStock.name;
+                stock.isin = modelStock.isin;
+                stock.extRefId = modelStock.extRefId;
+
+                // now copy the values from the quote
                 stock.price = stockQuote.price
                 stock.changeAbsolute = stockQuote.changeAbsolute
                 stock.changeRelative = stockQuote.changeRelative
-                var date = new Date()
-                var dateString = date.toLocaleDateString(
-                            Qt.locale("de_DE"),
-                            "yyyy-MM-dd") + " " + date.toLocaleTimeString(
-                            Qt.locale("de_DE"), "hh:mm:ss")
-                stock.quoteTimestamp = "" + stockQuote.quoteTimestamp
-                stock.lastChangeTimestamp = "" + stockQuote.lastChangeTimestamp
-                if (stock.quoteTimestamp === null
-                        || stock.quoteTimestamp === "undefined"
-                        || stock.quoteTimestamp === "") {
-                    stock.quoteTimestamp = dateString
-                }
-                if (stock.lastChangeTimestamp === null
-                        || stock.lastChangeTimestamp === "undefined"
-                        || stock.lastChangeTimestamp === "") {
-                    stock.lastChangeTimestamp = dateString
-                }
+                stock.currency = stockQuote.currency
+                stock.volume = stockQuote.volume
+                stock.ask = stockQuote.ask
+                stock.bid = stockQuote.bid
+                stock.high = stockQuote.high
+                stock.low = stockQuote.low
+                stock.stockMarketName = stock.stockMarketName;
+                // store timestamp in special string format
+                stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
+                stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
+
                 console.log("price is " + stock.price)
                 Database.persistStockData(stock)
             }
