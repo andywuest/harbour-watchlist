@@ -103,14 +103,26 @@ class QuoteResultStockQuote implements IStockQuote {
         this.price = response.last;
         this.changeAbsolute = response.change;
         this.changeRelative = response.changeInPercentage;
-        this.quoteTimestamp = response.updatedAt;
+        this.quoteTimestamp = new Date(response.updatedAt);
         this.extRefId = "" + response.id;
+        this.currency = response.currency;
+        this.ask = response.ask;
+        this.bid = response.bid;
+        this.high = response.high;
+        this.low = response.low;
+        this.stockMarketName = response.exchange.name;
         this.lastChangeTimestamp = new Date();
     }
 
     id: number;
     extRefId: string;
+    stockMarketName: string;
     price: number;
+    currency: string;
+    high: number;
+    low: number;
+    ask: number;
+    bid: number    
     changeAbsolute: number;
     changeRelative: number;
     quoteTimestamp: Date;
