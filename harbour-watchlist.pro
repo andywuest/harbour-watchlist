@@ -14,7 +14,10 @@ TARGET = harbour-watchlist
 
 CONFIG += sailfishapp
 
-SOURCES += src/watchlist.cpp
+SOURCES += \
+    src/euroinvestorbackend.cpp \
+    src/harbour-watchlist.cpp \
+    src/watchlist.cpp
 
 OTHER_FILES += rpm/harbour-watchlist.changes.in \
     rpm/harbour-watchlist.spec \
@@ -52,3 +55,7 @@ DISTFILES += \
     readme.txt \
     qml/pages/NotificationTest.qml \
     qml/pages/StockAlarmDialog.qml
+
+HEADERS += \
+    src/euroinvestorbackend.h \
+    src/watchlist.h
