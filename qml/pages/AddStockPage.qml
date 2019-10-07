@@ -247,7 +247,7 @@ Page {
 
         Component.onCompleted: {
             euroinvestorBackend.searchResultAvailable.connect(searchResultHandler);
-            euroinvestorBackend.searchError.connect(errorResultHandler);
+            euroinvestorBackend.requestError.connect(errorResultHandler);
         }
 
     }

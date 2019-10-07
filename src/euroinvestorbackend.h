@@ -37,7 +37,7 @@ public:
     Q_INVOKABLE void searchQuote(const QString &searchString);
 
     Q_SIGNAL void searchResultAvailable(const QString & reply);
-    Q_SIGNAL void searchError(const QString &errorMessage);
+    Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
 
@@ -56,7 +56,7 @@ private:
     QNetworkReply *executeGetRequest(const QUrl &url);
 
 private slots:
-    void handleSearchError(QNetworkReply::NetworkError error);
+    void handleRequestError(QNetworkReply::NetworkError error);
     void handleSearchNameFinished();
     void handleSearchQuoteFinished();
 };

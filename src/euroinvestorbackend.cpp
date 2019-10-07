@@ -45,7 +45,7 @@ void EuroinvestorBackend::searchName(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchName";
     QNetworkReply *reply = executeGetRequest(QUrl(API_SEARCH + searchString));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
@@ -53,7 +53,7 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
 
@@ -65,11 +65,11 @@ QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
     return manager->get(request);
 }
 
-void EuroinvestorBackend::handleSearchError(QNetworkReply::NetworkError error) {
+void EuroinvestorBackend::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "EuroinvestorBackend::handleSearchError:" << (int)error << reply->errorString() << reply->readAll();
+    qWarning() << "EuroinvestorBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
 
-    emit searchError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
+    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
 }
 
 void EuroinvestorBackend::handleSearchNameFinished() {
