@@ -1,6 +1,6 @@
 /*
  * harbour-watchlist - Sailfish OS Version
- * Copyright © 2017 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ * Copyright © 2019 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@ import Sailfish.Silica 1.0
 // QTBUG-34418
 import "."
 
-import "../js/euroinvestor.js" as Backend
 import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
@@ -33,38 +32,6 @@ Page {
     id: stockSearchPage
 
     allowedOrientations: Orientation.All
-
-    function searchStock(searchKey) {
-        var backend = Backend.createEuroinvestorBackend()
-        var key = searchKey
-
-        var searchData = function (returnCode, responseText) {
-            console.log("[search] return code was : " + returnCode)
-            console.log("[search] full response : " + responseText.responseText)
-            if (returnCode === 0) {
-                var resultList = backend.convertSearchResponse(
-                            responseText.responseText)
-                resultList.forEach(function (result) {
-                    searchResultListModel.append(
-                                backend.convertSearchResponseToStockData(
-                                    result))
-                    return console.log(
-                                "name : " + result.name + " - " + result.currency + " - "
-                                + result.symbol1 + " - " + result.stockMarketSymbol
-                                + " - " + result.stockMarketName + " ")
-                })
-                if (searchListView.count === 0 && searchField.text !== "") {
-                    noResultsColumn.visible = true
-                } else {
-                    noResultsColumn.visible = false
-                }
-            } else if (returnCode === 2) {
-                //: AddStockPage network error
-                stockAddedNotification.show(qsTr("Network error"))
-            }
-        }
-        backend.search(key, searchData)
-    }
 
     AppNotification {
         id: stockAddedNotification
@@ -94,9 +61,7 @@ Page {
                 repeat: false
                 onTriggered: {
                     searchResultListModel.clear()
-                    searchStock(searchField.text)
-                    // getCompanyName(searchField.text)
-                    // finTsDialog.searchInstitute(searchField.text);
+                    euroinvestorBackend.searchName(searchField.text);
                 }
             }
 
@@ -198,7 +163,8 @@ Page {
                     Column {
                         id: resultColumn
                         width: parent.width - (2 * Theme.horizontalPageMargin)
-                        height: stockNameText.height + stockNameAdditionalInfoRow.height
+                        height: stockNameText.height
+                                + stockNameAdditionalInfoRow.height
                                 + Theme.paddingMedium
                         spacing: Theme.paddingMedium
                         anchors.verticalCenter: parent.verticalCenter
@@ -225,7 +191,7 @@ Page {
                                 width: parent.width * 2 / 3
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
-                                text: symbol1
+                                text: stockMarketName
                                     // stockMarketName
                                 //qsTr("Bank ID: %1").arg(modelData.blz)
                                 textFormat: Text.StyledText
@@ -238,8 +204,6 @@ Page {
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
                                 text: isin
-                                    //symbol1 + (currency
-//                                                 !== undefined ? " (" + currency + ")" : "")
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
@@ -257,6 +221,34 @@ Page {
                 VerticalScrollDecorator {
                 }
             }
+
         }
+
+        function searchResultHandler(result) {
+          var jsonResult = JSON.parse(result.toString())
+          console.log("json result from euroinvestor was: " +result)
+
+          for (var i = 0; i < jsonResult.length; i++)   {
+              if (jsonResult[i]) {
+                searchResultListModel.append(jsonResult[i]);
+              }
+          }
+
+          if (searchListView.count === 0 && searchField.text !== "") {
+              noResultsColumn.visible = true
+          } else {
+              noResultsColumn.visible = false
+          }
+        }
+
+        function errorResultHandler(result) {
+            stockAddedNotification.show(result)
+        }
+
+        Component.onCompleted: {
+            euroinvestorBackend.searchResultAvailable.connect(searchResultHandler);
+            euroinvestorBackend.searchError.connect(errorResultHandler);
+        }
+
     }
 }
