@@ -1,3 +1,20 @@
+/*
+ * harbour-watchlist - Sailfish OS Version
+ * Copyright © 2019 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 #include "euroinvestorbackend.h"
 
 #include <QDebug>
@@ -15,9 +32,9 @@
 
 EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
-        this->manager = manager;
-        this->applicationName = applicationName;
-        this->applicationVersion = applicationVersion;
+    this->manager = manager;
+    this->applicationName = applicationName;
+    this->applicationVersion = applicationVersion;
 }
 
 EuroinvestorBackend::~EuroinvestorBackend() {
@@ -26,44 +43,36 @@ EuroinvestorBackend::~EuroinvestorBackend() {
 
 void EuroinvestorBackend::searchName(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchName";
-        QUrl url = QUrl(API_SEARCH + searchString);
-        QNetworkRequest request(url);
-        request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+    QNetworkReply *reply = executeGetRequest(QUrl(API_SEARCH + searchString));
 
-        QNetworkReply *reply = manager->get(request);
-
-        connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
-        connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
 void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
-        QUrl url = QUrl(API_QUOTE + searchString);
-        QNetworkRequest request(url);
-        request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+    QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
 
-        QNetworkReply *reply = manager->get(request);
-
-        connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
-        connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
 
+QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
+    qDebug() << "EuroinvestorBackend::executeGetRequest";
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
 
-void EuroinvestorBackend::handleSearchError(QNetworkReply::NetworkError error)
-{
+    return manager->get(request);
+}
+
+void EuroinvestorBackend::handleSearchError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "EuroinvestorBackend::handleSearchError:" << (int)error << reply->errorString() << reply->readAll();
 
-//    if (error == QNetworkReply::ContentConflictError) { // Conflict = Registration already there!
-//        qDebug() << "[Wagnis] Installation already registered!";
-//        this->getApplicationRegistration();
-//    } else {
-//        emit registrationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
-//    }
+    emit searchError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
 }
 
-void EuroinvestorBackend::handleSearchNameFinished()
-{
+void EuroinvestorBackend::handleSearchNameFinished() {
     qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
@@ -72,7 +81,7 @@ void EuroinvestorBackend::handleSearchNameFinished()
     }
 
     QByteArray registrationReply = reply->readAll();
-    qDebug() << "Wagnis::validateRegistrationData";
+    qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
     QJsonDocument jsonDocument = QJsonDocument::fromJson(registrationReply);
     if (jsonDocument.isArray()) {
         QJsonArray responseArray = jsonDocument.array();
@@ -97,8 +106,7 @@ void EuroinvestorBackend::handleSearchNameFinished()
     }
 }
 
-void EuroinvestorBackend::handleSearchQuoteFinished()
-{
+void EuroinvestorBackend::handleSearchQuoteFinished() {
     qDebug() << "EuroinvestorBackend::handleSearchQuoteFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
