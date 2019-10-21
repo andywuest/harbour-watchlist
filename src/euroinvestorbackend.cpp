@@ -49,6 +49,14 @@ void EuroinvestorBackend::searchName(const QString &searchString) {
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
+void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) {
+    qDebug() << "EuroinvestorBackend::searchQuote";
+    QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
+}
+
 void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
@@ -58,7 +66,7 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
 }
 
 QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
-    qDebug() << "EuroinvestorBackend::executeGetRequest";
+    qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
 
@@ -80,9 +88,9 @@ void EuroinvestorBackend::handleSearchNameFinished() {
         return;
     }
 
-    QByteArray registrationReply = reply->readAll();
+    QByteArray searchReply = reply->readAll();
     qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(registrationReply);
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
     if (jsonDocument.isArray()) {
         QJsonArray responseArray = jsonDocument.array();
         qDebug() << "array size : " << responseArray.size();
@@ -99,54 +107,72 @@ void EuroinvestorBackend::handleSearchNameFinished() {
 
         qDebug() << "EuroinvestorBackend::handleSearchNameFinished - quoteQueryIds : " << quoteQueryIds;
 
-        searchQuote(quoteQueryIds);
+        searchQuoteForNameSearch(quoteQueryIds);
 
     } else {
         qDebug() << "not a json object !";
     }
 }
 
-void EuroinvestorBackend::handleSearchQuoteFinished() {
-    qDebug() << "EuroinvestorBackend::handleSearchQuoteFinished";
+void EuroinvestorBackend::handleSearchQuoteForNameFinished() {
+    qDebug() << "EuroinvestorBackend::handleSearchQuoteForNameFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
         return;
     }
 
-    QByteArray registrationReply = reply->readAll();
-    qDebug() << "EuroinvestorBackend::validateRegistrationData";
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(registrationReply);
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        qDebug() << "array size : " << responseArray.size();
+    emit searchResultAvailable(processQuoteSearchResult(reply->readAll()));
+}
 
-        QJsonDocument resultDocument;
-        QJsonArray resultArray;
-
-        foreach (const QJsonValue & value, responseArray) {
-            QJsonObject rootObject = value.toObject();
-            QJsonObject exchangeObject = rootObject["exchange"].toObject();
-
-            QJsonObject resultObject;
-            resultObject.insert("extRefId", rootObject.value("id"));
-            resultObject.insert("name", rootObject.value("name"));
-            resultObject.insert("currency", rootObject.value("currency"));
-            resultObject.insert("price", rootObject.value("last"));
-            resultObject.insert("symbol1", rootObject.value("symbol"));
-            resultObject.insert("isin", rootObject.value("isin"));
-            resultObject.insert("stockMarketName", exchangeObject.value("name"));
-
-            // TODO map the rest
-
-            resultArray.push_back(resultObject);
-        }
-
-        resultDocument.setArray(resultArray);
-        QString dataToString(resultDocument.toJson());
-        emit searchResultAvailable(dataToString);
-
-    } else {
-        qDebug() << "not a json object !";
+void EuroinvestorBackend::handleSearchQuoteFinished() {
+    qDebug() << "EuroinvestorBackend::handleSearchQuoteForNameFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
     }
+
+    emit quoteResultAvailable(processQuoteSearchResult(reply->readAll()));
+}
+
+QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
+    qDebug() << "EuroinvestorBackend::processQuoteSearchResult";
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
+    if (!jsonDocument.isArray()) {
+        qDebug() << "not a json array!";
+    }
+
+    QJsonArray responseArray = jsonDocument.array();
+    QJsonDocument resultDocument;
+    QJsonArray resultArray;
+
+    foreach (const QJsonValue & value, responseArray) {
+        QJsonObject rootObject = value.toObject();
+        QJsonObject exchangeObject = rootObject["exchange"].toObject();
+
+        QJsonObject resultObject;
+        resultObject.insert("extRefId", rootObject.value("id"));
+        resultObject.insert("name", rootObject.value("name"));
+        resultObject.insert("currency", rootObject.value("currency"));
+        resultObject.insert("price", rootObject.value("last"));
+        resultObject.insert("symbol1", rootObject.value("symbol"));
+        resultObject.insert("isin", rootObject.value("isin"));
+        resultObject.insert("stockMarketName", exchangeObject.value("name"));
+        resultObject.insert("changeAbsolute", rootObject.value("change"));
+        resultObject.insert("changeRelative", rootObject.value("changeInPercentage"));
+        resultObject.insert("high", rootObject.value("high"));
+        resultObject.insert("low", rootObject.value("low"));
+        resultObject.insert("ask", rootObject.value("ask"));
+        resultObject.insert("bid", rootObject.value("bid"));
+
+        // TODO map the rest
+
+        resultArray.push_back(resultObject);
+    }
+
+    resultDocument.setArray(resultArray);
+    QString dataToString(resultDocument.toJson());
+
+    return dataToString;
 }

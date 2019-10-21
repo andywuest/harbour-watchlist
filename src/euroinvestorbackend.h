@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE void searchQuote(const QString &searchString);
 
     Q_SIGNAL void searchResultAvailable(const QString & reply);
+    Q_SIGNAL void quoteResultAvailable(const QString & reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
@@ -55,9 +56,14 @@ private:
 
     QNetworkReply *executeGetRequest(const QUrl &url);
 
+    // is triggered after name search because the first json request does not contain all information we need
+    void searchQuoteForNameSearch(const QString &searchString);
+    QString processQuoteSearchResult(QByteArray searchReply);
+
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);
     void handleSearchNameFinished();
+    void handleSearchQuoteForNameFinished();
     void handleSearchQuoteFinished();
 };
 
