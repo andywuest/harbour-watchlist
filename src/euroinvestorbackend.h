@@ -48,10 +48,6 @@ private:
 
     QString applicationName;
     QString applicationVersion;
-    QString wagnisId;
-    QVariantMap ipInfo;
-    QVariantMap validatedRegistration;
-    int remainingSeconds = 0;
     QNetworkAccessManager *manager;
 
     QNetworkReply *executeGetRequest(const QUrl &url);
