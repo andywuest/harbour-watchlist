@@ -13,8 +13,8 @@ Name:       harbour-watchlist
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Sailfish OS Stock Watchlist Application
-Version:    0.0.1
-Release:    1
+Version:    0.2.0
+Release:    2
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
