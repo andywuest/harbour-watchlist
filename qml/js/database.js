@@ -46,7 +46,7 @@ function initApplicationTables() {
                         + ' (id INTEGER, backendId INTEGER NOT NULL, name text NOT NULL, PRIMARY KEY (id), '
                         +' FOREIGN KEY(backendId) REFERENCES backend(id))');
             tx.executeSql('INSERT INTO watchlist (name, backendId) VALUES ("DEFAULT", (SELECT id FROM backend WHERE name = "Euroinvestor"))');
-            // stockdata
+            // stockdata - TODO unique constraint (watchlistId, extRefId)
             tx.executeSql(
                         'CREATE TABLE IF NOT EXISTS stockdata'
                         + ' (id INTEGER, name text, extRefId text NOT NULL, currency text, stockMarketSymbol text, stockMarketName text, '
@@ -236,11 +236,11 @@ function persistStockData(data, watchlistId) {
         db.transaction(function (tx) {
             tx.executeSql(
                         'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
-                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, watchlistId) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        [data.id, data.extRefId, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
+                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, watchlistId) '
+                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        [data.id, '' + data.extRefId, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
                          data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, data.currency, data.high,
-                         data.low, finalWatchlistId])
+                         data.low, data.ask, data.bid, finalWatchlistId])
         })
         result = qsTr("Stock added")
     } catch (err) {
@@ -264,6 +264,35 @@ function deleteStockData(stockDataId) {
     }
 }
 
+function loadStockBy(watchlistId, extRefId) {
+    var result;
+    try {
+        var db = Database.getOpenDatabase()
+        db.transaction(function (tx) {
+            var query = 'SELECT id, watchlistId FROM stockdata WHERE extRefId = ? and watchlistId = ?';
+            console.log("query : " + query);
+            console.log("query : " + extRefId);
+            console.log("query : " + watchlistId);
+            var dbResult = tx.executeSql(query, [extRefId, watchlistId])
+            // create same object as from json response
+            if (dbResult.rows.length > 0) {
+                console.log("stockdata row count : " + dbResult.rows.length);
+                    var row = dbResult.rows.item(0);
+                    var entry = {};
+                    entry.id = row.id;
+                    entry.watchlistId = row.watchlistId;
+                result = entry;
+                console.log("loading single stockdata data from database done");
+            } else {
+                console.log("no stockdata found for extRefId");
+            }
+        })
+    } catch (err) {
+        console.log("Error loading single stockdata from database: " + err)
+    }
+    return result;
+}
+
 function loadAllStockData(watchListId, sortString) { // TODO implement watchlistid
     var result = [];
     try {
@@ -283,6 +312,7 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     var entry = {};
                     console.log("row : " + row.name + ", change rel : " + row.changeRelative);
                     entry.id = row.id;
+                    entry.watchlistId = watchListId;
                     entry.extRefId = row.extRefId;
                     entry.name = row.name;
                     entry.currency = row.currency;
