@@ -405,11 +405,11 @@ CoverBackground {
             }
 
             onVisibleChanged: {
-                if (coverListView.visible) {
+//                if (coverListView.visible) {
                     reloadAllStocks()
-                } else {
-                    console.log("visiblieitey of list view chagned ! -> not visible")
-                }
+//                } else {
+//                    console.log("visiblieitey of list view chagned ! -> not visible")
+//                }
             }
         }
     }
