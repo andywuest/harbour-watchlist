@@ -25,7 +25,6 @@ import "."
 
 import "../js/constants.js" as Constants
 import "../js/database.js" as Database
-import "../js/euroinvestor.js" as Backend
 import "../js/functions.js" as Functions
 
 import "../components/thirdparty"
@@ -198,12 +197,6 @@ Page {
                                         width: parent.width * 2 / 10
                                         height: parent.height
                                         text: Functions.renderPrice(price, currency);
-//                                            (price
-//                                               !== undefined ? Number(
-//                                                                   price).toLocaleString(
-//                                                                   Qt.locale(
-//                                                                       "de_DE")) + " \u20AC" : "-")
-
                                         color: Theme.highlightColor
                                         font.pixelSize: Theme.fontSizeSmall
                                         font.bold: true
@@ -224,23 +217,6 @@ Page {
                                                               parent.width)
                                         height: parent.height
                                         color: Functions.determineChangeColor(changeRelative)
-
-                                        /*
-                                        function calculateWidth(price, change, maxChange, parentWidth) {
-                                            // no price so far -> hide bar by setting with 0
-                                            if (price === 0.0) {
-                                                return 0;
-                                            }
-                                            if (maxChange === 0.0) {
-                                                return parentWidth
-                                            } else {
-                                                var result = parentWidth * Math.abs(
-                                                            change) / maxChange
-                                                console.log("change length: " + result)
-                                                return result
-                                            }
-                                        }
-                                        */
                                     }
                                 }
 
@@ -276,14 +252,6 @@ Page {
                                         Text {
                                             id: lastPrice2
                                             text: Functions.renderPrice(price, currency);
-//                                                (price
-//                                                   !== undefined ? Number(
-//                                                                       price).toLocaleString(
-//                                                                       Qt.locale(
-//                                                                           "de_DE")) + " \u20AC   "
-//                                                                   + renderChange(
-//                                                                       changeAbsolute,
-//                                                                       '\u20AC') : "-")
                                             color: Functions.determineChangeColor(changeAbsolute)
                                             font.pixelSize: Theme.fontSizeMedium
                                             horizontalAlignment: Text.AlignHCenter
@@ -335,11 +303,7 @@ Page {
                         var stockData = stockQuotesListView.model.get(index)
                         console.log("remove stock  : " + stockData.name)
                         Database.deleteStockData(stockData.id)
-                        // stockQuotesListView.model.remove(index)
-                        // recalculate the maxChange
-                        // stockQuotePage.maxChange = calculateMaxChange()
                         reloadAllStocks()
-                        //removeStockByTickerSymbol(listView.model.get(index).symbol)
                     }
                 }
 
@@ -351,8 +315,54 @@ Page {
         VerticalScrollDecorator {
         }
 
+        function quoteResultHandler(result) {
+          var jsonResult = JSON.parse(result.toString())
+          console.log("json result from euroinvestor was: " +result)
+          // dateString for the current time
+          var dateString = Functions.toDatabaseTimeString(new Date());
+          for (var i = 0; i < jsonResult.length; i++)   {
+              var stockQuote = jsonResult[i];
+              var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
+              if (!stock) {
+                console.log("should not happen !!");
+              } else {
+                  // now copy the values from the quote
+                  stock.symbol1 = stockQuote.symbol1;
+                  stock.symbol2 = stockQuote.symbol2;
+                  stock.name = stockQuote.name;
+                  stock.isin = stockQuote.isin;
+                  stock.extRefId = stockQuote.extRefId;
+                  stock.currency = stockQuote.currency;
+                  stock.price = stockQuote.price
+                  stock.changeAbsolute = stockQuote.changeAbsolute
+                  stock.changeRelative = stockQuote.changeRelative
+                  stock.currency = stockQuote.currency
+                  stock.volume = stockQuote.volume
+                  stock.ask = stockQuote.ask
+                  stock.bid = stockQuote.bid
+                  stock.high = stockQuote.high
+                  stock.low = stockQuote.low
+                  stock.stockMarketName = stock.stockMarketName;
+                  // store timestamp in special string format
+                  stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
+                  stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
+                  // persist
+                  Database.persistStockData(stock, watchlistId)
+              }
+          }
+          reloadAllStocks()
+          loaded = true;
+        }
+
+        function errorResultHandler(result) {
+            stockAddedNotification.show(result)
+            loaded = true;
+        }
+
         Component.onCompleted: {
             Database.initApplicationTables()
+            euroinvestorBackend.quoteResultAvailable.connect(quoteResultHandler);
+            euroinvestorBackend.requestError.connect(errorResultHandler);
             reloadAllStocks()
             loaded = true;
         }
@@ -368,8 +378,6 @@ Page {
 
     function reloadAllStocks() {
         var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_DESC)
-        // var backend = Backend.createEuroinvestorBackend()
-        // stocks = backend.sortByChangeDesc(stocks)
 
         stockQuotePage.maxChange = calculateMaxChange(stocks)
 
@@ -392,14 +400,12 @@ Page {
     }
 
     function calculateMaxChange(stocks) {
-//        var stocks = Database.loadAllStockData(1, Database.SORT_BY_CHANGE_DESC) // TODO watchlist id
-        if (stocks !== undefined && stocks !== null && stocks.length > 0) {
-            var backend = Backend.createEuroinvestorBackend() //
-            console.log("max change is : " + maxChange)
-            return backend.getMaxChange(stocks)
+        // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
+        // added handling for negative ones
+        if (stocks && stocks.length > 0) {
+            return Math.max.apply(Math, stocks.map(function (o) { return Math.abs(o.changeRelative); }));
         }
-        console.log("no stocks -> max change is 0.0 ")
-        return 0.0
+        return 0.0;
     }
 
     function createMinimumAlarm(alarmNotification) {
@@ -435,68 +441,12 @@ Page {
         var numberOfQuotes = stocksModel.count
         var stocks = []
         for (var i = 0; i < numberOfQuotes; i++) {
-            stocks.push(stocksModel.get(i))
-        }
-
-        function allStocksFinished(count, failed) {
-            console.log("All updated! count : " + count + ", failed : " + failed);
-            if (count === failed) {
-                //: WatchlistPage error message network error
-                stockUpdateProblemNotification.show(qsTr("Network error"));
-            } else if (failed > 0) {
-                //: WatchlistPage error message some quotes
-                stockUpdateProblemNotification.show(qsTr("Some quotes not updated"));
-            }
-            loaded = true;
-            reloadAllStocks();
-
-            // check for alarms and show the notification
-            Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
-            Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
-        }
-
-        function persistQuoteFunction(stockQuote, modelStock) {
-            console.log("stock quote : " + stockQuote)
-            console.log("stock : " + modelStock)
-
-            if (stockQuote !== null && modelStock !== null) {
-                // dateString for the current time
-                var dateString = Functions.toDatabaseTimeString(new Date());
-                // create a new JSON object - because the modelStock contains some other stuff
-                // and some values cannot be properly set :-(
-                var stock = {};
-                stock.id = modelStock.id;
-                stock.watchlistId = modelStock.watchlistId;
-                stock.symbol1 = modelStock.symbol1;
-                stock.symbol2 = modelStock.symbol2;
-                stock.name = modelStock.name;
-                stock.isin = modelStock.isin;
-                stock.extRefId = modelStock.extRefId;
-
-                // now copy the values from the quote
-                stock.price = stockQuote.price
-                stock.changeAbsolute = stockQuote.changeAbsolute
-                stock.changeRelative = stockQuote.changeRelative
-                stock.currency = stockQuote.currency
-                stock.volume = stockQuote.volume
-                stock.ask = stockQuote.ask
-                stock.bid = stockQuote.bid
-                stock.high = stockQuote.high
-                stock.low = stockQuote.low
-                stock.stockMarketName = stock.stockMarketName;
-                // store timestamp in special string format
-                stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
-                stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
-
-                console.log("price is " + stock.price)
-                Database.persistStockData(stock)
-            }
+            stocks.push(stocksModel.get(i).extRefId)
         }
 
         if (numberOfQuotes > 0) {
-            var backend = Backend.createEuroinvestorBackend()
-            backend.updateQuotes(stocks, persistQuoteFunction,
-                                 allStocksFinished, Constants.HTTP_TIMEOUT_IN_SECONDS);
+            var stockExtRefIds = stocks.join(',');
+            euroinvestorBackend.searchQuote(stockExtRefIds);
         }
     }
 

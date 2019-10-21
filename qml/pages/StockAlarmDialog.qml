@@ -97,20 +97,18 @@ Dialog {
         var alarm = Database.loadAlarm(stock.id)
         if (alarm !== undefined && alarm !== null && alarm.id !== undefined) {
             var locale = Qt.locale()
-            alarmEnabled = true
             if (alarm.minimumPrice !== null && alarm.minimumPrice !== "") {
-                minimumPriceTextField.text = Number(
-                            alarm.minimumPrice).toLocaleString(locale)
+                minimumPriceTextField.text = Number(alarm.minimumPrice).toLocaleString(locale)
             }
             if (alarm.maximumPrice !== null && alarm.maximumPrice !== "") {
-                maximumPriceTextField.text = Number(
-                            alarm.maximumPrice).toLocaleString(locale)
+                maximumPriceTextField.text = Number(alarm.maximumPrice).toLocaleString(locale)
             }
-            priceHintText.text = qsTr(
-                        "The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alaram again.").arg(
-                        Functions.renderPriceOnly(stock.price)).arg(
-                        Functions.resolveCurrencySymbol(stock.currency))
+            alarmEnabled = true
         }
+        priceHintText.text = qsTr(
+                    "The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alarm again.").arg(
+                    Functions.renderPriceOnly(stock.price)).arg(
+                    Functions.resolveCurrencySymbol(stock.currency))
     }
 
     onDone: {
