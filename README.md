@@ -27,7 +27,7 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 
 
 ## Build
-Simply clone this repository, but be sure to clone it with `--recursive` as Piepmatz uses Git Submodules.
+Simply clone this repository.
 
 ## License
 Licensed under GNU GPLv3
