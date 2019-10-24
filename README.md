@@ -21,9 +21,9 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 
 ## Screenshots
 
-![Stock overview](/screenshots/watchlist1.png?raw=true "Stock overview")
+![Stock overview](/screenshots/watchlist2.png?raw=true "Stock overview")
 ![Stock search](/screenshots/watchlist1.png?raw=true "Stock search")
-![Alarm configuration](/screenshots/watchlist1.png?raw=true "Alarm configuration")
+![Alarm configuration](/screenshots/watchlist3.png?raw=true "Alarm configuration")
 
 
 ## Build
