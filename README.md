@@ -32,6 +32,8 @@ Simply clone this repository.
 ## License
 Licensed under GNU GPLv3
 
+## Translations
+
 Watchlist was translated to several languages. Thanks to all contributors!
 - German: me :-)
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
