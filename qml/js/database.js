@@ -74,10 +74,10 @@ function loadTriggeredAlarms(watchlistId, lower) {
         db.transaction(function (tx) {
             var query = 'SELECT s.id AS id, s.name AS name, s.price as price, s.currency as currency, a.minimumPrice as minimumPrice, a.maximumPrice as maximumPrice '
                     + ' FROM alarm a INNER JOIN stockdata s ON a.id = s.id'
-                    + ' WHERE s.watchlistId = ? AND s.price > 0.0 AND a.triggered = ? '
-                    + ' AND ' + (lower ? ' a.minimumPrice < s.price ' : ' a.maximumPrice < s.price');
+                    + ' WHERE s.watchlistId = ? AND s.price > ? AND a.triggered = ? '
+                    + ' AND ' + (lower ? ' s.price < a.minimumPrice AND a.minimumPrice <> "" ' : ' s.price > a.maximumPrice AND a.maximumPrice <> "" ');
             console.log("query : " + query);
-            var dbResult = tx.executeSql(query, [watchlistId, SQL_FALSE]);
+            var dbResult = tx.executeSql(query, [watchlistId, 0.0, SQL_FALSE]);
             if (dbResult.rows.length > 0) {
                 console.log("triggers alarm row count : " + dbResult.rows.length);
                 for (var i = 0; i < dbResult.rows.length; i++) {
