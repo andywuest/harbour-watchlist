@@ -326,36 +326,46 @@ Page {
               if (!stock) {
                 console.log("should not happen !!");
               } else {
-                  // now copy the values from the quote
-                  stock.symbol1 = stockQuote.symbol1;
-                  stock.symbol2 = stockQuote.symbol2;
-                  stock.name = stockQuote.name;
-                  stock.isin = stockQuote.isin;
-                  stock.extRefId = stockQuote.extRefId;
-                  stock.currency = stockQuote.currency;
-                  stock.price = stockQuote.price
-                  stock.changeAbsolute = stockQuote.changeAbsolute
-                  stock.changeRelative = stockQuote.changeRelative
-                  stock.currency = stockQuote.currency
-                  stock.volume = stockQuote.volume
-                  stock.ask = stockQuote.ask
-                  stock.bid = stockQuote.bid
-                  stock.high = stockQuote.high
-                  stock.low = stockQuote.low
-                  stock.stockMarketName = stock.stockMarketName;
+                  // copy id
+                  stockQuote.id = stock.id;
+                  // update the timestamp strings - since they are different -> TODO move to cpp
                   // store timestamp in special string format
-                  stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
-                  stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
+                  stockQuote.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
+                  stockQuote.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
+
+                  // now copy the values from the quote
+//                  stock.symbol1 = stockQuote.symbol1;
+//                  stock.symbol2 = stockQuote.symbol2;
+//                  stock.name = stockQuote.name;
+//                  stock.isin = stockQuote.isin;
+//                  stock.extRefId = stockQuote.extRefId;
+//                  stock.currency = stockQuote.currency;
+//                  stock.price = stockQuote.price
+//                  stock.changeAbsolute = stockQuote.changeAbsolute
+//                  stock.changeRelative = stockQuote.changeRelative
+//                  stock.currency = stockQuote.currency
+//                  stock.volume = stockQuote.volume
+//                  stock.ask = stockQuote.ask
+//                  stock.bid = stockQuote.bid
+//                  stock.high = stockQuote.high
+//                  stock.low = stockQuote.low
+//                  stock.stockMarketName = stock.stockMarketName;
+                  // store timestamp in special string format
+//                  stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
+//                  stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
                   // persist
-                  Database.persistStockData(stock, watchlistId)
+                  Database.persistStockData(stockQuote, watchlistId)
               }
           }
           reloadAllStocks()
           loaded = true;
+
+          Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
+          Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
         }
 
         function errorResultHandler(result) {
-            stockAddedNotification.show(result)
+            stockUpdateProblemNotification.show(result)
             loaded = true;
         }
 
