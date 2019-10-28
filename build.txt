@@ -1,0 +1,7 @@
+> ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost
+# sdk-assistant list
+# sb2 -t SailfishOS-2.2.0.29-armv7hl -m sdk-install -R zypper in cmake
+# cd /home/src1/projects/sailfishos/github/harbour-watchlist
+# mb2 -t SailfishOS-2.2.0.29-armv7hl build
+
+
