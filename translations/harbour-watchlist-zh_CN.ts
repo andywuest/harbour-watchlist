@@ -39,7 +39,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/AboutPage.qml" line="99"/>
         <source>Translators</source>
         <extracomment>AboutPage translators label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>翻译者</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
@@ -101,37 +101,37 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="42"/>
         <source>Configure Alarms</source>
-        <translation type="unfinished"></translation>
+        <translation>配置提醒</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="43"/>
         <source>Triggers a notification when the price of the stock is over the configured maximum price or under the configured minimum price.</source>
-        <translation type="unfinished"></translation>
+        <translation>当股价上涨或下跌到设定的极限值时发出提醒。</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="51"/>
         <source>Configuration hint</source>
-        <translation type="unfinished"></translation>
+        <translation>配置提醒</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="69"/>
         <source>Prices</source>
-        <translation type="unfinished"></translation>
+        <translation>股价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="77"/>
         <source>Minimum price</source>
-        <translation type="unfinished"></translation>
+        <translation>最低股价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="88"/>
         <source>Maximum price</source>
-        <translation type="unfinished"></translation>
+        <translation>最高股价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="108"/>
         <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
-        <translation type="unfinished"></translation>
+        <translation>最新已知该股票价格为  %0 %1 。一旦提醒触发，将会立刻禁用提醒。如果想要再次激活提醒，你必须重新设置及储存提醒。</translation>
     </message>
 </context>
 <context>
@@ -164,7 +164,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/WatchlistPage.qml" line="143"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>配置提醒</translation>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="151"/>
@@ -176,17 +176,17 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/WatchlistPage.qml" line="413"/>
         <location filename="../qml/pages/WatchlistPage.qml" line="420"/>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="414"/>
         <source>The share has just dropped below %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>该股票刚刚跌破 %1 。</translation>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="421"/>
         <source>The share has just risen above %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>该股票刚刚涨破  %1 。</translation>
     </message>
 </context>
 <context>
@@ -194,32 +194,32 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="152"/>
         <source>Alarm added</source>
-        <translation type="unfinished"></translation>
+        <translation>已添加提醒</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="154"/>
         <source>Error adding alarm</source>
-        <translation type="unfinished"></translation>
+        <translation>添加提醒出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="169"/>
         <source>Alarm disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>已禁用提醒</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="171"/>
         <source>Error disabling alarm</source>
-        <translation type="unfinished"></translation>
+        <translation>禁用提醒出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="187"/>
         <source>Alarm deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>已删除提醒</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="189"/>
         <source>Error deleting alarm</source>
-        <translation type="unfinished"></translation>
+        <translation>删除提醒出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="245"/>
@@ -237,12 +237,12 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/js/functions.js" line="67"/>
         <source>hh:mm</source>
-        <translation type="unfinished">hh:mm</translation>
+        <translation>hh:mm</translation>
     </message>
     <message>
         <location filename="../qml/js/functions.js" line="69"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished">dd.MM.yyy</translation>
+        <translation>dd.MM.yyy</translation>
     </message>
 </context>
 </TS>
