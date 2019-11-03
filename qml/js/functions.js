@@ -76,6 +76,15 @@ function calculateVisibleStringLength(value) {
    return (value !== undefined) ? value.replace(/\s/g, "").length : 0;
 }
 
+function calculateMaxChange(stocks) {
+    // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
+    // added handling for negative ones
+    if (stocks && stocks.length > 0) {
+        return Math.max.apply(Math, stocks.map(function (o) { return Math.abs(o.changeRelative); }));
+    }
+    return 0.0;
+}
+
 function calculateWidth(price, change, maxChange, parentWidth) {
     // no price so far -> hide bar by setting with 0
     if (price === 0.0) {
