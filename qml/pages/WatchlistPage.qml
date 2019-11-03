@@ -389,7 +389,7 @@ Page {
     function reloadAllStocks() {
         var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_DESC)
 
-        stockQuotePage.maxChange = calculateMaxChange(stocks)
+        stockQuotePage.maxChange = Functions.calculateMaxChange(stocks)
 
         var triggerUpdateQuotes = false;
         // when stockmodel is not empty and the number of stocks in the db is different -> stock has been added
@@ -407,15 +407,6 @@ Page {
         if (triggerUpdateQuotes) {
             updateQuotes();
         }
-    }
-
-    function calculateMaxChange(stocks) {
-        // https://stackoverflow.com/questions/4020796/finding-the-max-value-of-an-attribute-in-an-array-of-objects
-        // added handling for negative ones
-        if (stocks && stocks.length > 0) {
-            return Math.max.apply(Math, stocks.map(function (o) { return Math.abs(o.changeRelative); }));
-        }
-        return 0.0;
     }
 
     function createMinimumAlarm(alarmNotification) {
