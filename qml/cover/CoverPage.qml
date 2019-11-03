@@ -24,9 +24,28 @@ import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
 CoverBackground {
-    id: coverBackground
+    id: coverPage
     property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
+    property bool loading : false;
 
+    Column {
+        id: loadingColumn
+        width: parent.width - 2 * Theme.horizontalPageMargin
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: Theme.paddingMedium
+        visible: coverPage.loading
+        Behavior on opacity {
+            NumberAnimation {
+            }
+        }
+        opacity: coverPage.loading ? 1 : 0
+        InfoLabel {
+            id: loadingLabel
+            text: qsTr("Loading...")
+            font.pixelSize: Theme.fontSizeMedium
+        }
+    }
 
     //    Label {
     //        id: label
@@ -51,7 +70,10 @@ CoverBackground {
         CoverAction {
             id: actionRefresh
             iconSource: "image://theme/icon-cover-refresh"
-            onTriggered: console.log("refresh clicked prev")
+            onTriggered: {
+                console.log("refresh clicked prev")
+                updateQuotes()
+            }
         }
     }
 
@@ -73,11 +95,18 @@ CoverBackground {
         CoverAction {
             id: actionRefreshNext
             iconSource: "image://theme/icon-cover-refresh"
-            onTriggered: console.log("refresh clicked next")
+            onTriggered: {
+                console.log("refresh clicked prev")
+                updateQuotes()
+            }
         }
     }
 
     Column {
+        id: coverColumn
+        visible: !coverPage.loading
+        Behavior on opacity { NumberAnimation {} }
+        opacity: coverPage.loading ? 0 : 1
         //spacing: Theme.paddingSmall
         width: parent.width
         height: parent.height
@@ -109,25 +138,24 @@ CoverBackground {
             height: parent.height - labelTitle.height - Theme.paddingSmall
             width: parent.width
 
+
             // visible: !coverPage.loading
 
-//            Behavior on opacity {
-//                NumberAnimation {
-//                }
-//            }
-
+            //            Behavior on opacity {
+            //                NumberAnimation {
+            //                }
+            //            }
 
             // opacity: coverPage.loading ? 0 : 1
-//            anchors {
-//                top: labelTitle.bottom //parent.top
-//                topMargin: Theme.paddingSmall
-//                left: parent.left
-//                leftMargin: Theme.paddingSmall
-//                right: parent.right
-//                rightMargin: Theme.paddingSmall
-//                bottom: parent.bottom
-//            }
-
+            //            anchors {
+            //                top: labelTitle.bottom //parent.top
+            //                topMargin: Theme.paddingSmall
+            //                left: parent.left
+            //                leftMargin: Theme.paddingSmall
+            //                right: parent.right
+            //                rightMargin: Theme.paddingSmall
+            //                bottom: parent.bottom
+            //            }
             anchors.left: parent.left
             anchors.right: parent.right
 
@@ -143,7 +171,6 @@ CoverBackground {
                     topMargin: Theme.paddingSmall
                 }
 
-
                 // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
                 opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
 
@@ -151,13 +178,13 @@ CoverBackground {
                     id: stockQuoteItem
                     width: parent.width
                     // height: stockQuoteRow.height + stockQuoteSeparator.height
-                    height: stockQuoteColumn.height + thirdRow.height  + Theme.paddingSmall
+                    height: stockQuoteColumn.height + thirdRow.height + Theme.paddingSmall
                     y: Theme.paddingSmall
 
                     Row {
                         id: stockQuoteRow
                         width: parent.width - (2 * Theme.horizontalPageMargin)
-//                        spacing: Theme.paddingSmall
+                        //                        spacing: Theme.paddingSmall
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -205,7 +232,6 @@ CoverBackground {
                                 //                                horizontalAlignment: Text.AlignRight
                                 //                            }
                             }
-
 
                             //                        Row {
                             //                            id: changeRow
@@ -290,14 +316,14 @@ CoverBackground {
                                     width: parent.width / 2
                                     /// 10
                                     height: parent.height
-                                    text: Functions.renderPrice(price, currency);
-                                        //price
+                                    text: Functions.renderPrice(price, currency)
+                                    //price
 
-//                                                                        (price
-//                                                                           !== undefined ? Number(
-//                                                                                               price).toLocaleString(
-//                                                                                               Qt.locale(
-//                                                                                                   "de_DE")) + " \u20AC" : "-")
+                                    //                                                                        (price
+                                    //                                                                           !== undefined ? Number(
+                                    //                                                                                               price).toLocaleString(
+                                    //                                                                                               Qt.locale(
+                                    //                                                                                                   "de_DE")) + " \u20AC" : "-")
                                     color: Theme.highlightColor
                                     font.pixelSize: Theme.fontSizeTiny
                                     font.bold: true
@@ -318,13 +344,15 @@ CoverBackground {
                                     id: changePercentageText
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: Functions.renderChange(price, changeRelative, '%')
-                                        // changeRelative
-//                                                                        (changeRelative
-//                                                                           !== undefined ? renderChange(
-//                                                                                               changeRelative,
-//                                                                                               '%') : "-")
-                                    color: Functions.determineChangeColor(changeRelative)
+                                    text: Functions.renderChange(
+                                              price, changeRelative, '%')
+                                    // changeRelative
+                                    //                                                                        (changeRelative
+                                    //                                                                           !== undefined ? renderChange(
+                                    //                                                                                               changeRelative,
+                                    //                                                                                               '%') : "-")
+                                    color: Functions.determineChangeColor(
+                                               changeRelative)
                                     font.pixelSize: Theme.fontSizeTiny
                                     horizontalAlignment: Text.AlignRight
                                 }
@@ -401,36 +429,90 @@ CoverBackground {
 
             Component.onCompleted: {
                 Database.initApplicationTables()
+                euroinvestorBackend.quoteResultAvailable.connect(
+                            quoteResultHandler)
+                euroinvestorBackend.requestError.connect(errorResultHandler)
                 reloadAllStocks()
             }
 
             onVisibleChanged: {
-//                if (coverListView.visible) {
-                    reloadAllStocks()
-//                } else {
-//                    console.log("visiblieitey of list view chagned ! -> not visible")
-//                }
+                //                if (coverListView.visible) {
+                reloadAllStocks()
+                //                } else {
+                //                    console.log("visiblieitey of list view chagned ! -> not visible")
+                //                }
             }
         }
     }
 
     function reloadAllStocks() {
         coverModel.clear()
-        var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_ASC)
+        var stocks = Database.loadAllStockData(watchlistId,
+                                               Database.SORT_BY_CHANGE_ASC)
         if (coverActionPrevious.enabled) {
-            stocks.reverse();
+            stocks.reverse()
         }
 
-        var reducedStockList = stocks;
+        var reducedStockList = stocks
         if (stocks.length > 5) {
-            reducedStockList = stocks.slice(0, 5);
-//            if (!coverActionPrevious.enabled) {
-//                reducedStockList.reverse();
-//            }
+            reducedStockList = stocks.slice(0, 5)
         }
 
-        for (var i = 0; i < reducedStockList.length/*) || i < 2*/; i++) {
+        for (var i = 0; i < reducedStockList.length /*) || i < 2*/; i++) {
             coverModel.append(reducedStockList[i])
         }
+    }
+
+    // same as in watchlistPage
+    function updateQuotes() {
+        loading = true;
+
+        // listView.model.get(index)
+        var stocks = Database.loadAllStockData(watchlistId,
+                                               Database.SORT_BY_CHANGE_ASC)
+        var stockExtRefIds = []
+        for (var i = 0; i < stocks.length; i++) {
+            stockExtRefIds.push(stocks[i].extRefId)
+        }
+
+        if (stocks.length > 0) {
+            euroinvestorBackend.searchQuote(stockExtRefIds.join(','))
+        }
+    }
+
+    function quoteResultHandler(result) {
+        var jsonResult = JSON.parse(result.toString())
+        console.log("json result from euroinvestor was: " + result)
+        // dateString for the current time
+        var dateString = Functions.toDatabaseTimeString(new Date())
+        for (var i = 0; i < jsonResult.length; i++) {
+            var stockQuote = jsonResult[i]
+            var stock = Database.loadStockBy(watchlistId,
+                                             '' + stockQuote.extRefId)
+            if (!stock) {
+                console.log("should not happen !!")
+            } else {
+                // copy id
+                stockQuote.id = stock.id
+                // update the timestamp strings - since they are different -> TODO move to cpp
+                // store timestamp in special string format
+                stockQuote.quoteTimestamp = Functions.toDatabaseTimeString(
+                            stockQuote.quoteTimestamp, dateString)
+                stockQuote.lastChangeTimestamp = Functions.toDatabaseTimeString(
+                            stockQuote.lastChangeTimestamp, dateString)
+                // persist
+                Database.persistStockData(stockQuote, watchlistId)
+            }
+        }
+        reloadAllStocks()
+        loading = false;
+
+        // TOOD enable
+        //      Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
+        //      Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
+    }
+
+    function errorResultHandler(result) {
+        loading = false
     }
 }
