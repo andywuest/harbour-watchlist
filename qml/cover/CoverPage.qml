@@ -483,23 +483,12 @@ CoverBackground {
     function quoteResultHandler(result) {
         var jsonResult = JSON.parse(result.toString())
         console.log("json result from euroinvestor was: " + result)
-        // dateString for the current time
-        var dateString = Functions.toDatabaseTimeString(new Date())
         for (var i = 0; i < jsonResult.length; i++) {
             var stockQuote = jsonResult[i]
-            var stock = Database.loadStockBy(watchlistId,
-                                             '' + stockQuote.extRefId)
-            if (!stock) {
-                console.log("should not happen !!")
-            } else {
+            var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
+            if (stock) {
                 // copy id
                 stockQuote.id = stock.id
-                // update the timestamp strings - since they are different -> TODO move to cpp
-                // store timestamp in special string format
-                stockQuote.quoteTimestamp = Functions.toDatabaseTimeString(
-                            stockQuote.quoteTimestamp, dateString)
-                stockQuote.lastChangeTimestamp = Functions.toDatabaseTimeString(
-                            stockQuote.lastChangeTimestamp, dateString)
                 // persist
                 Database.persistStockData(stockQuote, watchlistId)
             }
@@ -507,12 +496,38 @@ CoverBackground {
         reloadAllStocks()
         loading = false;
 
-        // TOOD enable
-        //      Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
-        //      Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
+        Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
+        Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
     }
 
     function errorResultHandler(result) {
         loading = false
     }
+
+    function createMinimumAlarm(alarmNotification) {
+        var minimumPrice = Functions.renderPrice(alarmNotification.minimumPrice, alarmNotification.currency);
+        var summary = qsTr("%1").arg(alarmNotification.name);
+        var body = qsTr("The share has just dropped below %1.").arg(minimumPrice);
+        publishNotification(alarmNotification.id, summary, body);
+    }
+
+    function createMaximumAlarm(alarmNotification) {
+        var maximumPrice = Functions.renderPrice(alarmNotification.maximumPrice, alarmNotification.currency);
+        var summary = qsTr("%1").arg(alarmNotification.name);
+        var body = qsTr("The share has just risen above %1.").arg(maximumPrice);
+        publishNotification(alarmNotification.id, summary, body);
+    }
+
+    function publishNotification(id, summary, body) {
+        stockAlarmNotification.summary = summary;
+        stockAlarmNotification.body = body;
+        stockAlarmNotification.previewSummary = summary;
+        stockAlarmNotification.previewBody = body;
+        stockAlarmNotification.replacesId = id;
+        stockAlarmNotification.publish();
+        Database.disableAlarm(id);
+        // TODO timestamp also?
+        // TODO replacesid seems not to work properly -> shows up multiple times -> replacedId 0 ??
+    }
+
 }
