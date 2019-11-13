@@ -318,41 +318,12 @@ Page {
         function quoteResultHandler(result) {
           var jsonResult = JSON.parse(result.toString())
           console.log("json result from euroinvestor was: " +result)
-          // dateString for the current time
-          var dateString = Functions.toDatabaseTimeString(new Date());
           for (var i = 0; i < jsonResult.length; i++)   {
               var stockQuote = jsonResult[i];
               var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
-              if (!stock) {
-                console.log("should not happen !!");
-              } else {
+              if (stock) {
                   // copy id
                   stockQuote.id = stock.id;
-                  // update the timestamp strings - since they are different -> TODO move to cpp
-                  // store timestamp in special string format
-                  stockQuote.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
-                  stockQuote.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
-
-                  // now copy the values from the quote
-//                  stock.symbol1 = stockQuote.symbol1;
-//                  stock.symbol2 = stockQuote.symbol2;
-//                  stock.name = stockQuote.name;
-//                  stock.isin = stockQuote.isin;
-//                  stock.extRefId = stockQuote.extRefId;
-//                  stock.currency = stockQuote.currency;
-//                  stock.price = stockQuote.price
-//                  stock.changeAbsolute = stockQuote.changeAbsolute
-//                  stock.changeRelative = stockQuote.changeRelative
-//                  stock.currency = stockQuote.currency
-//                  stock.volume = stockQuote.volume
-//                  stock.ask = stockQuote.ask
-//                  stock.bid = stockQuote.bid
-//                  stock.high = stockQuote.high
-//                  stock.low = stockQuote.low
-//                  stock.stockMarketName = stock.stockMarketName;
-                  // store timestamp in special string format
-//                  stock.quoteTimestamp = Functions.toDatabaseTimeString(stockQuote.quoteTimestamp, dateString)
-//                  stock.lastChangeTimestamp = Functions.toDatabaseTimeString(stockQuote.lastChangeTimestamp, dateString)
                   // persist
                   Database.persistStockData(stockQuote, watchlistId)
               }
