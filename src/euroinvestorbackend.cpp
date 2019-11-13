@@ -89,7 +89,6 @@ void EuroinvestorBackend::handleSearchNameFinished() {
     }
 
     QByteArray searchReply = reply->readAll();
-    qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
     QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
     if (jsonDocument.isArray()) {
         QJsonArray responseArray = jsonDocument.array();
@@ -165,8 +164,18 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
         resultObject.insert("low", rootObject.value("low"));
         resultObject.insert("ask", rootObject.value("ask"));
         resultObject.insert("bid", rootObject.value("bid"));
+        resultObject.insert("volume", rootObject.value("volume"));
+        resultObject.insert("numberOfStocks", rootObject.value("numberOfStocks"));
 
-        // TODO map the rest
+        QJsonValue updatedAt = rootObject.value("updatedAt");
+        // TODO move date formatting to a separate method
+        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
+        QString updateAtString = dateTimeUpdatedAt.toString("yyyy-MM-dd") + " " + dateTimeUpdatedAt.toString("hh:mm:ss");
+        resultObject.insert("quoteTimestamp", updateAtString);
+
+        QDateTime dateTimeNow = QDateTime::currentDateTime();
+        QString nowString = dateTimeNow.toString("yyyy-MM-dd") + " " + dateTimeNow.toString("hh:mm:ss");
+        resultObject.insert("lastChangeTimestamp", nowString);
 
         resultArray.push_back(resultObject);
     }
