@@ -5,14 +5,19 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* FIXME TBA Wed Aug 28 2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.0-2
+* TODO Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.0-2
+- updated Chinese translation
+- Refresh of quotes is now also possible via the cover page.
+- some internal cleanup
+
+* Mon Oct 28 2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.0-2
+- fixed broken backend (new rest services, no screen scraping)
+- removed javascript backend logic and replaced it with logic in cpp
+- added alarms for the stocks to get a notification
 - fixed currency display on cover page for non EUR currencies
 - added German translation
 - added Chinese translation
 - auto refresh when adding stock and returning the watchlist page
-- fixed broken backend (new rest services, no screen scraping)
-- removed javascript backend logic and replaced it with logic in cpp
-- added alarms for the stocks to get a notification
 
 
 * Wed Aug 28 2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.0.1-1
