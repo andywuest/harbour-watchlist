@@ -78,14 +78,35 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="45"/>
+        <source>Loading...</source>
+        <translation>Laden...</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Top</source>
         <translation>Gewinner</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Flop</source>
         <translation>Verlierer</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="509"/>
+        <location filename="../qml/cover/CoverPage.qml" line="516"/>
+        <source>%1</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="510"/>
+        <source>The share has just dropped below %1.</source>
+        <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="517"/>
+        <source>The share has just risen above %1.</source>
+        <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
     </message>
 </context>
 <context>
@@ -173,18 +194,18 @@ AboutPage title - about text title</extracomment>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="414"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="386"/>
         <source>The share has just dropped below %1.</source>
         <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="421"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="393"/>
         <source>The share has just risen above %1.</source>
         <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="413"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="420"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="385"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="392"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -235,14 +256,14 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="67"/>
+        <location filename="../qml/js/functions.js" line="58"/>
         <source>hh:mm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="69"/>
+        <location filename="../qml/js/functions.js" line="60"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
