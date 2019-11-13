@@ -5,15 +5,6 @@ var CURRENCY_MAP = [];
 CURRENCY_MAP['EUR'] = '\u20AC';
 CURRENCY_MAP['USD'] = '$';
 
-function toDatabaseTimeString(date, defaultDateString) {
-    if (date) {
-        return date.toLocaleDateString(Qt.locale("de_DE"),"yyyy-MM-dd")
-                + " "
-                + date.toLocaleTimeString(Qt.locale("de_DE"), "hh:mm:ss");
-    }
-    return defaultDateString;
-}
-
 function renderChange(price, change, symbol) {
     var prefix = "";
     if (price === 0.0) {
