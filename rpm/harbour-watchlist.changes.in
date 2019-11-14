@@ -5,7 +5,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* TODO Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.0-2
+* Thu Nov 14 2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.1-3
 - updated Chinese translation
 - Refresh of quotes is now also possible via the cover page.
 - some internal cleanup
