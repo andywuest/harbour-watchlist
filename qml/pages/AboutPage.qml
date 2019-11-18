@@ -97,7 +97,7 @@ Page {
                 }
                 //: AboutPage translators label
                 label: qsTr("Translators")
-                text: "@KhanPuking (zh_CN)"
+                text: "@KhanPuking (zh_CN), Åke Engelbrektson (sv)"
                 separator: true
             }
 
