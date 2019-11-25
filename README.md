@@ -37,5 +37,5 @@ Licensed under GNU GPLv3
 Watchlist was translated to several languages. Thanks to all contributors!
 - German: me :-)
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
-
+- Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
