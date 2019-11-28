@@ -84,18 +84,6 @@ Page {
             }
         }
 
-        LoadingIndicator {
-            id: stocksLoadingIndicator
-            visible: !loaded
-            Behavior on opacity {
-                NumberAnimation {
-                }
-            }
-            opacity: loaded ? 0 : 1
-            height: parent.height
-            width: parent.width
-        }
-
         // TODO ( errorColumn.visible ? errorColumn.height : parent.height )
         Column {
             id: stockQuotesColumn
@@ -420,6 +408,18 @@ Page {
             var stockExtRefIds = stocks.join(',');
             euroinvestorBackend.searchQuote(stockExtRefIds);
         }
+    }
+
+    LoadingIndicator {
+        id: stocksLoadingIndicator
+        visible: !loaded
+        Behavior on opacity {
+            NumberAnimation {
+            }
+        }
+        opacity: loaded ? 0 : 1
+        height: parent.height
+        width: parent.width
     }
 
 }
