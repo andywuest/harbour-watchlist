@@ -78,14 +78,35 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="45"/>
+        <source>Loading...</source>
+        <translation type="unfinished">Läser in...</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Top</source>
         <translation>Topp</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Flop</source>
         <translation>Flopp</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="509"/>
+        <location filename="../qml/cover/CoverPage.qml" line="516"/>
+        <source>%1</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="510"/>
+        <source>The share has just dropped below %1.</source>
+        <translation>Aktien har just sjunkit under %1.</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="517"/>
+        <source>The share has just risen above %1.</source>
+        <translation>Aktien har just stigit över %1.</translation>
     </message>
 </context>
 <context>
@@ -155,36 +176,36 @@ AboutPage title - about text title</extracomment>
         <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="115"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="103"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>Aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="143"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="131"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>Konfigurera larm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="151"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="139"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="414"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="374"/>
         <source>The share has just dropped below %1.</source>
         <translation>Aktien har just sjunkit under %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="421"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="381"/>
         <source>The share has just risen above %1.</source>
         <translation>Aktien har just stigit över %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="413"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="420"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="373"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="380"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -235,12 +256,12 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="67"/>
+        <location filename="../qml/js/functions.js" line="58"/>
         <source>hh:mm</source>
         <translation>hh:mm</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="69"/>
+        <location filename="../qml/js/functions.js" line="60"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>
