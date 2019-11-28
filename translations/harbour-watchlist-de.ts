@@ -176,36 +176,36 @@ AboutPage title - about text title</extracomment>
         <translation>Alle Kurse aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="115"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="103"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>Aktienkurse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="143"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="131"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>Alarm konfigurieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="151"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="139"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="386"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="374"/>
         <source>The share has just dropped below %1.</source>
         <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="393"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="381"/>
         <source>The share has just risen above %1.</source>
         <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="385"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="392"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="373"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="380"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
