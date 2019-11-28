@@ -36,6 +36,7 @@ public:
     Q_INVOKABLE void searchName(const QString &searchString);
     Q_INVOKABLE void searchQuote(const QString &searchString);
 
+    // signals for the qml part
     Q_SIGNAL void searchResultAvailable(const QString & reply);
     Q_SIGNAL void quoteResultAvailable(const QString & reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
