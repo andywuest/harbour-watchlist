@@ -4,7 +4,7 @@ var loggingEnabled = true;
 var POSITIVE_COLOR = '#00FF00';
 var NEGATIVE_COLOR = '#FF0000';
 
-var VERSION = "0.2.1"
+var VERSION = "0.2.2"
 
 var SQL_TRUE = 1;
 var SQL_FALSE = 0;
