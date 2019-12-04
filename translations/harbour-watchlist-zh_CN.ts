@@ -78,14 +78,35 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="45"/>
+        <source>Loading...</source>
+        <translation>正在加载……</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Top</source>
         <translation>顶部</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="98"/>
+        <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Flop</source>
         <translation>下跌</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="509"/>
+        <location filename="../qml/cover/CoverPage.qml" line="516"/>
+        <source>%1</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="510"/>
+        <source>The share has just dropped below %1.</source>
+        <translation>该股票刚刚跌破 %1 。</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/CoverPage.qml" line="517"/>
+        <source>The share has just risen above %1.</source>
+        <translation>该股票刚刚涨破  %1 。</translation>
     </message>
 </context>
 <context>
@@ -155,36 +176,36 @@ AboutPage title - about text title</extracomment>
         <translation>刷新全部报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="115"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="103"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>股票报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="143"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="131"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>配置提醒</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="151"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="139"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="413"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="420"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="373"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="380"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="414"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="374"/>
         <source>The share has just dropped below %1.</source>
         <translation>该股票刚刚跌破 %1 。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="421"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="381"/>
         <source>The share has just risen above %1.</source>
         <translation>该股票刚刚涨破  %1 。</translation>
     </message>
@@ -235,12 +256,12 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="67"/>
+        <location filename="../qml/js/functions.js" line="58"/>
         <source>hh:mm</source>
         <translation>hh:mm</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="69"/>
+        <location filename="../qml/js/functions.js" line="60"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyy</translation>
     </message>
