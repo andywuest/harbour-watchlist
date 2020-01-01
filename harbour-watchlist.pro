@@ -42,6 +42,7 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 
 DISTFILES += \
     qml/components/LabelText.qml \
+    qml/components/LabelValueRow.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
@@ -50,6 +51,7 @@ DISTFILES += \
     qml/js/constants.js \
     qml/js/euroinvestor.js \
     qml/js/functions.js \
+    qml/pages/StockDetailsPage.qml \
     qml/pages/WatchlistPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/AboutPage.qml \

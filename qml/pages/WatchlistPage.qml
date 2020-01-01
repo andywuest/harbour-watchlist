@@ -122,7 +122,11 @@ Page {
                     contentWidth: parent.width
 
                     onClicked: {
+                        //                        var stock = stocksModel.get(index);
+                        //                        console.log("selected : " + stock)
                         console.log("Clicked " + index)
+                        var selectedStock = stockQuotesListView.model.get(index);
+                        pageStack.push(Qt.resolvedUrl("StockDetailsPage.qml"), { stock: selectedStock })
                     }
 
                     menu: ContextMenu {
