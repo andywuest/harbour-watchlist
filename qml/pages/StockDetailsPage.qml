@@ -106,29 +106,61 @@ Page {
             }
 
             LabelValueRow {
+                id: priceLabelValueRow
+                //: StockDetailsPage page price
+                label: qsTr("Price")
+                value: ''
+            }
+
+            LabelValueRow {
+                id: changeAbsoluteLabelValueRow
+                //: StockDetailsPage page change absolute
+                label: qsTr("Change abs.")
+                value: ''
+            }
+
+            LabelValueRow {
+                id: changeRelativeLabelValueRow
+                //: StockDetailsPage page change relative
+                label: qsTr("Change rel.")
+                value: ''
+            }
+
+            LabelValueRow {
+                id: askLabelValueRow
                 //: StockDetailsPage page ask
                 label: qsTr("Ask")
-                value: stock ? Functions.renderPrice(stock.ask, stock.currency) : ''
+                value: ''
             }
 
             LabelValueRow {
-                //: StockDetailsPage page ask
+                id: bidLabelValueRow
+                //: StockDetailsPage page bid
                 label: qsTr("Bid")
-                value: stock ? Functions.renderPrice(stock.bid, stock.currency) : ''
+                value: ''
             }
 
             LabelValueRow {
-                //: StockDetailsPage page ask
+                id: highLabelValueRow
+                //: StockDetailsPage page high
                 label: qsTr("High")
-                value: stock ? Functions.renderPrice(stock.high, stock.currency) : ''
+                value: ''
             }
 
             LabelValueRow {
-                visible: (stock && stock.low)
-                //: StockDetailsPage page ask
+                id: lowLabelValueRow
+                //: StockDetailsPage page low
                 label: qsTr("Low")
-                value: stock ? Functions.renderPrice(stock.low, stock.currency) : ''
+                value: ''
             }
+
+            LabelValueRow {
+                id: volumeLabelValueRow
+                //: StockDetailsPage page volume
+                label: qsTr("Volume")
+                value: ''
+            }
+
 
 
 
@@ -206,6 +238,14 @@ Page {
             isinLabelValueRow.value = stock.isin ? stock.isin : '';
             symbolLabelValueRow.value = stock.symbol1 ? stock.symbol1 : ''; // TODO warum symbol1
             stockMarketNameLabelValueRow.value = stock.stockMarketName ? stock.stockMarketName : '';
+            askLabelValueRow.value = stock.ask ? Functions.renderPrice(stock.ask, stock.currency) : '';
+            bidLabelValueRow.value = stock.bid ? Functions.renderPrice(stock.bid, stock.currency) : '';
+            highLabelValueRow.value = stock.high ? Functions.renderPrice(stock.high, stock.currency) : '';
+            lowLabelValueRow.value = stock.low ? Functions.renderPrice(stock.low, stock.currency) : '';
+            changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, Functions.resolveCurrencySymbol(stock.currency)) : '';
+            changeRelativeLabelValueRow.value = stock.changeRelative ? Functions.renderChange(stock.price, stock.changeRelative, '%') : '';
+            priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
+            volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             console.log("completed")
         }
 

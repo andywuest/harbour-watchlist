@@ -236,11 +236,11 @@ function persistStockData(data, watchlistId) {
         db.transaction(function (tx) {
             tx.executeSql(
                         'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
-                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, watchlistId) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, volume, watchlistId) '
+                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                         [data.id, '' + data.extRefId, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
                          data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, data.currency, data.high,
-                         data.low, data.ask, data.bid, finalWatchlistId])
+                         data.low, data.ask, data.bid, data.volume, finalWatchlistId])
         })
         result = qsTr("Stock added")
     } catch (err) {
