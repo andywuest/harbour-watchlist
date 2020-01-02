@@ -45,6 +45,14 @@ function determineChangeColor(change) {
     return color
 }
 
+function renderDateTimeString(dateTimeString) {
+    if (dateTimeString !== null && dateTimeString !== "undefined"
+            && dateTimeString !== "") {
+        var date = Date.fromLocaleString(Qt.locale("de_DE"), dateTimeString, "yyyy-MM-dd hh:mm:ss")
+        return date.toLocaleDateString(Qt.locale(), qsTr("dd.MM.yyyy")) + " " + date.toLocaleTimeString(Qt.locale(), qsTr("hh:mm:ss"));
+    }
+}
+
 function determineQuoteDate(dateTimeString) {
     if (dateTimeString !== null && dateTimeString !== "undefined"
             && dateTimeString !== "") {

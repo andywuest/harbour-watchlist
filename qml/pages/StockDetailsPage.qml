@@ -127,6 +127,13 @@ Page {
             }
 
             LabelValueRow {
+                id: timestampLabelValueRow
+                //: StockDetailsPage page timestamp
+                label: qsTr("Timestamp")
+                value: ''
+            }
+
+            LabelValueRow {
                 id: askLabelValueRow
                 //: StockDetailsPage page ask
                 label: qsTr("Ask")
@@ -246,6 +253,7 @@ Page {
             changeRelativeLabelValueRow.value = stock.changeRelative ? Functions.renderChange(stock.price, stock.changeRelative, '%') : '';
             priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
+            timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
             console.log("completed")
         }
 
