@@ -85,7 +85,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="127"/>
         <source>Top</source>
-        <translation>顶部</translation>
+        <translation>排行</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="127"/>
