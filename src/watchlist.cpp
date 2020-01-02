@@ -19,7 +19,7 @@
 
 Watchlist::Watchlist(QObject *parent) : QObject(parent), settings("harbour-watchlist", "settings") {
     this->networkAccessManager = new QNetworkAccessManager(this);
-    euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", "0.2.1", this);
+    euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", "0.3.0", this);
 }
 
 Watchlist::~Watchlist() {
