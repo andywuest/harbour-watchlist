@@ -161,91 +161,91 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/StockDetailsPage.qml" line="72"/>
         <source>General data</source>
         <extracomment>StockDetailsPage page general data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>一般数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="78"/>
         <source>Currency</source>
         <extracomment>StockDetailsPage page currency</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>货币</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="85"/>
         <source>Isin</source>
         <extracomment>StockDetailsPage page isin</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Isin</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="92"/>
         <source>Symbol</source>
         <extracomment>StockDetailsPage page symbol</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>代码</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="99"/>
         <source>Stock Market</source>
         <extracomment>StockDetailsPage page stock market</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>股票市场</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="105"/>
         <source>Trading data</source>
         <extracomment>StockDetailsPage page trading data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>趋势数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="111"/>
         <source>Price</source>
         <extracomment>StockDetailsPage page price</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>股价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="118"/>
         <source>Change abs.</source>
         <extracomment>StockDetailsPage page change absolute</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>绝对值变动</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="125"/>
         <source>Change rel.</source>
         <extracomment>StockDetailsPage page change relative</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>相对变动</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="132"/>
         <source>Timestamp</source>
         <extracomment>StockDetailsPage page timestamp</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>时间戳</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>卖价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>买价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
         <source>High</source>
         <extracomment>StockDetailsPage page high</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>最高价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
         <source>Low</source>
         <extracomment>StockDetailsPage page low</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>最低价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>成交量</translation>
     </message>
 </context>
 <context>
@@ -351,7 +351,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/js/functions.js" line="52"/>
         <source>hh:mm:ss</source>
-        <translation type="unfinished"></translation>
+        <translation>hh:mm:ss</translation>
     </message>
     <message>
         <location filename="../qml/js/functions.js" line="66"/>
