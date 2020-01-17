@@ -28,6 +28,7 @@ import "../js/functions.js" as Functions
 Page {
     id: stockDetailsPage
     property var stock
+    property string extRefId
 
     allowedOrientations: Orientation.All
 
@@ -100,6 +101,33 @@ Page {
                 value: ''
             }
 
+
+            SectionHeader {
+                //: StockDetailsPage page intraday chart
+                text: qsTr("Charts")
+            }
+
+            StockChart {
+                id: intradayStockChart
+                property int fractionDigits: 1
+
+                width: parent.width
+                graphTitle: qsTr("Intraday")
+                graphHeight: 200
+                axisYUnit: ""
+                valueConverter: function (value, last) {
+                    if (!last) {
+                       return value.toFixed(fractionDigits)
+                    }
+                    return value.toFixed(2);
+                }
+                clickEnabled: true
+                onClicked: {
+                    console.log("chart clicked !")
+                    euroinvestorBackend.fetchIntradayPrices(extRefId)
+                }
+            }
+
             SectionHeader {
                 //: StockDetailsPage page trading data
                 text: qsTr("Trading data")
@@ -169,9 +197,10 @@ Page {
             }
 
 
-
-
-
+//            Button {
+//                id: showChartsButton
+//                onClicked: pageStack.push(Qt.resolvedUrl("StockChartsPage.qml"))
+//            }
 
 
 
@@ -239,7 +268,17 @@ Page {
 
         }
 
+        function fetchIntradayPricesHandler(result) {
+            console.log("intraday result was : " + result)
+            var response = JSON.parse(result);
+            intradayStockChart.minY = (response.min / 1.0);
+            intradayStockChart.maxY = (response.max / 1.0);
+            intradayStockChart.setPoints(response.data);
+            intradayStockChart.fractionDigits = response.fractionDigits;
+        }
+
         Component.onCompleted: {
+            extRefId = stock.extRefId ? stock.extRefId : ''
             titlePageHeader.title = stock.name ? stock.name : '';
             currencyLabelValueRow.value = stock.currency ? stock.currency : '';
             isinLabelValueRow.value = stock.isin ? stock.isin : '';
@@ -254,6 +293,9 @@ Page {
             priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
+            intradayStockChart.axisYUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
+            // connect signal slot for chart update
+            euroinvestorBackend.fetchIntradayPricesAvailable.connect(fetchIntradayPricesHandler)
             console.log("completed")
         }
 
