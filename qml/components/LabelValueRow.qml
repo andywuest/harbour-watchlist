@@ -20,7 +20,7 @@ Row {
         // truncationMode: TruncationMode.Elide // TODO check for very long texts
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeSmall
-        font.bold: true
+        // font.bold: true
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -31,7 +31,7 @@ Row {
         text: "" + "23.4 €"
         color: Theme.highlightColor
         font.pixelSize: Theme.fontSizeSmall
-        font.bold: true
+        // font.bold: true
         horizontalAlignment: Text.AlignRight
     }
 }
