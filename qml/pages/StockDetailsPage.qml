@@ -296,6 +296,9 @@ Page {
             intradayStockChart.axisYUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
             // connect signal slot for chart update
             euroinvestorBackend.fetchIntradayPricesAvailable.connect(fetchIntradayPricesHandler)
+            if (watchlistSettings.downloadIntradayChartDataImmediately === true) {
+                euroinvestorBackend.fetchIntradayPrices(extRefId)
+            }
             console.log("completed")
         }
 
