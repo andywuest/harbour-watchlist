@@ -110,11 +110,37 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>GraphData</name>
+    <message>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="287"/>
+        <source>No data - Click to fetch data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <location filename="../qml/components/thirdparty/LoadingIndicator.qml" line="47"/>
         <source>Loading...</source>
         <translation>正在加载……</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="35"/>
+        <source>Download Intraday data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="36"/>
+        <source>Downloads the data for the intraday chart automatically. Otherwise you have to trigger the download manually by clicking on the chart.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -158,94 +184,105 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>StockDetailsPage</name>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="72"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="73"/>
         <source>General data</source>
         <extracomment>StockDetailsPage page general data</extracomment>
         <translation>一般数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="78"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="79"/>
         <source>Currency</source>
         <extracomment>StockDetailsPage page currency</extracomment>
         <translation>货币</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="85"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
         <source>Isin</source>
         <extracomment>StockDetailsPage page isin</extracomment>
         <translation>Isin</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="92"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="93"/>
         <source>Symbol</source>
         <extracomment>StockDetailsPage page symbol</extracomment>
         <translation>代码</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="99"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="100"/>
         <source>Stock Market</source>
         <extracomment>StockDetailsPage page stock market</extracomment>
         <translation>股票市场</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="105"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
         <source>Trading data</source>
         <extracomment>StockDetailsPage page trading data</extracomment>
         <translation>趋势数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="111"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
         <source>Price</source>
         <extracomment>StockDetailsPage page price</extracomment>
         <translation>股价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="118"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
         <source>Change abs.</source>
         <extracomment>StockDetailsPage page change absolute</extracomment>
         <translation>绝对值变动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="125"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
         <source>Change rel.</source>
         <extracomment>StockDetailsPage page change relative</extracomment>
         <translation>相对变动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="132"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
         <source>Timestamp</source>
         <extracomment>StockDetailsPage page timestamp</extracomment>
         <translation>时间戳</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
         <translation>卖价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="174"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
         <translation>买价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="181"/>
         <source>High</source>
         <extracomment>StockDetailsPage page high</extracomment>
         <translation>最高价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="188"/>
         <source>Low</source>
         <extracomment>StockDetailsPage page low</extracomment>
         <translation>最低价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="195"/>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="107"/>
+        <source>Charts</source>
+        <extracomment>StockDetailsPage page intraday chart</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="115"/>
+        <source>Intraday</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -258,47 +295,53 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="71"/>
+        <source>Settings</source>
+        <extracomment>WatchlistPage settings menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/WatchlistPage.qml" line="76"/>
         <source>Add stock</source>
         <extracomment>WatchlistPage add stock menu item</extracomment>
         <translation>添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="78"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="83"/>
         <source>Refresh all quotes</source>
         <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
         <translation>刷新全部报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="103"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="108"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>股票报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="135"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="140"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>配置提醒</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="143"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="148"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="377"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="384"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="382"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="389"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="378"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="383"/>
         <source>The share has just dropped below %1.</source>
         <translation>该股票刚刚跌破 %1 。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="385"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="390"/>
         <source>The share has just risen above %1.</source>
         <translation>该股票刚刚涨破  %1 。</translation>
     </message>
