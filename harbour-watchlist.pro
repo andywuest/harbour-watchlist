@@ -55,7 +55,6 @@ DISTFILES += \
     qml/js/euroinvestor.js \
     qml/js/functions.js \
     qml/pages/SettingsPage.qml \
-    qml/pages/StockChartsPage.qml \
     qml/pages/StockDetailsPage.qml \
     qml/pages/WatchlistPage.qml \
     qml/pages/AddStockPage.qml \
