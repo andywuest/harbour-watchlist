@@ -67,6 +67,11 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
+                //: WatchlistPage settings menu item
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+            MenuItem {
                 //: WatchlistPage add stock menu item
                 text: qsTr("Add stock")
                 onClicked: {
