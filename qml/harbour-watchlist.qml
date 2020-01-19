@@ -1,4 +1,3 @@
-
 /*
  * harbour-watchlist - Sailfish OS Version
  * Copyright © 2017 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
