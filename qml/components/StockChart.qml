@@ -15,16 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "watchlist.h"
+import QtQuick 2.0
+import "."
 
-Watchlist::Watchlist(QObject *parent) : QObject(parent), settings("harbour-watchlist", "settings") {
-    this->networkAccessManager = new QNetworkAccessManager(this);
-    euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", "0.3.0", this);
-}
+import "thirdparty"
 
-Watchlist::~Watchlist() {
-}
+GraphData {
 
-EuroinvestorBackend *Watchlist::getEuroinvestorBackend() {
-    return this->euroinvestorBackend;
+    function updateGraph() {
+        var dataPoints = dataSource.getSystemGraph(dataType, dataDepth, graphWidth, dataAvg);
+        setPoints(dataPoints);
+    }
+
 }

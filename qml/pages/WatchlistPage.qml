@@ -67,6 +67,11 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
+                //: WatchlistPage settings menu item
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+            MenuItem {
                 //: WatchlistPage add stock menu item
                 text: qsTr("Add stock")
                 onClicked: {
@@ -122,7 +127,11 @@ Page {
                     contentWidth: parent.width
 
                     onClicked: {
+                        //                        var stock = stocksModel.get(index);
+                        //                        console.log("selected : " + stock)
                         console.log("Clicked " + index)
+                        var selectedStock = stockQuotesListView.model.get(index);
+                        pageStack.push(Qt.resolvedUrl("StockDetailsPage.qml"), { stock: selectedStock })
                     }
 
                     menu: ContextMenu {

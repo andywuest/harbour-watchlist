@@ -57,6 +57,22 @@ void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) 
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
 }
 
+void EuroinvestorBackend::fetchClosePrices() {
+    qDebug() << "EuroinvestorBackend::fetchClosePrices";
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(API_CLOSE_PRICES).arg("67800").arg("2019-10-5")));
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchClosePricesFinished()));
+}
+
+void EuroinvestorBackend::fetchIntradayPrices(const QString &extRefId) {
+    qDebug() << "EuroinvestorBackend::fetchIntradayPrices";
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(API_INTRADAY_PRICES).arg(extRefId)));
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchIntradayPricesFinished()));
+}
+
 void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
@@ -133,6 +149,111 @@ void EuroinvestorBackend::handleSearchQuoteFinished() {
     }
 
     emit quoteResultAvailable(processQuoteSearchResult(reply->readAll()));
+}
+
+void EuroinvestorBackend::handleFetchClosePricesFinished() {
+    qDebug() << "EuroinvestorBackend::handleFetchClosePricesFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QString result = QString(reply->readAll());
+
+    qDebug() << "EuroinvestorBackend::handleFetchClosePricesFinished result " << result;
+
+    emit fetchClosePricesAvailable(result);
+}
+
+void EuroinvestorBackend::handleFetchIntradayPricesFinished() {
+    qDebug() << "EuroinvestorBackend::handleFetchIntradayPricesFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QByteArray resultByteArray = reply->readAll();
+    QString result = QString(resultByteArray);
+
+    qDebug() << "EuroinvestorBackend::handleFetchIntradayPricesFinished result " << result;
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(resultByteArray);
+    if (!jsonDocument.isArray()) {
+        qDebug() << "not a json array!";
+    }
+
+    QJsonArray responseArray = jsonDocument.array();
+    QJsonDocument resultDocument;
+    QJsonArray resultArray;
+
+    double min = -1;
+    double max = -1;
+
+    foreach (const QJsonValue & value, responseArray) {
+        QJsonObject rootObject = value.toObject();
+        QJsonObject resultObject;
+
+        QJsonValue updatedAt = rootObject.value("timestamp");
+        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
+
+        double closeValue = rootObject.value("close").toDouble();
+
+        if (min == -1) {
+            min = closeValue;
+        } else if (closeValue < min) {
+            min = closeValue;
+        }
+        if (max == -1) {
+            max = closeValue;
+        } else if (closeValue > max) {
+            max = closeValue;
+        }
+
+        resultObject.insert("x", dateTimeUpdatedAt.toMSecsSinceEpoch() / 1000);
+        resultObject.insert("y", closeValue);
+
+        resultArray.push_back(resultObject);
+    }
+
+
+//    var myObj = {
+//      "data": [
+//        { "x":0 * d, "y":"40" },
+//        { "x":1 * d, "y":"40" },
+//        { "x":2 * d, "y":"25" },
+//        { "x":3 * d, "y":"75" },
+//        { "x":4 * d, "y":"25" },
+//        { "x":5 * d, "y":"150" },
+//      ]
+//     }
+
+
+    // top / bottom margin for chart - if the difference is too small - rounding makes no sense.
+    double roundedMin = (max - min > 1.0) ? floor(min) : min;
+    double roundedMax = (max - min > 1.0) ? ceil(max) : max;
+
+    // determine how many fraction digits the y-axis is supposed to display
+    int fractionsDigits = 1;
+    if (max - min > 10.0) {
+        fractionsDigits = 0;
+    } else if (max - min < 2) {
+        fractionsDigits = 2;
+    }
+
+    // resultDocument.setArray(resultArray);
+    QJsonObject resultObject;
+    resultObject.insert("min", roundedMin);
+    resultObject.insert("max", roundedMax);
+    resultObject.insert("fractionDigits", fractionsDigits);
+    resultObject.insert("data", resultArray);
+
+    resultDocument.setObject(resultObject);
+
+    QString dataToString(resultDocument.toJson());
+
+    emit fetchIntradayPricesAvailable(dataToString);
 }
 
 QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {

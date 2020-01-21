@@ -110,11 +110,37 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>GraphData</name>
+    <message>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="287"/>
+        <source>No data - Click to fetch data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <location filename="../qml/components/thirdparty/LoadingIndicator.qml" line="47"/>
         <source>Loading...</source>
         <translation>Läser in...</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="35"/>
+        <source>Download Intraday data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="36"/>
+        <source>Downloads the data for the intraday chart automatically. Otherwise you have to trigger the download manually by clicking on the chart.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -156,6 +182,110 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>StockDetailsPage</name>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="79"/>
+        <source>Currency</source>
+        <extracomment>StockDetailsPage page currency</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="73"/>
+        <source>General data</source>
+        <extracomment>StockDetailsPage page general data</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
+        <source>Isin</source>
+        <extracomment>StockDetailsPage page isin</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="93"/>
+        <source>Symbol</source>
+        <extracomment>StockDetailsPage page symbol</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="100"/>
+        <source>Stock Market</source>
+        <extracomment>StockDetailsPage page stock market</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
+        <source>Trading data</source>
+        <extracomment>StockDetailsPage page trading data</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
+        <source>Price</source>
+        <extracomment>StockDetailsPage page price</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
+        <source>Timestamp</source>
+        <extracomment>StockDetailsPage page timestamp</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="107"/>
+        <source>Charts</source>
+        <extracomment>StockDetailsPage page intraday chart</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="115"/>
+        <source>Intraday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
+        <source>Change abs.</source>
+        <extracomment>StockDetailsPage page change absolute</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
+        <source>Change rel.</source>
+        <extracomment>StockDetailsPage page change relative</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
+        <source>Ask</source>
+        <extracomment>StockDetailsPage page ask</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="174"/>
+        <source>Bid</source>
+        <extracomment>StockDetailsPage page bid</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="181"/>
+        <source>High</source>
+        <extracomment>StockDetailsPage page high</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="188"/>
+        <source>Low</source>
+        <extracomment>StockDetailsPage page low</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="195"/>
+        <source>Volume</source>
+        <extracomment>StockDetailsPage page volume</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WatchlistPage</name>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="66"/>
@@ -165,47 +295,53 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="71"/>
+        <source>Settings</source>
+        <extracomment>WatchlistPage settings menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/WatchlistPage.qml" line="76"/>
         <source>Add stock</source>
         <extracomment>WatchlistPage add stock menu item</extracomment>
         <translation>Lägg till aktie</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="78"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="83"/>
         <source>Refresh all quotes</source>
         <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="103"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="108"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>Aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="131"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="140"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>Konfigurera larm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="139"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="148"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="374"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="383"/>
         <source>The share has just dropped below %1.</source>
         <translation>Aktien har just sjunkit under %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="381"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="390"/>
         <source>The share has just risen above %1.</source>
         <translation>Aktien har just stigit över %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="373"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="380"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="382"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="389"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -256,12 +392,18 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="58"/>
+        <location filename="../qml/js/functions.js" line="52"/>
+        <source>hh:mm:ss</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/functions.js" line="66"/>
         <source>hh:mm</source>
         <translation>hh:mm</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="60"/>
+        <location filename="../qml/js/functions.js" line="52"/>
+        <location filename="../qml/js/functions.js" line="68"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>

@@ -5,3 +5,7 @@ Third parties are:
 
 * sailfish-barcode
   https://github.com/steffen-foerster/sailfish-barcode
+
++ harbour-sytemmonitor
+  https://github.com/custodian/harbour-systemmonitor
+

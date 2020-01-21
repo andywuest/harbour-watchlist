@@ -234,10 +234,14 @@ Page {
               }
           }
 
-          if (searchListView.count === 0 && searchField.text !== "") {
-              noResultsColumn.visible = true
+          if (searchListView && searchListView.count) {
+              if (searchListView.count === 0 && searchField.text !== "") {
+                  noResultsColumn.visible = true
+              } else {
+                  noResultsColumn.visible = false
+              }
           } else {
-              noResultsColumn.visible = false
+              noResultsColumn.visible = true
           }
         }
 

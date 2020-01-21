@@ -27,6 +27,8 @@
 const char MIME_TYPE_JSON[] = "application/json";
 const char API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
 const char API_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
+const char API_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
+const char API_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
 
 class EuroinvestorBackend : public QObject {
     Q_OBJECT
@@ -35,10 +37,14 @@ public:
     ~EuroinvestorBackend();
     Q_INVOKABLE void searchName(const QString &searchString);
     Q_INVOKABLE void searchQuote(const QString &searchString);
+    Q_INVOKABLE void fetchClosePrices();
+    Q_INVOKABLE void fetchIntradayPrices(const QString &extRefId);
 
     // signals for the qml part
     Q_SIGNAL void searchResultAvailable(const QString & reply);
     Q_SIGNAL void quoteResultAvailable(const QString & reply);
+    Q_SIGNAL void fetchClosePricesAvailable(const QString & reply);
+    Q_SIGNAL void fetchIntradayPricesAvailable(const QString & reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
@@ -62,6 +68,8 @@ private slots:
     void handleSearchNameFinished();
     void handleSearchQuoteForNameFinished();
     void handleSearchQuoteFinished();
+    void handleFetchClosePricesFinished();
+    void handleFetchIntradayPricesFinished();
 };
 
 #endif // EUROINVESTORBACKEND_H

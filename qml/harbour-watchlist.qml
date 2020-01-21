@@ -17,13 +17,24 @@
  */
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 import "pages"
 
 ApplicationWindow {
+
+    // Global Settings Storage
+    ConfigurationGroup {
+        id: watchlistSettings
+        path: "/apps/harbour-watchlist/settings"
+
+        property bool downloadIntradayChartDataImmediately: false
+    }
+
     initialPage: Component {
         WatchlistPage {
         }
     }
+
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

@@ -42,14 +42,20 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 
 DISTFILES += \
     qml/components/LabelText.qml \
+    qml/components/LabelValueRow.qml \
+    qml/components/StockChart.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
+    qml/components/thirdparty/Axis.qml \
+    qml/components/thirdparty/GraphData.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/components/thirdparty/readme.txt \
     qml/js/database.js \
     qml/js/constants.js \
     qml/js/euroinvestor.js \
     qml/js/functions.js \
+    qml/pages/SettingsPage.qml \
+    qml/pages/StockDetailsPage.qml \
     qml/pages/WatchlistPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/AboutPage.qml \
