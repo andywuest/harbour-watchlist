@@ -302,6 +302,11 @@ Page {
             console.log("completed")
         }
 
+        Component.onDestruction: {
+            console.log("disconnecting signal")
+            euroinvestorBackend.fetchIntradayPricesAvailable.disconnect(fetchIntradayPricesHandler)
+        }
+
     }
 
     VerticalScrollDecorator {
