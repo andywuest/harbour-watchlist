@@ -106,7 +106,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="517"/>
         <source>The share has just risen above %1.</source>
-        <translation>该股票刚刚涨破  %1 。</translation>
+        <translation>该股票刚刚涨破 %1 。</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/components/thirdparty/GraphData.qml" line="287"/>
         <source>No data - Click to fetch data</source>
-        <translation type="unfinished"></translation>
+        <translation>无数据-点击以获取数据</translation>
     </message>
 </context>
 <context>
@@ -130,17 +130,17 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="30"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="35"/>
         <source>Download Intraday data</source>
-        <translation type="unfinished"></translation>
+        <translation>下载当天对我数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="36"/>
         <source>Downloads the data for the intraday chart automatically. Otherwise you have to trigger the download manually by clicking on the chart.</source>
-        <translation type="unfinished"></translation>
+        <translation>自动下载当天的数据图表。否则你必须通过手动点击图表以进行下载。</translation>
     </message>
 </context>
 <context>
@@ -277,12 +277,12 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/StockDetailsPage.qml" line="107"/>
         <source>Charts</source>
         <extracomment>StockDetailsPage page intraday chart</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>图表</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="115"/>
         <source>Intraday</source>
-        <translation type="unfinished"></translation>
+        <translation>当天</translation>
     </message>
 </context>
 <context>
@@ -297,7 +297,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/WatchlistPage.qml" line="71"/>
         <source>Settings</source>
         <extracomment>WatchlistPage settings menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="76"/>
@@ -343,7 +343,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="390"/>
         <source>The share has just risen above %1.</source>
-        <translation>该股票刚刚涨破  %1 。</translation>
+        <translation>该股票刚刚涨破 %1 。</translation>
     </message>
 </context>
 <context>
