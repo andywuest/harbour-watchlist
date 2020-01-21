@@ -5,12 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* 01.01.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.0-5
+* 21.01.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.0-5
 - added stock details page
 - added intraday chart
 - added small settings page
 
-* 04.12.2019 Andreas Wuest <andreas.wuest.freelancer@gmail.com> 0.2.2-4
+* 04.12.2019 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.2.2-4
 - added Swedish translation
 - fixed display of loading indicator
 

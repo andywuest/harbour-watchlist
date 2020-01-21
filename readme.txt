@@ -1,6 +1,6 @@
 > ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost
 > cd /home/src1/projects/sailfishos/github/harbour-watchlist
- mb2 -t SailfishOS-2.2.0.29-armv7hl build
+> mb2 -t SailfishOS-2.2.0.29-armv7hl build
 > cd RPMS
 > scp harbour-watchlist-0.0.1-1.armv7hl.rpm wuesand@192.168.123.128:
 
