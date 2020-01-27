@@ -106,7 +106,7 @@ Dialog {
             alarmEnabled = true
         }
         priceHintText.text = qsTr(
-                    "The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alarm again.").arg(
+                    "The latest known price for the stock was %0 %1. The alarm will be disabled once the alarm has been triggered. In order to activate the alarm again, you have to save the alarm again.").arg(
                     Functions.renderPriceOnly(stock.price)).arg(
                     Functions.resolveCurrencySymbol(stock.currency))
     }
