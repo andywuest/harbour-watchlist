@@ -38,6 +38,7 @@ Item {
     property int graphHeight: 250
     property int graphWidth: canvas.width / canvas.stepX
     property bool doubleAxisXLables: false
+    property bool intraday: false
 
     property bool scale: false
     property color lineColor: Theme.highlightColor
@@ -74,7 +75,10 @@ Item {
         if (scale) {
             maxY = pointMaxY * 1.20;
         }
-        doubleAxisXLables = ((maxX - minX) > 129600); // 1,5 days
+        // TODO hier wird die achsenzahl gesteuert
+        intraday = ((maxX - minX) <= 86400); // 1 day - only show time
+
+        doubleAxisXLables = ((maxX - minX) < 86400); // 1 day
 
         canvas.requestPaint();
     }
@@ -180,8 +184,8 @@ Item {
                             top: parent.bottom
                             horizontalCenter: parent.horizontalCenter
                         }
-                        text: Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "ddd");
-                        visible: doubleAxisXLables
+                        text: Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
+                        visible: !intraday
                     }
                 }
             }
