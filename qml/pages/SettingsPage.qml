@@ -34,7 +34,7 @@ Page {
                 id: downloadIntradayChartDataImmediatelyTextSwitch
                 text: qsTr ("Download Intraday data")
                 description: qsTr ("Downloads the data for the intraday chart automatically. Otherwise you have to trigger the download "
-                                   + "manually by clicking on the chart.");
+                                   + "manually by clicking on the chart.") + " WiFi " + (watchlist.isWiFi() ? "ON" : "OFF") + ".";
                 Component.onCompleted: checked = watchlistSettings.downloadIntradayChartDataImmediately
                 onCheckedChanged: {
                     watchlistSettings.downloadIntradayChartDataImmediately = checked;
