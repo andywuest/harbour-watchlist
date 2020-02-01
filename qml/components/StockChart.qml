@@ -20,11 +20,25 @@ import "."
 
 import "thirdparty"
 
+import "../js/constants.js" as Constants
+
 GraphData {
+    property int fractionDigits: 1
+    property int chartType: Constants.CHART_TYPE_UNDEFINED
+
+    width: parent.width
+    graphHeight: 200
+    axisYUnit: ""
+    valueConverter: function (value, last) {
+        if (!last) {
+           return value.toFixed(fractionDigits)
+        }
+        return value.toFixed(2);
+    }
+    clickEnabled: true
 
     function updateGraph() {
         var dataPoints = dataSource.getSystemGraph(dataType, dataDepth, graphWidth, dataAvg);
         setPoints(dataPoints);
     }
-
 }
