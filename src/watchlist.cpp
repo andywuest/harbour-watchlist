@@ -17,12 +17,28 @@
  */
 #include "watchlist.h"
 
-Watchlist::Watchlist(QObject *parent) : QObject(parent), settings("harbour-watchlist", "settings") {
-    this->networkAccessManager = new QNetworkAccessManager(this);
+Watchlist::Watchlist(QObject *parent) : QObject(parent),
+    networkAccessManager(new QNetworkAccessManager(this)),
+    networkConfigurationManager(new QNetworkConfigurationManager(this)),
+    settings("harbour-watchlist", "settings") {
     euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", "0.3.0", this);
 }
 
 Watchlist::~Watchlist() {
+}
+
+bool Watchlist::isWiFi() {
+    QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
+    QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);
+    while (configurationIterator.hasNext()) {
+        QNetworkConfiguration activeConfiguration = configurationIterator.next();
+        if (activeConfiguration.bearerType() == QNetworkConfiguration::BearerWLAN || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEthernet) {
+            qDebug() << "Watchlist::isWiFi : WiFi ON!";
+            return true;
+        }
+    }
+    qDebug() << "Watchlist::isWiFi : WiFi OFF!";
+    return false;
 }
 
 EuroinvestorBackend *Watchlist::getEuroinvestorBackend() {

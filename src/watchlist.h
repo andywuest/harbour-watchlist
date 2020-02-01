@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QNetworkAccessManager>
+#include <QNetworkConfigurationManager>
 #include <QSettings>
 
 #include "euroinvestorbackend.h"
@@ -31,12 +32,15 @@ public:
     ~Watchlist();
     EuroinvestorBackend *getEuroinvestorBackend();
 
+    Q_INVOKABLE bool isWiFi();
+
 signals:
 
 public slots:
 
 private:
-    QNetworkAccessManager *networkAccessManager;
+    QNetworkAccessManager * const networkAccessManager;
+    QNetworkConfigurationManager * const networkConfigurationManager;
     EuroinvestorBackend *euroinvestorBackend;
     QSettings settings;
 
