@@ -109,22 +109,28 @@ Page {
 
             StockChart {
                 id: intradayStockChart
-                property int fractionDigits: 1
-
-                width: parent.width
                 graphTitle: qsTr("Intraday")
-                graphHeight: 200
-                axisYUnit: ""
-                valueConverter: function (value, last) {
-                    if (!last) {
-                       return value.toFixed(fractionDigits)
-                    }
-                    return value.toFixed(2);
-                }
-                clickEnabled: true
                 onClicked: {
                     console.log("chart clicked !")
-                    euroinvestorBackend.fetchIntradayPrices(extRefId)
+                    euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
+                }
+            }
+
+            StockChart {
+                id: lastMonthStockChart
+                graphTitle: qsTr("30 days")
+                onClicked: {
+                    console.log("chart clicked !")
+                    euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+                }
+            }
+
+            StockChart {
+                id: lastYearStockChart
+                graphTitle: qsTr("Year")
+                onClicked: {
+                    console.log("chart clicked !")
+                    euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
                 }
             }
 
@@ -268,13 +274,24 @@ Page {
 
         }
 
-        function fetchIntradayPricesHandler(result) {
-            console.log("intraday result was : " + result)
+        function fetchPricesForChartHandler(result, type) {
+            console.log("intraday result was : " + result + " / " + type)
             var response = JSON.parse(result);
-            intradayStockChart.minY = (response.min / 1.0);
-            intradayStockChart.maxY = (response.max / 1.0);
-            intradayStockChart.setPoints(response.data);
-            intradayStockChart.fractionDigits = response.fractionDigits;
+
+            if (type === Constants.CHART_TYPE_INTRDAY) {
+                updateStockChart(response, intradayStockChart);
+            } else if (type === Constants.CHART_TYPE_MONTH) {
+                updateStockChart(response, lastMonthStockChart);
+            } else if (type === Constants.CHART_TYPE_YEAR) {
+                updateStockChart(response, lastYearStockChart);
+            }
+        }
+
+        function updateStockChart(response, chart) {
+            chart.minY = (response.min / 1.0);
+            chart.maxY = (response.max / 1.0);
+            chart.setPoints(response.data);
+            chart.fractionDigits = response.fractionDigits;
         }
 
         Component.onCompleted: {
@@ -293,18 +310,27 @@ Page {
             priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
-            intradayStockChart.axisYUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
+
+
+            var currencyUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
+            intradayStockChart.axisYUnit = currencyUnit;
+            lastMonthStockChart.axisYUnit = currencyUnit;
+            lastYearStockChart.axisYUnit = currencyUnit;
+
             // connect signal slot for chart update
-            euroinvestorBackend.fetchIntradayPricesAvailable.connect(fetchIntradayPricesHandler)
+            euroinvestorBackend.fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (watchlistSettings.downloadIntradayChartDataImmediately === true) {
-                euroinvestorBackend.fetchIntradayPrices(extRefId)
+                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
+                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
             }
             console.log("completed")
         }
 
         Component.onDestruction: {
             console.log("disconnecting signal")
-            euroinvestorBackend.fetchIntradayPricesAvailable.disconnect(fetchIntradayPricesHandler)
+            euroinvestorBackend.fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
+            //euroinvestorBackend.fetchClosePricesAvailable.disconnect(fetchClosePricesHandler)
         }
 
     }
