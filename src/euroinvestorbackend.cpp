@@ -57,20 +57,34 @@ void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) 
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
 }
 
-void EuroinvestorBackend::fetchClosePrices() {
+void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int chartType) {
     qDebug() << "EuroinvestorBackend::fetchClosePrices";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(API_CLOSE_PRICES).arg("67800").arg("2019-10-5")));
+
+    QDate today = QDate::currentDate();
+    QDate startDate;
+
+    // TODO use constants as well
+    switch(chartType) {
+        case 1: startDate = today.addMonths(-1); break;
+        case 2: startDate = today.addYears(-1);  break;
+        case 3: startDate = today.addYears(-3); break;
+        case 4: startDate = today.addYears(-5); break;
+    }
+
+    QString startDateString = startDate.toString("yyyy-MM-dd");
+
+    QNetworkReply *reply;
+    if (chartType > 0) {
+        reply = executeGetRequest(QUrl(QString(API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
+    } else {
+        reply = executeGetRequest(QUrl(QString(API_INTRADAY_PRICES).arg(extRefId)));
+    }
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchClosePricesFinished()));
-}
+//    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchPricesForChartFinished()));
+    connect(reply, &QNetworkReply::finished, this, &EuroinvestorBackend::handleFetchPricesForChartFinished);
 
-void EuroinvestorBackend::fetchIntradayPrices(const QString &extRefId) {
-    qDebug() << "EuroinvestorBackend::fetchIntradayPrices";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(API_INTRADAY_PRICES).arg(extRefId)));
-
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchIntradayPricesFinished()));
+    reply->setProperty("type", chartType);
 }
 
 void EuroinvestorBackend::searchQuote(const QString &searchString) {
@@ -151,23 +165,8 @@ void EuroinvestorBackend::handleSearchQuoteFinished() {
     emit quoteResultAvailable(processQuoteSearchResult(reply->readAll()));
 }
 
-void EuroinvestorBackend::handleFetchClosePricesFinished() {
-    qDebug() << "EuroinvestorBackend::handleFetchClosePricesFinished";
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    reply->deleteLater();
-    if (reply->error() != QNetworkReply::NoError) {
-        return;
-    }
-
-    QString result = QString(reply->readAll());
-
-    qDebug() << "EuroinvestorBackend::handleFetchClosePricesFinished result " << result;
-
-    emit fetchClosePricesAvailable(result);
-}
-
-void EuroinvestorBackend::handleFetchIntradayPricesFinished() {
-    qDebug() << "EuroinvestorBackend::handleFetchIntradayPricesFinished";
+void EuroinvestorBackend::handleFetchPricesForChartFinished() {
+    qDebug() << "EuroinvestorBackend::handleFetchPricesForChartFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
@@ -177,11 +176,20 @@ void EuroinvestorBackend::handleFetchIntradayPricesFinished() {
     QByteArray resultByteArray = reply->readAll();
     QString result = QString(resultByteArray);
 
-    qDebug() << "EuroinvestorBackend::handleFetchIntradayPricesFinished result " << result;
+    qDebug() << "EuroinvestorBackend::handleFetchPricesForChartFinished result " << result;
 
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(resultByteArray);
+    QString jsonResponseString = parsePriceResponse(resultByteArray);
+
+    if (!jsonResponseString.isNull()) {
+        emit fetchPricesForChartAvailable(jsonResponseString, reply->property("type").toInt());
+    }
+}
+
+QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply);
     if (!jsonDocument.isArray()) {
         qDebug() << "not a json array!";
+        return QString();
     }
 
     QJsonArray responseArray = jsonDocument.array();
@@ -217,19 +225,6 @@ void EuroinvestorBackend::handleFetchIntradayPricesFinished() {
         resultArray.push_back(resultObject);
     }
 
-
-//    var myObj = {
-//      "data": [
-//        { "x":0 * d, "y":"40" },
-//        { "x":1 * d, "y":"40" },
-//        { "x":2 * d, "y":"25" },
-//        { "x":3 * d, "y":"75" },
-//        { "x":4 * d, "y":"25" },
-//        { "x":5 * d, "y":"150" },
-//      ]
-//     }
-
-
     // top / bottom margin for chart - if the difference is too small - rounding makes no sense.
     double roundedMin = (max - min > 1.0) ? floor(min) : min;
     double roundedMax = (max - min > 1.0) ? ceil(max) : max;
@@ -252,8 +247,7 @@ void EuroinvestorBackend::handleFetchIntradayPricesFinished() {
     resultDocument.setObject(resultObject);
 
     QString dataToString(resultDocument.toJson());
-
-    emit fetchIntradayPricesAvailable(dataToString);
+    return dataToString;
 }
 
 QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
