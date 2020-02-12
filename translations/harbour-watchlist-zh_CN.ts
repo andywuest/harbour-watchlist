@@ -4,13 +4,13 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Reset Database</source>
         <translation>重置数据库</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>About Watchlist</source>
         <extracomment>AboutPage title - header
 ----------
@@ -18,31 +18,31 @@ AboutPage title - about text title</extracomment>
         <translation>关于 Wathlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutPage.qml" line="68"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation>这是一个简单的旗鱼系统股票清单软件。Watchlist 在 GPL v3 许可协议之下开源。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutPage.qml" line="78"/>
         <source>Version</source>
         <extracomment>AboutPage version label</extracomment>
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="88"/>
+        <location filename="../qml/pages/AboutPage.qml" line="99"/>
         <source>Author</source>
         <extracomment>AboutPage author label</extracomment>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutPage.qml" line="115"/>
         <source>Translators</source>
         <extracomment>AboutPage translators label</extracomment>
         <translation>翻译者</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="120"/>
+        <location filename="../qml/pages/AboutPage.qml" line="136"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>源代码</translation>
@@ -112,7 +112,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="287"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="291"/>
         <source>No data - Click to fetch data</source>
         <translation>无数据-点击以获取数据</translation>
     </message>
@@ -177,7 +177,7 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="108"/>
-        <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
+        <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alarm has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
         <translation>最新已知该股票价格为 %0 %1 。一旦提醒触发，将会立刻禁用提醒。如果想要再次激活提醒，你必须重新设置及储存提醒。</translation>
     </message>
 </context>
@@ -214,61 +214,71 @@ AboutPage title - about text title</extracomment>
         <translation>股票市场</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="122"/>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="132"/>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="141"/>
         <source>Trading data</source>
         <extracomment>StockDetailsPage page trading data</extracomment>
         <translation>趋势数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="147"/>
         <source>Price</source>
         <extracomment>StockDetailsPage page price</extracomment>
         <translation>股价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="154"/>
         <source>Change abs.</source>
         <extracomment>StockDetailsPage page change absolute</extracomment>
         <translation>绝对值变动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="161"/>
         <source>Change rel.</source>
         <extracomment>StockDetailsPage page change relative</extracomment>
         <translation>相对变动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="168"/>
         <source>Timestamp</source>
         <extracomment>StockDetailsPage page timestamp</extracomment>
         <translation>时间戳</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="175"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
         <translation>卖价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="174"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="182"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
         <translation>买价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="181"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="189"/>
         <source>High</source>
         <extracomment>StockDetailsPage page high</extracomment>
         <translation>最高价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="188"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="196"/>
         <source>Low</source>
         <extracomment>StockDetailsPage page low</extracomment>
         <translation>最低价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="195"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="203"/>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
@@ -280,7 +290,7 @@ AboutPage title - about text title</extracomment>
         <translation>图表</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="115"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="112"/>
         <source>Intraday</source>
         <translation>当天</translation>
     </message>
@@ -392,18 +402,18 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="52"/>
+        <location filename="../qml/js/functions.js" line="48"/>
         <source>hh:mm:ss</source>
         <translation>hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="66"/>
+        <location filename="../qml/js/functions.js" line="62"/>
         <source>hh:mm</source>
         <translation>hh:mm</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="52"/>
-        <location filename="../qml/js/functions.js" line="68"/>
+        <location filename="../qml/js/functions.js" line="48"/>
+        <location filename="../qml/js/functions.js" line="64"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyy</translation>
     </message>
