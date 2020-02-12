@@ -25,6 +25,7 @@ import "../js/database.js" as Database
 
 Page {
     id: aboutPage
+    property bool showInfos: false
 
     SilicaFlickable {
         id: aboutPageFlickable
@@ -79,15 +80,30 @@ Page {
                 separator: true
             }
 
-            LabelText {
+            BackgroundItem {
+                id: clickableUrlAuthor
+                contentHeight: labelAuthor.height
+                height: contentHeight
+                width: aboutPageFlickable.width
                 anchors {
                     left: parent.left
-                    margins: Theme.paddingLarge
                 }
-                //: AboutPage author label
-                label: qsTr("Author")
-                text: "Andreas Wüst"
-                separator: true
+
+                LabelText {
+                    id: labelAuthor
+                    anchors {
+                        left: parent.left
+                        margins: Theme.paddingLarge
+                    }
+                    //: AboutPage author label
+                    label: qsTr("Author")
+                    text: "Andreas Wüst"
+                    separator: true
+                    color: clickableUrlAuthor.highlighted ? Theme.highlightColor : Theme.primaryColor
+                }
+                onClicked: {
+                    aboutPage.showInfos = !aboutPage.showInfos;
+                }
             }
 
             LabelText {
@@ -102,7 +118,7 @@ Page {
             }
 
             BackgroundItem {
-                id: clickableUrl
+                id: clickableUrlSourceCode
                 contentHeight: labelUrl.height
                 height: contentHeight
                 width: aboutPageFlickable.width
@@ -119,13 +135,26 @@ Page {
                     //: AboutPage about source label
                     label: qsTr("Source code")
                     text: "https://github.com/andywuest/harbour-watchlist"
-                    color: clickableUrl.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    color: clickableUrlSourceCode.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
                 onClicked: {
                     // openInDefaultApp("https://github.com/steffen-foerster/sailfish-barcode");
                     Qt.openUrlExternally(labelUrl.text)
                     // Qt.openUrlExternally(labelUrl.text)
                 }
+            }
+
+            LabelText {
+                visible: aboutPage.showInfos
+                anchors {
+                    left: parent.left
+                    margins: Theme.paddingLarge
+                }
+                //: AboutPage translators label
+                label: "Debug Infos"
+                text: "WiFi : " + (watchlist.isWiFi() ? "on" : "off") +
+                      "\nScreen size : " + aboutPage.width + "x" + aboutPage.height;
+                separator: true
             }
         }
     }

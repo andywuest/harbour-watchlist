@@ -118,6 +118,7 @@ Page {
 
             StockChart {
                 id: lastMonthStockChart
+                visible: false
                 graphTitle: qsTr("30 days")
                 onClicked: {
                     console.log("chart clicked !")
@@ -127,6 +128,7 @@ Page {
 
             StockChart {
                 id: lastYearStockChart
+                visible: false
                 graphTitle: qsTr("Year")
                 onClicked: {
                     console.log("chart clicked !")
@@ -311,7 +313,6 @@ Page {
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
 
-
             var currencyUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
             intradayStockChart.axisYUnit = currencyUnit;
             lastMonthStockChart.axisYUnit = currencyUnit;
@@ -321,8 +322,8 @@ Page {
             euroinvestorBackend.fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (watchlistSettings.downloadIntradayChartDataImmediately === true) {
                 euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
+                //euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+                //euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
             }
             console.log("completed")
         }
@@ -330,7 +331,6 @@ Page {
         Component.onDestruction: {
             console.log("disconnecting signal")
             euroinvestorBackend.fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
-            //euroinvestorBackend.fetchClosePricesAvailable.disconnect(fetchClosePricesHandler)
         }
 
     }
