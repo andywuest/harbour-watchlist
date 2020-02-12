@@ -4,13 +4,13 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Reset Database</source>
         <translation>Datenbank zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>About Watchlist</source>
         <extracomment>AboutPage title - header
 ----------
@@ -18,31 +18,31 @@ AboutPage title - about text title</extracomment>
         <translation>Über Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutPage.qml" line="68"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation>Diese Anwendung ist eine kleine Aktien-Watchlist für Sailfish OS. Watchlist ist Open Source und unter der GPL v3 lizensiert.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutPage.qml" line="78"/>
         <source>Version</source>
         <extracomment>AboutPage version label</extracomment>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="88"/>
+        <location filename="../qml/pages/AboutPage.qml" line="99"/>
         <source>Author</source>
         <extracomment>AboutPage author label</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutPage.qml" line="115"/>
         <source>Translators</source>
         <extracomment>AboutPage translators label</extracomment>
         <translation>Übersetzer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="120"/>
+        <location filename="../qml/pages/AboutPage.qml" line="136"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Quellcode</translation>
@@ -112,7 +112,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="287"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="291"/>
         <source>No data - Click to fetch data</source>
         <translation>Keine Daten - Klicken um Daten zu laden</translation>
     </message>
@@ -177,7 +177,7 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="108"/>
-        <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alaram has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
+        <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alarm has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
         <translation>Der letzte bekannte Kurs der Aktie war %0 %1. Der Alarm wird deaktiviert sobald er einmal ausgelöst wurde. Um den Alarm wieder zu aktivieren, muss dieser einfach noch einmal neu gespeichert werden.</translation>
     </message>
 </context>
@@ -214,19 +214,19 @@ AboutPage title - about text title</extracomment>
         <translation>Börse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="141"/>
         <source>Trading data</source>
         <extracomment>StockDetailsPage page trading data</extracomment>
         <translation>Handelsdaten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="139"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="147"/>
         <source>Price</source>
         <extracomment>StockDetailsPage page price</extracomment>
         <translation>Preis</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="160"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="168"/>
         <source>Timestamp</source>
         <extracomment>StockDetailsPage page timestamp</extracomment>
         <translation>Letzte Aktualisierung</translation>
@@ -238,48 +238,58 @@ AboutPage title - about text title</extracomment>
         <translation>Charts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="115"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="112"/>
         <source>Intraday</source>
         <translation>Intraday</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="146"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="122"/>
+        <source>30 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="132"/>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="154"/>
         <source>Change abs.</source>
         <extracomment>StockDetailsPage page change absolute</extracomment>
         <translation>Veränderung abs.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="153"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="161"/>
         <source>Change rel.</source>
         <extracomment>StockDetailsPage page change relative</extracomment>
         <translation>Veränderung rel.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="167"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="175"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
         <translation>Brief</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="174"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="182"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
         <translation>Geld</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="181"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="189"/>
         <source>High</source>
         <extracomment>StockDetailsPage page high</extracomment>
         <translation>Hoch</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="188"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="196"/>
         <source>Low</source>
         <extracomment>StockDetailsPage page low</extracomment>
         <translation>Tief</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="195"/>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="203"/>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Volumen</translation>
@@ -392,18 +402,18 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="52"/>
+        <location filename="../qml/js/functions.js" line="48"/>
         <source>hh:mm:ss</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="66"/>
+        <location filename="../qml/js/functions.js" line="62"/>
         <source>hh:mm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="52"/>
-        <location filename="../qml/js/functions.js" line="68"/>
+        <location filename="../qml/js/functions.js" line="48"/>
+        <location filename="../qml/js/functions.js" line="64"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>
