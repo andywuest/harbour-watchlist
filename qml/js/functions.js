@@ -1,10 +1,6 @@
 
 Qt.include('constants.js');
 
-var CURRENCY_MAP = [];
-CURRENCY_MAP['EUR'] = '\u20AC';
-CURRENCY_MAP['USD'] = '$';
-
 function renderChange(price, change, symbol) {
     var prefix = "";
     if (price === 0.0) {
