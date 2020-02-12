@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 12.02.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.1-6
+- updated Chinese / Swedish translations
+- fixed typo in alarm dialog
+- internal code consolidation
+
 * 21.01.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.0-5
 - added stock details page
 - added intraday chart
