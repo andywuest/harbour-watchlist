@@ -245,12 +245,12 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="122"/>
         <source>30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>30 dagar</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="132"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>År</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="154"/>
