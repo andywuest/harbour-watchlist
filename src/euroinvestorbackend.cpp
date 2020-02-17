@@ -81,6 +81,7 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
     }
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+   //  connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &EuroinvestorBackend::handleRequestError);
 //    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchPricesForChartFinished()));
     connect(reply, &QNetworkReply::finished, this, &EuroinvestorBackend::handleFetchPricesForChartFinished);
 
