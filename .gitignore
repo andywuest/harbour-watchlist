@@ -26,6 +26,10 @@ Makefile*
 *build-*
 *.jsc
 
+# Resources
+*_original.png
+*.qm
+
 # 
 RPMS
 *.spec
