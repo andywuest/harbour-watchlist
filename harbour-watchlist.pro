@@ -25,7 +25,7 @@ OTHER_FILES += rpm/harbour-watchlist.changes.in \
     translations/*.ts \
     harbour-watchlist.desktop
 
-SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
+SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -49,7 +49,6 @@ DISTFILES += \
     qml/components/thirdparty/Axis.qml \
     qml/components/thirdparty/GraphData.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
-    qml/components/thirdparty/readme.txt \
     qml/js/database.js \
     qml/js/constants.js \
     qml/js/euroinvestor.js \
@@ -59,7 +58,6 @@ DISTFILES += \
     qml/pages/WatchlistPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/AboutPage.qml \
-    readme.txt \
     qml/pages/StockAlarmDialog.qml
 
 HEADERS += \
