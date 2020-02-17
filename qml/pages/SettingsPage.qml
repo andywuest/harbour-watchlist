@@ -30,23 +30,52 @@ Page {
                 title: qsTr("Settings")
             }
 
-            TextSwitch {
-                id: downloadIntradayChartDataImmediatelyTextSwitch
-                text: qsTr ("Download Intraday data")
-                description: qsTr ("Downloads the data for the intraday chart automatically. Otherwise you have to trigger the download "
-                                   + "manually by clicking on the chart.");
-                Component.onCompleted: checked = watchlistSettings.downloadIntradayChartDataImmediately
-                onCheckedChanged: {
-                    watchlistSettings.downloadIntradayChartDataImmediately = checked;
-                    console.log("state downloadIntradayChartDataImmediately changed");
+            ComboBox {
+                id: chartDataDownloadComboBox
+                label: qsTr("Download chart data")
+                currentIndex: watchlistSettings.chartDataDownloadStrategy
+                description: qsTr("Defines strategy to download the chart data")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("Always")
+                    }
+                    MenuItem {
+                        text: qsTr("Only on WiFi")
+                    }
+                    MenuItem {
+                        text: qsTr("Only manually")
+                    }
+                    onActivated: {
+                        watchlistSettings.chartDataDownloadStrategy = index
+                    }
+                }
+            }
+
+            ComboBox {
+                id: sortingOrderComboBox
+                label: qsTr("Sorting order")
+                currentIndex: watchlistSettings.sortingOrder
+                description: qsTr("Defines sorting order of watchlist entries")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("By change")
+                    }
+                    MenuItem {
+                        text: qsTr("By name")
+                    }
+                    onActivated: {
+                        watchlistSettings.sortingOrder = index
+                    }
                 }
             }
         }
 
         onVisibleChanged: {
-            watchlistSettings.sync();
-            console.log("downloadIntradayChartDataImmediately : " + watchlistSettings.downloadIntradayChartDataImmediately);
-            console.log("writing changes !");
+            watchlistSettings.sync()
+            console.log("chartDataDownloadStrategy : "
+                        + watchlistSettings.chartDataDownloadStrategy)
+            console.log("sortingOrder : " + watchlistSettings.sortingOrder)
+            console.log("writing changes !")
         }
-   }
+    }
 }
