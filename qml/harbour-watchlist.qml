@@ -20,6 +20,8 @@ import Sailfish.Silica 1.0
 import Nemo.Configuration 1.0
 import "pages"
 
+import "js/constants.js" as Constants
+
 ApplicationWindow {
 
     // Global Settings Storage
@@ -27,7 +29,8 @@ ApplicationWindow {
         id: watchlistSettings
         path: "/apps/harbour-watchlist/settings"
 
-        property bool downloadIntradayChartDataImmediately: false
+        property int chartDataDownloadStrategy: Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ONLY_ON_WIFI
+        property int sortingOrder: Constants.SORTING_ORDER_BY_CHANGE
     }
 
     initialPage: Component {
