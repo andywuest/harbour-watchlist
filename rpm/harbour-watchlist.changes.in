@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 18.02.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.2-7
+- added Icon (provided by Okxa)
+- Added watchlist sorting order to settings dialog
+- Hopefully more reasonable chart diagram size
+
 * 12.02.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.1-6
 - updated Chinese / Swedish translations
 - fixed typo in alarm dialog
