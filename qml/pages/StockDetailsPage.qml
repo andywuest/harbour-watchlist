@@ -110,6 +110,7 @@ Page {
             StockChart {
                 id: intradayStockChart
                 graphTitle: qsTr("Intraday")
+                graphHeight: stockDetailsPage.height * 0.15625
                 onClicked: {
                     console.log("chart clicked !")
                     euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
@@ -296,6 +297,12 @@ Page {
             chart.fractionDigits = response.fractionDigits;
         }
 
+        function triggerChartDataDownloadOnEntering() {
+            var strategy = watchlistSettings.chartDataDownloadStrategy;
+            return (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ALWAYS ||
+                    (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
+        }
+
         Component.onCompleted: {
             extRefId = stock.extRefId ? stock.extRefId : ''
             titlePageHeader.title = stock.name ? stock.name : '';
@@ -320,7 +327,7 @@ Page {
 
             // connect signal slot for chart update
             euroinvestorBackend.fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
-            if (watchlistSettings.downloadIntradayChartDataImmediately === true) {
+            if (triggerChartDataDownloadOnEntering()) {
                 euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
                 //euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
                 //euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
