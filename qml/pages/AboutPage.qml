@@ -18,6 +18,7 @@
 import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
+
 import "../components/thirdparty"
 
 import "../js/constants.js" as Constants
@@ -114,6 +115,17 @@ Page {
                 //: AboutPage translators label
                 label: qsTr("Translators")
                 text: "@KhanPuking (zh_CN), Åke Engelbrektson (sv)"
+                separator: true
+            }
+
+            LabelText {
+                anchors {
+                    left: parent.left
+                    margins: Theme.paddingLarge
+                }
+                //: AboutPage contributors label
+                label: qsTr("Contributors")
+                text: "Okxa (icon)"
                 separator: true
             }
 
