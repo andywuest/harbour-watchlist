@@ -26,8 +26,13 @@ GraphData {
     property int fractionDigits: 1
     property int chartType: Constants.CHART_TYPE_UNDEFINED
 
+    // EMU        720x1280  - 200px height looks fine
+    // XA2 PLUS  1080x2160 -  too small
+    // J1         540x960  -  too high - not enough space for the text
+    // calculate the height -> screen height * 0.15625 -> works fine for EMU
+
     width: parent.width
-    graphHeight: 200
+    // graphHeight: 200 no fixed height - due to different resolutions
     axisYUnit: ""
     valueConverter: function (value, last) {
         if (!last) {
