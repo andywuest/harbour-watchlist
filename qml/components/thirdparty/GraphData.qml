@@ -242,8 +242,8 @@ Item {
                     ctx.globalCompositeOperation = "source-over";
                     ctx.clearRect(0,0,width,height);
 
-                    console.log("width: " + parent.width)
-                    console.log("maxY", maxY, "minY", minY, "height", height, "StepY", stepY);
+                    // console.log("width: " + parent.width)
+                    // console.log("maxY", maxY, "minY", minY, "height", height, "StepY", stepY);
 
                     var end = points.length;
 
