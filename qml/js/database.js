@@ -2,7 +2,7 @@
 
 Qt.include("constants.js")
 
-var SORT_BY_NAME = " name ASC ";
+var SORT_BY_NAME_ASC = " name ASC ";
 var SORT_BY_CHANGE_ASC = " changeRelative ASC ";
 var SORT_BY_CHANGE_DESC = " changeRelative DESC ";
 
