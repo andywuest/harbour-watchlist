@@ -355,7 +355,8 @@ Page {
     }
 
     function reloadAllStocks() {
-        var stocks = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_DESC)
+        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
+        var stocks = Database.loadAllStockData(watchlistId, sortOrder);
 
         stockQuotePage.maxChange = Functions.calculateMaxChange(stocks)
 
