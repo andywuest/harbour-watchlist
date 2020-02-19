@@ -45,7 +45,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/AboutPage.qml" line="127"/>
         <source>Contributors</source>
         <extracomment>AboutPage contributors label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bidragsgivare</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="148"/>
@@ -143,55 +143,55 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner diagramdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="57"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Strategi för att ladda ner diagramdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="61"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Alltid</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Endast över WiFi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Endast manuellt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sorteringsordning</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="83"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sorteringsordning för Watchlist-poster</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="87"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Efter förändring</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="91"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Efter namn</translation>
     </message>
 </context>
 <context>
