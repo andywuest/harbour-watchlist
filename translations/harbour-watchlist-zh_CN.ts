@@ -45,7 +45,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/AboutPage.qml" line="127"/>
         <source>Contributors</source>
         <extracomment>AboutPage contributors label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>贡献者</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="148"/>
@@ -143,55 +143,55 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>下载图表数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="57"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>选择下载图表数据的方式</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="61"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>总是</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>仅限 WiFi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>仅手动</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>分类方式</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="83"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>排列在查证券项目的方式</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="87"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>按股价波动</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="91"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>按名称</translation>
     </message>
 </context>
 <context>
@@ -219,12 +219,12 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="77"/>
         <source>Minimum price</source>
-        <translation>最低股价</translation>
+        <translation>最低价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="88"/>
         <source>Maximum price</source>
-        <translation>最高股价</translation>
+        <translation>最高价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="108"/>
@@ -267,12 +267,12 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="123"/>
         <source>30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>30 天</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="142"/>
@@ -308,13 +308,13 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/StockDetailsPage.qml" line="176"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
-        <translation>卖价</translation>
+        <translation>卖入价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="183"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
-        <translation>买价</translation>
+        <translation>买出价</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="190"/>
