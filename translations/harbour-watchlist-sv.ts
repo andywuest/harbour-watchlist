@@ -143,13 +143,13 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
-        <translation>Ladda ner kursdata</translation>
+        <translation>Ladda ner diagramdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="57"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
-        <translation>Strategi för att ladda ner kursdata</translation>
+        <translation>Strategi för att ladda ner diagramdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="61"/>
