@@ -36,6 +36,8 @@ Requires:
 
 # All installed files
 Files:
+  - '%defattr(644,root,root,-)'
+  - '%attr(655,-,-) %{_bindir}'
   - '%{_bindir}'
   - '%{_datadir}/%{name}'
   - '%{_datadir}/applications/%{name}.desktop'
