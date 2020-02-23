@@ -29,8 +29,10 @@ Makefile*
 # Resources
 *_original.png
 *.qm
+sdk-harbour-rpmvalidator
 
 # 
 RPMS
 *.spec
+
  

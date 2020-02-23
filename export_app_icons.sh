@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 for x in 86 108 128 172
 do
