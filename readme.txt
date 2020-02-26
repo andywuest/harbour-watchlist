@@ -10,23 +10,13 @@ NOTE:
 
 TODO  watchlist
 
-
-after release
-+ properly handle timeouts -> show error if not network is available
-+ Stock suche -> keine Ergebnis anzeigen -> loading indicator bei suche.
-+ für aktien ohne erstmalige kursabfrage auch keine preis Euro/ Änderung in Prozent angeben.
-+ Refresh on cover (enable)
-+ i18n
-+ icons
++ consolidate Notification -> same code in Cover and Watchlist Page (-> new component)
++ icon broken for notifications (-> link to wrong image)
++ copyright headers
++ no signal slots -> lamba
++ i18n (more languages)
 + multiple backends
 + multiple watchlists
-+ standardsortierung in watchlist konfigurierbar
-+ github move
-+ cleanup
-+ lokalen dummy server für quotes um timeouts zu testen.
-+ backend.sortByChangeDesc -pruefen, ob noch benoetig
-+ todo doppelte urls im backend fixen
-+ konfigurierbare notifications lower / upper limit
 
 
 # generate or remove license header -via maven plugin

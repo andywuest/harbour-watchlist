@@ -22,13 +22,11 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QUuid>
-#include <QCryptographicHash>
-#include <QStandardPaths>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDateTime>
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusInterface>
+#include <QVariantMap>
+#include <QJsonDocument>
 
 EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
@@ -65,10 +63,11 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
 
     // TODO use constants as well
     switch(chartType) {
-        case 1: startDate = today.addMonths(-1); break;
-        case 2: startDate = today.addYears(-1);  break;
-        case 3: startDate = today.addYears(-3); break;
-        case 4: startDate = today.addYears(-5); break;
+        case ChartType::INTRADAY: break;
+        case ChartType::MONTH: startDate = today.addMonths(-1); break;
+        case ChartType::YEAR: startDate = today.addYears(-1); break;
+        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
+        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
     }
 
     QString startDateString = startDate.toString("yyyy-MM-dd");
@@ -100,6 +99,7 @@ QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
     qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
 
     return manager->get(request);
 }

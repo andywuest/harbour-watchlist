@@ -21,11 +21,9 @@
 #include <QObject>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
-#include <QVariantMap>
-#include <QJsonDocument>
-#include <QSignalMapper>
 
 const char MIME_TYPE_JSON[] = "application/json";
+const char USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
 const char API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
 const char API_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
 const char API_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
@@ -52,10 +50,17 @@ public slots:
 
 private:
 
+    enum ChartType {
+      INTRADAY = 0,
+      MONTH = 1,
+      YEAR = 2,
+      THREE_YEARS = 3,
+      FIVE_YEARS = 4
+    };
+
     QString applicationName;
     QString applicationVersion;
     QNetworkAccessManager *manager;
-    QSignalMapper *signalMapper;
 
     QNetworkReply *executeGetRequest(const QUrl &url);
 
