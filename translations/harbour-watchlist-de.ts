@@ -82,37 +82,43 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>AlarmNotification</name>
+    <message>
+        <location filename="../qml/components/AlarmNotification.qml" line="36"/>
+        <location filename="../qml/components/AlarmNotification.qml" line="45"/>
+        <source>%1</source>
+        <extracomment>AlarmNotification placeholder for stock name</extracomment>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AlarmNotification.qml" line="38"/>
+        <source>The share has just dropped below %1.</source>
+        <extracomment>AlarmNotification stock dropped below</extracomment>
+        <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AlarmNotification.qml" line="47"/>
+        <source>The share has just risen above %1.</source>
+        <extracomment>AlarmNotification stock has risen above</extracomment>
+        <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="45"/>
+        <location filename="../qml/cover/CoverPage.qml" line="51"/>
         <source>Loading...</source>
         <translation>Laden...</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="127"/>
+        <location filename="../qml/cover/CoverPage.qml" line="133"/>
         <source>Top</source>
         <translation>Gewinner</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="127"/>
+        <location filename="../qml/cover/CoverPage.qml" line="133"/>
         <source>Flop</source>
         <translation>Verlierer</translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="509"/>
-        <location filename="../qml/cover/CoverPage.qml" line="516"/>
-        <source>%1</source>
-        <translation>%1</translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="510"/>
-        <source>The share has just dropped below %1.</source>
-        <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="517"/>
-        <source>The share has just risen above %1.</source>
-        <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
     </message>
 </context>
 <context>
@@ -349,62 +355,46 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>WatchlistPage</name>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="66"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="63"/>
         <source>About</source>
         <extracomment>WatchlistPage about menu item</extracomment>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="71"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="68"/>
         <source>Settings</source>
         <extracomment>WatchlistPage settings menu item</extracomment>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="76"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="73"/>
         <source>Add stock</source>
         <extracomment>WatchlistPage add stock menu item</extracomment>
         <translation>Aktie hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="83"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="80"/>
         <source>Refresh all quotes</source>
         <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
         <translation>Alle Kurse aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="108"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="105"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation>Aktienkurse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="140"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="137"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>Alarm konfigurieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="148"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="145"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Entfernen</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="384"/>
-        <source>The share has just dropped below %1.</source>
-        <translation>Der Kurs der Aktie ist gerade unter %1 gefallen.</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="391"/>
-        <source>The share has just risen above %1.</source>
-        <translation>Der Kurs der Aktie ist gerade über %1 gestiegen.</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="383"/>
-        <location filename="../qml/pages/WatchlistPage.qml" line="390"/>
-        <source>%1</source>
-        <translation>%1</translation>
     </message>
 </context>
 <context>
