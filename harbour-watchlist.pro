@@ -44,6 +44,7 @@ DISTFILES += \
     qml/components/LabelText.qml \
     qml/components/LabelValueRow.qml \
     qml/components/StockChart.qml \
+    qml/components/AlarmNotification.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/Axis.qml \

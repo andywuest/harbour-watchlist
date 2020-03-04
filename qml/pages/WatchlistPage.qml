@@ -27,6 +27,7 @@ import "../js/constants.js" as Constants
 import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
+import "../components"
 import "../components/thirdparty"
 
 Page {
@@ -43,12 +44,8 @@ Page {
         id: stockUpdateProblemNotification
     }
 
-    Item {
-        Notification {
-            id: stockAlarmNotification
-            appName: "Watchlist"
-            appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-watchlist.png"
-        }
+    AlarmNotification {
+        id: stockAlarmNotification
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -328,8 +325,8 @@ Page {
           reloadAllStocks()
           loaded = true;
 
-          Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
-          Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
+          Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
+          Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
         }
 
         function errorResultHandler(result) {
@@ -378,32 +375,6 @@ Page {
         }
     }
 
-    function createMinimumAlarm(alarmNotification) {
-        var minimumPrice = Functions.renderPrice(alarmNotification.minimumPrice, alarmNotification.currency);
-        var summary = qsTr("%1").arg(alarmNotification.name);
-        var body = qsTr("The share has just dropped below %1.").arg(minimumPrice);
-        publishNotification(alarmNotification.id, summary, body);
-    }
-
-    function createMaximumAlarm(alarmNotification) {
-        var maximumPrice = Functions.renderPrice(alarmNotification.maximumPrice, alarmNotification.currency);
-        var summary = qsTr("%1").arg(alarmNotification.name);
-        var body = qsTr("The share has just risen above %1.").arg(maximumPrice);
-        publishNotification(alarmNotification.id, summary, body);
-    }
-
-    function publishNotification(id, summary, body) {
-        stockAlarmNotification.summary = summary;
-        stockAlarmNotification.body = body;
-        stockAlarmNotification.previewSummary = summary;
-        stockAlarmNotification.previewBody = body;
-        stockAlarmNotification.replacesId = id;
-        stockAlarmNotification.publish();
-        Database.disableAlarm(id);
-        // TODO timestamp also?
-        // TODO replacesid seems not to work properly -> shows up multiple times -> replacedId 0 ??
-    }
-
     function updateQuotes() {
         loaded = false;
 
@@ -415,8 +386,7 @@ Page {
         }
 
         if (numberOfQuotes > 0) {
-            var stockExtRefIds = stocks.join(',');
-            euroinvestorBackend.searchQuote(stockExtRefIds);
+            euroinvestorBackend.searchQuote(stocks.join(','));
         }
     }
 

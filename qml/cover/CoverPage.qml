@@ -19,6 +19,8 @@ import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
+import "../components"
+
 import "../js/constants.js" as Constants
 import "../js/database.js" as Database
 import "../js/functions.js" as Functions
@@ -27,6 +29,10 @@ CoverBackground {
     id: coverPage
     property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
     property bool loading : false;
+
+    AlarmNotification {
+        id: stockAlarmNotification
+    }
 
     Column {
         id: loadingColumn
@@ -47,11 +53,6 @@ CoverBackground {
         }
     }
 
-    //    Label {
-    //        id: label
-    //        anchors.centerIn: parent
-    //        text: qsTr("My Cover")
-    //    }
     CoverActionList {
         id: coverActionPrevious
         enabled: true
@@ -496,38 +497,12 @@ CoverBackground {
         reloadAllStocks()
         loading = false;
 
-        Database.loadTriggeredAlarms(watchlistId, true).forEach(createMinimumAlarm);
-        Database.loadTriggeredAlarms(watchlistId, false).forEach(createMaximumAlarm);
+        Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
+        Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
     }
 
     function errorResultHandler(result) {
         loading = false
-    }
-
-    function createMinimumAlarm(alarmNotification) {
-        var minimumPrice = Functions.renderPrice(alarmNotification.minimumPrice, alarmNotification.currency);
-        var summary = qsTr("%1").arg(alarmNotification.name);
-        var body = qsTr("The share has just dropped below %1.").arg(minimumPrice);
-        publishNotification(alarmNotification.id, summary, body);
-    }
-
-    function createMaximumAlarm(alarmNotification) {
-        var maximumPrice = Functions.renderPrice(alarmNotification.maximumPrice, alarmNotification.currency);
-        var summary = qsTr("%1").arg(alarmNotification.name);
-        var body = qsTr("The share has just risen above %1.").arg(maximumPrice);
-        publishNotification(alarmNotification.id, summary, body);
-    }
-
-    function publishNotification(id, summary, body) {
-        stockAlarmNotification.summary = summary;
-        stockAlarmNotification.body = body;
-        stockAlarmNotification.previewSummary = summary;
-        stockAlarmNotification.previewBody = body;
-        stockAlarmNotification.replacesId = id;
-        stockAlarmNotification.publish();
-        Database.disableAlarm(id);
-        // TODO timestamp also?
-        // TODO replacesid seems not to work properly -> shows up multiple times -> replacedId 0 ??
     }
 
 }
