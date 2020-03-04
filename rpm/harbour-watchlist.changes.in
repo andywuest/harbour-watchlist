@@ -5,6 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+
+* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.4-1
+- fixed Alarm Notification when update is triggered via CoverPage
+- (hopefully) fixed display of icon in the alarm notification
+- code consolidation
+
 * 19.02.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.3-8
 - updated Chinese / Swedish translations
 
