@@ -6,7 +6,7 @@ export RPM_VALIDATOR="sdk-harbour-rpmvalidator"
 
 # remove old rpms
 cd RPMS
-rm *.rpm
+rm -f *.rpm
 cd ..
 
 # build new rpm
