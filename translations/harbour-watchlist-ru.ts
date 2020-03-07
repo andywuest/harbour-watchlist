@@ -87,7 +87,8 @@
     <name>GraphData</name>
     <message>
         <source>No data - Click to fetch data</source>
-        <translation>Нет данных - Коснитесь для загрузки информации</translation>
+        <translation>Нет данных
+Коснитесь для их загрузки</translation>
     </message>
 </context>
 <context>
