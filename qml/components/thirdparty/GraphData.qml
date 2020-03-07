@@ -288,6 +288,7 @@ Item {
                 id: textNoData
                 anchors.centerIn: parent
                 color: lineColor
+                horizontalAlignment: Text.AlignHCenter
                 text: qsTr("No data - Click to fetch data");
                 visible: noData
             }
