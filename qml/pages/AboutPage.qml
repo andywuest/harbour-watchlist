@@ -114,7 +114,9 @@ Page {
                 }
                 //: AboutPage translators label
                 label: qsTr("Translators")
-                text: "@KhanPuking (zh_CN), Åke Engelbrektson (sv)"
+                text: "dikonov (ru)\n" +
+                      "Åke Engelbrektson (sv)\n" +
+                      "@KhanPuking (zh_CN)"
                 separator: true
             }
 
@@ -125,7 +127,8 @@ Page {
                 }
                 //: AboutPage contributors label
                 label: qsTr("Contributors")
-                text: "Okxa (icon)"
+                text: "Okxa (icon)\n" +
+                      "dikonov (small patch)"
                 separator: true
             }
 
