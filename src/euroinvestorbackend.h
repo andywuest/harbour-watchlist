@@ -53,9 +53,10 @@ private:
     enum ChartType {
       INTRADAY = 0,
       MONTH = 1,
-      YEAR = 2,
-      THREE_YEARS = 3,
-      FIVE_YEARS = 4
+      THREE_MONTHS = 2,
+      YEAR = 3,
+      THREE_YEARS = 4,
+      FIVE_YEARS = 5
     };
 
     QString applicationName;
