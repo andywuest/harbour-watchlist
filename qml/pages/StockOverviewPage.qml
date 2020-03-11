@@ -90,7 +90,6 @@ Page {
 
         Column {
             id: overviewColumn
-            // opacity: 0
             visible: true
             Behavior on opacity {
                 NumberAnimation {
@@ -100,21 +99,20 @@ Page {
             height: parent.height
 
             Column {
-                id: theheader
+                id: overviewColumnHeader
                 width: parent.width
-                height: somePageHeader.height
+                height: overviewColumnPageHeader.height
 
                 PageHeader {
-                    id: somePageHeader
-                    title: "SOME STOCK"
+                    id: overviewColumnPageHeader
+                    title: ""
                 }
             }
 
             Row {
                 id: overviewRow
                 width: parent.width
-                height: parent.height - (overviewPage.isLandscape ? 0 : getNavigationRowSize(
-                                                                        )) - theheader.height
+                height: parent.height - getNavigationRowSize() - overviewColumnHeader.height
                 spacing: Theme.paddingSmall
 
                 VisualItemModel {
@@ -125,61 +123,12 @@ Page {
                         width: viewsSlideshow.width
                         height: viewsSlideshow.height
 
-                        property bool loaded: true
-                        property bool reloading: false
-
-//                        Column {
-//                            width: parent.width
-//                            height: homeProgressLabel.height
-//                                    + homeProgressIndicator.height + Theme.paddingSmall
-//                            visible: !homeView.loaded
-//                            opacity: homeView.loaded ? 0 : 1
-//                            id: homeProgressColumn
-//                            spacing: Theme.paddingSmall
-//                            Behavior on opacity {
-//                                NumberAnimation {
-//                                }
-//                            }
-//                            anchors.verticalCenter: parent.verticalCenter
-
-//                            InfoLabel {
-//                                id: homeProgressLabel
-//                                text: qsTr("Loading timeline...")
-//                            }
-
-//                            BusyIndicator {
-//                                id: homeProgressIndicator
-//                                anchors.horizontalCenter: parent.horizontalCenter
-//                                running: !homeView.loaded
-//                                size: BusyIndicatorSize.Large
-//                            }
-//                        }
-
                         StockDetailsView {
                             id: stockDetailsView
                             width: parent.width
                             height: parent.height
                             stock: theStock
                         }
-
-                        //                        SilicaListView {
-                        //                            id: homeListView
-                        //                            opacity: homeView.loaded ? 1 : 0
-                        //                            Behavior on opacity { NumberAnimation {} }
-                        //                            visible: homeView.loaded
-                        //                            width: parent.width
-                        //                            height: parent.height
-                        //                            contentHeight: 500 //homeTimelineTweet.height
-                        //                            clip: true
-
-                        //                            Label {
-                        //                                id: xx
-                        //                                text: "home view";
-
-                        //                            }
-
-                        //                            VerticalScrollDecorator {}
-                        //                        }
                     }
 
                     Item {
@@ -187,63 +136,13 @@ Page {
                         width: viewsSlideshow.width
                         height: viewsSlideshow.height
 
-                        //property bool updateInProgress: false
-
                         StockChartsView {
                             id: stockChartsView
                             width: parent.width
                             height: parent.height
                             screenHeight: overviewPage.height
-                            // stock: stock
+                            stock: theStock
                         }
-
-//                        SilicaListView {
-//                            anchors {
-//                                fill: parent
-//                            }
-//                            id: mentionsListView
-
-//                            clip: true
-
-//                            Label {
-//                                id: viewsoncd
-//                                text: "second view"
-//                            }
-
-//                            // model: mentionsModel
-//                            delegate: Component {
-//                                Loader {
-//                                    width: mentionsListView.width
-//                                    property variant mentionsData: display
-//                                    property bool isRetweet: display.retweeted_status ? ((display.retweeted_status.user.id_str === overviewPage.myUser.id_str) ? true : false) : false
-
-//                                    sourceComponent: if (display.followed_at) {
-//                                                         mentionsData.description = qsTr(
-//                                                                     "follows you now!")
-//                                                         return componentMentionsUser
-//                                                     } else {
-//                                                         return componentMentionsTweet
-//                                                     }
-//                                }
-//                            }
-
-//                            VerticalScrollDecorator {
-//                            }
-//                        }
-
-//                        Column {
-//                            anchors {
-//                                fill: parent
-//                            }
-
-//                            id: mentionsUpdateInProgressColumn
-//                            Behavior on opacity {
-//                                NumberAnimation {
-//                                }
-//                            }
-//                            opacity: notificationsColumn.updateInProgress ? 1 : 0
-//                            visible: notificationsColumn.updateInProgress ? true : false
-//                        }
                     }
 
                     Item {
@@ -251,93 +150,10 @@ Page {
                         width: viewsSlideshow.width
                         height: viewsSlideshow.height
 
-
-                        //                        Loader {
-                        //                            id: profileLoader
-                        //                            active: false
-                        //                            width: parent.width
-                        //                            height: parent.height
-                        //                            sourceComponent: profileComponent
-                        //                        }
-                        SilicaListView {
-                            anchors {
-                                fill: parent
-                            }
-                            id: profileListView
-
-                            model: ListModel {
-                                ListElement {
-                                    fruit: "jackfruit"
-                                }
-                                ListElement {
-                                    fruit: "orange"
-                                }
-                                ListElement {
-                                    fruit: "lemon"
-                                }
-                                ListElement {
-                                    fruit: "lychee"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                                ListElement {
-                                    fruit: "apricots"
-                                }
-                            }
-                            delegate: Item {
-                                width: ListView.view.width
-                                height: Theme.itemSizeSmall
-
-                                Label {
-                                    text: fruit
-                                }
-                            }
-
-                            VerticalScrollDecorator {
-                            }
+                        StockNewsView {
+                            id: stockNewsView
+                            width: parent.width
+                            height: parent.height
                         }
                     }
                 }
@@ -440,7 +256,7 @@ Page {
                             id: newsButtonPortrait
                             anchors.top: parent.top
                             buttonText: qsTr("News")
-                            iconSource: "image://theme/icon-m-next"
+                            iconSource: "image://theme/icon-m-note"
 
                             function runOnClick() {
                                 handleNewsClicked()
@@ -454,6 +270,7 @@ Page {
         Component.onCompleted: {
             openTab(0)
             theStock = stock
+            overviewColumnPageHeader.title = (stock) ? stock.name : ''
         }
     }
 }
