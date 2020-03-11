@@ -103,7 +103,7 @@ Item {
     function createXLabel(value) {
         var d = new Date(value*1000);
         console.log("value : " + Qt.formatTime(d, axisX.mask))
-        return Qt.formatTime(d, axisX.mask);
+        return Qt.formatTime(d, axisX.mask)
     }
 
     Column {
@@ -169,7 +169,7 @@ Item {
                 delegate: Label {
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeLarge / 2
-                    text: createXLabel( (maxX-minX)/axisX.grid * index + minX )
+                    text: intraday ? createXLabel( (maxX-minX)/axisX.grid * index + minX ) : Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
                     anchors {
                         top: parent.bottom
                         topMargin: Theme.paddingSmall
@@ -177,16 +177,16 @@ Item {
                         right: (index == axisX.grid) ? parent.right : undefined
                         leftMargin: (index) ? (parent.width / axisX.grid * index - width/2): 0
                     }
-                    Label {
-                        color: Theme.primaryColor
-                        font.pixelSize: Theme.fontSizeLarge / 2
-                        anchors {
-                            top: parent.bottom
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        text: Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
-                        visible: !intraday
-                    }
+//                    Label {
+//                        color: Theme.primaryColor
+//                        font.pixelSize: Theme.fontSizeLarge / 2
+//                        anchors {
+//                            top: parent.bottom
+//                            horizontalCenter: parent.horizontalCenter
+//                        }
+//                        text: Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
+//                        visible: !intraday
+//                    }
                 }
             }
 
