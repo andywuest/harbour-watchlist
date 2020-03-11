@@ -65,6 +65,7 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
     switch(chartType) {
         case ChartType::INTRADAY: break;
         case ChartType::MONTH: startDate = today.addMonths(-1); break;
+        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
         case ChartType::YEAR: startDate = today.addYears(-1); break;
         case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
         case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
