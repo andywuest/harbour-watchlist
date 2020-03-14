@@ -41,25 +41,30 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 
 
 DISTFILES += \
-    qml/components/LabelText.qml \
+    qml/components/AlarmNotification.qml \
     qml/components/LabelValueRow.qml \
     qml/components/StockChart.qml \
-    qml/components/AlarmNotification.qml \
+    qml/components/NavigationRowButton.qml \
+    qml/components/StockChart.qml \
+    qml/components/StockChartsView.qml \
+    qml/components/StockDetailsView.qml \
+    qml/components/StockNewsView.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/Axis.qml \
     qml/components/thirdparty/GraphData.qml \
+    qml/components/thirdparty/LabelText.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/js/database.js \
     qml/js/constants.js \
-    qml/js/euroinvestor.js \
     qml/js/functions.js \
-    qml/pages/SettingsPage.qml \
-    qml/pages/StockDetailsPage.qml \
-    qml/pages/WatchlistPage.qml \
-    qml/pages/AddStockPage.qml \
     qml/pages/AboutPage.qml \
-    qml/pages/StockAlarmDialog.qml
+    qml/pages/AddStockPage.qml \
+    qml/pages/SettingsPage.qml \
+    qml/pages/StockAlarmDialog.qml \
+    qml/pages/StockDetailsPage.qml \
+    qml/pages/StockOverviewPage.qml \
+    qml/pages/WatchlistPage.qml
 
 HEADERS += \
     src/euroinvestorbackend.h \
