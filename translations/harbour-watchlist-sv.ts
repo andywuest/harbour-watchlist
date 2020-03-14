@@ -6,11 +6,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Reset Database</source>
+        <extracomment>AboutPage pully - reset database</extracomment>
         <translation>Återställ databasen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="51"/>
-        <location filename="../qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../qml/pages/AboutPage.qml" line="65"/>
         <source>About Watchlist</source>
         <extracomment>AboutPage title - header
 ----------
@@ -18,25 +19,25 @@ AboutPage title - about text title</extracomment>
         <translation>Om Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="69"/>
+        <location filename="../qml/pages/AboutPage.qml" line="67"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation>Denna app är en enkel aktiebevakningslista för Sailfish OS. Watchlist är öppen källkod och licencierad under GPL v3.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="79"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Version</source>
         <extracomment>AboutPage version label</extracomment>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="100"/>
+        <location filename="../qml/pages/AboutPage.qml" line="98"/>
         <source>Author</source>
         <extracomment>AboutPage author label</extracomment>
         <translation>Utvecklare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="116"/>
+        <location filename="../qml/pages/AboutPage.qml" line="114"/>
         <source>Translators</source>
         <extracomment>AboutPage translators label</extracomment>
         <translation>Översättare</translation>
@@ -48,7 +49,7 @@ AboutPage title - about text title</extracomment>
         <translation>Bidragsgivare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="148"/>
+        <location filename="../qml/pages/AboutPage.qml" line="149"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Källkod</translation>
@@ -111,12 +112,12 @@ AboutPage title - about text title</extracomment>
         <translation>Läser in...</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="133"/>
+        <location filename="../qml/cover/CoverPage.qml" line="128"/>
         <source>Top</source>
         <translation>Topp</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="133"/>
+        <location filename="../qml/cover/CoverPage.qml" line="128"/>
         <source>Flop</source>
         <translation>Flopp</translation>
     </message>
@@ -124,7 +125,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="291"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="292"/>
         <source>No data - Click to fetch data</source>
         <translation>Ingen data. - Tryck för att hämta data.</translation>
     </message>
@@ -236,6 +237,40 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/StockAlarmDialog.qml" line="108"/>
         <source>The latest known price for the stock was %0 %1. The alarm will be disabled once the alarm has been triggered. In order to activate the alarm again, you have to save the alarm again.</source>
         <translation>Det senast kända priset för aktien var %0 %1. Larmet kommer att avaktiveras när det en gång har triggats. För att återaktivera larmet, måste du spara det igen.</translation>
+    </message>
+</context>
+<context>
+    <name>StockChartsView</name>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="78"/>
+        <source>Charts</source>
+        <extracomment>StockChartsView chart section header</extracomment>
+        <translation type="unfinished">Diagram</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="83"/>
+        <source>Intraday</source>
+        <translation type="unfinished">Intradag</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="93"/>
+        <source>30 days</source>
+        <translation type="unfinished">30 dagar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="103"/>
+        <source>3 months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="113"/>
+        <source>1 Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="123"/>
+        <source>3 Years</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -353,6 +388,122 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>StockDetailsView</name>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="47"/>
+        <source>General data</source>
+        <extracomment>StockDetailsPage page general data</extracomment>
+        <translation type="unfinished">Allmän data</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="53"/>
+        <source>Currency</source>
+        <extracomment>StockDetailsPage page currency</extracomment>
+        <translation type="unfinished">Valuta</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="60"/>
+        <source>Isin</source>
+        <extracomment>StockDetailsPage page isin</extracomment>
+        <translation type="unfinished">Isin</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="67"/>
+        <source>Symbol</source>
+        <extracomment>StockDetailsPage page symbol</extracomment>
+        <translation type="unfinished">Symbol</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="74"/>
+        <source>Stock Market</source>
+        <extracomment>StockDetailsPage page stock market</extracomment>
+        <translation type="unfinished">Aktiemarknad</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="80"/>
+        <source>Trading data</source>
+        <extracomment>StockDetailsPage page trading data</extracomment>
+        <translation type="unfinished">Handelsdata</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="86"/>
+        <source>Price</source>
+        <extracomment>StockDetailsPage page price</extracomment>
+        <translation type="unfinished">Pris</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="93"/>
+        <source>Change abs.</source>
+        <extracomment>StockDetailsPage page change absolute</extracomment>
+        <translation type="unfinished">Ändring abs.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="100"/>
+        <source>Change rel.</source>
+        <extracomment>StockDetailsPage page change relative</extracomment>
+        <translation type="unfinished">Ändring rel.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="107"/>
+        <source>Timestamp</source>
+        <extracomment>StockDetailsPage page timestamp</extracomment>
+        <translation type="unfinished">Tidsstämpel</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="114"/>
+        <source>Ask</source>
+        <extracomment>StockDetailsPage page ask</extracomment>
+        <translation type="unfinished">Fråga</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="121"/>
+        <source>Bid</source>
+        <extracomment>StockDetailsPage page bid</extracomment>
+        <translation type="unfinished">Bud</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="128"/>
+        <source>High</source>
+        <extracomment>StockDetailsPage page high</extracomment>
+        <translation type="unfinished">Högt</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="135"/>
+        <source>Low</source>
+        <extracomment>StockDetailsPage page low</extracomment>
+        <translation type="unfinished">Lågt</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="142"/>
+        <source>Volume</source>
+        <extracomment>StockDetailsPage page volume</extracomment>
+        <translation type="unfinished">Volym</translation>
+    </message>
+</context>
+<context>
+    <name>StockOverviewPage</name>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="86"/>
+        <source>About Watchlist</source>
+        <translation type="unfinished">Om Watchlist</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="241"/>
+        <source>Charts</source>
+        <translation type="unfinished">Diagram</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="256"/>
+        <source>News</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WatchlistPage</name>
     <message>
         <location filename="../qml/pages/WatchlistPage.qml" line="63"/>
@@ -385,13 +536,13 @@ AboutPage title - about text title</extracomment>
         <translation>Aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="137"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="138"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation>Konfigurera larm</translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="145"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="146"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Ta bort</translation>
