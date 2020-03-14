@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
     context->setContextProperty("watchlist", &watchlist);
     EuroinvestorBackend *euroinvestorBackend = watchlist.getEuroinvestorBackend();
     context->setContextProperty("euroinvestorBackend", euroinvestorBackend);
+    context->setContextProperty("applicationVersion", VERSION);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-watchlist.qml"));
     view->show();
