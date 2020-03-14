@@ -128,7 +128,8 @@ Page {
                         //                        console.log("selected : " + stock)
                         console.log("Clicked " + index)
                         var selectedStock = stockQuotesListView.model.get(index);
-                        pageStack.push(Qt.resolvedUrl("StockDetailsPage.qml"), { stock: selectedStock })
+                        // pageStack.push(Qt.resolvedUrl("StockDetailsPage.qml"), { stock: selectedStock })
+                        pageStack.push(Qt.resolvedUrl("StockOverviewPage.qml"), { stock: selectedStock })
                     }
 
                     menu: ContextMenu {

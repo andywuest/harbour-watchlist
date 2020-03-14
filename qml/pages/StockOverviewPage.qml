@@ -7,7 +7,7 @@ import Nemo.Notifications 1.0
 import "../components"
 
 Page {
-    id: overviewPage // TODO rename to stockOverviewPage
+    id: overviewOverviewPage
 
     property var stock
     property var theStock
@@ -45,7 +45,7 @@ Page {
     }
 
     function handleDetailsClicked() {
-        if (overviewPage.activeTabId === 0) {
+        if (overviewOverviewPage.activeTabId === 0) {
             stockDetailsView.scrollToTop()
         } else {
             viewsSlideshow.opacity = 0
@@ -55,7 +55,7 @@ Page {
     }
 
     function handleChartsClicked() {
-        if (overviewPage.activeTabId === 1) {
+        if (overviewOverviewPage.activeTabId === 1) {
             stockChartsView.scrollToTop()
         } else {
             viewsSlideshow.opacity = 0
@@ -65,7 +65,7 @@ Page {
     }
 
     function handleNewsClicked() {
-        if (overviewPage.activeTabId === 2) {
+        if (overviewOverviewPage.activeTabId === 2) {
             stockDetailsView.scrollToTop()
         } else {
             viewsSlideshow.opacity = 0
@@ -140,7 +140,7 @@ Page {
                             id: stockChartsView
                             width: parent.width
                             height: parent.height
-                            screenHeight: overviewPage.height
+                            screenHeight: overviewOverviewPage.height
                             stock: theStock
                         }
                     }
@@ -176,12 +176,10 @@ Page {
 
                 SlideshowView {
                     id: viewsSlideshow
-                    width: parent.width - (overviewPage.isLandscape ? getNavigationRowSize(
-                                                                          ) + (2 * Theme.horizontalPageMargin) : 0)
+                    width: parent.width
                     height: parent.height
                     itemWidth: width
                     clip: true
-                    // interactive: accountModel.getUseSwipeNavigation()
                     model: viewsModel
                     onCurrentIndexChanged: {
                         openTab(currentIndex)
@@ -201,8 +199,8 @@ Page {
             Column {
                 id: navigationRow
                 width: parent.width
-                height: overviewPage.isPortrait ? getNavigationRowSize() : 0
-                visible: true // overviewPage.isPortrait
+                height: overviewOverviewPage.isPortrait ? getNavigationRowSize() : 0
+                visible: true // overviewOverviewPage.isPortrait
                 Column {
                     id: navigationRowSeparatorColumn
                     width: parent.width
