@@ -21,7 +21,6 @@ import Sailfish.Silica 1.0
 
 import "../components/thirdparty"
 
-import "../js/constants.js" as Constants
 import "../js/database.js" as Database
 
 Page {
@@ -35,12 +34,11 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                //: AboutPage pully - reset database
                 text: qsTr("Reset Database")
                 onClicked: {
                     Database.resetApplication()
                     Database.initApplicationTables()
-                    // reload the model to make sure we have the latest state
-                    //flickable.reloadModelFromDatabase(listView.model);
                 }
             }
         }
@@ -77,7 +75,7 @@ Page {
                 }
                 //: AboutPage version label
                 label: qsTr("Version")
-                text: Constants.VERSION
+                text: applicationVersion
                 separator: true
             }
 
