@@ -6,7 +6,13 @@
 # - Summary of changes
 
 
-* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.4-1
+* 14.03.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.4.0-1
+- updated Navigation rows stock details view
+- added more charts
+- fixed issue #21 Prettify about page
+- fixed alignment of "no data" in chart
+
+* 28.02.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.3.4-1
 - fixed Alarm Notification when update is triggered via CoverPage
 - (hopefully) fixed display of icon in the alarm notification
 - code consolidation
