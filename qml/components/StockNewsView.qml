@@ -42,7 +42,8 @@ SilicaFlickable {
             width: parent.width - 2 * x
 
             wrapMode: Text.Wrap
-            text: "This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line"
+            textFormat: Text.RichText
+            text: qsTr("This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line")
         }
     }
 
