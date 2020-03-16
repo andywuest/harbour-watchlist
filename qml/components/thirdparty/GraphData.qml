@@ -33,6 +33,8 @@ Item {
     }
 
     property var valueConverter
+    property var dateFormatter // formatter for x-axis labels
+
     property bool valueTotal: false
 
     property int graphHeight: 250
@@ -101,9 +103,11 @@ Item {
     }
 
     function createXLabel(value) {
-        var d = new Date(value*1000);
-        console.log("value : " + Qt.formatTime(d, axisX.mask))
-        return Qt.formatTime(d, axisX.mask)
+        var date = new Date(value * 1000);
+        if (dateFormatter) {
+            return dateFormatter(date);
+        }
+        return "---"
     }
 
     Column {
@@ -169,7 +173,8 @@ Item {
                 delegate: Label {
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeLarge / 2
-                    text: intraday ? createXLabel( (maxX-minX)/axisX.grid * index + minX ) : Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
+                    text: createXLabel( (maxX-minX)/axisX.grid * index + minX )
+                        // intraday ? createXLabel( (maxX-minX)/axisX.grid * index + minX ) : Qt.formatDate(new Date( ((maxX-minX)/axisX.grid * index + minX) * 1000), "dd.MM");
                     anchors {
                         top: parent.bottom
                         topMargin: Theme.paddingSmall
