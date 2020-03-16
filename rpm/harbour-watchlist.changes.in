@@ -5,6 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 14.03.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.4.1-1
+- fixed manual reloading of 3 months chart
+- updated translations (ru/sv/cn)
+- removed pully menu from new stock view (https://github.com/andywuest/harbour-watchlist/issues/24)
+- start fetching stock chart data via time (hopfully smoother UI experience)
+- show different x-axis labels depending on the time range.
 
 * 14.03.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.4.0-1
 - updated Navigation rows stock details view
