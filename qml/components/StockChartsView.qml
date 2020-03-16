@@ -64,6 +64,20 @@ SilicaFlickable {
                 (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
     }
 
+    Timer {
+        id: fetchPricesForChartTimer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
+            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
+            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
+            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
+        }
+    }
+
     Column {
         id: stockChartsColumn
 
@@ -81,6 +95,7 @@ SilicaFlickable {
         StockChart {
             id: intradayStockChart
             graphTitle: qsTr("Intraday")
+            chartType: Constants.CHART_TYPE_INTRDAY
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart intraday clicked !")
@@ -91,6 +106,7 @@ SilicaFlickable {
         StockChart {
             id: lastMonthStockChart
             graphTitle: qsTr("30 days")
+            chartType: Constants.CHART_TYPE_MONTH
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart month clicked !")
@@ -101,16 +117,18 @@ SilicaFlickable {
         StockChart {
             id: lastThreeMonthStockChart
             graphTitle: qsTr("3 months")
+            chartType: Constants.CHART_TYPE_3_MONTHS
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart 3 month clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
             }
         }
 
         StockChart {
             id: lastYearStockChart
             graphTitle: qsTr("1 Year")
+            chartType: Constants.CHART_TYPE_YEAR
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart year clicked !")
@@ -121,6 +139,7 @@ SilicaFlickable {
         StockChart {
             id: lastThreeYearsStockChart
             graphTitle: qsTr("3 Years")
+            chartType: Constants.CHART_TYPE_3_YEARS
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart year clicked !")
@@ -144,11 +163,12 @@ SilicaFlickable {
             // connect signal slot for chart update
             euroinvestorBackend.fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (triggerChartDataDownloadOnEntering()) {
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
+                fetchPricesForChartTimer.start();
+//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
+//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
+//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
+//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
 
