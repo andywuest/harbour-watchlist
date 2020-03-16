@@ -11,7 +11,7 @@ Page {
 
     property var stock
     property var theStock
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait // so far only Portait mode
 
     property int activeTabId: 0
 
@@ -81,12 +81,12 @@ Page {
         contentHeight: parent.height
         contentWidth: parent.width
 
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About Watchlist")
-                onClicked: pageStack.push(aboutPage)
-            }
-        }
+//        PullDownMenu {
+//            MenuItem {
+//                text: qsTr("About Watchlist")
+//                onClicked: pageStack.push(aboutPage)
+//            }
+//        }
 
         Column {
             id: overviewColumn
