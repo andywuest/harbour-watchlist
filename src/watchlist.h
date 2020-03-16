@@ -25,7 +25,7 @@
 
 #include "euroinvestorbackend.h"
 
-const char VERSION[] = "0.4.0";
+const char VERSION[] = "0.4.1";
 
 class Watchlist : public QObject {
     Q_OBJECT
