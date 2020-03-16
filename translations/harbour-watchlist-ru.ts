@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -45,19 +45,6 @@ AboutPage title - about text title</extracomment>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Исходный код</translation>
     </message>
-    <message>
-        <source>Viacheslav Dikonov (ru)</source>
-        <translation>Вячеслав Диконов (ru)</translation>
-    </message>
-    <message>
-        <source>Debug Infos</source>
-        <extracomment>AboutPage translators label</extracomment>
-        <translation>Данные для отладки</translation>
-    </message>
-    <message>
-        <source>Screen size : </source>
-        <translation>Размер экрана : </translation>
-    </message>
 </context>
 <context>
     <name>AddStockPage</name>
@@ -86,9 +73,7 @@ AboutPage title - about text title</extracomment>
     <name>AlarmNotification</name>
     <message>
         <source>%1</source>
-        <extracomment>AlarmNotification placeholder for stock name
-----------
-AlarmNotification placeholder for stock name</extracomment>
+        <extracomment>AlarmNotification placeholder for stock name</extracomment>
         <translation>%1</translation>
     </message>
     <message>
@@ -418,18 +403,7 @@ AlarmNotification placeholder for stock name</extracomment>
     </message>
 </context>
 <context>
-    <name>StockNewsView</name>
-    <message>
-        <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
-        <translation>Эта функция находится в разработке.&lt;br&gt;Если вы знаете хороший источник биржевых новостей (в формате json), напишите мне.</translation>
-    </message>
-</context>
-<context>
     <name>StockOverviewPage</name>
-    <message>
-        <source>About Watchlist</source>
-        <translation>О программе</translation>
-    </message>
     <message>
         <source>Details</source>
         <translation>Подробности</translation>

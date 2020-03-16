@@ -125,7 +125,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="292"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="297"/>
         <source>No data - Click to fetch data</source>
         <translation>无数据-点击以获取数据</translation>
     </message>
@@ -242,33 +242,33 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="78"/>
+        <location filename="../qml/components/StockChartsView.qml" line="92"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation>图表</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="83"/>
+        <location filename="../qml/components/StockChartsView.qml" line="97"/>
         <source>Intraday</source>
         <translation>当天</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="93"/>
+        <location filename="../qml/components/StockChartsView.qml" line="108"/>
         <source>30 days</source>
         <translation>30天</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="103"/>
+        <location filename="../qml/components/StockChartsView.qml" line="119"/>
         <source>3 months</source>
         <translation>3个月</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="113"/>
+        <location filename="../qml/components/StockChartsView.qml" line="130"/>
         <source>1 Year</source>
         <translation>1年</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="123"/>
+        <location filename="../qml/components/StockChartsView.qml" line="141"/>
         <source>3 Years</source>
         <translation>3年</translation>
     </message>
@@ -405,7 +405,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="60"/>
         <source>Isin</source>
         <extracomment>StockDetailsPage page isin</extracomment>
-       <translation>Isin</translation>
+        <translation>Isin</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="67"/>
@@ -417,76 +417,71 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="74"/>
         <source>Stock Market</source>
         <extracomment>StockDetailsPage page stock market</extracomment>
-       <translation>股票市场</translation>
+        <translation>股票市场</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="80"/>
         <source>Trading data</source>
         <extracomment>StockDetailsPage page trading data</extracomment>
-       <translation>趋势数据</translation>
+        <translation>趋势数据</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="86"/>
         <source>Price</source>
         <extracomment>StockDetailsPage page price</extracomment>
-       <translation>股价</translation>
+        <translation>股价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="93"/>
         <source>Change abs.</source>
         <extracomment>StockDetailsPage page change absolute</extracomment>
-       <translation>绝对值变动</translation>
+        <translation>绝对值变动</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="100"/>
         <source>Change rel.</source>
         <extracomment>StockDetailsPage page change relative</extracomment>
-       <translation>相对变动</translation>
+        <translation>相对变动</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="107"/>
         <source>Timestamp</source>
         <extracomment>StockDetailsPage page timestamp</extracomment>
-       <translation>时间戳</translation>
+        <translation>时间戳</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="114"/>
         <source>Ask</source>
         <extracomment>StockDetailsPage page ask</extracomment>
-       <translation>卖入价</translation>
+        <translation>卖入价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="121"/>
         <source>Bid</source>
         <extracomment>StockDetailsPage page bid</extracomment>
-       <translation>买出价</translation>
+        <translation>买出价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="128"/>
         <source>High</source>
         <extracomment>StockDetailsPage page high</extracomment>
-       <translation>最高价</translation>
+        <translation>最高价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="135"/>
         <source>Low</source>
         <extracomment>StockDetailsPage page low</extracomment>
-       <translation>最低价</translation>
+        <translation>最低价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="142"/>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
-       <translation>成交量</translation>
+        <translation>成交量</translation>
     </message>
 </context>
 <context>
     <name>StockOverviewPage</name>
-    <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="86"/>
-        <source>About Watchlist</source>
-       <translation>关于 Wathlist</translation>
-    </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
         <source>Details</source>
@@ -495,7 +490,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="241"/>
         <source>Charts</source>
-       <translation>图表</translation>
+        <translation>图表</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="256"/>

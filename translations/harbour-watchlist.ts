@@ -125,7 +125,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="292"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="297"/>
         <source>No data - Click to fetch data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -242,33 +242,33 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="78"/>
+        <location filename="../qml/components/StockChartsView.qml" line="92"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="83"/>
+        <location filename="../qml/components/StockChartsView.qml" line="97"/>
         <source>Intraday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="93"/>
+        <location filename="../qml/components/StockChartsView.qml" line="108"/>
         <source>30 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="103"/>
+        <location filename="../qml/components/StockChartsView.qml" line="119"/>
         <source>3 months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="113"/>
+        <location filename="../qml/components/StockChartsView.qml" line="130"/>
         <source>1 Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="123"/>
+        <location filename="../qml/components/StockChartsView.qml" line="141"/>
         <source>3 Years</source>
         <translation type="unfinished"></translation>
     </message>
@@ -482,11 +482,6 @@ AboutPage title - about text title</extracomment>
 </context>
 <context>
     <name>StockOverviewPage</name>
-    <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="86"/>
-        <source>About Watchlist</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
         <source>Details</source>
