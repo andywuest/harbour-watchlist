@@ -40,6 +40,19 @@ GraphData {
         }
         return value.toFixed(2);
     }
+
+    dateFormatter: function(date) {
+        if (Constants.CHART_TYPE_INTRDAY === chartType) {
+            return Qt.formatTime(date, "hh:mm")
+        } else if (Constants.CHART_TYPE_MONTH === chartType || Constants.CHART_TYPE_3_MONTHS === chartType) {
+            return Qt.formatDate(date, "dd.MM");
+        } else if (Constants.CHART_TYPE_YEAR === chartType || Constants.CHART_TYPE_3_YEARS === chartType || Constants.CHART_TYPE_5_YEARS === chartType) {
+            return Qt.formatDate(date, "MMM yy");
+        } else {
+            return "---";
+        }
+    }
+
     clickEnabled: true
 
     function updateGraph() {
