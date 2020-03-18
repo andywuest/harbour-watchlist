@@ -47,7 +47,7 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <source>Viacheslav Dikonov (ru)</source>
-        <translation type="unfinished"></translation>
+        <translation>Вячеслав Диконов (ru)</translation>
     </message>
 </context>
 <context>
