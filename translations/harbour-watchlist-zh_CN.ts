@@ -43,6 +43,11 @@ AboutPage title - about text title</extracomment>
         <translation>翻译者</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="115"/>
+        <source>Viacheslav Dikonov (ru)</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="127"/>
         <source>Contributors</source>
         <extracomment>AboutPage contributors label</extracomment>
@@ -478,6 +483,14 @@ AboutPage title - about text title</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
+    </message>
+</context>
+<context>
+    <name>StockNewsView</name>
+    <message>
+        <location filename="../qml/components/StockNewsView.qml" line="46"/>
+        <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

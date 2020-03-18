@@ -45,6 +45,10 @@ AboutPage title - about text title</extracomment>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Исходный код</translation>
     </message>
+    <message>
+        <source>Viacheslav Dikonov (ru)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddStockPage</name>
@@ -400,6 +404,13 @@ AboutPage title - about text title</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Объём</translation>
+    </message>
+</context>
+<context>
+    <name>StockNewsView</name>
+    <message>
+        <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

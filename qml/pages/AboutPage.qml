@@ -25,7 +25,7 @@ import "../js/database.js" as Database
 
 Page {
     id: aboutPage
-    property bool showInfos: false
+//    property bool showInfos: false
 
     SilicaFlickable {
         id: aboutPageFlickable
@@ -100,9 +100,9 @@ Page {
                     separator: true
                     color: clickableUrlAuthor.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
-                onClicked: {
-                    aboutPage.showInfos = !aboutPage.showInfos;
-                }
+//                onClicked: {
+//                    aboutPage.showInfos = !aboutPage.showInfos;
+//                }
             }
 
             LabelText {
@@ -150,25 +150,21 @@ Page {
                     text: "https://github.com/andywuest/harbour-watchlist"
                     color: clickableUrlSourceCode.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
-                onClicked: {
-                    // openInDefaultApp("https://github.com/steffen-foerster/sailfish-barcode");
-                    Qt.openUrlExternally(labelUrl.text)
-                    // Qt.openUrlExternally(labelUrl.text)
-                }
+                onClicked: Qt.openUrlExternally(labelUrl.text)
             }
 
-            LabelText {
-                visible: aboutPage.showInfos
-                anchors {
-                    left: parent.left
-                    margins: Theme.paddingLarge
-                }
-                //: AboutPage translators label
-                label: qsTr("Debug Infos")
-                text: "WiFi : " + (watchlist.isWiFi() ? "on" : "off") +
-                      "\n" + qsTr("Screen size : ") + aboutPage.width + "x" + aboutPage.height;
-                separator: true
-            }
+//            LabelText {
+//                visible: aboutPage.showInfos
+//                anchors {
+//                    left: parent.left
+//                    margins: Theme.paddingLarge
+//                }
+//                //: AboutPage translators label
+//                label: qsTr("Debug Infos")
+//                text: "WiFi : " + (watchlist.isWiFi() ? "on" : "off") +
+//                      "\n" + qsTr("Screen size : ") + aboutPage.width + "x" + aboutPage.height;
+//                separator: true
+//            }
         }
     }
 
