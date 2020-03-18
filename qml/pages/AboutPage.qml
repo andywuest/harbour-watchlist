@@ -112,7 +112,7 @@ Page {
                 }
                 //: AboutPage translators label
                 label: qsTr("Translators")
-                text: "dikonov (ru)\n" +
+                text: qsTr("Viacheslav Dikonov (ru)") + "\n" +
                       "Åke Engelbrektson (sv)\n" +
                       "@KhanPuking (zh_CN)"
                 separator: true
@@ -164,9 +164,9 @@ Page {
                     margins: Theme.paddingLarge
                 }
                 //: AboutPage translators label
-                label: "Debug Infos"
+                label: qsTr("Debug Infos")
                 text: "WiFi : " + (watchlist.isWiFi() ? "on" : "off") +
-                      "\nScreen size : " + aboutPage.width + "x" + aboutPage.height;
+                      "\n" + qsTr("Screen size : ") + aboutPage.width + "x" + aboutPage.height;
                 separator: true
             }
         }
