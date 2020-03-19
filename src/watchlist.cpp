@@ -22,6 +22,7 @@ Watchlist::Watchlist(QObject *parent) : QObject(parent),
     networkConfigurationManager(new QNetworkConfigurationManager(this)),
     settings("harbour-watchlist", "settings") {
     euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", VERSION, this);
+    moscowExchangeBackend = new MoscowExchangeBackend(this->networkAccessManager, "harbour-watchlist", VERSION, this);
 }
 
 Watchlist::~Watchlist() {
@@ -43,4 +44,8 @@ bool Watchlist::isWiFi() {
 
 EuroinvestorBackend *Watchlist::getEuroinvestorBackend() {
     return this->euroinvestorBackend;
+}
+
+MoscowExchangeBackend *Watchlist::getMoscowExchangeBackend() {
+    return this->moscowExchangeBackend;
 }

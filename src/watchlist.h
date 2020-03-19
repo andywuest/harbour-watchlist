@@ -24,6 +24,7 @@
 #include <QSettings>
 
 #include "euroinvestorbackend.h"
+#include "moscowexchangebackend.h"
 
 const char VERSION[] = "0.4.1";
 
@@ -33,6 +34,7 @@ public:
     explicit Watchlist(QObject *parent = nullptr);
     ~Watchlist();
     EuroinvestorBackend *getEuroinvestorBackend();
+    MoscowExchangeBackend *getMoscowExchangeBackend();
 
     Q_INVOKABLE bool isWiFi();
 
@@ -44,6 +46,7 @@ private:
     QNetworkAccessManager * const networkAccessManager;
     QNetworkConfigurationManager * const networkConfigurationManager;
     EuroinvestorBackend *euroinvestorBackend;
+    MoscowExchangeBackend *moscowExchangeBackend;
     QSettings settings;
 
 };

@@ -17,7 +17,8 @@ CONFIG += sailfishapp
 SOURCES += \
     src/euroinvestorbackend.cpp \
     src/harbour-watchlist.cpp \
-    src/watchlist.cpp
+    src/watchlist.cpp \
+    src/moscowexchangebackend.cpp
 
 OTHER_FILES += rpm/harbour-watchlist.changes.in \
     rpm/harbour-watchlist.spec \
@@ -69,4 +70,5 @@ DISTFILES += \
 
 HEADERS += \
     src/euroinvestorbackend.h \
-    src/watchlist.h
+    src/watchlist.h \
+    src/moscowexchangebackend.h
