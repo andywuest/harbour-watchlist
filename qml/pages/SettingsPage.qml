@@ -95,6 +95,30 @@ Page {
                     }
                 }
             }
+
+            ComboBox {
+                id: dataBackendComboBox
+                //: SettingsPage data backend for watchlist
+                label: qsTr("Data Backend")
+                currentIndex: watchlistSettings.sortingOrder
+                //: SettingsPage data backend for watchlist description
+                description: qsTr("Data backend to be used for the watchlist")
+                menu: ContextMenu {
+                    MenuItem {
+                        //: SettingsPage data backend Euroinvestor (default)
+                        text: qsTr("Euroinvestor")
+                    }
+                    MenuItem {
+                        //: SettingsPage data backend Moscow Exchange
+                        text: qsTr("Moscow Exchange")
+                    }
+                    onActivated: {
+                        watchlistSettings.dataBackend = index
+                    }
+                }
+            }
+
+
         }
 
         onVisibleChanged: {
