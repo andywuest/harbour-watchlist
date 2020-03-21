@@ -94,3 +94,11 @@ function calculateWidth(price, change, maxChange, parentWidth) {
         return result
     }
 }
+
+function getDataBackend(backendId) {
+    if (BACKEND_EUROINVESTOR === backendId) {
+        return euroinvestorBackend;
+    } else if (BACKEND_MOSCOW_EXCHANGE === backendId) {
+        return moscowExchangeBackend;
+    }
+}
