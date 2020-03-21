@@ -61,7 +61,7 @@ Page {
                 repeat: false
                 onTriggered: {
                     searchResultListModel.clear()
-                    euroinvestorBackend.searchName(searchField.text);
+                    Functions.getDataBackend(watchlistSettings.dataBackend).searchName(searchField.text);
                 }
             }
 
@@ -250,8 +250,9 @@ Page {
         }
 
         Component.onCompleted: {
-            euroinvestorBackend.searchResultAvailable.connect(searchResultHandler);
-            euroinvestorBackend.requestError.connect(errorResultHandler);
+            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            dataBackend.searchResultAvailable.connect(searchResultHandler);
+            dataBackend.requestError.connect(errorResultHandler);
         }
 
     }
