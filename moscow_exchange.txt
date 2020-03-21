@@ -1,0 +1,44 @@
+# search
+
+http://iss.moex.com/iss/securities.json?q=Yan&lang=en&group_by_filter=stock_shares&limit=15
+http://iss.moex.com/iss/securities.json?q=aero&lang=en&group_by_filter=stock_shares&limit=15
+http://iss.moex.com/iss/securities.json?q=Sistema&lang=en&group_by_filter=stock_shares&limit=15
+
+
+# dokue
+https://iss.moex.com/iss/reference/
+https://iss.moex.com/iss/reference/5
+
+# quotes
+https://iss.moex.com/iss/engines/stock/markets/shares/securities.json?securities=GAZP,AFLT,LKOH&lang=en
+
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/AFKS.json?lang=en
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/GAZP.json?lang=en
+
+
+# das hier ist gut!!
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=GAZP,AFKS&lang=en
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=GAZP,AFKS&lang=en
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=GAZP,AFKS,YNDX&lang=en
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=GAZP,AFKS,YNDX&iss.meta=off&iss.only=marketdata&lang=en
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=GAZP,AFKS,MSST,GMKN&lang=en
+
+
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/%s.json?iss.meta=off&iss.only=marketdata&lang=en
+
+
+https://github.com/avbasyrov/moex/blob/master/src/Api.php
+
+https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/AFKS.xml?iss.meta=off&iss.only=marketdata&marketdata.columns=LAST
+
+https://habr.com/ru/post/486716/
+
+
+http://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/eqob/securities/RU000A0JU740?from=2016-01-01&interval=24&start=0
+http://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/eqob/securities/RU000A0JXQ85?from=2019-09-01&interval=24&start=0
+
+
+
+
+
+
