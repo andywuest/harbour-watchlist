@@ -28,9 +28,6 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-// const char MMIME_TYPE_JSON[] = "application/json";
-// const char MIME_TYPE_JSON[] = "application/json";
-
 const QString MoscowExchangeBackend::MIME_TYPE_JSON = QString("application/json");
 
 MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
@@ -46,7 +43,7 @@ MoscowExchangeBackend::~MoscowExchangeBackend() {
 
 void MoscowExchangeBackend::searchName(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(QUrl(MAPI_SEARCH + searchString));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString)));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
@@ -104,7 +101,7 @@ QNetworkReply *MoscowExchangeBackend::executeGetRequest(const QUrl &url) {
     qDebug() << "MoscowExchangeBackend::executeGetRequest " << url;
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, MoscowExchangeBackend::MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, MUSER_AGENT);
+    request.setHeader(QNetworkRequest::UserAgentHeader, MOSCOW_EXCHANGE_USER_AGENT);
 
     return manager->get(request);
 }
@@ -126,24 +123,8 @@ void MoscowExchangeBackend::handleSearchNameFinished() {
 
     QByteArray searchReply = reply->readAll();
     QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        qDebug() << "array size : " << responseArray.size();
-
-        QStringList idList;
-
-        foreach (const QJsonValue & value, responseArray) {
-            QJsonObject rootObject = value.toObject();
-            QJsonObject sourceObject = rootObject["_source"].toObject();
-            idList.append(QString::number(sourceObject.value("id").toInt()));
-        }
-
-        QString quoteQueryIds = idList.join(",");
-
-        qDebug() << "MoscowExchangeBackend::handleSearchNameFinished - quoteQueryIds : " << quoteQueryIds;
-
-        searchQuoteForNameSearch(quoteQueryIds);
-
+    if (jsonDocument.isObject()) {
+        emit searchResultAvailable(processQuoteSearchResult(searchReply));
     } else {
         qDebug() << "not a json object !";
     }
@@ -259,44 +240,30 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
 QString MoscowExchangeBackend::processQuoteSearchResult(QByteArray searchReply) {
     qDebug() << "MoscowExchangeBackend::processQuoteSearchResult";
     QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
-    if (!jsonDocument.isArray()) {
-        qDebug() << "not a json array!";
+    if (!jsonDocument.isObject()) {
+        qDebug() << "not a json object!";
     }
 
-    QJsonArray responseArray = jsonDocument.array();
+    QJsonObject responseObject = jsonDocument.object();
+    QJsonObject securitiesObject = responseObject["securities"].toObject();
+    // QJsonObject dataObject = securitiesObject["data"].toObject();
+    QJsonArray dataArray = securitiesObject["data"].toArray();
+
+    QJsonObject columnsObject = securitiesObject["columns"].toObject();
+    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
+
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    foreach (const QJsonValue & value, responseArray) {
-        QJsonObject rootObject = value.toObject();
-        QJsonObject exchangeObject = rootObject["exchange"].toObject();
+    foreach (const QJsonValue & value, dataArray) {
+        QJsonArray resultDataArray = value.toArray();
 
         QJsonObject resultObject;
-        resultObject.insert("extRefId", rootObject.value("id"));
-        resultObject.insert("name", rootObject.value("name"));
-        resultObject.insert("currency", rootObject.value("currency"));
-        resultObject.insert("price", rootObject.value("last"));
-        resultObject.insert("symbol1", rootObject.value("symbol"));
-        resultObject.insert("isin", rootObject.value("isin"));
-        resultObject.insert("stockMarketName", exchangeObject.value("name"));
-        resultObject.insert("changeAbsolute", rootObject.value("change"));
-        resultObject.insert("changeRelative", rootObject.value("changeInPercentage"));
-        resultObject.insert("high", rootObject.value("high"));
-        resultObject.insert("low", rootObject.value("low"));
-        resultObject.insert("ask", rootObject.value("ask"));
-        resultObject.insert("bid", rootObject.value("bid"));
-        resultObject.insert("volume", rootObject.value("volume"));
-        resultObject.insert("numberOfStocks", rootObject.value("numberOfStocks"));
-
-        QJsonValue updatedAt = rootObject.value("updatedAt");
-        // TODO move date formatting to a separate method
-        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
-        QString updateAtString = dateTimeUpdatedAt.toString("yyyy-MM-dd") + " " + dateTimeUpdatedAt.toString("hh:mm:ss");
-        resultObject.insert("quoteTimestamp", updateAtString);
-
-        QDateTime dateTimeNow = QDateTime::currentDateTime();
-        QString nowString = dateTimeNow.toString("yyyy-MM-dd") + " " + dateTimeNow.toString("hh:mm:ss");
-        resultObject.insert("lastChangeTimestamp", nowString);
+        resultObject.insert("extRefId", resultDataArray.at(0)); // id
+        resultObject.insert("symbol1", resultDataArray.at(1)); // secId
+        resultObject.insert("name", resultDataArray.at(4)); // name
+        resultObject.insert("isin", resultDataArray.at(5)); // isn
+        resultObject.insert("stockMarketName", resultDataArray.at(14)); // primary_boardid
 
         resultArray.push_back(resultObject);
     }

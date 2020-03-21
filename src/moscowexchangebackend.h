@@ -23,8 +23,8 @@
 #include <QNetworkAccessManager>
 
 // TODO FIX URLS
-const char MUSER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
-const char MAPI_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
+const char MOSCOW_EXCHANGE_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
+const char MOSCOW_EXCHANGE_API_SEARCH[] = "http://iss.moex.com/iss/securities.json?q=%1&lang=en&group_by_filter=stock_shares&limit=15";
 const char MAPI_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
 const char MAPI_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
 const char MAPI_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
