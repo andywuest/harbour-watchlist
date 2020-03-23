@@ -48,7 +48,7 @@ void EuroinvestorBackend::searchName(const QString &searchString) {
 }
 
 void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) {
-    qDebug() << "EuroinvestorBackend::searchQuote";
+    qDebug() << "EuroinvestorBackend::searchQuoteForNameSearch";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
