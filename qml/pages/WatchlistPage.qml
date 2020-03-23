@@ -337,8 +337,9 @@ Page {
 
         Component.onCompleted: {
             Database.initApplicationTables()
-            euroinvestorBackend.quoteResultAvailable.connect(quoteResultHandler);
-            euroinvestorBackend.requestError.connect(errorResultHandler);
+            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            dataBackend.quoteResultAvailable.connect(quoteResultHandler);
+            dataBackend.requestError.connect(errorResultHandler);
             reloadAllStocks()
             loaded = true;
         }
@@ -387,7 +388,7 @@ Page {
         }
 
         if (numberOfQuotes > 0) {
-            euroinvestorBackend.searchQuote(stocks.join(','));
+            Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
         }
     }
 
