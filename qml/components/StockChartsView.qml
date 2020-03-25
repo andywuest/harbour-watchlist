@@ -34,6 +34,10 @@ SilicaFlickable {
 
     contentHeight: stockChartsColumn.height
 
+    function getDataBackend() {
+        return Functions.getDataBackend(watchlistSettings.dataBackend);
+    }
+
     function fetchPricesForChartHandler(result, type) {
         console.log("intraday result was : " + result + " / " + type)
         var response = JSON.parse(result);
@@ -70,11 +74,12 @@ SilicaFlickable {
         running: false
         repeat: false
         onTriggered: {
-            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
-            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
-            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
-            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
-            euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
+            var dataBackend = getDataBackend();
+            dataBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
+            dataBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+            dataBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
+            dataBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
+            dataBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
         }
     }
 
@@ -94,56 +99,61 @@ SilicaFlickable {
 
         StockChart {
             id: intradayStockChart
+            visible: getDataBackend().isChartTypeSupported(Constants.CHART_TYPE_INTRDAY);
             graphTitle: qsTr("Intraday")
             chartType: Constants.CHART_TYPE_INTRDAY
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart intraday clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
+                getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
             }
         }
 
         StockChart {
             id: lastMonthStockChart
+            visible: getDataBackend().isChartTypeSupported(Constants.CHART_TYPE_MONTH);
             graphTitle: qsTr("30 days")
             chartType: Constants.CHART_TYPE_MONTH
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart month clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
+                getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
             }
         }
 
         StockChart {
             id: lastThreeMonthStockChart
+            visible: getDataBackend().isChartTypeSupported(Constants.CHART_TYPE_3_MONTHS);
             graphTitle: qsTr("3 months")
             chartType: Constants.CHART_TYPE_3_MONTHS
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart 3 month clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
+                getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
             }
         }
 
         StockChart {
             id: lastYearStockChart
+            visible: getDataBackend().isChartTypeSupported(Constants.CHART_TYPE_YEAR);
             graphTitle: qsTr("1 Year")
             chartType: Constants.CHART_TYPE_YEAR
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart year clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
+                getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
             }
         }
 
         StockChart {
             id: lastThreeYearsStockChart
+            visible: getDataBackend().isChartTypeSupported(Constants.CHART_TYPE_3_YEARS);
             graphTitle: qsTr("3 Years")
             chartType: Constants.CHART_TYPE_3_YEARS
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 console.log("chart year clicked !")
-                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
+                getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
 
@@ -161,7 +171,7 @@ SilicaFlickable {
             lastThreeYearsStockChart.axisYUnit = currencyUnit;
 
             // connect signal slot for chart update
-            euroinvestorBackend.fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
+            getDataBackend().fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (triggerChartDataDownloadOnEntering()) {
                 fetchPricesForChartTimer.start();
 //                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
@@ -177,7 +187,7 @@ SilicaFlickable {
 
     Component.onDestruction: {
         console.log("disconnecting signal")
-        euroinvestorBackend.fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
+        getDataBackend().fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
     }
 
     VerticalScrollDecorator {
