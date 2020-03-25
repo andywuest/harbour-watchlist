@@ -58,6 +58,11 @@ void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) 
 void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int chartType) {
     qDebug() << "EuroinvestorBackend::fetchClosePrices";
 
+    if (!isChartTypeSupported(chartType)) {
+        qDebug() << "EuroinvestorBackend::fetchClosePrices - chart type " << chartType << " not supported!";
+        return;
+    }
+
     QDate today = QDate::currentDate();
     QDate startDate;
 
@@ -301,4 +306,25 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
     QString dataToString(resultDocument.toJson());
 
     return dataToString;
+}
+
+QString EuroinvestorBackend::convertCurrency(const QString &currencyString) {
+    // TODO implement -> mapping of EUR -> , USD -> $
+    return currencyString;
+}
+
+bool EuroinvestorBackend::isChartTypeSupported(const int chartType) {
+    switch(chartType) {
+        case ChartType::INTRADAY:
+        case ChartType::MONTH:
+        case ChartType::THREE_MONTHS:
+        case ChartType::YEAR:
+        case ChartType::THREE_YEARS:
+            return true;
+        case ChartType::FIVE_YEARS:
+            return false;
+        default:
+            qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
+            return false;
+    }
 }

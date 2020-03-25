@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE void searchName(const QString &searchString);
     Q_INVOKABLE void searchQuote(const QString &searchString);
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType);
+    Q_INVOKABLE bool isChartTypeSupported(const int chartType);
 
     // signals for the qml part
     Q_SIGNAL void searchResultAvailable(const QString &reply);
@@ -45,6 +46,10 @@ public:
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
+
+protected:
+
+    QString convertCurrency(const QString &currencyString);
 
 public slots:
 
