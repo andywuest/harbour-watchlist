@@ -26,7 +26,9 @@
 const char MOSCOW_EXCHANGE_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
 const char MOSCOW_EXCHANGE_API_SEARCH[] = "http://iss.moex.com/iss/securities.json?q=%1&lang=en&group_by_filter=stock_shares&limit=15";
 const char MOSCOW_EXCHANGE_QUOTE[] = "https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=%1&lang=en";
-const char MAPI_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
+// can fetch max 100 entries at a time - so about a quarter
+const char MOSCOW_EXCHANGE_API_CLOSE_PRICES[] = "https://iss.moex.com/iss/history/engines/stock/markets/shares/boards/TQBR/securities/%1.json?from=%2&lang=en";
+
 const char MAPI_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
 
 class MoscowExchangeBackend : public QObject {
@@ -37,6 +39,7 @@ public:
     Q_INVOKABLE void searchName(const QString &searchString);
     Q_INVOKABLE void searchQuote(const QString &searchString);
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType);
+    Q_INVOKABLE bool isChartTypeSupported(const int chartType);
 
     // signals for the qml part
     Q_SIGNAL void searchResultAvailable(const QString &reply);
@@ -46,6 +49,10 @@ public:
 
 signals:
 
+protected:
+
+    QString convertCurrency(const QString &currencyString);
+
 public slots:
 
 private:
@@ -53,9 +60,10 @@ private:
     enum ChartType {
       INTRADAY = 0,
       MONTH = 1,
-      YEAR = 2,
-      THREE_YEARS = 3,
-      FIVE_YEARS = 4
+      THREE_MONTHS = 2,
+      YEAR = 3,
+      THREE_YEARS = 4,
+      FIVE_YEARS = 5
     };
 
     static const QString MIME_TYPE_JSON;

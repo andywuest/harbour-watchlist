@@ -60,6 +60,11 @@ void MoscowExchangeBackend::searchQuoteForNameSearch(const QString &searchString
 void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const int chartType) {
     qDebug() << "MoscowExchangeBackend::fetchClosePrices";
 
+    if (!isChartTypeSupported(chartType)) {
+        qDebug() << "EuroinvestorBackend::fetchClosePrices - chart type " << chartType << " not supported!";
+        return;
+    }
+
     QDate today = QDate::currentDate();
     QDate startDate;
 
@@ -67,6 +72,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
     switch(chartType) {
         case ChartType::INTRADAY: break;
         case ChartType::MONTH: startDate = today.addMonths(-1); break;
+        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
         case ChartType::YEAR: startDate = today.addYears(-1); break;
         case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
         case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
@@ -76,7 +82,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 
     QNetworkReply *reply;
     if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(MAPI_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
+        reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
     } else {
         reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
     }
@@ -175,12 +181,15 @@ void MoscowExchangeBackend::handleFetchPricesForChartFinished() {
 
 QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply);
-    if (!jsonDocument.isArray()) {
-        qDebug() << "not a json array!";
+    if (!jsonDocument.isObject()) {
+        qDebug() << "not a json object!";
         return QString();
     }
 
-    QJsonArray responseArray = jsonDocument.array();
+    QJsonObject responseObject = jsonDocument.object();
+    QJsonObject historyObject = responseObject["history"].toObject();
+    QJsonArray responseArray = historyObject["data"].toArray();
+
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
@@ -188,13 +197,16 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
     double max = -1;
 
     foreach (const QJsonValue & value, responseArray) {
-        QJsonObject rootObject = value.toObject();
+        QJsonArray valueArray = value.toArray();
         QJsonObject resultObject;
 
-        QJsonValue updatedAt = rootObject.value("timestamp");
-        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
+        QString tradeDate = valueArray.at(1).toString(); // TRADEDATE
+        // artifical time - irrelevant - since we do not display the time for these history entries
+        QString tradeDateTime = tradeDate + " 18:00:00";
+        QDateTime dateTimeTradeDate = QDateTime::fromString(tradeDateTime, Qt::ISODate);
 
-        double closeValue = rootObject.value("close").toDouble();
+        QJsonValue closeObject = valueArray.at(11); // CLOSE
+        double closeValue = closeObject.toDouble();
 
         if (min == -1) {
             min = closeValue;
@@ -207,7 +219,7 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
             max = closeValue;
         }
 
-        resultObject.insert("x", dateTimeUpdatedAt.toMSecsSinceEpoch() / 1000);
+        resultObject.insert("x", dateTimeTradeDate.toMSecsSinceEpoch() / 1000);
         resultObject.insert("y", closeValue);
 
         resultArray.push_back(resultObject);
@@ -311,7 +323,7 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
         // read from securities data
         resultObject.insert("name", tmpDataArray.at(2)); // name
         resultObject.insert("isin", tmpDataArray.at(19)); // isin
-        resultObject.insert("currency", tmpDataArray.at(24)); // CURRENCYID
+        resultObject.insert("currency", convertCurrency(tmpDataArray.at(24).toString())); // CURRENCYID
 
         // read from marketdata data
         resultObject.insert("extRefId", tmpMarketDataArray.at(0)); // secId
@@ -387,4 +399,27 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
     QString dataToString(resultDocument.toJson());
 
     return dataToString;
+}
+
+QString MoscowExchangeBackend::convertCurrency(const QString &currencyString) {
+    if (QString("SUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString::fromUtf8("\u20BD");
+    }
+    return currencyString;
+}
+
+bool MoscowExchangeBackend::isChartTypeSupported(const int chartType) {
+    switch(chartType) {
+        case ChartType::MONTH:
+        case ChartType::THREE_MONTHS:
+            return true;
+        case ChartType::INTRADAY:
+        case ChartType::FIVE_YEARS:
+        case ChartType::YEAR:
+        case ChartType::THREE_YEARS:
+            return false;
+        default:
+            qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
+            return false;
+    }
 }
