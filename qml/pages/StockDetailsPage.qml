@@ -278,7 +278,7 @@ Page {
         }
 
         function fetchPricesForChartHandler(result, type) {
-            console.log("intraday result was : " + result + " / " + type)
+            // console.log("intraday result was : " + result + " / " + type)
             var response = JSON.parse(result);
 
             if (type === Constants.CHART_TYPE_INTRDAY) {
