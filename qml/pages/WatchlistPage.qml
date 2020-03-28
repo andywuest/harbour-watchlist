@@ -48,6 +48,92 @@ Page {
         id: stockAlarmNotification
     }
 
+    function connectSlots() {
+        console.log("connect - slots");
+        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        dataBackend.quoteResultAvailable.connect(quoteResultHandler);
+        dataBackend.requestError.connect(errorResultHandler);
+    }
+
+    function disconnectSlots() {
+        console.log("disconnect - slots");
+        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        dataBackend.quoteResultAvailable.disconnect(quoteResultHandler);
+        dataBackend.requestError.disconnect(errorResultHandler);
+    }
+
+    function quoteResultHandler(result) {
+      var jsonResult = JSON.parse(result.toString())
+      console.log("json result from data backend was: " +result)
+      for (var i = 0; i < jsonResult.length; i++)   {
+          var stockQuote = jsonResult[i];
+          var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
+          if (stock) {
+              // copy id
+              stockQuote.id = stock.id;
+              // persist
+              Database.persistStockData(stockQuote, watchlistId)
+          }
+      }
+      reloadAllStocks()
+      loaded = true;
+
+      Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
+      Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
+    }
+
+    function errorResultHandler(result) {
+        stockUpdateProblemNotification.show(result)
+        loaded = true;
+    }
+
+    function reloadAllStocks() {
+        console.log("reloadAllStocks");
+        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
+        var stocks = Database.loadAllStockData(watchlistId, sortOrder);
+
+        stockQuotePage.maxChange = Functions.calculateMaxChange(stocks)
+
+        var triggerUpdateQuotes = false;
+        // when stockmodel is not empty and the number of stocks in the db is different -> stock has been added
+        // is there a more transparent way to find out that a stock was added?
+       if (stocksModel.count >= 0 && stocksModel.count < stocks.length)  {
+            console.log(" most like stock was added -> trigger reload");
+            triggerUpdateQuotes = true;
+        }
+
+        // reconnect the slots - we may have got a new backend
+        if (stocks.length === 0) {
+            disconnectSlots();
+            connectSlots();
+        }
+
+        stocksModel.clear()
+        for (var i = 0; i < stocks.length; i++) {
+            stocksModel.append(stocks[i])
+        }
+
+        if (triggerUpdateQuotes) {
+            updateQuotes();
+        }
+    }
+
+    function updateQuotes() {
+        console.log("updateQuotes");
+        loaded = false;
+
+        // listView.model.get(index)
+        var numberOfQuotes = stocksModel.count
+        var stocks = []
+        for (var i = 0; i < numberOfQuotes; i++) {
+            stocks.push(stocksModel.get(i).extRefId)
+        }
+
+        if (numberOfQuotes > 0) {
+            Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
+        }
+    }
+
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
 
@@ -310,37 +396,10 @@ Page {
         VerticalScrollDecorator {
         }
 
-        function quoteResultHandler(result) {
-          var jsonResult = JSON.parse(result.toString())
-          console.log("json result from euroinvestor was: " +result)
-          for (var i = 0; i < jsonResult.length; i++)   {
-              var stockQuote = jsonResult[i];
-              var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
-              if (stock) {
-                  // copy id
-                  stockQuote.id = stock.id;
-                  // persist
-                  Database.persistStockData(stockQuote, watchlistId)
-              }
-          }
-          reloadAllStocks()
-          loaded = true;
-
-          Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
-          Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
-        }
-
-        function errorResultHandler(result) {
-            stockUpdateProblemNotification.show(result)
-            loaded = true;
-        }
-
         Component.onCompleted: {
             Database.initApplicationTables()
-            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
-            dataBackend.quoteResultAvailable.connect(quoteResultHandler);
-            dataBackend.requestError.connect(errorResultHandler);
-            reloadAllStocks()
+            connectSlots();
+            reloadAllStocks();
             loaded = true;
         }
 
@@ -350,45 +409,6 @@ Page {
             } else {
                 console.log("visiblieitey of list view chagned ! -> not visible")
             }
-        }
-    }
-
-    function reloadAllStocks() {
-        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
-        var stocks = Database.loadAllStockData(watchlistId, sortOrder);
-
-        stockQuotePage.maxChange = Functions.calculateMaxChange(stocks)
-
-        var triggerUpdateQuotes = false;
-        // when stockmodel is not empty and the number of stocks in the db is different -> stock has been added
-        // is there a more transparent way to find out that a stock was added?
-        if (stocksModel.count > 0 && stocksModel.count < stocks.length)  {
-            console.log(" most like stock was added -> trigger reload");
-            triggerUpdateQuotes = true;
-        }
-
-        stocksModel.clear()
-        for (var i = 0; i < stocks.length; i++) {
-            stocksModel.append(stocks[i])
-        }
-
-        if (triggerUpdateQuotes) {
-            updateQuotes();
-        }
-    }
-
-    function updateQuotes() {
-        loaded = false;
-
-        // listView.model.get(index)
-        var numberOfQuotes = stocksModel.count
-        var stocks = []
-        for (var i = 0; i < numberOfQuotes; i++) {
-            stocks.push(stocksModel.get(i).extRefId)
-        }
-
-        if (numberOfQuotes > 0) {
-            Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
         }
     }
 
