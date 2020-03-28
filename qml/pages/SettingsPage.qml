@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.2
+import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 import Nemo.Configuration 1.0
 
@@ -24,10 +25,12 @@ import "."
 
 import "../components"
 
+import "../js/database.js" as Database
 import "../js/constants.js" as Constants
 
 Page {
     id: settingsPage
+    property int currentDataBackend : 0
 
     SilicaFlickable {
         id: settingsFlickable
@@ -100,7 +103,7 @@ Page {
                 id: dataBackendComboBox
                 //: SettingsPage data backend for watchlist
                 label: qsTr("Data Backend")
-                currentIndex: watchlistSettings.sortingOrder
+                currentIndex: watchlistSettings.dataBackend
                 //: SettingsPage data backend for watchlist description
                 description: qsTr("Data backend to be used for the watchlist")
                 menu: ContextMenu {
@@ -118,15 +121,33 @@ Page {
                 }
             }
 
-
+            Label {
+                id: dataBackendLabel
+                text: qsTr("NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!")
+                font.pixelSize: Theme.fontSizeSmall
+                padding: Theme.paddingLarge
+                width: parent.width - 2 * Theme.paddingLarge
+                wrapMode: Text.Wrap
+            }
         }
 
         onVisibleChanged: {
-            watchlistSettings.sync()
-//            console.log("chartDataDownloadStrategy : "
-//                        + watchlistSettings.chartDataDownloadStrategy)
-//            console.log("sortingOrder : " + watchlistSettings.sortingOrder)
-//            console.log("writing changes !")
+            if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
+                console.log("resetApplication");
+                Database.resetApplication()
+                Database.initApplicationTables()
+            }
+            watchlistSettings.sync();
         }
+
+        Component.onCompleted: {
+            settingsPage.currentDataBackend = watchlistSettings.dataBackend;
+        }
+
+        Component.onDestruction: {
+            console.log("on destruction");
+        }
+
     }
+
 }
