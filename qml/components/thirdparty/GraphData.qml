@@ -266,7 +266,7 @@ Item {
                     for (var i = 0; i < end; i++) {
                         valueSum += points[i].y;
                         var y = (height - Math.floor((points[i].y - minY) / stepY) - 1) // + (minY * stepY);
-                        console.log(" x : " + x + ", y : " + y);
+//                        console.log(" x : " + x + ", y : " + y);
                         if (i === 0) {
                             ctx.moveTo(x, y);
                         } else {
