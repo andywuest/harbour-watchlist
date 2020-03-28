@@ -104,8 +104,8 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
 QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
     qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
     QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, EI_MIME_TYPE_JSON);
+    request.setHeader(QNetworkRequest::UserAgentHeader, EI_USER_AGENT);
 
     return manager->get(request);
 }

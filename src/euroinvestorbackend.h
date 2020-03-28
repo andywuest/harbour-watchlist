@@ -22,8 +22,8 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-const char MIME_TYPE_JSON[] = "application/json";
-const char USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
+const char EI_MIME_TYPE_JSON[] = "application/json";
+const char EI_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
 const char API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
 const char API_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
 const char API_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";

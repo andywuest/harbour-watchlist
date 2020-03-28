@@ -28,17 +28,15 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-const QString MoscowExchangeBackend::MIME_TYPE_JSON = QString("application/json");
+// const QString MoscowExchangeBackend::MIME_TYPE_JSON = QString("application/json");
 
-MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
-    qDebug() << "Initializing Euroinvestor Backend...";
-    this->manager = manager;
-    this->applicationName = applicationName;
-    this->applicationVersion = applicationVersion;
+MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
+    : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
+    qDebug() << "Initializing Moscow Exchange Backend...";
 }
 
 MoscowExchangeBackend::~MoscowExchangeBackend() {
-    qDebug() << "Shutting down Euroinvestor Backend...";
+    qDebug() << "Shutting down Moscow Exchange Backend...";
 }
 
 void MoscowExchangeBackend::searchName(const QString &searchString) {
@@ -65,19 +63,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
         return;
     }
 
-    QDate today = QDate::currentDate();
-    QDate startDate;
-
-    // TODO use constants as well
-    switch(chartType) {
-        case ChartType::INTRADAY: break;
-        case ChartType::MONTH: startDate = today.addMonths(-1); break;
-        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
-        case ChartType::YEAR: startDate = today.addYears(-1); break;
-        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
-        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
-    }
-
+    QDate startDate = getStartDateForChart(chartType);
     QString startDateString = startDate.toString("yyyy-MM-dd");
 
     QNetworkReply *reply;
@@ -97,27 +83,10 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 
 void MoscowExchangeBackend::searchQuote(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchQuote";
-    // QNetworkReply *reply = executeGetRequest(QUrl(MAPI_QUOTE + searchString));
     QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString)));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
-}
-
-QNetworkReply *MoscowExchangeBackend::executeGetRequest(const QUrl &url) {
-    qDebug() << "MoscowExchangeBackend::executeGetRequest " << url;
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, MoscowExchangeBackend::MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, MOSCOW_EXCHANGE_USER_AGENT);
-
-    return manager->get(request);
-}
-
-void MoscowExchangeBackend::handleRequestError(QNetworkReply::NetworkError error) {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "MoscowExchangeBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
-
-    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
 }
 
 void MoscowExchangeBackend::handleSearchNameFinished() {
@@ -357,45 +326,6 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
         resultArray.push_back(resultObject);
     }
 
-
-//    foreach (const QJsonValue & value, marketDataArray) {
-//        QJsonArray resultDataArray = value.toArray();
-
-//        // id is not mapped so far - is it used ??
-//        QJsonObject resultObject;
-//        resultObject.insert("extRefId", resultDataArray.at(0)); // secId
-//        resultObject.insert("stockMarketName", resultDataArray.at(1)); // primary_boardid
-//        resultObject.insert("price", resultDataArray.at(36)); // LCLOSEPRICE
-
-//        resultObject.insert("high", resultDataArray.at(11)); // HIGH
-//        resultObject.insert("low", resultDataArray.at(10)); // LOW
-////        resultObject.insert("ask", resultDataArray.at());
-////        resultObject.insert("bid", resultDataArray.at());
-
-
-//        resultObject.insert("volume", resultDataArray.at(27)); // VOLTODAY
-//        resultObject.insert("changeAbsolute", resultDataArray.at(41)); // CHANGE
-//        resultObject.insert("changeRelative", resultDataArray.at(25)); // LASTTOPREVPRICE
-
-
-//        // resultDataArray.at(32)
-
-
-////        resultObject.insert("volume", resultDataArray.at(32)); // updatetime (only time)
-////        resultObject.insert("volume", resultDataArray.at(48)); // SYSTIME (date + time) -> extract date !
-
-
-
-
-
-////        resultObject.insert("name", resultDataArray.at(2)); // name
-////        resultObject.insert("isin", resultDataArray.at(19)); // isin
-////        resultObject.insert("currency", resultDataArray.at(24)); // currency
-
-
-//        resultArray.push_back(resultObject);
-//    }
-
     resultDocument.setArray(resultArray);
     QString dataToString(resultDocument.toJson());
 
@@ -404,8 +334,7 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
 
 QString MoscowExchangeBackend::convertCurrency(const QString &currencyString) {
     if (QString("SUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
-        return tr("RUB");
-        // qstrcmp(QString::fromUtf8("\u20BD");
+        return tr("RUB"); // "\u20BD"
     }
     return currencyString;
 }
