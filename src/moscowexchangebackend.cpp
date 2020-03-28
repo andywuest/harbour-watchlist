@@ -278,6 +278,7 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
         resultObject.insert("name", resultDataArray.at(4)); // name
         resultObject.insert("isin", resultDataArray.at(5)); // isin
         resultObject.insert("stockMarketName", resultDataArray.at(14)); // primary_boardid
+        resultObject.insert("currency", "-"); // dummy for currency
 
         resultArray.push_back(resultObject);
     }
@@ -403,7 +404,8 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
 
 QString MoscowExchangeBackend::convertCurrency(const QString &currencyString) {
     if (QString("SUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
-        return QString::fromUtf8("\u20BD");
+        return tr("RUB");
+        // qstrcmp(QString::fromUtf8("\u20BD");
     }
     return currencyString;
 }
