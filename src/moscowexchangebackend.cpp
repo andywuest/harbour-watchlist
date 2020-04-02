@@ -34,6 +34,8 @@
 MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
     : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
     qDebug() << "Initializing Moscow Exchange Backend...";
+    // debug mode when we want to see everything in english
+    debugMode = true;
 }
 
 MoscowExchangeBackend::~MoscowExchangeBackend() {
@@ -42,15 +44,16 @@ MoscowExchangeBackend::~MoscowExchangeBackend() {
 
 void MoscowExchangeBackend::searchName(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString).arg(getLanguage())));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
 void MoscowExchangeBackend::searchQuoteForNameSearch(const QString &searchString) {
+    // TODO check if needed
     qDebug() << "MoscowExchangeBackend::searchQuoteForNameSearch";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
@@ -68,7 +71,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 
     QNetworkReply *reply;
     if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
+        reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
     } else {
         // TODO implement
         reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
@@ -83,8 +86,9 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 }
 
 void MoscowExchangeBackend::searchQuote(const QString &searchString) {
+    // TODO check if needed
     qDebug() << "MoscowExchangeBackend::searchQuote";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
@@ -207,11 +211,10 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
 
     QJsonObject responseObject = jsonDocument.object();
     QJsonObject securitiesObject = responseObject["securities"].toObject();
-    // QJsonObject dataObject = securitiesObject["data"].toObject();
     QJsonArray dataArray = securitiesObject["data"].toArray();
 
-    QJsonObject columnsObject = securitiesObject["columns"].toObject();
-    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
+//    QJsonObject columnsObject = securitiesObject["columns"].toObject();
+//    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
 
     QJsonDocument resultDocument;
     QJsonArray resultArray;
@@ -250,8 +253,8 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
     QJsonArray dataArray = securitiesObject["data"].toArray();
     QJsonArray marketDataArray = marketDataObject["data"].toArray();
 
-    QJsonObject columnsObject = securitiesObject["columns"].toObject();
-    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
+//    QJsonObject columnsObject = securitiesObject["columns"].toObject();
+//    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
 
     QJsonDocument resultDocument;
     QJsonArray resultArray;
@@ -332,4 +335,8 @@ bool MoscowExchangeBackend::isChartTypeSupported(const int chartType) {
             qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
             return false;
     }
+}
+
+QString MoscowExchangeBackend::getLanguage() {
+    return (debugMode ? QString(LANG_EN) : QString());
 }
