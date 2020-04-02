@@ -42,15 +42,8 @@ public:
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType) override;
     Q_INVOKABLE bool isChartTypeSupported(const int chartType) override;
 
-//    // signals for the qml part
-//    Q_SIGNAL void searchResultAvailable(const QString &reply);
-//    Q_SIGNAL void quoteResultAvailable(const QString &reply);
-//    Q_SIGNAL void fetchPricesForChartAvailable(const QString &reply, const int chartType);
-//    Q_SIGNAL void requestError(const QString &errorMessage);
-
 signals:
 
-//protected:
 protected:
     QString convertCurrency(const QString &currencyString) override;
 
@@ -58,22 +51,8 @@ public slots:
 
 private:
 
-//    enum ChartType {
-//      INTRADAY = 0,
-//      MONTH = 1,
-//      THREE_MONTHS = 2,
-//      YEAR = 3,
-//      THREE_YEARS = 4,
-//      FIVE_YEARS = 5
-//    };
-
+    // TODO check if needed
     static const QString MIME_TYPE_JSON;
-
-//    QString applicationName;
-//    QString applicationVersion;
-//    QNetworkAccessManager *manager;
-
-//    QNetworkReply *executeGetRequest(const QUrl &url);
 
     // is triggered after name search because the first json request does not contain all information we need
     void searchQuoteForNameSearch(const QString &searchString);
@@ -82,7 +61,6 @@ private:
     QString parsePriceResponse(QByteArray priceReply);
 
 private slots:
-//    void handleRequestError(QNetworkReply::NetworkError error);
     void handleSearchNameFinished();
     void handleSearchQuoteForNameFinished();
     void handleSearchQuoteFinished();

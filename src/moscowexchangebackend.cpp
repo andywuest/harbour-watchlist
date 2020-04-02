@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "moscowexchangebackend.h"
+#include "chartdatacalculator.h"
 
 #include <QDebug>
 #include <QFile>
@@ -63,13 +64,13 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
         return;
     }
 
-    QDate startDate = getStartDateForChart(chartType);
-    QString startDateString = startDate.toString("yyyy-MM-dd");
+    QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
     QNetworkReply *reply;
     if (chartType > 0) {
         reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
     } else {
+        // TODO implement
         reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
     }
 
@@ -162,8 +163,7 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    double min = -1;
-    double max = -1;
+    ChartDataCalculator chartDataCalculator;
 
     foreach (const QJsonValue & value, responseArray) {
         QJsonArray valueArray = value.toArray();
@@ -177,16 +177,7 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
         QJsonValue closeObject = valueArray.at(11); // CLOSE
         double closeValue = closeObject.toDouble();
 
-        if (min == -1) {
-            min = closeValue;
-        } else if (closeValue < min) {
-            min = closeValue;
-        }
-        if (max == -1) {
-            max = closeValue;
-        } else if (closeValue > max) {
-            max = closeValue;
-        }
+        chartDataCalculator.checkCloseValue(closeValue);
 
         resultObject.insert("x", dateTimeTradeDate.toMSecsSinceEpoch() / 1000);
         resultObject.insert("y", closeValue);
@@ -194,23 +185,11 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
         resultArray.push_back(resultObject);
     }
 
-    // top / bottom margin for chart - if the difference is too small - rounding makes no sense.
-    double roundedMin = (max - min > 1.0) ? floor(min) : min;
-    double roundedMax = (max - min > 1.0) ? ceil(max) : max;
-
-    // determine how many fraction digits the y-axis is supposed to display
-    int fractionsDigits = 1;
-    if (max - min > 10.0) {
-        fractionsDigits = 0;
-    } else if (max - min < 2) {
-        fractionsDigits = 2;
-    }
-
     // resultDocument.setArray(resultArray);
     QJsonObject resultObject;
-    resultObject.insert("min", roundedMin);
-    resultObject.insert("max", roundedMax);
-    resultObject.insert("fractionDigits", fractionsDigits);
+    resultObject.insert("min", chartDataCalculator.getMinValue());
+    resultObject.insert("max", chartDataCalculator.getMaxValue());
+    resultObject.insert("fractionDigits", chartDataCalculator.getFractionDigits());
     resultObject.insert("data", resultArray);
 
     resultDocument.setObject(resultObject);

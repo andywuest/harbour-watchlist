@@ -19,7 +19,8 @@ SOURCES += \
     src/harbour-watchlist.cpp \
     src/watchlist.cpp \
     src/moscowexchangebackend.cpp \
-    src/abstractdatabackend.cpp
+    src/abstractdatabackend.cpp \
+    src/chartdatacalculator.cpp
 
 OTHER_FILES += rpm/harbour-watchlist.changes.in \
     rpm/harbour-watchlist.spec \
@@ -73,4 +74,5 @@ HEADERS += \
     src/euroinvestorbackend.h \
     src/watchlist.h \
     src/moscowexchangebackend.h \
-    src/abstractdatabackend.h
+    src/abstractdatabackend.h \
+    src/chartdatacalculator.h
