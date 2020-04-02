@@ -88,7 +88,7 @@ Page {
     }
 
     function reloadAllStocks() {
-        console.log("reloadAllStocks");
+        console.log("reloading all stocks");
         var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
         var stocks = Database.loadAllStockData(watchlistId, sortOrder);
 
@@ -131,6 +131,13 @@ Page {
 
         if (numberOfQuotes > 0) {
             Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
+        }
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            reloadAllStocks();
+            console.log("watchlist page active");
         }
     }
 
@@ -401,14 +408,6 @@ Page {
             connectSlots();
             reloadAllStocks();
             loaded = true;
-        }
-
-        onVisibleChanged: {
-            if (stockQuotesListView.visible) {
-                reloadAllStocks()
-            } else {
-                console.log("visiblieitey of list view chagned ! -> not visible")
-            }
         }
     }
 

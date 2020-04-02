@@ -32,6 +32,18 @@ Page {
     id: settingsPage
     property int currentDataBackend : 0
 
+    onStatusChanged: {
+        if (status === PageStatus.Deactivating) {
+            console.log("store settings!");
+            if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
+                console.log("reset application database");
+                Database.resetApplication()
+                Database.initApplicationTables()
+            }
+            watchlistSettings.sync();
+        }
+    }
+
     SilicaFlickable {
         id: settingsFlickable
         anchors.fill: parent
@@ -131,23 +143,8 @@ Page {
             }
         }
 
-        onVisibleChanged: {
-            if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
-                console.log("resetApplication");
-                Database.resetApplication()
-                Database.initApplicationTables()
-            }
-            watchlistSettings.sync();
-        }
-
         Component.onCompleted: {
             settingsPage.currentDataBackend = watchlistSettings.dataBackend;
         }
-
-        Component.onDestruction: {
-            console.log("on destruction");
-        }
-
     }
-
 }
