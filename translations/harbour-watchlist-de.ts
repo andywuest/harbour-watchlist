@@ -148,7 +148,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../src/moscowexchangebackend.cpp" line="319"/>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -217,30 +217,30 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Datenquelle</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="120"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Datenquelle, welche für die Watchlist verwendet werden soll</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Börse Moskau</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
-        <translation type="unfinished"></translation>
+        <translation>ACHTUNG: Ein Wechsel der Datenquelle führt zum Zurücksetzen der Datenbank. Dies bedeutet, dass die aktuelle Watchlist gelöscht wird und die Aktien neu hinzugefügt werden müssen!</translation>
     </message>
 </context>
 <context>
@@ -641,7 +641,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/js/functions.js" line="48"/>
         <source>hh:mm:ss</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/js/functions.js" line="62"/>
