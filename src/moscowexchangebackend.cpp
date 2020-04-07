@@ -35,7 +35,7 @@ MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, con
     : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
     qDebug() << "Initializing Moscow Exchange Backend...";
     // debug mode when we want to see everything in english
-    debugMode = true;
+    // debugMode = true;
 }
 
 MoscowExchangeBackend::~MoscowExchangeBackend() {
