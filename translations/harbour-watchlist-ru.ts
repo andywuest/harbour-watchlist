@@ -122,6 +122,13 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>MoscowExchangeBackend</name>
+    <message>
+        <source>RUB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
@@ -172,6 +179,30 @@ AboutPage title - about text title</extracomment>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
         <translation>По имени</translation>
+    </message>
+    <message>
+        <source>Data Backend</source>
+        <extracomment>SettingsPage data backend for watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data backend to be used for the watchlist</source>
+        <extracomment>SettingsPage data backend for watchlist description</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Euroinvestor</source>
+        <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moscow Exchange</source>
+        <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

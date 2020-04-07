@@ -144,65 +144,102 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>MoscowExchangeBackend</name>
+    <message>
+        <location filename="../src/moscowexchangebackend.cpp" line="319"/>
+        <source>RUB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
         <source>Settings</source>
         <extracomment>SettingsPage settings title</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="54"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="57"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="72"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="76"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="69"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="84"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="83"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="87"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="102"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <source>Data Backend</source>
+        <extracomment>SettingsPage data backend for watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="120"/>
+        <source>Data backend to be used for the watchlist</source>
+        <extracomment>SettingsPage data backend for watchlist description</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
+        <source>Euroinvestor</source>
+        <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
+        <source>Moscow Exchange</source>
+        <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -247,33 +284,33 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="92"/>
+        <location filename="../qml/components/StockChartsView.qml" line="97"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="97"/>
+        <location filename="../qml/components/StockChartsView.qml" line="103"/>
         <source>Intraday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="108"/>
+        <location filename="../qml/components/StockChartsView.qml" line="115"/>
         <source>30 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="119"/>
+        <location filename="../qml/components/StockChartsView.qml" line="127"/>
         <source>3 months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="130"/>
+        <location filename="../qml/components/StockChartsView.qml" line="139"/>
         <source>1 Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="141"/>
+        <location filename="../qml/components/StockChartsView.qml" line="151"/>
         <source>3 Years</source>
         <translation type="unfinished"></translation>
     </message>
@@ -514,43 +551,43 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>WatchlistPage</name>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="63"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="156"/>
         <source>About</source>
         <extracomment>WatchlistPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="68"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="161"/>
         <source>Settings</source>
         <extracomment>WatchlistPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="73"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="166"/>
         <source>Add stock</source>
         <extracomment>WatchlistPage add stock menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="80"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="173"/>
         <source>Refresh all quotes</source>
         <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="105"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="198"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="138"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="231"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="146"/>
+        <location filename="../qml/pages/WatchlistPage.qml" line="239"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation type="unfinished"></translation>
