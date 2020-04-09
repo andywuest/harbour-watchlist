@@ -148,7 +148,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../src/moscowexchangebackend.cpp" line="319"/>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>RUB</translation>
     </message>
 </context>
 <context>
@@ -217,30 +217,30 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dataserver</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="120"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dataserver att användas till aktielistan</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Euroinvestor</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Moscow Exchange</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
-        <translation type="unfinished"></translation>
+        <translation>OBS! Byte av dataserver kommer att återställa databasen. Det innebär att aktuell aktielista raderas och aktierna måste läggas till igen!</translation>
     </message>
 </context>
 <context>
