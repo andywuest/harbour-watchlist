@@ -125,7 +125,7 @@ AboutPage title - about text title</extracomment>
     <name>MoscowExchangeBackend</name>
     <message>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>р.</translation>
     </message>
 </context>
 <context>
@@ -183,26 +183,26 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Источник данных</translation>
     </message>
     <message>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Источник информации о курсах отслеживаемых акций</translation>
     </message>
     <message>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Euroinvestor</translation>
     </message>
     <message>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Московская биржа (MOEX)</translation>
     </message>
     <message>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
-        <translation type="unfinished"></translation>
+        <translation>ВНИМАНИЕ: Смена источника данных приводит к стиранию базы данных. Список отслеживаемых акций будет обнулен, и вам придется заново его наполнить!</translation>
     </message>
 </context>
 <context>
@@ -441,11 +441,15 @@ AboutPage title - about text title</extracomment>
     <name>StockNewsView</name>
     <message>
         <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
-        <translation type="unfinished"></translation>
+        <translation>Эта функция находится в разработке. Если вы знаете хороший источник биржевых новостей (в формате json), напишите мне.</translation>
     </message>
 </context>
 <context>
     <name>StockOverviewPage</name>
+     <message>
+        <source>About Watchlist</source>
+        <translation>О программе</translation>
+    </message>
     <message>
         <source>Details</source>
         <translation>Подробности</translation>
