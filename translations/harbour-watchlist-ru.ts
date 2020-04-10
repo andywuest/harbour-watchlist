@@ -446,10 +446,6 @@ AboutPage title - about text title</extracomment>
 </context>
 <context>
     <name>StockOverviewPage</name>
-     <message>
-        <source>About Watchlist</source>
-        <translation>О программе</translation>
-    </message>
     <message>
         <source>Details</source>
         <translation>Подробности</translation>
