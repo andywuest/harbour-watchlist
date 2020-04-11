@@ -45,7 +45,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="115"/>
         <source>Viacheslav Dikonov (ru)</source>
-        <translation></translation>
+        <translation>Viacheslav Dikonov (俄语)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="127"/>
@@ -148,7 +148,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../src/moscowexchangebackend.cpp" line="319"/>
         <source>RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>卢布</translation>
     </message>
 </context>
 <context>
@@ -217,30 +217,30 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>数据终端</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="120"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>用于此清单的数据终端。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Euroinvestor</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Moscow Exchange</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
-        <translation type="unfinished"></translation>
+        <translation>请注意：修改数据终端会重置此数据库。这表示当前清单会被充值，你需要再次添加各支股票。</translation>
     </message>
 </context>
 <context>
@@ -527,7 +527,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/components/StockNewsView.qml" line="46"/>
         <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
-        <translation type="unfinished"></translation>
+        <translation>尚未实施-如果你知道一个好的股票源（json格式!）-不妨留言</translation>
     </message>
 </context>
 <context>
