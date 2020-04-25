@@ -82,6 +82,8 @@ void OnvistaNews::handleSearchStockNews() {
             resultObject.insert("url", url);
             resultObject.insert("dateTime", dateTime);
 
+            // TODO for godmode trader data - we have to remove at least the contained image
+
             resultArray.push_back(resultObject);
         }
     }
