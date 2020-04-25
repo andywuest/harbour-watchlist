@@ -25,8 +25,9 @@
 
 #include "euroinvestorbackend.h"
 #include "moscowexchangebackend.h"
+#include "onvistanews.h"
 
-const char VERSION[] = "0.5.0";
+const char VERSION[] = "0.6.0";
 
 class Watchlist : public QObject {
     Q_OBJECT
@@ -35,6 +36,7 @@ public:
     ~Watchlist();
     EuroinvestorBackend *getEuroinvestorBackend();
     MoscowExchangeBackend *getMoscowExchangeBackend();
+    OnvistaNews *getOnvistaNews();
 
     Q_INVOKABLE bool isWiFi();
 
@@ -45,8 +47,14 @@ public slots:
 private:
     QNetworkAccessManager * const networkAccessManager;
     QNetworkConfigurationManager * const networkConfigurationManager;
+
+    // data backends
     EuroinvestorBackend *euroinvestorBackend;
     MoscowExchangeBackend *moscowExchangeBackend;
+
+    // news backends
+    OnvistaNews *onvistaNews;
+
     QSettings settings;
 
 };
