@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.6.0-1
+- added a first german stock news backend (Onvista.de)
+- fixed quote update for the moex backend on the cover page
+
 * 10.04.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.5.0-1
 - added Moscow Exchange as new data backend (selectable via Settings)
 
