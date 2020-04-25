@@ -102,3 +102,9 @@ function getDataBackend(backendId) {
         return moscowExchangeBackend;
     }
 }
+
+function getNewsBackend() {
+    return onvistaNews
+}
+
+
