@@ -297,6 +297,7 @@ Page {
             chart.fractionDigits = response.fractionDigits;
         }
 
+        // TODO check - if methed is needed here !!
         function triggerChartDataDownloadOnEntering() {
             var strategy = watchlistSettings.chartDataDownloadStrategy;
             return (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ALWAYS ||
