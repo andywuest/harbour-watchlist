@@ -72,17 +72,22 @@ void OnvistaNews::handleSearchStockNews() {
             QString source = newsObject["source"].toString();
             QString url = newsObject["url"].toString();
             QString dateTime = newsObject["datetime"].toString();
+
             qDebug() << "headline : " << headline;
+            qDebug() << "content : " << content;
+//            qDebug() << "content stripped : " << content.remove(QRegExp("<table>(.*)</table>")).remove(QRegExp("<[^>]*>"));
 
             QJsonObject resultObject;
 
             resultObject.insert("headline", headline);
-            resultObject.insert("content", content);
+            resultObject.insert("content", filterContent(content));
             resultObject.insert("source", source);
             resultObject.insert("url", url);
             resultObject.insert("dateTime", dateTime);
 
             // TODO for godmode trader data - we have to remove at least the contained image
+            // TODO alles ab Ebenfalls interessant sollte entfernt werden
+            // Link-Tags entfernen <a>
 
             resultArray.push_back(resultObject);
         }
@@ -98,6 +103,16 @@ void OnvistaNews::handleSearchStockNews() {
     QString dataToString(resultDocument.toJson());
 
     emit searchNewsResultAvailable(dataToString);
+}
+
+QString OnvistaNews::filterContent(QString &content) {
+    QRegExp allTagsRegExp("<[^>]*>");
+    QRegExp godmodeTraderTableRegExp("<table>(.*)</table>");
+    content.replace(godmodeTraderTableRegExp, " ");
+    content.replace(allTagsRegExp, " ");
+    content.replace("&amp;", "&");
+
+    return content;
 }
 
 void OnvistaNews::handleRequestError(QNetworkReply::NetworkError error) {

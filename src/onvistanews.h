@@ -28,6 +28,7 @@ private:
 
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
+    QString filterContent(QString &content);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);
