@@ -22,8 +22,8 @@ Watchlist::Watchlist(QObject *parent) : QObject(parent),
     networkConfigurationManager(new QNetworkConfigurationManager(this)),
     settings("harbour-watchlist", "settings") {
     // data backends
-    euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", VERSION, this);
-    moscowExchangeBackend = new MoscowExchangeBackend(this->networkAccessManager, "harbour-watchlist", VERSION, this);
+    euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, "harbour-watchlist", QString(VERSION_NUMBER), this);
+    moscowExchangeBackend = new MoscowExchangeBackend(this->networkAccessManager, "harbour-watchlist", QString(VERSION_NUMBER), this);
     // news backends
     onvistaNews = new OnvistaNews(this->networkAccessManager, this);
 }

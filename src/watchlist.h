@@ -27,8 +27,6 @@
 #include "moscowexchangebackend.h"
 #include "onvistanews.h"
 
-const char VERSION[] = "0.6.0";
-
 class Watchlist : public QObject {
     Q_OBJECT
 public:

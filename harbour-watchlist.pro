@@ -23,6 +23,8 @@ SOURCES += \
     src/chartdatacalculator.cpp \
     src/onvistanews.cpp
 
+DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
+
 OTHER_FILES += rpm/harbour-watchlist.changes.in \
     rpm/harbour-watchlist.spec \
     rpm/harbour-watchlist.yaml \
