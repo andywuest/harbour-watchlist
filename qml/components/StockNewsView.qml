@@ -161,7 +161,7 @@ SilicaFlickable {
     }
 
     Component.onDestruction: {
-        console.log("disconnecting signal")
+        Functions.log("disconnecting signal");
         Functions.getNewsBackend().searchNewsResultAvailable.disconnect(
                     searchStockNewsHandler)
     }
