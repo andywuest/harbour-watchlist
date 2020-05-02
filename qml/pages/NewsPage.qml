@@ -67,7 +67,7 @@ Page {
                 text: newsItem.content
                 width: parent.width
                 wrapMode: Text.Wrap
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeExtraSmall
             }
         }
     }
