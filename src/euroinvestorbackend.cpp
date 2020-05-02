@@ -34,13 +34,6 @@ EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const Q
     qDebug() << "Initializing Euroinvestor Backend...";
 }
 
-//    : QObject(parent) {
-//    qDebug() << "Initializing Euroinvestor Backend...";
-//    this->manager = manager;
-//    this->applicationName = applicationName;
-//    this->applicationVersion = applicationVersion;
-//}
-
 EuroinvestorBackend::~EuroinvestorBackend() {
     qDebug() << "Shutting down Euroinvestor Backend...";
 }
