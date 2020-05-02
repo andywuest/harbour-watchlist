@@ -154,7 +154,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>NewsPage</name>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="53"/>
+        <location filename="../qml/pages/NewsPage.qml" line="45"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation>Nachrichten</translation>
