@@ -18,57 +18,59 @@
 #ifndef EUROINVESTORBACKEND_H
 #define EUROINVESTORBACKEND_H
 
+#include "abstractdatabackend.h"
+
 #include <QObject>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-const char EI_MIME_TYPE_JSON[] = "application/json";
-const char EI_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
+//const char EI_MIME_TYPE_JSON[] = "application/json";
+//const char EI_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
 const char API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
 const char API_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
 const char API_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
 const char API_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
 
-class EuroinvestorBackend : public QObject {
+class EuroinvestorBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
     explicit EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
     ~EuroinvestorBackend();
-    Q_INVOKABLE void searchName(const QString &searchString);
-    Q_INVOKABLE void searchQuote(const QString &searchString);
-    Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType);
-    Q_INVOKABLE bool isChartTypeSupported(const int chartType);
+    Q_INVOKABLE void searchName(const QString &searchString) override;
+    Q_INVOKABLE void searchQuote(const QString &searchString) override;
+    Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType) override;
+    Q_INVOKABLE bool isChartTypeSupported(const int chartType) override;
 
-    // signals for the qml part
-    Q_SIGNAL void searchResultAvailable(const QString &reply);
-    Q_SIGNAL void quoteResultAvailable(const QString &reply);
-    Q_SIGNAL void fetchPricesForChartAvailable(const QString &reply, const int chartType);
-    Q_SIGNAL void requestError(const QString &errorMessage);
+//    // signals for the qml part
+//    Q_SIGNAL void searchResultAvailable(const QString &reply);
+//    Q_SIGNAL void quoteResultAvailable(const QString &reply);
+//    Q_SIGNAL void fetchPricesForChartAvailable(const QString &reply, const int chartType);
+//    Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
 
 protected:
-
-    QString convertCurrency(const QString &currencyString);
+    QString convertCurrency(const QString &currencyString) override;
+//    QString convertCurrency(const QString &currencyString);
 
 public slots:
 
 private:
 
-    enum ChartType {
-      INTRADAY = 0,
-      MONTH = 1,
-      THREE_MONTHS = 2,
-      YEAR = 3,
-      THREE_YEARS = 4,
-      FIVE_YEARS = 5
-    };
+//    enum ChartType {
+//      INTRADAY = 0,
+//      MONTH = 1,
+//      THREE_MONTHS = 2,
+//      YEAR = 3,
+//      THREE_YEARS = 4,
+//      FIVE_YEARS = 5
+//    };
 
-    QString applicationName;
-    QString applicationVersion;
-    QNetworkAccessManager *manager;
+//    QString applicationName;
+//    QString applicationVersion;
+//    QNetworkAccessManager *manager;
 
-    QNetworkReply *executeGetRequest(const QUrl &url);
+//    QNetworkReply *executeGetRequest(const QUrl &url);
 
     // is triggered after name search because the first json request does not contain all information we need
     void searchQuoteForNameSearch(const QString &searchString);
@@ -76,7 +78,7 @@ private:
     QString parsePriceResponse(QByteArray priceReply);
 
 private slots:
-    void handleRequestError(QNetworkReply::NetworkError error);
+//    void handleRequestError(QNetworkReply::NetworkError error);
     void handleSearchNameFinished();
     void handleSearchQuoteForNameFinished();
     void handleSearchQuoteFinished();
