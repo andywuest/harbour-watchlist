@@ -112,17 +112,17 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="51"/>
+        <location filename="../qml/cover/CoverPage.qml" line="113"/>
         <source>Loading...</source>
         <translation>正在加载……</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="128"/>
+        <location filename="../qml/cover/CoverPage.qml" line="190"/>
         <source>Top</source>
         <translation>排行</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="128"/>
+        <location filename="../qml/cover/CoverPage.qml" line="190"/>
         <source>Flop</source>
         <translation>下跌</translation>
     </message>
@@ -152,6 +152,15 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>NewsPage</name>
+    <message>
+        <location filename="../qml/pages/NewsPage.qml" line="45"/>
+        <source>News</source>
+        <extracomment>NewsPage news page header</extracomment>
+        <translation type="unfinished">新闻</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="63"/>
@@ -173,14 +182,20 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="155"/>
         <source>Always</source>
-        <extracomment>SettingsPage download strategy always</extracomment>
+        <extracomment>SettingsPage download strategy always
+----------
+SettingsPage news download strategy always</extracomment>
         <translation>总是</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Only on WiFi</source>
-        <extracomment>SettingsPage download strategy only on wifi</extracomment>
+        <extracomment>SettingsPage download strategy only on wifi
+----------
+SettingsPage news download strategy only on wifi</extracomment>
         <translation>仅限 WiFi</translation>
     </message>
     <message>
@@ -240,6 +255,18 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
+        <source>Download news data</source>
+        <extracomment>SettingsPage download news data</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
+        <source>Defines strategy to download the news data</source>
+        <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -520,14 +547,6 @@ AboutPage title - about text title</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
-    </message>
-</context>
-<context>
-    <name>StockNewsView</name>
-    <message>
-        <location filename="../qml/components/StockNewsView.qml" line="46"/>
-        <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

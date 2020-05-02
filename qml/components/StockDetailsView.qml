@@ -31,7 +31,6 @@ SilicaFlickable {
     contentHeight: stockDetailsColumn.height
 
     property var stock
-//    property string extRefId
 
     Column {
         id: stockDetailsColumn
@@ -146,7 +145,6 @@ SilicaFlickable {
 
     Component.onCompleted: {
         if (stock) {
-//            extRefId = (stock.extRefId) ? stock.extRefId : ''
             currencyLabelValueRow.value = stock.currency ? stock.currency : '';
             isinLabelValueRow.value = stock.isin ? stock.isin : '';
             symbolLabelValueRow.value = stock.symbol1 ? stock.symbol1 : ''; // TODO warum symbol1

@@ -64,8 +64,8 @@ SilicaFlickable {
 
     function triggerChartDataDownloadOnEntering() {
         var strategy = watchlistSettings.chartDataDownloadStrategy;
-        return (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ALWAYS ||
-                (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
+        return (strategy === Constants.CHART_DATA_DOWNLOAD_STRATEGY_ALWAYS ||
+                (strategy === Constants.CHART_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
     }
 
     Timer {
