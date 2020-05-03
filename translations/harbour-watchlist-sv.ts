@@ -132,7 +132,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/components/thirdparty/GraphData.qml" line="297"/>
         <source>No data - Click to fetch data</source>
-        <translation>Ingen data. - Tryck för att hämta data.</translation>
+        <translation>Ingen data. - Tryck för att hämta.</translation>
     </message>
 </context>
 <context>
@@ -157,7 +157,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/NewsPage.qml" line="45"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
-        <translation type="unfinished">Nyheter</translation>
+        <translation>Nyheter</translation>
     </message>
 </context>
 <context>
@@ -261,13 +261,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Download news data</source>
         <extracomment>SettingsPage download news data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner nyheter</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="151"/>
         <source>Defines strategy to download the news data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Definierar strategi för att ladda ner nyhetsdata</translation>
     </message>
 </context>
 <context>
