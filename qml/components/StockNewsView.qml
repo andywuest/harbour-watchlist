@@ -19,32 +19,150 @@ import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
+import "../js/constants.js" as Constants
+import "../js/functions.js" as Functions
+
 SilicaFlickable {
     id: stockNewsViewFlickable
 
+    property string isin
+
+    anchors.fill: parent
     contentHeight: stockNewsColumn.height
+    contentWidth: parent.width
+
+    function searchStockNewsHandler(result) {
+        var jsonResult = JSON.parse(result.toString())
+        newsListModel.clear()
+        for (var i = 0; i < jsonResult.newsItems.length; i++) {
+            if (jsonResult.newsItems[i]) {
+                newsListModel.append(jsonResult.newsItems[i])
+            }
+        }
+    }
+
+    function triggerNewsDataDownloadOnEntering() {
+        var strategy = watchlistSettings.newsDataDownloadStrategy;
+        return (strategy === Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ALWAYS ||
+                (strategy === Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
+    }
+
+    Timer {
+        id: fetchNewsTimer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            var newsBackend = Functions.getNewsBackend()
+            newsBackend.searchStockNews(isin)
+        }
+    }
 
     Column {
         id: stockNewsColumn
 
-        x: Theme.horizontalPageMargin
-        width: parent.width - 2 * x
-        spacing: Theme.paddingSmall
-
-        anchors {
-            left: parent.left
-            right: parent.right
+        Behavior on opacity {
+            NumberAnimation {
+            }
         }
 
-        Label {
-            horizontalAlignment: Text.AlignHCenter
-            x: Theme.horizontalPageMargin
-            width: parent.width - 2 * x
+        width: parent.width
+        spacing: Theme.paddingMedium
 
-            wrapMode: Text.Wrap
-            textFormat: Text.RichText
-            text: qsTr("This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line")
+        SilicaListView {
+            id: listView
+
+            height: stockNewsViewFlickable.height - Theme.paddingMedium
+            width: parent.width
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+            Behavior on opacity {
+                NumberAnimation {
+                }
+            }
+
+            model: ListModel {
+                id: newsListModel
+            }
+
+            delegate: ListItem {
+                id: delegate
+
+                contentHeight: stockQuoteItem.height + (2 * Theme.paddingMedium)
+                contentWidth: parent.width
+
+                Item {
+                    id: stockQuoteItem
+                    width: parent.width
+                    height: newsItemColumn.height + stockQuoteSeparator.height
+                    y: Theme.paddingMedium
+
+                    Column {
+                        id: newsItemColumn
+                        width: parent.width - (2 * Theme.horizontalPageMargin)
+                        height: headlineLabel.height + dateTimeLabel.height + Theme.paddingMedium
+                        spacing: Theme.paddingSmall
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+
+                        Label {
+                            id: headlineLabel
+                            text: headline
+                            truncationMode: TruncationMode.Fade
+                            font.pixelSize: Theme.fontSizeSmall
+                            width: parent.width
+                            height: Theme.fontSizeSmall
+                        }
+                        Label {
+                            id: dateTimeLabel
+                            text: dateTime + " | " + source
+                            font.pixelSize: Theme.fontSizeTiny
+                            width: parent.width
+                            height: Theme.fontSizeTiny
+                        }
+                    }
+
+                    Separator {
+                        id: stockQuoteSeparator
+                        anchors.top: newsItemColumn.bottom
+                        anchors.topMargin: Theme.paddingMedium
+
+                        width: parent.width
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                    }
+                }
+
+                onClicked: {
+                    var selectedItem = listView.model.get(index)
+                    pageStack.push(Qt.resolvedUrl("../pages/NewsPage.qml"), {
+                                       newsItem: selectedItem
+                                   });
+                }
+            }
+
+            VerticalScrollDecorator {
+            }
         }
     }
 
+    Component.onCompleted: {
+        if (stock) {
+            isin = (stock.isin) ? stock.isin : ''
+
+            // connect signal slot for chart update
+            Functions.getNewsBackend().searchNewsResultAvailable.connect(searchStockNewsHandler)
+
+            if (triggerNewsDataDownloadOnEntering()) {
+                fetchNewsTimer.start()
+            }
+        }
+    }
+
+    Component.onDestruction: {
+        Functions.log("disconnecting signal");
+        Functions.getNewsBackend().searchNewsResultAvailable.disconnect(
+                    searchStockNewsHandler)
+    }
 }

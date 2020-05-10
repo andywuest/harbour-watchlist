@@ -42,7 +42,10 @@ int main(int argc, char *argv[]) {
     MoscowExchangeBackend *moscowExchangeBackend = watchlist.getMoscowExchangeBackend();
     context->setContextProperty("moscowExchangeBackend", moscowExchangeBackend);
 
-    context->setContextProperty("applicationVersion", VERSION);
+    OnvistaNews *onvistNews = watchlist.getOnvistaNews();
+    context->setContextProperty("onvistaNews", onvistNews);
+
+    context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
 
     view->setSource(SailfishApp::pathTo("qml/harbour-watchlist.qml"));
     view->show();

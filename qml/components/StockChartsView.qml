@@ -39,7 +39,6 @@ SilicaFlickable {
     }
 
     function fetchPricesForChartHandler(result, type) {
-//        console.log("intraday result was : " + result + " / " + type)
         var response = JSON.parse(result);
 
         if (type === Constants.CHART_TYPE_INTRDAY) {
@@ -64,8 +63,8 @@ SilicaFlickable {
 
     function triggerChartDataDownloadOnEntering() {
         var strategy = watchlistSettings.chartDataDownloadStrategy;
-        return (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ALWAYS ||
-                (strategy === Constants.CHART_DATA_DOWNLOAD_STRAGEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
+        return (strategy === Constants.CHART_DATA_DOWNLOAD_STRATEGY_ALWAYS ||
+                (strategy === Constants.CHART_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
     }
 
     Timer {
@@ -104,7 +103,7 @@ SilicaFlickable {
             chartType: Constants.CHART_TYPE_INTRDAY
             graphHeight: screenHeight * 0.15625
             onClicked: {
-                console.log("chart intraday clicked !")
+                Functions.log("chart intraday clicked !")
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
             }
         }
@@ -116,7 +115,7 @@ SilicaFlickable {
             chartType: Constants.CHART_TYPE_MONTH
             graphHeight: screenHeight * 0.15625
             onClicked: {
-                console.log("chart month clicked !")
+                Functions.log("chart month clicked !")
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
             }
         }
@@ -128,7 +127,7 @@ SilicaFlickable {
             chartType: Constants.CHART_TYPE_3_MONTHS
             graphHeight: screenHeight * 0.15625
             onClicked: {
-                console.log("chart 3 month clicked !")
+                Functions.log("chart 3 month clicked !")
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
             }
         }
@@ -140,7 +139,7 @@ SilicaFlickable {
             chartType: Constants.CHART_TYPE_YEAR
             graphHeight: screenHeight * 0.15625
             onClicked: {
-                console.log("chart year clicked !")
+                Functions.log("chart year clicked !")
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
             }
         }
@@ -152,7 +151,7 @@ SilicaFlickable {
             chartType: Constants.CHART_TYPE_3_YEARS
             graphHeight: screenHeight * 0.15625
             onClicked: {
-                console.log("chart year clicked !")
+                Functions.log("chart year clicked !")
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
@@ -174,19 +173,14 @@ SilicaFlickable {
             getDataBackend().fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (triggerChartDataDownloadOnEntering()) {
                 fetchPricesForChartTimer.start();
-//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY)
-//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
-//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
-//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
-//                euroinvestorBackend.fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
 
-        console.log("completed")
+        Functions.log("completed")
     }
 
     Component.onDestruction: {
-        console.log("disconnecting signal")
+        Functions.log("disconnecting signal")
         getDataBackend().fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
     }
 

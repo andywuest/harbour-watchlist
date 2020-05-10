@@ -129,6 +129,14 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>NewsPage</name>
+    <message>
+        <source>News</source>
+        <extracomment>NewsPage news page header</extracomment>
+        <translation type="unfinished">Новости</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
@@ -147,12 +155,16 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <source>Always</source>
-        <extracomment>SettingsPage download strategy always</extracomment>
+        <extracomment>SettingsPage download strategy always
+----------
+SettingsPage news download strategy always</extracomment>
         <translation>Всегда</translation>
     </message>
     <message>
         <source>Only on WiFi</source>
-        <extracomment>SettingsPage download strategy only on wifi</extracomment>
+        <extracomment>SettingsPage download strategy only on wifi
+----------
+SettingsPage news download strategy only on wifi</extracomment>
         <translation>Только по WiFi</translation>
     </message>
     <message>
@@ -203,6 +215,16 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation>ВНИМАНИЕ: Смена источника данных приводит к стиранию базы данных. Список отслеживаемых акций будет обнулен, и вам придется заново его наполнить!</translation>
+    </message>
+    <message>
+        <source>Download news data</source>
+        <extracomment>SettingsPage download news data</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Defines strategy to download the news data</source>
+        <extracomment>SettingsPage download strategy explanation</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -435,13 +457,6 @@ AboutPage title - about text title</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Объём</translation>
-    </message>
-</context>
-<context>
-    <name>StockNewsView</name>
-    <message>
-        <source>This is not yet implemented - if you know a good source for stock news (json format!) - please drop me a line</source>
-        <translation>Эта функция находится в разработке. Если вы знаете хороший источник биржевых новостей (в формате json), напишите мне.</translation>
     </message>
 </context>
 <context>

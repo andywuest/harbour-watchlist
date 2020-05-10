@@ -16,6 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "euroinvestorbackend.h"
+#include "chartdatacalculator.h"
 
 #include <QDebug>
 #include <QFile>
@@ -28,11 +29,9 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
+EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
+    : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
-    this->manager = manager;
-    this->applicationName = applicationName;
-    this->applicationVersion = applicationVersion;
 }
 
 EuroinvestorBackend::~EuroinvestorBackend() {
@@ -63,20 +62,22 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
         return;
     }
 
-    QDate today = QDate::currentDate();
-    QDate startDate;
+    QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
-    // TODO use constants as well
-    switch(chartType) {
-        case ChartType::INTRADAY: break;
-        case ChartType::MONTH: startDate = today.addMonths(-1); break;
-        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
-        case ChartType::YEAR: startDate = today.addYears(-1); break;
-        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
-        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
-    }
+//    QDate today = QDate::currentDate();
+//    QDate startDate;
 
-    QString startDateString = startDate.toString("yyyy-MM-dd");
+//    // TODO use constants as well
+//    switch(chartType) {
+//        case ChartType::INTRADAY: break;
+//        case ChartType::MONTH: startDate = today.addMonths(-1); break;
+//        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
+//        case ChartType::YEAR: startDate = today.addYears(-1); break;
+//        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
+//        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
+//    }
+
+//    QString startDateString = startDate.toString("yyyy-MM-dd");
 
     QNetworkReply *reply;
     if (chartType > 0) {
@@ -101,21 +102,21 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
 
-QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
-    qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, EI_MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, EI_USER_AGENT);
+//QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
+//    qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
+//    QNetworkRequest request(url);
+//    request.setHeader(QNetworkRequest::ContentTypeHeader, EI_MIME_TYPE_JSON);
+//    request.setHeader(QNetworkRequest::UserAgentHeader, EI_USER_AGENT);
 
-    return manager->get(request);
-}
+//    return manager->get(request);
+//}
 
-void EuroinvestorBackend::handleRequestError(QNetworkReply::NetworkError error) {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "EuroinvestorBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
+//void EuroinvestorBackend::handleRequestError(QNetworkReply::NetworkError error) {
+//    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+//    qWarning() << "EuroinvestorBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
 
-    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
-}
+//    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
+//}
 
 void EuroinvestorBackend::handleSearchNameFinished() {
     qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
@@ -203,8 +204,10 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    double min = -1;
-    double max = -1;
+    ChartDataCalculator chartDataCalculator;
+
+//    double min = -1;
+//    double max = -1;
 
     foreach (const QJsonValue & value, responseArray) {
         QJsonObject rootObject = value.toObject();
@@ -215,16 +218,19 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
 
         double closeValue = rootObject.value("close").toDouble();
 
-        if (min == -1) {
-            min = closeValue;
-        } else if (closeValue < min) {
-            min = closeValue;
-        }
-        if (max == -1) {
-            max = closeValue;
-        } else if (closeValue > max) {
-            max = closeValue;
-        }
+        chartDataCalculator.checkCloseValue(closeValue);
+
+
+//        if (min == -1) {
+//            min = closeValue;
+//        } else if (closeValue < min) {
+//            min = closeValue;
+//        }
+//        if (max == -1) {
+//            max = closeValue;
+//        } else if (closeValue > max) {
+//            max = closeValue;
+//        }
 
         resultObject.insert("x", dateTimeUpdatedAt.toMSecsSinceEpoch() / 1000);
         resultObject.insert("y", closeValue);
@@ -233,22 +239,22 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
     }
 
     // top / bottom margin for chart - if the difference is too small - rounding makes no sense.
-    double roundedMin = (max - min > 1.0) ? floor(min) : min;
-    double roundedMax = (max - min > 1.0) ? ceil(max) : max;
+//    double roundedMin = (max - min > 1.0) ? floor(min) : min;
+//    double roundedMax = (max - min > 1.0) ? ceil(max) : max;
 
     // determine how many fraction digits the y-axis is supposed to display
-    int fractionsDigits = 1;
-    if (max - min > 10.0) {
-        fractionsDigits = 0;
-    } else if (max - min < 2) {
-        fractionsDigits = 2;
-    }
+//    int fractionsDigits = 1;
+//    if (max - min > 10.0) {
+//        fractionsDigits = 0;
+//    } else if (max - min < 2) {
+//        fractionsDigits = 2;
+//    }
 
     // resultDocument.setArray(resultArray);
     QJsonObject resultObject;
-    resultObject.insert("min", roundedMin);
-    resultObject.insert("max", roundedMax);
-    resultObject.insert("fractionDigits", fractionsDigits);
+    resultObject.insert("min", chartDataCalculator.getMinValue());
+    resultObject.insert("max", chartDataCalculator.getMaxValue());
+    resultObject.insert("fractionDigits", chartDataCalculator.getFractionDigits());
     resultObject.insert("data", resultArray);
 
     resultDocument.setObject(resultObject);

@@ -20,7 +20,10 @@ SOURCES += \
     src/watchlist.cpp \
     src/moscowexchangebackend.cpp \
     src/abstractdatabackend.cpp \
-    src/chartdatacalculator.cpp
+    src/chartdatacalculator.cpp \
+    src/onvistanews.cpp
+
+DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
 
 OTHER_FILES += rpm/harbour-watchlist.changes.in \
     rpm/harbour-watchlist.spec \
@@ -68,11 +71,13 @@ DISTFILES += \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/StockDetailsPage.qml \
     qml/pages/StockOverviewPage.qml \
-    qml/pages/WatchlistPage.qml
+    qml/pages/WatchlistPage.qml \
+    qml/pages/NewsPage.qml
 
 HEADERS += \
     src/euroinvestorbackend.h \
     src/watchlist.h \
     src/moscowexchangebackend.h \
     src/abstractdatabackend.h \
-    src/chartdatacalculator.h
+    src/chartdatacalculator.h \
+    src/onvistanews.h

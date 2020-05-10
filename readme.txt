@@ -22,6 +22,13 @@ NOTE:
 
 TODO  watchlist
 
++ finally cleanup euroinvestor
++ more common code consliation download stuff
++ logging enabled also for c++
++ load data in async thread
++ 
+
+
 + consolidate Notification -> same code in Cover and Watchlist Page (-> new component)
 + icon broken for notifications (-> link to wrong image)
 + copyright headers

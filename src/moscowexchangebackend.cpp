@@ -63,7 +63,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
     qDebug() << "MoscowExchangeBackend::fetchClosePrices";
 
     if (!isChartTypeSupported(chartType)) {
-        qDebug() << "EuroinvestorBackend::fetchClosePrices - chart type " << chartType << " not supported!";
+        qDebug() << "MoscowExchangeBackend::fetchClosePrices - chart type " << chartType << " not supported!";
         return;
     }
 
