@@ -107,6 +107,10 @@ function getNewsBackend() {
     return onvistaNews
 }
 
+function getMarketDataBackend() {
+    return euroinvestorMarketDataBackend;
+}
+
 function log(message) {
     if (loggingEnabled && message) {
         console.log(message);
