@@ -56,6 +56,20 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     marketDataId2ExtRefId["CUR_SEK_DKK"] = "36399";
     marketDataId2ExtRefId["CUR_EUR_USD"] = "36278";
     marketDataId2ExtRefId["CUR_GBP_DKK"] = "36274";
+
+    // Crypto Currencies
+    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "99567";
+    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "99570";
+    marketDataId2ExtRefId["CRYPTO_BITCOIN_GOLD"] = "99604";
+    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "99571";
+    marketDataId2ExtRefId["CRYPTO_DASH"] = "99582";
+    marketDataId2ExtRefId["CRYPTO_ETHEREUM"] = "99568";
+    marketDataId2ExtRefId["CRYPTO_TETHER"] = "99572";
+    marketDataId2ExtRefId["CRYPTO_IOTA"] = "99585";
+    marketDataId2ExtRefId["CRYPTO_MONERO"] = "99576";
+    marketDataId2ExtRefId["CRYPTO_EOS"] = "99573";
+    marketDataId2ExtRefId["CRYPTO_MONERO"] = "99576";
+    marketDataId2ExtRefId["CRYPTO_BINANCE_COIN"] = "99574";
 }
 
 EuroinvestorMarketDataBackend::~EuroinvestorMarketDataBackend() {

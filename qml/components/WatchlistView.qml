@@ -87,6 +87,10 @@ SilicaFlickable {
         loaded = true;
     }
 
+    function updateEmptyModelColumnVisibility() {
+        watchlistEmptyModelColumnLabel.isVisible = (stocksModel.count === 0);
+    }
+
     function reloadAllStocks() {
         console.log("reloading all stocks");
         var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
@@ -113,6 +117,8 @@ SilicaFlickable {
         for (var i = 0; i < stocks.length; i++) {
             stocksModel.append(stocks[i])
         }
+
+        updateEmptyModelColumnVisibility();
 
         if (triggerUpdateQuotes) {
             updateQuotes();
@@ -157,8 +163,15 @@ SilicaFlickable {
 
         PageHeader {
             id: stockQuotesHeader
-            //: WatchlistPage page header
+            //: WatchlistView page header
             title: qsTr("Stock quotes")
+        }
+
+        EmptyModelColumnLabel {
+            id: watchlistEmptyModelColumnLabel
+            theHeight: watchlistViewFlickable.height - stockQuotesHeader.height
+            //: WatchlistView empty marketdata label
+            emptyLabel: qsTr("The watchlist is empty. Please add stocks via the pulley menu.")
         }
 
         SilicaListView {
@@ -187,7 +200,7 @@ SilicaFlickable {
 
                 menu: ContextMenu {
                     MenuItem {
-                        //: WatchlistPage configure alarm menu item
+                        //: WatchlistView configure alarm menu item
                         text: qsTr("Configure alarm")
                         onClicked: {
                             var selectedStock = stockQuotesListView.model.get(index);
@@ -195,7 +208,7 @@ SilicaFlickable {
                         }
                     }
                     MenuItem {
-                        //: WatchlistPage remove menu item
+                        //: WatchlistView remove menu item
                         text: qsTr("Remove")
                         onClicked: deleteStockData(index)
                     }

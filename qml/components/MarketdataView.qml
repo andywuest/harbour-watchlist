@@ -82,6 +82,10 @@ SilicaFlickable {
         loaded = true;
     }
 
+    function updateEmptyModelColumnVisibility() {
+        marketDataEmptyModelColumnLabel.isVisible = (marketDataModel.count === 0);
+    }
+
     function reloadAllMarketData() {
         console.log("reloading all market data");
         var marketData = Database.loadAllMarketData();
@@ -104,6 +108,8 @@ SilicaFlickable {
         for (var i = 0; i < marketData.length; i++) {
             marketDataModel.append(marketData[i])
         }
+
+        updateEmptyModelColumnVisibility();
 
         if (triggerUpdateQuotes) {
             updateMarketData();
@@ -149,6 +155,13 @@ SilicaFlickable {
             id: marketDataHeader
             //: MarketdataView page header
             title: qsTr("Market data")
+        }
+
+        EmptyModelColumnLabel {
+            id: marketDataEmptyModelColumnLabel
+            theHeight: marketdataViewFlickable.height - marketDataHeader.height
+            //: MarketdataView empty marketdata label
+            emptyLabel: qsTr("The market data list is empty. Please add market data via the pulley menu.")
         }
 
         SilicaListView {

@@ -84,7 +84,16 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("CUR_GBP_DKK", "GBP/DKK", MARKET_DATA_TYPE_CURRENCY));
 
     // Crypto
-    // nothing so far
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", "Bitcoin", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_CASH", "Bitcoin Cash", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_GOLD", "Bitcoin Gold", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_LITECOIN", "Litecoin", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_DASH", "Dash", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_ETHEREUM", "Ethereum", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_TETHER", "Tether", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_IOTA", "IOTA", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_MONERO", "Monero", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_COIN", "Binance Coin", MARKET_DATA_TYPE_CRYPTO));
 
     return marketDataList;
 }
