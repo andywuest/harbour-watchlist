@@ -24,6 +24,7 @@
 #include <QSettings>
 
 #include "euroinvestorbackend.h"
+#include "marketdata/euroinvestormarketdatabackend.h"
 #include "moscowexchangebackend.h"
 #include "onvistanews.h"
 
@@ -34,6 +35,7 @@ public:
     ~Watchlist();
     EuroinvestorBackend *getEuroinvestorBackend();
     MoscowExchangeBackend *getMoscowExchangeBackend();
+    EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
     OnvistaNews *getOnvistaNews();
 
     Q_INVOKABLE bool isWiFi();
@@ -49,6 +51,9 @@ private:
     // data backends
     EuroinvestorBackend *euroinvestorBackend;
     MoscowExchangeBackend *moscowExchangeBackend;
+
+    // market data backends
+    EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend;
 
     // news backends
     OnvistaNews *onvistaNews;
