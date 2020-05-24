@@ -51,6 +51,19 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>AddMarketDataPage</name>
+    <message>
+        <source>Add</source>
+        <extracomment>AddMarketdataPage add menu item</extracomment>
+        <translation type="unfinished">Добавить</translation>
+    </message>
+    <message>
+        <source>Market data</source>
+        <extracomment>AddMarketdataPage Market data header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AddStockPage</name>
     <message>
         <source>Search Results</source>
@@ -122,6 +135,24 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>MarketdataView</name>
+    <message>
+        <source>Market data</source>
+        <extracomment>MarketdataView page header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <extracomment>WatchlistPage remove menu item</extracomment>
+        <translation type="unfinished">Удалить</translation>
+    </message>
+    <message>
+        <source>The market data list is empty. Please add market data via the pulley menu.</source>
+        <extracomment>MarketdataView empty marketdata label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MoscowExchangeBackend</name>
     <message>
         <source>RUB</source>
@@ -134,6 +165,47 @@ AboutPage title - about text title</extracomment>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation type="unfinished">Новости</translation>
+    </message>
+</context>
+<context>
+    <name>OverviewPage</name>
+    <message>
+        <source>Market data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watchlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <extracomment>OverviewPage about menu item</extracomment>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <extracomment>OverviewPage settings menu item</extracomment>
+        <translation type="unfinished">Настройка</translation>
+    </message>
+    <message>
+        <source>Add stock</source>
+        <extracomment>OverviewPage add stock menu item</extracomment>
+        <translation type="unfinished">Добавить бумагу</translation>
+    </message>
+    <message>
+        <source>Refresh all quotes</source>
+        <extracomment>OverviewPage refresh all quotes menu item</extracomment>
+        <translation type="unfinished">Обновить все курсы</translation>
+    </message>
+    <message>
+        <source>Refresh market data</source>
+        <extracomment>OverviewPage refresh market data menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add market data</source>
+        <extracomment>OverviewPage settings menu item</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -513,6 +585,48 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
 </context>
 <context>
+    <name>WatchlistView</name>
+    <message>
+        <source>Stock quotes</source>
+        <extracomment>WatchlistView page header</extracomment>
+        <translation type="unfinished">Курсы</translation>
+    </message>
+    <message>
+        <source>Configure alarm</source>
+        <extracomment>WatchlistView configure alarm menu item</extracomment>
+        <translation type="unfinished">Задать оповещение</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <extracomment>WatchlistView remove menu item</extracomment>
+        <translation type="unfinished">Удалить</translation>
+    </message>
+    <message>
+        <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
+        <extracomment>WatchlistView empty marketdata label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>constants</name>
+    <message>
+        <source>Index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Commodity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Currency</source>
+        <translation type="unfinished">Валюта</translation>
+    </message>
+    <message>
+        <source>Crypto</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>database</name>
     <message>
         <source>Alarm added</source>
@@ -531,20 +645,20 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Ошибка при отмене оповещения</translation>
     </message>
     <message>
-        <source>Alarm deleted</source>
-        <translation>Оповещение удалено</translation>
-    </message>
-    <message>
-        <source>Error deleting alarm</source>
-        <translation>Ошибка при удалении оповещения</translation>
-    </message>
-    <message>
         <source>Stock added</source>
         <translation>Бумага добавлена</translation>
     </message>
     <message>
         <source>Error adding stock</source>
         <translation>Ошибка при добавлении бумаги</translation>
+    </message>
+    <message>
+        <source>Market data added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error adding market data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

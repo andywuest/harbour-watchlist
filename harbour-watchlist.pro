@@ -17,6 +17,7 @@ CONFIG += sailfishapp
 SOURCES += \
     src/euroinvestorbackend.cpp \
     src/harbour-watchlist.cpp \
+    src/marketdata/euroinvestormarketdatabackend.cpp \
     src/watchlist.cpp \
     src/moscowexchangebackend.cpp \
     src/abstractdatabackend.cpp \
@@ -49,13 +50,16 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 
 DISTFILES += \
     qml/components/AlarmNotification.qml \
+    qml/components/EmptyModelColumnLabel.qml \
     qml/components/LabelValueRow.qml \
+    qml/components/MarketdataView.qml \
     qml/components/StockChart.qml \
     qml/components/NavigationRowButton.qml \
     qml/components/StockChart.qml \
     qml/components/StockChartsView.qml \
     qml/components/StockDetailsView.qml \
     qml/components/StockNewsView.qml \
+    qml/components/WatchlistView.qml \
     qml/components/thirdparty/AppNotification.qml \
     qml/components/thirdparty/AppNotificationItem.qml \
     qml/components/thirdparty/Axis.qml \
@@ -66,7 +70,9 @@ DISTFILES += \
     qml/js/constants.js \
     qml/js/functions.js \
     qml/pages/AboutPage.qml \
+    qml/pages/AddMarketDataPage.qml \
     qml/pages/AddStockPage.qml \
+    qml/pages/OverviewPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/StockDetailsPage.qml \
@@ -76,6 +82,7 @@ DISTFILES += \
 
 HEADERS += \
     src/euroinvestorbackend.h \
+    src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h \
     src/moscowexchangebackend.h \
     src/abstractdatabackend.h \

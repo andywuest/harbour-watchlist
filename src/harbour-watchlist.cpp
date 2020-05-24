@@ -42,8 +42,11 @@ int main(int argc, char *argv[]) {
     MoscowExchangeBackend *moscowExchangeBackend = watchlist.getMoscowExchangeBackend();
     context->setContextProperty("moscowExchangeBackend", moscowExchangeBackend);
 
-    OnvistaNews *onvistNews = watchlist.getOnvistaNews();
-    context->setContextProperty("onvistaNews", onvistNews);
+    EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend = watchlist.getEuroinvestorMarketDataBackend();
+    context->setContextProperty("euroinvestorMarketDataBackend", euroinvestorMarketDataBackend);
+
+    OnvistaNews *onvistaNews = watchlist.getOnvistaNews();
+    context->setContextProperty("onvistaNews", onvistaNews);
 
     context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
 
