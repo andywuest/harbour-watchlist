@@ -148,6 +148,7 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
+        <extracomment>MarketdataView empty marketdata label</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -587,21 +588,22 @@ SettingsPage news download strategy only on wifi</extracomment>
     <name>WatchlistView</name>
     <message>
         <source>Stock quotes</source>
-        <extracomment>WatchlistPage page header</extracomment>
+        <extracomment>WatchlistView page header</extracomment>
         <translation type="unfinished">Курсы</translation>
     </message>
     <message>
         <source>Configure alarm</source>
-        <extracomment>WatchlistPage configure alarm menu item</extracomment>
+        <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation type="unfinished">Задать оповещение</translation>
     </message>
     <message>
         <source>Remove</source>
-        <extracomment>WatchlistPage remove menu item</extracomment>
+        <extracomment>WatchlistView remove menu item</extracomment>
         <translation type="unfinished">Удалить</translation>
     </message>
     <message>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
+        <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

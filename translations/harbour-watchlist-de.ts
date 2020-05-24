@@ -167,12 +167,13 @@ AboutPage title - about text title</extracomment>
         <translation>Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/components/MarketdataView.qml" line="163"/>
+        <location filename="../qml/components/MarketdataView.qml" line="164"/>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
+        <extracomment>MarketdataView empty marketdata label</extracomment>
         <translation>Keine Marktdaten vorhanden. Bitte fügen Sie neue Marktdaten über das Pulley-Menü hinzu.</translation>
     </message>
     <message>
-        <location filename="../qml/components/MarketdataView.qml" line="221"/>
+        <location filename="../qml/components/MarketdataView.qml" line="194"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
         <translation>Entfernen</translation>
@@ -701,24 +702,25 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="167"/>
         <source>Stock quotes</source>
-        <extracomment>WatchlistPage page header</extracomment>
+        <extracomment>WatchlistView page header</extracomment>
         <translation>Aktienkurse</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="173"/>
+        <location filename="../qml/components/WatchlistView.qml" line="174"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
+        <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>Keine Aktien in der Watchlist enthalten. Bitte fügen Sie neue Aktien über das Pulley-Menü hinzu.</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="231"/>
+        <location filename="../qml/components/WatchlistView.qml" line="204"/>
         <source>Configure alarm</source>
-        <extracomment>WatchlistPage configure alarm menu item</extracomment>
+        <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>Alarm konfigurieren</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="239"/>
+        <location filename="../qml/components/WatchlistView.qml" line="212"/>
         <source>Remove</source>
-        <extracomment>WatchlistPage remove menu item</extracomment>
+        <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Entfernen</translation>
     </message>
 </context>
