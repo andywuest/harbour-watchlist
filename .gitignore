@@ -36,3 +36,5 @@ RPMS
 *.spec
 
  
+/.idea/
+/watchlist.iml
