@@ -70,6 +70,10 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     marketDataId2ExtRefId["CRYPTO_EOS"] = "99573";
     marketDataId2ExtRefId["CRYPTO_MONERO"] = "99576";
     marketDataId2ExtRefId["CRYPTO_BINANCE_COIN"] = "99574";
+    marketDataId2ExtRefId["CRYPTO_XRP"] = "99569";
+    marketDataId2ExtRefId["CRYPTO_CARDANO"] = "99577";
+    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "99584";
+    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "99587";
 }
 
 EuroinvestorMarketDataBackend::~EuroinvestorMarketDataBackend() {
@@ -134,16 +138,9 @@ QString EuroinvestorMarketDataBackend::processMarketDataResult(QByteArray market
         resultObject.insert("currency", rootObject.value("currency"));
         resultObject.insert("last", rootObject.value("last"));
         resultObject.insert("symbol", rootObject.value("symbol"));
-        // resultObject.insert("isin", rootObject.value("isin"));
         resultObject.insert("stockMarketName", exchangeObject.value("name"));
         resultObject.insert("changeAbsolute", rootObject.value("change"));
         resultObject.insert("changeRelative", rootObject.value("changeInPercentage"));
-        //resultObject.insert("high", rootObject.value("high"));
-        //resultObject.insert("low", rootObject.value("low"));
-        //resultObject.insert("ask", rootObject.value("ask"));
-        //resultObject.insert("bid", rootObject.value("bid"));
-        //resultObject.insert("volume", rootObject.value("volume"));
-        //resultObject.insert("numberOfStocks", rootObject.value("numberOfStocks"));
 
         QJsonValue updatedAt = rootObject.value("updatedAt");
         // TODO move date formatting to a separate method

@@ -94,6 +94,10 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("CRYPTO_IOTA", "IOTA", MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_MONERO", "Monero", MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_COIN", "Binance Coin", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_XRP", "XRP", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_TEZOS", "Tezos", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_CARDANO", "Cardano", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_CHAINLINK", "Chainlink", MARKET_DATA_TYPE_CRYPTO));
 
     return marketDataList;
 }
