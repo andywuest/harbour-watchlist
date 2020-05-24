@@ -36,7 +36,7 @@ ApplicationWindow {
     }
 
     initialPage: Component {
-        WatchlistPage {
+        OverviewPage {
         }
     }
 
