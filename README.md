@@ -6,10 +6,13 @@ At the moment there are two backends that provide the data. There are the public
 rest services that the page https://www.euroinvestor.dk/ uses. The other backend is
 the offical Moscow Exchange API backend. In the future i plan
 to support more backend, e.g. Deutsche Boerse, so you can get more stocks for your
-specific market country.
+specific market country. Additionally there is a news backend with provides some
+stock news news (however in German only). The market overview page also allows
+you to display market indices and crypto currencies.
 
 ## Features
 
+- Market data overview page with indices / currencies / crypto currencies.
 - Watchlist with stocks from all over the world.
 - Add / Remove stocks
 - Update Quotes
