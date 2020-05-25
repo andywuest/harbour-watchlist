@@ -66,13 +66,13 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/AddMarketDataPage.qml" line="54"/>
         <source>Market data</source>
         <extracomment>AddMarketdataPage Market data header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/AddMarketDataPage.qml" line="91"/>
         <source>Add</source>
         <extracomment>AddMarketdataPage add menu item</extracomment>
-        <translation type="unfinished">Lägg till</translation>
+        <translation>Lägg till</translation>
     </message>
 </context>
 <context>
@@ -164,19 +164,19 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/components/MarketdataView.qml" line="157"/>
         <source>Market data</source>
         <extracomment>MarketdataView page header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/components/MarketdataView.qml" line="164"/>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
         <extracomment>MarketdataView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Listan över marknadsdata är tom. Lägg till marknadsdata via toppmenyn.</translation>
     </message>
     <message>
         <location filename="../qml/components/MarketdataView.qml" line="194"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
-        <translation type="unfinished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
 </context>
 <context>
@@ -202,47 +202,47 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/OverviewPage.qml" line="104"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
-        <translation type="unfinished">Om</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="109"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="114"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="122"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="131"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
-        <translation type="unfinished">Lägg till aktie</translation>
+        <translation>Lägg till aktie</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="139"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished">Uppdatera alla aktiekurser</translation>
+        <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="270"/>
         <source>Market data</source>
-        <translation type="unfinished"></translation>
+        <translation>Marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="285"/>
         <source>Watchlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Watchlist</translation>
     </message>
 </context>
 <context>
@@ -703,25 +703,25 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="167"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
-        <translation type="unfinished">Aktiekurser</translation>
+        <translation>Aktiekurser</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="174"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bevakningslistan är tom. Lägg till aktier via toppmenyn.</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="204"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
-        <translation type="unfinished">Konfigurera larm</translation>
+        <translation>Konfigurera larm</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="212"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
-        <translation type="unfinished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
 </context>
 <context>
@@ -729,22 +729,22 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="42"/>
         <source>Index</source>
-        <translation type="unfinished"></translation>
+        <translation>Index</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="43"/>
         <source>Commodity</source>
-        <translation type="unfinished"></translation>
+        <translation>Handelsvara</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="44"/>
         <source>Currency</source>
-        <translation type="unfinished">Valuta</translation>
+        <translation>Valuta</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="45"/>
         <source>Crypto</source>
-        <translation type="unfinished"></translation>
+        <translation>Krypto</translation>
     </message>
 </context>
 <context>
@@ -772,12 +772,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="267"/>
         <source>Market data added</source>
-        <translation type="unfinished"></translation>
+        <translation>Marknadsdata tillagd</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="267"/>
         <source>Error adding market data</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte lägga till marknadsdata</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="291"/>
