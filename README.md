@@ -25,6 +25,8 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 
 ## Screenshots
 
+![Market data](/screenshots/watchlist6.png?raw=true "Market data view")
+![Market data selection](/screenshots/watchlist5.png?raw=true "Market data selection")
 ![Stock overview](/screenshots/watchlist2.png?raw=true "Stock overview")
 ![Stock search](/screenshots/watchlist1.png?raw=true "Stock search")
 ![Alarm configuration](/screenshots/watchlist3.png?raw=true "Alarm configuration")
