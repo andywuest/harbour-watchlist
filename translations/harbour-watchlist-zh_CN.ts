@@ -442,12 +442,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>货币</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
-        <source>Isin</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation>Isin</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="93"/>
         <source>Symbol</source>
         <extracomment>StockDetailsPage page symbol</extracomment>
@@ -534,6 +528,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Charts</source>
         <extracomment>StockDetailsPage page intraday chart</extracomment>
         <translation>图表</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
+        <source>ISIN</source>
+        <extracomment>StockDetailsPage page isin</extracomment>
+        <translation>代码</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="112"/>

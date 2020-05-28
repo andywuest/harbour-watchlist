@@ -83,7 +83,7 @@ Page {
             LabelValueRow {
                 id: isinLabelValueRow
                 //: StockDetailsPage page isin
-                label: qsTr("Isin")
+                label: qsTr("ISIN")
                 value: ''
             }
 

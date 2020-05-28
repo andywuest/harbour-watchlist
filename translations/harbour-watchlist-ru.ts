@@ -371,11 +371,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Общая информация</translation>
     </message>
     <message>
-        <source>Isin</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation>ISIN код</translation>
-    </message>
-    <message>
         <source>Symbol</source>
         <extracomment>StockDetailsPage page symbol</extracomment>
         <translation>Символ</translation>
@@ -451,6 +446,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Объём</translation>
+    </message>
+    <message>
+        <source>ISIN</source>
+        <extracomment>StockDetailsPage page isin</extracomment>
+        <translation>ISIN код</translation>
     </message>
 </context>
 <context>

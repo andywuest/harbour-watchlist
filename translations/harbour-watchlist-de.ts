@@ -442,12 +442,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Allgemeine Daten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
-        <source>Isin</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="93"/>
         <source>Symbol</source>
         <extracomment>StockDetailsPage page symbol</extracomment>
@@ -482,6 +476,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Charts</source>
         <extracomment>StockDetailsPage page intraday chart</extracomment>
         <translation>Charts</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
+        <source>ISIN</source>
+        <extracomment>StockDetailsPage page isin</extracomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/StockDetailsPage.qml" line="112"/>
