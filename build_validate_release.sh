@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # define some variables
 export PROJECT="harbour-watchlist"
 export RPM_VALIDATOR="sdk-harbour-rpmvalidator"
@@ -9,12 +11,15 @@ cd RPMS
 rm -f *.rpm
 cd ..
 
+# determine supported target version string
+export TARGET=$(ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost sdk-assistant list | grep "^Sailfish")
+
 # build new rpm
 # find path more dynamically - not hardcoded
 ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost << EOF
   set -x
   cd /home/src1/projects/sailfishos/github/$PROJECT
-  mb2 --no-snapshot -t SailfishOS-3.2.1.20-armv7hl build
+  mb2 --no-snapshot -t $TARGET-armv7hl build
 EOF
 
 # checkout rpm validator if not yet here
