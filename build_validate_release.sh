@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 
 # define some variables
 export PROJECT="harbour-watchlist"
