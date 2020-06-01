@@ -66,13 +66,13 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/AddMarketDataPage.qml" line="54"/>
         <source>Market data</source>
         <extracomment>AddMarketdataPage Market data header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>市场数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/AddMarketDataPage.qml" line="91"/>
         <source>Add</source>
         <extracomment>AddMarketdataPage add menu item</extracomment>
-        <translation type="unfinished">添加</translation>
+        <translation>添加</translation>
     </message>
 </context>
 <context>
@@ -164,19 +164,19 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/components/MarketdataView.qml" line="157"/>
         <source>Market data</source>
         <extracomment>MarketdataView page header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>股市数据</translation>
     </message>
     <message>
         <location filename="../qml/components/MarketdataView.qml" line="164"/>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
         <extracomment>MarketdataView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>股市数据为空，请通过滚轮菜单添加。</translation>
     </message>
     <message>
         <location filename="../qml/components/MarketdataView.qml" line="194"/>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
-        <translation type="unfinished">移除</translation>
+        <translation>移除</translation>
     </message>
 </context>
 <context>
@@ -193,7 +193,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/NewsPage.qml" line="45"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
-        <translation type="unfinished">新闻</translation>
+        <translation>消息</translation>
     </message>
 </context>
 <context>
@@ -202,47 +202,47 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/OverviewPage.qml" line="104"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
-        <translation type="unfinished">关于</translation>
+        <translation>关于</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="109"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="114"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>添加股市数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="122"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>刷新股市数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="131"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
-        <translation type="unfinished">添加股票</translation>
+        <translation>添加股票</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="139"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished">刷新全部报价</translation>
+        <translation>刷新全部报价</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="270"/>
         <source>Market data</source>
-        <translation type="unfinished"></translation>
+        <translation>股市数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="285"/>
         <source>Watchlist</source>
-        <translation type="unfinished"></translation>
+        <translation>清单</translation>
     </message>
 </context>
 <context>
@@ -346,13 +346,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Download news data</source>
         <extracomment>SettingsPage download news data</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>下载消息数据</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="151"/>
         <source>Defines strategy to download the news data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>自定义下载消息的策略</translation>
     </message>
 </context>
 <context>
@@ -703,25 +703,25 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="167"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
-        <translation type="unfinished">股票报价</translation>
+        <translation>股票报价</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="174"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>清单为空。请通过滚轮菜单添加股票。</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="204"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
-        <translation type="unfinished">配置提醒</translation>
+       <translation>配置提醒</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="212"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
-        <translation type="unfinished">移除</translation>
+        <translation>移除</translation>
     </message>
 </context>
 <context>
@@ -729,22 +729,22 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="42"/>
         <source>Index</source>
-        <translation type="unfinished"></translation>
+        <translation>指数</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="43"/>
         <source>Commodity</source>
-        <translation type="unfinished"></translation>
+        <translation>商品</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="44"/>
         <source>Currency</source>
-        <translation type="unfinished">货币</translation>
+        <translation>货币</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="45"/>
         <source>Crypto</source>
-        <translation type="unfinished"></translation>
+        <translation>Crypto</translation>
     </message>
 </context>
 <context>
@@ -772,12 +772,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="267"/>
         <source>Market data added</source>
-        <translation type="unfinished"></translation>
+        <translation>已添加股市数据</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="267"/>
         <source>Error adding market data</source>
-        <translation type="unfinished"></translation>
+        <translation>添加股市数据出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="291"/>
