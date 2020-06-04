@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+#include "../constants.h"
 #include "euroinvestormarketdatabackend.h"
 
 #include <QDebug>
@@ -92,8 +93,8 @@ EuroinvestorMarketDataBackend::~EuroinvestorMarketDataBackend() {
 QNetworkReply *EuroinvestorMarketDataBackend::executeGetRequest(const QUrl &url) {
     qDebug() << "AbstractDataBackend::executeGetRequest " << url;
     QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, TODO_MIME_TYPE_JSON);
-    request.setHeader(QNetworkRequest::UserAgentHeader, TODO_USER_AGENT);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
 
     return manager->get(request);
 }
@@ -150,15 +151,12 @@ QString EuroinvestorMarketDataBackend::processMarketDataResult(QByteArray market
         resultObject.insert("changeAbsolute", rootObject.value("change"));
         resultObject.insert("changeRelative", rootObject.value("changeInPercentage"));
 
-        QJsonValue updatedAt = rootObject.value("updatedAt");
-        // TODO move date formatting to a separate method
-        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
-        QString updateAtString = dateTimeUpdatedAt.toString("yyyy-MM-dd") + " " + dateTimeUpdatedAt.toString("hh:mm:ss");
-        resultObject.insert("quoteTimestamp", updateAtString);
+        QJsonValue jsonUpdatedAt = rootObject.value("updatedAt");
+        QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonUpdatedAt.toString());
+        resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 
-        QDateTime dateTimeNow = QDateTime::currentDateTime();
-        QString nowString = dateTimeNow.toString("yyyy-MM-dd") + " " + dateTimeNow.toString("hh:mm:ss");
-        resultObject.insert("lastChangeTimestamp", nowString);
+
+        resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
 
         resultArray.push_back(resultObject);
     }
@@ -172,7 +170,20 @@ QString EuroinvestorMarketDataBackend::processMarketDataResult(QByteArray market
 
 void EuroinvestorMarketDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "EuroinvestorMarketDataBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
+    qWarning() << "EuroinvestorMarketDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
 
-    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
+    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
+}
+
+QDateTime EuroinvestorMarketDataBackend::convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString) {
+    QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
+    QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
+
+    qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
+
+    return localDateTime;
+}
+
+QString EuroinvestorMarketDataBackend::convertToDatabaseDateTimeFormat(const QDateTime time) {
+    return time.toString("yyyy-MM-dd") + " " + time.toString("hh:mm:ss");
 }

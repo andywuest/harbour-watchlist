@@ -81,6 +81,7 @@ DISTFILES += \
     qml/pages/NewsPage.qml
 
 HEADERS += \
+    src/constants.h \
     src/euroinvestorbackend.h \
     src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h \

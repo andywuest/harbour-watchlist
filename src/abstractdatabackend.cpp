@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+#include "constants.h"
 #include "abstractdatabackend.h"
 
 #include <QDebug>
@@ -50,9 +51,9 @@ QNetworkReply *AbstractDataBackend::executeGetRequest(const QUrl &url) {
 
 void AbstractDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "AbstractDataBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
+    qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
 
-    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
+    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }
 
 QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
@@ -67,4 +68,8 @@ QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
         case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
     }
     return startDate;
+}
+
+QString AbstractDataBackend::convertToDatabaseDateTimeFormat(const QDateTime time) {
+    return time.toString("yyyy-MM-dd") + " " + time.toString("hh:mm:ss");
 }

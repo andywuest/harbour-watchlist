@@ -76,6 +76,7 @@ private:
     void searchQuoteForNameSearch(const QString &searchString);
     QString processQuoteSearchResult(QByteArray searchReply);
     QString parsePriceResponse(QByteArray priceReply);
+    QDateTime convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString);
 
 private slots:
 //    void handleRequestError(QNetworkReply::NetworkError error);

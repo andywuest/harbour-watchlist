@@ -5,8 +5,6 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-const char TODO_MIME_TYPE_JSON[] = "application/json";
-const char TODO_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0";
 const char API_MARKET_DATA[] = "https://api.euroinvestor.dk/instruments?ids=";
 
 class EuroinvestorMarketDataBackend : public QObject {
@@ -36,8 +34,13 @@ private:
 
     QString processMarketDataResult(QByteArray marketDataResult);
 
+    // TODO next two methods are also in the euroinvestor backend hierarchy - needs to be consolidated
+    QString convertToDatabaseDateTimeFormat(const QDateTime time);
+    QDateTime convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString);
+
 protected slots:
 
+    // TODO also in the euroinvestor backend hierarchy - needs to be consolidated
     void handleRequestError(QNetworkReply::NetworkError error);
 
 private slots:

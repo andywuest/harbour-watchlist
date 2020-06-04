@@ -19,14 +19,11 @@
 #include "chartdatacalculator.h"
 
 #include <QDebug>
-#include <QFile>
 #include <QUrl>
 #include <QUrlQuery>
-#include <QUuid>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDateTime>
-#include <QVariantMap>
 #include <QJsonDocument>
 
 EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
@@ -64,21 +61,6 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
 
     QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
-//    QDate today = QDate::currentDate();
-//    QDate startDate;
-
-//    // TODO use constants as well
-//    switch(chartType) {
-//        case ChartType::INTRADAY: break;
-//        case ChartType::MONTH: startDate = today.addMonths(-1); break;
-//        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
-//        case ChartType::YEAR: startDate = today.addYears(-1); break;
-//        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
-//        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
-//    }
-
-//    QString startDateString = startDate.toString("yyyy-MM-dd");
-
     QNetworkReply *reply;
     if (chartType > 0) {
         reply = executeGetRequest(QUrl(QString(API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
@@ -101,22 +83,6 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
-
-//QNetworkReply *EuroinvestorBackend::executeGetRequest(const QUrl &url) {
-//    qDebug() << "EuroinvestorBackend::executeGetRequest " << url;
-//    QNetworkRequest request(url);
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, EI_MIME_TYPE_JSON);
-//    request.setHeader(QNetworkRequest::UserAgentHeader, EI_USER_AGENT);
-
-//    return manager->get(request);
-//}
-
-//void EuroinvestorBackend::handleRequestError(QNetworkReply::NetworkError error) {
-//    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-//    qWarning() << "EuroinvestorBackend::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
-
-//    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
-//}
 
 void EuroinvestorBackend::handleSearchNameFinished() {
     qDebug() << "EuroinvestorBackend::handleSearchNameFinished";
@@ -206,9 +172,6 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
 
     ChartDataCalculator chartDataCalculator;
 
-//    double min = -1;
-//    double max = -1;
-
     foreach (const QJsonValue & value, responseArray) {
         QJsonObject rootObject = value.toObject();
         QJsonObject resultObject;
@@ -220,37 +183,12 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
 
         chartDataCalculator.checkCloseValue(closeValue);
 
-
-//        if (min == -1) {
-//            min = closeValue;
-//        } else if (closeValue < min) {
-//            min = closeValue;
-//        }
-//        if (max == -1) {
-//            max = closeValue;
-//        } else if (closeValue > max) {
-//            max = closeValue;
-//        }
-
         resultObject.insert("x", dateTimeUpdatedAt.toMSecsSinceEpoch() / 1000);
         resultObject.insert("y", closeValue);
 
         resultArray.push_back(resultObject);
     }
 
-    // top / bottom margin for chart - if the difference is too small - rounding makes no sense.
-//    double roundedMin = (max - min > 1.0) ? floor(min) : min;
-//    double roundedMax = (max - min > 1.0) ? ceil(max) : max;
-
-    // determine how many fraction digits the y-axis is supposed to display
-//    int fractionsDigits = 1;
-//    if (max - min > 10.0) {
-//        fractionsDigits = 0;
-//    } else if (max - min < 2) {
-//        fractionsDigits = 2;
-//    }
-
-    // resultDocument.setArray(resultArray);
     QJsonObject resultObject;
     resultObject.insert("min", chartDataCalculator.getMinValue());
     resultObject.insert("max", chartDataCalculator.getMaxValue());
@@ -295,15 +233,11 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
         resultObject.insert("volume", rootObject.value("volume"));
         resultObject.insert("numberOfStocks", rootObject.value("numberOfStocks"));
 
-        QJsonValue updatedAt = rootObject.value("updatedAt");
-        // TODO move date formatting to a separate method
-        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
-        QString updateAtString = dateTimeUpdatedAt.toString("yyyy-MM-dd") + " " + dateTimeUpdatedAt.toString("hh:mm:ss");
-        resultObject.insert("quoteTimestamp", updateAtString);
+        QJsonValue jsonUpdatedAt = rootObject.value("updatedAt");
+        QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonUpdatedAt.toString());
+        resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 
-        QDateTime dateTimeNow = QDateTime::currentDateTime();
-        QString nowString = dateTimeNow.toString("yyyy-MM-dd") + " " + dateTimeNow.toString("hh:mm:ss");
-        resultObject.insert("lastChangeTimestamp", nowString);
+        resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
 
         resultArray.push_back(resultObject);
     }
@@ -312,6 +246,15 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
     QString dataToString(resultDocument.toJson());
 
     return dataToString;
+}
+
+QDateTime EuroinvestorBackend::convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString) {
+    QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
+    QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
+
+    qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
+
+    return localDateTime;
 }
 
 QString EuroinvestorBackend::convertCurrency(const QString &currencyString) {
