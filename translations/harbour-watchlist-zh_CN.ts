@@ -715,7 +715,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="204"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
-       <translation>配置提醒</translation>
+        <translation>配置提醒</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="212"/>
