@@ -51,11 +51,19 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
 
     // Commodities
     marketDataId2ExtRefId["COM_GOLD"] = "8352";
+    marketDataId2ExtRefId["COM_SILVER"] = "8351";
+    marketDataId2ExtRefId["COM_PLATINUM"] = "8354";
+    marketDataId2ExtRefId["COM_PALLADIUM"] = "8353";
 
     // Currencies
     marketDataId2ExtRefId["CUR_SEK_DKK"] = "36399";
     marketDataId2ExtRefId["CUR_EUR_USD"] = "36278";
     marketDataId2ExtRefId["CUR_GBP_DKK"] = "36274";
+    marketDataId2ExtRefId["CUR_GBP_USD"] = "35299";
+    marketDataId2ExtRefId["CUR_JPY_USD"] = "37895";
+    marketDataId2ExtRefId["CUR_CHF_EUR"] = "37786";
+    marketDataId2ExtRefId["CUR_GBP_EUR"] = "36624";
+    marketDataId2ExtRefId["CUR_USD_EUR"] = "29749";
 
     // Crypto Currencies
     marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "99567";

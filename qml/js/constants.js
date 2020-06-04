@@ -77,11 +77,19 @@ function buildMarketDataList() {
 
     // Commodity
     marketDataList.push(addMarketDataItem("COM_GOLD", "Gold", MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_SILVER", "Silver", MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_PLATINUM", "Platinum", MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_PALLADIUM", "Palladium", MARKET_DATA_TYPE_COMMODITY));
 
     // Currency
     marketDataList.push(addMarketDataItem("CUR_EUR_USD", "EUR/USD", MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_SEK_DKK", "SEK/DKK", MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_GBP_DKK", "GBP/DKK", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_USD", "GBP/USD", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_JPY_USD", "JPY/USD", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_CHF_EUR", "CHF/EUR", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_EUR", "GBP/EUR", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_USD_EUR", "USD/EUR", MARKET_DATA_TYPE_CURRENCY));
 
     // Crypto
     marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", "Bitcoin", MARKET_DATA_TYPE_CRYPTO));
