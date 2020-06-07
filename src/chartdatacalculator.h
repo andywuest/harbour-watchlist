@@ -12,8 +12,8 @@ public:
     int getFractionDigits();
 
 private:
-    double min = -1;
-    double max = -1;
+    double min = -1.0;
+    double max = -1.0;
 
 };
 

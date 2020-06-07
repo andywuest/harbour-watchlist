@@ -176,14 +176,19 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
         QJsonObject rootObject = value.toObject();
         QJsonObject resultObject;
 
-        QJsonValue updatedAt = rootObject.value("timestamp");
-        QDateTime dateTimeUpdatedAt = QDateTime::fromString(updatedAt.toString(), Qt::ISODate);
+        QJsonValue jsonUpdatedAt = rootObject.value("timestamp");
+//        QDateTime dateTimeUpdatedAt = QDateTime::fromString(jsonUpdatedAt.toString(), Qt::ISODate);
+
+        QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonUpdatedAt.toString());
+
+//        qDebug() << dateTimeUpdatedAt << " - " << updatedAtLocalTime;
+
 
         double closeValue = rootObject.value("close").toDouble();
 
         chartDataCalculator.checkCloseValue(closeValue);
 
-        resultObject.insert("x", dateTimeUpdatedAt.toMSecsSinceEpoch() / 1000);
+        resultObject.insert("x", updatedAtLocalTime.toMSecsSinceEpoch() / 1000);
         resultObject.insert("y", closeValue);
 
         resultArray.push_back(resultObject);
@@ -252,7 +257,7 @@ QDateTime EuroinvestorBackend::convertUTCDateTimeToLocalDateTime(const QString u
     QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
     QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
 
-    qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
+    // qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
 
     return localDateTime;
 }

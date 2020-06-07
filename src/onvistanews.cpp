@@ -73,10 +73,6 @@ void OnvistaNews::handleSearchStockNews() {
             QString url = newsObject["url"].toString();
             QString dateTime = newsObject["datetime"].toString();
 
-            qDebug() << "headline : " << headline;
-            qDebug() << "content : " << content;
-//            qDebug() << "content stripped : " << content.remove(QRegExp("<table>(.*)</table>")).remove(QRegExp("<[^>]*>"));
-
             QJsonObject resultObject;
 
             resultObject.insert("headline", headline);
@@ -117,7 +113,7 @@ QString OnvistaNews::filterContent(QString &content) {
 
 void OnvistaNews::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "OnvistaNews::handleRequestError:" << (int)error << reply->errorString() << reply->readAll();
+    qWarning() << "OnvistaNews::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
 
-    emit requestError("Return code: " + QString::number((int)error) + " - " + reply->errorString());
+    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }

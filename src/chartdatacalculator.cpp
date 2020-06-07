@@ -5,12 +5,12 @@ ChartDataCalculator::ChartDataCalculator() {
 }
 
 void ChartDataCalculator::checkCloseValue(double value) {
-    if (min == -1) {
+    if (min < 0.0) {
         min = value;
     } else if (value < min) {
         min = value;
     }
-    if (max == -1) {
+    if (max < 0.0) {
         max = value;
     } else if (value > max) {
         max = value;
