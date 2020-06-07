@@ -625,6 +625,162 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Crypto</source>
         <translation>Криптовалюта</translation>
     </message>
+    <message>
+        <source>DAX 30</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MDAX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SDAX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TecDAX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;P 500</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NASDAQ Composite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dow Jones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CAC 40</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SBF 120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CAC Next20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OMX C25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OMX Stockholm 30</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OSEBX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Silver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Platinum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Palladium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EUR/USD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SEK/DKK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP/DKK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP/USD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JPY/USD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CHF/EUR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP/EUR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>USD/EUR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bitcoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bitcoin Cash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bitcoin Gold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Litecoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ethereum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tether</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IOTA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Monero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Binance Coin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>XRP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tezos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cardano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chainlink</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>database</name>

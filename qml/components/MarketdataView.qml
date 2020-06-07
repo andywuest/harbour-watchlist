@@ -227,7 +227,7 @@ SilicaFlickable {
                                     id: stockQuoteName
                                     width: parent.width * 8 / 10
                                     height: parent.height
-                                    text: name
+                                    text: Functions.lookupMarketDataName(id);
                                     // truncationMode: TruncationMode.Elide // TODO check for very long texts
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeSmall

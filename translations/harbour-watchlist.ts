@@ -746,6 +746,201 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Crypto</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="60"/>
+        <source>DAX 30</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="61"/>
+        <source>MDAX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="62"/>
+        <source>SDAX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="63"/>
+        <source>TecDAX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="65"/>
+        <source>S&amp;P 500</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="66"/>
+        <source>NASDAQ Composite</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="67"/>
+        <source>Dow Jones</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="69"/>
+        <source>CAC 40</source>
+        <translation"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="70"/>
+        <source>SBF 120</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="71"/>
+        <source>CAC Next20</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="73"/>
+        <source>OMX C25</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="74"/>
+        <source>OMX Stockholm 30</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="75"/>
+        <source>OSEBX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="78"/>
+        <source>Gold</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="79"/>
+        <source>Silver</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="80"/>
+        <source>Platinum</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="81"/>
+        <source>Palladium</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="84"/>
+        <source>EUR/USD</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="85"/>
+        <source>SEK/DKK</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="86"/>
+        <source>GBP/DKK</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="87"/>
+        <source>GBP/USD</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="88"/>
+        <source>JPY/USD</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="89"/>
+        <source>CHF/EUR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="90"/>
+        <source>GBP/EUR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="91"/>
+        <source>USD/EUR</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="94"/>
+        <source>Bitcoin</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="95"/>
+        <source>Bitcoin Cash</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="96"/>
+        <source>Bitcoin Gold</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="97"/>
+        <source>Litecoin</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="98"/>
+        <source>Dash</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="99"/>
+        <source>Ethereum</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="100"/>
+        <source>Tether</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="101"/>
+        <source>IOTA</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="102"/>
+        <source>Monero</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="103"/>
+        <source>Binance Coin</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="104"/>
+        <source>XRP</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="105"/>
+        <source>Tezos</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="106"/>
+        <source>Cardano</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/constants.js" line="107"/>
+        <source>Chainlink</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>database</name>

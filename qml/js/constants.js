@@ -49,7 +49,6 @@ function addMarketDataItem(id, name, marketDataType) {
     entry.id = id;
     entry.name = name;
     entry.typeId = marketDataType;
-    entry.stockMarketName = ""; // TODO remove
     entry.typeName = MARKET_DATA_TYPE_LABEL[marketDataType];
     return entry;
 }
@@ -58,54 +57,54 @@ function buildMarketDataList() {
     var marketDataList = [];
     // Index
     // DE
-    marketDataList.push(addMarketDataItem("INDEX_DAX", "DAX 30", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_MDAX", "MDAX", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_SDAX", "SDAX", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_TECDAX", "TecDAX", MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_DAX", qsTr("DAX 30"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_MDAX", qsTr("MDAX"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_SDAX", qsTr("SDAX"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_TECDAX", qsTr("TecDAX"), MARKET_DATA_TYPE_INDEX));
     // US
-    marketDataList.push(addMarketDataItem("INDEX_S&P500", "S&P 500", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_NASDAQ", "NASDAQ Composite", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_DOWJONES", "Dow Jones", MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_S&P500", qsTr("S&P 500"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_NASDAQ", qsTr("NASDAQ Composite"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_DOWJONES", qsTr("Dow Jones"), MARKET_DATA_TYPE_INDEX));
     // France
-    marketDataList.push(addMarketDataItem("INDEX_CAC40", "CAC 40", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_SBF120", "SBF 120", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_CN20", "CAC Next20", MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_CAC40", qsTr("CAC 40"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_SBF120", qsTr("SBF 120"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_CN20", qsTr("CAC Next20"), MARKET_DATA_TYPE_INDEX));
 
-    marketDataList.push(addMarketDataItem("INDEX_OMC_C25", "OMX C25", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_OMXS30", "OMX Stockholm 30", MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_OSEBX", "OSEBX", MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_OMC_C25", qsTr("OMX C25"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_OMXS30", qsTr("OMX Stockholm 30"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_OSEBX", qsTr("OSEBX"), MARKET_DATA_TYPE_INDEX));
 
     // Commodity
-    marketDataList.push(addMarketDataItem("COM_GOLD", "Gold", MARKET_DATA_TYPE_COMMODITY));
-    marketDataList.push(addMarketDataItem("COM_SILVER", "Silver", MARKET_DATA_TYPE_COMMODITY));
-    marketDataList.push(addMarketDataItem("COM_PLATINUM", "Platinum", MARKET_DATA_TYPE_COMMODITY));
-    marketDataList.push(addMarketDataItem("COM_PALLADIUM", "Palladium", MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_GOLD", qsTr("Gold"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_SILVER", qsTr("Silver"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_PLATINUM", qsTr("Platinum"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_PALLADIUM", qsTr("Palladium"), MARKET_DATA_TYPE_COMMODITY));
 
     // Currency
-    marketDataList.push(addMarketDataItem("CUR_EUR_USD", "EUR/USD", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_SEK_DKK", "SEK/DKK", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_GBP_DKK", "GBP/DKK", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_GBP_USD", "GBP/USD", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_JPY_USD", "JPY/USD", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_CHF_EUR", "CHF/EUR", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_GBP_EUR", "GBP/EUR", MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_USD_EUR", "USD/EUR", MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_EUR_USD", qsTr("EUR/USD"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_SEK_DKK", qsTr("SEK/DKK"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_DKK", qsTr("GBP/DKK"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_USD", qsTr("GBP/USD"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_JPY_USD", qsTr("JPY/USD"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_CHF_EUR", qsTr("CHF/EUR"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_EUR", qsTr("GBP/EUR"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_USD_EUR", qsTr("USD/EUR"), MARKET_DATA_TYPE_CURRENCY));
 
     // Crypto
-    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", "Bitcoin", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_CASH", "Bitcoin Cash", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_GOLD", "Bitcoin Gold", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_LITECOIN", "Litecoin", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_DASH", "Dash", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_ETHEREUM", "Ethereum", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_TETHER", "Tether", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_IOTA", "IOTA", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_MONERO", "Monero", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_COIN", "Binance Coin", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_XRP", "XRP", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_TEZOS", "Tezos", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_CARDANO", "Cardano", MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_CHAINLINK", "Chainlink", MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", qsTr("Bitcoin"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_CASH", qsTr("Bitcoin Cash"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_GOLD", qsTr("Bitcoin Gold"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_LITECOIN", qsTr("Litecoin"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_DASH", qsTr("Dash"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_ETHEREUM", qsTr("Ethereum"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_TETHER", qsTr("Tether"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_IOTA", qsTr("IOTA"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_MONERO", qsTr("Monero"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_COIN", qsTr("Binance Coin"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_XRP", qsTr("XRP"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_TEZOS", qsTr("Tezos"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_CARDANO", qsTr("Cardano"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_CHAINLINK", qsTr("Chainlink"), MARKET_DATA_TYPE_CRYPTO));
 
     return marketDataList;
 }

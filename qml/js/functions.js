@@ -117,4 +117,11 @@ function log(message) {
     }
 }
 
-
+function lookupMarketDataName(marketDataId) {
+    for (var i = 0; i < MARKET_DATA_LIST.length; i++) {
+        if (MARKET_DATA_LIST[i].id === marketDataId) {
+            return MARKET_DATA_LIST[i].name;
+        }
+    }
+    return "-";
+}
