@@ -60,7 +60,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>Market data</source>
         <extracomment>AddMarketdataPage Market data header</extracomment>
-        <translation>Данные рынка</translation>
+        <translation>Котировки</translation>
     </message>
 </context>
 <context>
@@ -139,7 +139,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>Market data</source>
         <extracomment>MarketdataView page header</extracomment>
-        <translation>Данные рынка</translation>
+        <translation>Котировки</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -149,7 +149,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
         <extracomment>MarketdataView empty marketdata label</extracomment>
-        <translation>Список пуст. Добавьте данные рынка с помощью меню.</translation>
+        <translation>Список пуст. Добавьте индексы и котировки с помощью меню.</translation>
     </message>
 </context>
 <context>
@@ -171,11 +171,11 @@ AboutPage title - about text title</extracomment>
     <name>OverviewPage</name>
     <message>
         <source>Market data</source>
-        <translation>Данные рынка</translation>
+        <translation>Котировки</translation>
     </message>
     <message>
         <source>Watchlist</source>
-        <translation>Watchlist</translation>
+        <translation>Ценные бумаги</translation>
     </message>
     <message>
         <source>About</source>
@@ -200,12 +200,12 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
-        <translation>Обновить данные рынка</translation>
+        <translation>Обновить котировки</translation>
     </message>
     <message>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
-        <translation>Добавить данные</translation>
+        <translation>Добавить котировки</translation>
     </message>
 </context>
 <context>
@@ -611,19 +611,19 @@ SettingsPage news download strategy only on wifi</extracomment>
     <name>constants</name>
     <message>
         <source>Index</source>
-        <translation>Индекс</translation>
+        <translation>Индексы</translation>
     </message>
     <message>
         <source>Commodity</source>
-        <translation>Товар</translation>
+        <translation>Товары</translation>
     </message>
     <message>
         <source>Currency</source>
-        <translation>Валюта</translation>
+        <translation>Валюты</translation>
     </message>
     <message>
         <source>Crypto</source>
-        <translation>Криптовалюта</translation>
+        <translation>Криптовалюты</translation>
     </message>
     <message>
         <source>DAX 30</source>
@@ -679,19 +679,19 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Золото</translation>
     </message>
     <message>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation>Серебро</translation>
     </message>
     <message>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation>Платина</translation>
     </message>
     <message>
         <source>Palladium</source>
-        <translation type="unfinished"></translation>
+        <translation>Палладий</translation>
     </message>
     <message>
         <source>EUR/USD</source>
@@ -810,11 +810,11 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Market data added</source>
-        <translation>Данные рынка добавлены</translation>
+        <translation>Котировка добавлена</translation>
     </message>
     <message>
         <source>Error adding market data</source>
-        <translation>Ошибка при добавлении данных рынка</translation>
+        <translation>Ошибка при добавлении котировок</translation>
     </message>
 </context>
 <context>
