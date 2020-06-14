@@ -5,10 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.1-1
+* 14.06.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.1-1
 - translatable market data names
 - display times not in UTC but in local time
 - fixed some compiler warnings
+- updated translation (Russian)
 
 * 31.05.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.0-1
 - added market data view / page - allows you to add indicies / currencies / commodities
