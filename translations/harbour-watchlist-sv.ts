@@ -814,7 +814,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="78"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Guld</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="79"/>
@@ -824,7 +824,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="80"/>
         <source>Platinum</source>
-        <translation type="unfinished"></translation>
+        <translation>Platina</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="81"/>
