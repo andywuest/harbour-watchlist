@@ -194,7 +194,6 @@ CoverBackground {
         delegate: ListItem {
 
             // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
-            opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
             contentHeight: stockQuoteColumn.height + Theme.paddingSmall
 
             // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
@@ -263,6 +262,13 @@ CoverBackground {
         onVisibleChanged: {
             reloadAllStocks()
         }
+    }
+
+    OpacityRampEffect {
+        sourceItem: coverListView
+        direction: OpacityRamp.TopToBottom
+        offset: 0.6
+        slope: 3.75
     }
 
 }
