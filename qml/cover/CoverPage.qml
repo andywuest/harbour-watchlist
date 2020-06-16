@@ -174,30 +174,26 @@ CoverBackground {
 
         anchors.fill: parent
 
-        Text {
-            id: labelTitle
-            width: parent.width
-            topPadding: Theme.paddingLarge
-            bottomPadding: Theme.paddingMedium
-            text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
-            color: Theme.primaryColor
-            font.bold: true
-            font.pixelSize: Theme.fontSizeSmall
-            textFormat: Text.StyledText
-            horizontalAlignment: Text.AlignHCenter
-        }
-
         SilicaListView {
             id: coverListView
 
-            height: parent.height - labelTitle.height - Theme.paddingSmall
-            width: parent.width
-            anchors.left: parent.left
-            anchors.right: parent.right
-            clip: true
+            anchors.fill: parent
 
             model: ListModel {
                 id: coverModel
+            }
+
+            header: Text {
+                id: labelTitle
+                width: parent.width
+                topPadding: Theme.paddingLarge
+                bottomPadding: Theme.paddingMedium
+                text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
+                color: Theme.primaryColor
+                font.bold: true
+                font.pixelSize: Theme.fontSizeSmall
+                textFormat: Text.StyledText
+                horizontalAlignment: Text.AlignHCenter
             }
 
             delegate: ListItem {
