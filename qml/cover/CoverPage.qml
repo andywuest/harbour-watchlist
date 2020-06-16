@@ -213,67 +213,59 @@ CoverBackground {
                     // height: stockQuoteRow.height + stockQuoteSeparator.height
                     height: stockQuoteColumn.height + Theme.paddingSmall
 
-                    Row {
-                        id: stockQuoteRow
-                        width: parent.width
-                        //                        spacing: Theme.paddingSmall
+                    // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
+                    Column {
+                        id: stockQuoteColumn
+                        width: parent.width // - (2 * Theme.horizontalPageMargin)
+                        // x: Theme.horizontalPageMargin
+                        height: firstRow.height //+ changeRow.height
+                        /* + secondRow.height*/ + thirdRow.height
                         anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
 
-                        // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
-                        Column {
-                            id: stockQuoteColumn
-                            width: parent.width // - (2 * Theme.horizontalPageMargin)
-                            // x: Theme.horizontalPageMargin
-                            height: firstRow.height //+ changeRow.height
-                            /* + secondRow.height*/ + thirdRow.height
-                            anchors.verticalCenter: parent.verticalCenter
+                        Row {
+                            id: firstRow
+                            width: parent.width
+                            height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
-                            Row {
-                                id: firstRow
-                                width: parent.width
-                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+                            Label {
+                                id: stockQuoteName
+                                width: parent.width // * 8 / 10
+                                height: parent.height
+                                text: name
+                                // truncationMode: TruncationMode.Elide // TODO check for very long texts
+                                color: Theme.primaryColor
+                                font.pixelSize: Theme.fontSizeExtraSmall
+                                font.bold: true
+                                horizontalAlignment: Text.AlignLeft
+                                truncationMode: TruncationMode.Fade
+                            }
+                        }
 
-                                Label {
-                                    id: stockQuoteName
-                                    width: parent.width // * 8 / 10
-                                    height: parent.height
-                                    text: name
-                                    // truncationMode: TruncationMode.Elide // TODO check for very long texts
-                                    color: Theme.primaryColor
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    font.bold: true
-                                    horizontalAlignment: Text.AlignLeft
-                                    truncationMode: TruncationMode.Fade
-                                }
+                        Row {
+                            id: thirdRow
+                            width: parent.width
+                            height: Theme.fontSizeTiny + Theme.paddingSmall
+
+                            Text {
+                                id: stockQuoteChange
+                                width: parent.width / 2
+                                height: parent.height
+                                text: Functions.renderPrice(price, currency)
+                                color: Theme.highlightColor
+                                font.pixelSize: Theme.fontSizeTiny
+                                font.bold: true
+                                horizontalAlignment: Text.AlignLeft
                             }
 
-                            Row {
-                                id: thirdRow
-                                width: parent.width
-                                height: Theme.fontSizeTiny + Theme.paddingSmall
-
-                                Text {
-                                    id: stockQuoteChange
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    text: Functions.renderPrice(price, currency)
-                                    color: Theme.highlightColor
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    font.bold: true
-                                    horizontalAlignment: Text.AlignLeft
-                                }
-
-                                Text {
-                                    id: changePercentageText
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    text: Functions.renderChange(price, changeRelative, '%')
-                                    color: Functions.determineChangeColor(
-                                               changeRelative)
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    horizontalAlignment: Text.AlignRight
-                                }
+                            Text {
+                                id: changePercentageText
+                                width: parent.width / 2
+                                height: parent.height
+                                text: Functions.renderChange(price, changeRelative, '%')
+                                color: Functions.determineChangeColor(
+                                            changeRelative)
+                                font.pixelSize: Theme.fontSizeTiny
+                                horizontalAlignment: Text.AlignRight
                             }
                         }
                     }
