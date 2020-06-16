@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.2
+import QtQuick 2.6
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
@@ -171,22 +171,14 @@ CoverBackground {
         Behavior on opacity { NumberAnimation {} }
         opacity: coverPage.loading ? 0 : 1
         //spacing: Theme.paddingSmall
-        width: parent.width
-        height: parent.height
 
-        anchors {
-            top: parent.top
-            topMargin: Theme.paddingMedium
-            left: parent.left
-            //leftMargin: Theme.paddingMedium
-            right: parent.right
-            rightMargin: Theme.paddingMedium
-            bottom: parent.bottom
-        }
+        anchors.fill: parent
 
         Text {
             id: labelTitle
             width: parent.width
+            topPadding: Theme.paddingLarge
+            bottomPadding: Theme.paddingMedium
             text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
             color: Theme.primaryColor
             font.bold: true
@@ -210,23 +202,20 @@ CoverBackground {
 
             delegate: ListItem {
 
-                anchors {
-                    topMargin: Theme.paddingSmall
-                }
-
                 // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
                 opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
+                contentHeight: stockQuoteItem.height
 
                 Item {
                     id: stockQuoteItem
-                    width: parent.width
+                    x: Theme.paddingLarge
+                    width: parent.width - 2 * Theme.paddingLarge
                     // height: stockQuoteRow.height + stockQuoteSeparator.height
-                    height: stockQuoteColumn.height + thirdRow.height + Theme.paddingSmall
-                    y: Theme.paddingSmall
+                    height: stockQuoteColumn.height + Theme.paddingSmall
 
                     Row {
                         id: stockQuoteRow
-                        width: parent.width - (2 * Theme.horizontalPageMargin)
+                        width: parent.width
                         //                        spacing: Theme.paddingSmall
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -245,7 +234,7 @@ CoverBackground {
                                 width: parent.width
                                 height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
-                                Text {
+                                Label {
                                     id: stockQuoteName
                                     width: parent.width // * 8 / 10
                                     height: parent.height
@@ -255,7 +244,7 @@ CoverBackground {
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     font.bold: true
                                     horizontalAlignment: Text.AlignLeft
-                                    elide: Text.ElideRight
+                                    truncationMode: TruncationMode.Fade
                                 }
                             }
 
