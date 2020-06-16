@@ -165,120 +165,103 @@ CoverBackground {
         }
     }
 
-    Column {
-        id: coverColumn
+    SilicaListView {
+        id: coverListView
+
         visible: !coverPage.loading
         Behavior on opacity { NumberAnimation {} }
         opacity: coverPage.loading ? 0 : 1
-        //spacing: Theme.paddingSmall
 
         anchors.fill: parent
 
-        SilicaListView {
-            id: coverListView
+        model: ListModel {
+            id: coverModel
+        }
 
-            anchors.fill: parent
+        header: Text {
+            id: labelTitle
+            width: parent.width
+            topPadding: Theme.paddingLarge
+            bottomPadding: Theme.paddingMedium
+            text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
+            color: Theme.primaryColor
+            font.bold: true
+            font.pixelSize: Theme.fontSizeSmall
+            textFormat: Text.StyledText
+            horizontalAlignment: Text.AlignHCenter
+        }
 
-            model: ListModel {
-                id: coverModel
-            }
+        delegate: ListItem {
 
-            header: Text {
-                id: labelTitle
-                width: parent.width
-                topPadding: Theme.paddingLarge
-                bottomPadding: Theme.paddingMedium
-                text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
-                color: Theme.primaryColor
-                font.bold: true
-                font.pixelSize: Theme.fontSizeSmall
-                textFormat: Text.StyledText
-                horizontalAlignment: Text.AlignHCenter
-            }
+            // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
+            opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
+            contentHeight: stockQuoteColumn.height + Theme.paddingSmall
 
-            delegate: ListItem {
+            // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
+            Column {
+                id: stockQuoteColumn
+                x: Theme.paddingLarge
+                width: parent.width - 2 * Theme.paddingLarge
+                anchors.verticalCenter: parent.verticalCenter
 
-                // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
-                opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
-                contentHeight: stockQuoteItem.height
+                Row {
+                    id: firstRow
+                    width: parent.width
+                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
-                Item {
-                    id: stockQuoteItem
-                    x: Theme.paddingLarge
-                    width: parent.width - 2 * Theme.paddingLarge
-                    // height: stockQuoteRow.height + stockQuoteSeparator.height
-                    height: stockQuoteColumn.height + Theme.paddingSmall
+                    Label {
+                        id: stockQuoteName
+                        width: parent.width // * 8 / 10
+                        height: parent.height
+                        text: name
+                        // truncationMode: TruncationMode.Elide // TODO check for very long texts
+                        color: Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.bold: true
+                        horizontalAlignment: Text.AlignLeft
+                        truncationMode: TruncationMode.Fade
+                    }
+                }
 
-                    // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
-                    Column {
-                        id: stockQuoteColumn
-                        width: parent.width // - (2 * Theme.horizontalPageMargin)
-                        // x: Theme.horizontalPageMargin
-                        height: firstRow.height //+ changeRow.height
-                        /* + secondRow.height*/ + thirdRow.height
-                        anchors.verticalCenter: parent.verticalCenter
+                Row {
+                    id: thirdRow
+                    width: parent.width
+                    height: Theme.fontSizeTiny + Theme.paddingSmall
 
-                        Row {
-                            id: firstRow
-                            width: parent.width
-                            height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+                    Text {
+                        id: stockQuoteChange
+                        width: parent.width / 2
+                        height: parent.height
+                        text: Functions.renderPrice(price, currency)
+                        color: Theme.highlightColor
+                        font.pixelSize: Theme.fontSizeTiny
+                        font.bold: true
+                        horizontalAlignment: Text.AlignLeft
+                    }
 
-                            Label {
-                                id: stockQuoteName
-                                width: parent.width // * 8 / 10
-                                height: parent.height
-                                text: name
-                                // truncationMode: TruncationMode.Elide // TODO check for very long texts
-                                color: Theme.primaryColor
-                                font.pixelSize: Theme.fontSizeExtraSmall
-                                font.bold: true
-                                horizontalAlignment: Text.AlignLeft
-                                truncationMode: TruncationMode.Fade
-                            }
-                        }
-
-                        Row {
-                            id: thirdRow
-                            width: parent.width
-                            height: Theme.fontSizeTiny + Theme.paddingSmall
-
-                            Text {
-                                id: stockQuoteChange
-                                width: parent.width / 2
-                                height: parent.height
-                                text: Functions.renderPrice(price, currency)
-                                color: Theme.highlightColor
-                                font.pixelSize: Theme.fontSizeTiny
-                                font.bold: true
-                                horizontalAlignment: Text.AlignLeft
-                            }
-
-                            Text {
-                                id: changePercentageText
-                                width: parent.width / 2
-                                height: parent.height
-                                text: Functions.renderChange(price, changeRelative, '%')
-                                color: Functions.determineChangeColor(
-                                            changeRelative)
-                                font.pixelSize: Theme.fontSizeTiny
-                                horizontalAlignment: Text.AlignRight
-                            }
-                        }
+                    Text {
+                        id: changePercentageText
+                        width: parent.width / 2
+                        height: parent.height
+                        text: Functions.renderChange(price, changeRelative, '%')
+                        color: Functions.determineChangeColor(changeRelative)
+                        font.pixelSize: Theme.fontSizeTiny
+                        horizontalAlignment: Text.AlignRight
                     }
                 }
             }
+        }
 
-            Component.onCompleted: {
-                Database.initApplicationTables()
-                var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
-                dataBackend.quoteResultAvailable.connect(quoteResultHandler)
-                dataBackend.requestError.connect(errorResultHandler)
-                reloadAllStocks()
-            }
+        Component.onCompleted: {
+            Database.initApplicationTables()
+            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            dataBackend.quoteResultAvailable.connect(quoteResultHandler)
+            dataBackend.requestError.connect(errorResultHandler)
+            reloadAllStocks()
+        }
 
-            onVisibleChanged: {
-                reloadAllStocks()
-            }
+        onVisibleChanged: {
+            reloadAllStocks()
         }
     }
 
