@@ -54,7 +54,7 @@ AboutPage title - about text title</extracomment>
         <translation>Bidragsgivare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="149"/>
+        <location filename="../qml/pages/AboutPage.qml" line="150"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>Källkod</translation>
@@ -132,12 +132,12 @@ AboutPage title - about text title</extracomment>
         <translation>Läser in...</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="190"/>
+        <location filename="../qml/cover/CoverPage.qml" line="186"/>
         <source>Top</source>
         <translation>Topp</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="190"/>
+        <location filename="../qml/cover/CoverPage.qml" line="186"/>
         <source>Flop</source>
         <translation>Flopp</translation>
     </message>

@@ -126,7 +126,8 @@ Page {
                 //: AboutPage contributors label
                 label: qsTr("Contributors")
                 text: "Okxa (icon)\n" +
-                      "dikonov (small patch)"
+                      "dikonov (small patch)\n" +
+                      "Dmitry Gerasimov (UI Cover patches)"
                 separator: true
             }
 

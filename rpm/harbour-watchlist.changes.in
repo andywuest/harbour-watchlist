@@ -5,6 +5,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.2-1
+- Cover page UI polishing by Dmitry Gerasimov
+
 * 14.06.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.1-1
 - translatable market data names
 - display times not in UTC but in local time
