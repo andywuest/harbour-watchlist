@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.2
+import QtQuick 2.6
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
@@ -165,28 +165,24 @@ CoverBackground {
         }
     }
 
-    Column {
-        id: coverColumn
+    SilicaListView {
+        id: coverListView
+
         visible: !coverPage.loading
         Behavior on opacity { NumberAnimation {} }
         opacity: coverPage.loading ? 0 : 1
-        //spacing: Theme.paddingSmall
-        width: parent.width
-        height: parent.height
 
-        anchors {
-            top: parent.top
-            topMargin: Theme.paddingMedium
-            left: parent.left
-            //leftMargin: Theme.paddingMedium
-            right: parent.right
-            rightMargin: Theme.paddingMedium
-            bottom: parent.bottom
+        anchors.fill: parent
+
+        model: ListModel {
+            id: coverModel
         }
 
-        Text {
+        header: Text {
             id: labelTitle
             width: parent.width
+            topPadding: Theme.paddingLarge
+            bottomPadding: Theme.paddingMedium
             text: coverActionPrevious.enabled ? qsTr("Top") : qsTr("Flop")
             color: Theme.primaryColor
             font.bold: true
@@ -195,114 +191,84 @@ CoverBackground {
             horizontalAlignment: Text.AlignHCenter
         }
 
-        SilicaListView {
-            id: coverListView
+        delegate: ListItem {
 
-            height: parent.height - labelTitle.height - Theme.paddingSmall
-            width: parent.width
-            anchors.left: parent.left
-            anchors.right: parent.right
-            clip: true
+            // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
+            contentHeight: stockQuoteColumn.height + Theme.paddingSmall
 
-            model: ListModel {
-                id: coverModel
-            }
+            // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
+            Column {
+                id: stockQuoteColumn
+                x: Theme.paddingLarge
+                width: parent.width - 2 * Theme.paddingLarge
+                anchors.verticalCenter: parent.verticalCenter
 
-            delegate: ListItem {
+                Row {
+                    id: firstRow
+                    width: parent.width
+                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
-                anchors {
-                    topMargin: Theme.paddingSmall
+                    Label {
+                        id: stockQuoteName
+                        width: parent.width // * 8 / 10
+                        height: parent.height
+                        text: name
+                        // truncationMode: TruncationMode.Elide // TODO check for very long texts
+                        color: Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.bold: true
+                        horizontalAlignment: Text.AlignLeft
+                        truncationMode: TruncationMode.Fade
+                    }
                 }
 
-                // height: resultLabelTitle.height + resultLabelContent.height + Theme.paddingSmall
-                opacity: index < 4 ? 1.0 - index * 0.2 : 0.0
-
-                Item {
-                    id: stockQuoteItem
+                Row {
+                    id: thirdRow
                     width: parent.width
-                    // height: stockQuoteRow.height + stockQuoteSeparator.height
-                    height: stockQuoteColumn.height + thirdRow.height + Theme.paddingSmall
-                    y: Theme.paddingSmall
+                    height: Theme.fontSizeTiny + Theme.paddingSmall
 
-                    Row {
-                        id: stockQuoteRow
-                        width: parent.width - (2 * Theme.horizontalPageMargin)
-                        //                        spacing: Theme.paddingSmall
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
+                    Text {
+                        id: stockQuoteChange
+                        width: parent.width / 2
+                        height: parent.height
+                        text: Functions.renderPrice(price, currency)
+                        color: Theme.highlightColor
+                        font.pixelSize: Theme.fontSizeTiny
+                        font.bold: true
+                        horizontalAlignment: Text.AlignLeft
+                    }
 
-                        // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
-                        Column {
-                            id: stockQuoteColumn
-                            width: parent.width // - (2 * Theme.horizontalPageMargin)
-                            // x: Theme.horizontalPageMargin
-                            height: firstRow.height //+ changeRow.height
-                            /* + secondRow.height*/ + thirdRow.height
-                            anchors.verticalCenter: parent.verticalCenter
-
-                            Row {
-                                id: firstRow
-                                width: parent.width
-                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
-                                Text {
-                                    id: stockQuoteName
-                                    width: parent.width // * 8 / 10
-                                    height: parent.height
-                                    text: name
-                                    // truncationMode: TruncationMode.Elide // TODO check for very long texts
-                                    color: Theme.primaryColor
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    font.bold: true
-                                    horizontalAlignment: Text.AlignLeft
-                                    elide: Text.ElideRight
-                                }
-                            }
-
-                            Row {
-                                id: thirdRow
-                                width: parent.width
-                                height: Theme.fontSizeTiny + Theme.paddingSmall
-
-                                Text {
-                                    id: stockQuoteChange
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    text: Functions.renderPrice(price, currency)
-                                    color: Theme.highlightColor
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    font.bold: true
-                                    horizontalAlignment: Text.AlignLeft
-                                }
-
-                                Text {
-                                    id: changePercentageText
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    text: Functions.renderChange(price, changeRelative, '%')
-                                    color: Functions.determineChangeColor(
-                                               changeRelative)
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    horizontalAlignment: Text.AlignRight
-                                }
-                            }
-                        }
+                    Text {
+                        id: changePercentageText
+                        width: parent.width / 2
+                        height: parent.height
+                        text: Functions.renderChange(price, changeRelative, '%')
+                        color: Functions.determineChangeColor(changeRelative)
+                        font.pixelSize: Theme.fontSizeTiny
+                        horizontalAlignment: Text.AlignRight
                     }
                 }
             }
-
-            Component.onCompleted: {
-                Database.initApplicationTables()
-                var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
-                dataBackend.quoteResultAvailable.connect(quoteResultHandler)
-                dataBackend.requestError.connect(errorResultHandler)
-                reloadAllStocks()
-            }
-
-            onVisibleChanged: {
-                reloadAllStocks()
-            }
         }
+
+        Component.onCompleted: {
+            Database.initApplicationTables()
+            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            dataBackend.quoteResultAvailable.connect(quoteResultHandler)
+            dataBackend.requestError.connect(errorResultHandler)
+            reloadAllStocks()
+        }
+
+        onVisibleChanged: {
+            reloadAllStocks()
+        }
+    }
+
+    OpacityRampEffect {
+        sourceItem: coverListView
+        direction: OpacityRamp.TopToBottom
+        offset: 0.6
+        slope: 3.75
     }
 
 }
