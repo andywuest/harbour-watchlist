@@ -15,12 +15,17 @@ function renderChange(price, change, symbol) {
 
 function renderPriceOnly(price) {
     var locale = Qt.locale();
-    return ((price !== undefined && price !== 0.0) ? Number(price).toLocaleString(locale) : "");
+    return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) : "");
 }
 
 function renderPrice(price, currencyString) {
     var locale = Qt.locale();
-    return ((price !== undefined && price !== 0.0) ? Number(price).toLocaleString(locale) + " " + resolveCurrencySymbol(currencyString) : "-")
+    return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) + " " + resolveCurrencySymbol(currencyString) : "-")
+}
+
+function formatPrice(price, locale) {
+    var precision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
+    return Number(price).toLocaleString(locale, 'f', precision) ;
 }
 
 function resolveCurrencySymbol(currencyString) {
