@@ -28,14 +28,11 @@ Page {
     id: overviewPage
 
     property int watchlistId: 1
-//    property var stock
-//    property var theStock
     allowedOrientations: Orientation.Portrait // so far only Portait mode
 
     property int activeTabId: 0
 
     function openTab(tabId) {
-
         activeTabId = tabId
 
         switch (tabId) {
@@ -148,12 +145,13 @@ Page {
         Column {
             id: overviewColumn
             visible: true
+            width: parent.width
+            height: parent.height
+
             Behavior on opacity {
                 NumberAnimation {
                 }
             }
-            width: parent.width
-            height: parent.height
 
             /*
             Column {
@@ -296,12 +294,7 @@ Page {
 
         Component.onCompleted: {
             Database.initApplicationTables();
-            // connectSlots();
-            // reloadAllMarketdata();
             openTab(0)
-            // loaded = true;
-            //theStock = stock
-            //overviewColumnPageHeader.title = (stock) ? stock.name : ''
         }
 
     }
