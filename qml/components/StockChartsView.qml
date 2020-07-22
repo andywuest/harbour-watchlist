@@ -162,7 +162,7 @@ SilicaFlickable {
         if (stock) {
             extRefId = (stock.extRefId) ? stock.extRefId : ''
 
-            var currencyUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
+            var currencyUnit = stock.currency ? stock.currency : '-';
             intradayStockChart.axisYUnit = currencyUnit;
             lastMonthStockChart.axisYUnit = currencyUnit;
             lastThreeMonthStockChart.axisYUnit = currencyUnit;

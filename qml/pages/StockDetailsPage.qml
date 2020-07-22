@@ -315,13 +315,13 @@ Page {
             bidLabelValueRow.value = stock.bid ? Functions.renderPrice(stock.bid, stock.currency) : '';
             highLabelValueRow.value = stock.high ? Functions.renderPrice(stock.high, stock.currency) : '';
             lowLabelValueRow.value = stock.low ? Functions.renderPrice(stock.low, stock.currency) : '';
-            changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, Functions.resolveCurrencySymbol(stock.currency)) : '';
+            changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, stock.currency) : '';
             changeRelativeLabelValueRow.value = stock.changeRelative ? Functions.renderChange(stock.price, stock.changeRelative, '%') : '';
             priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
 
-            var currencyUnit = stock.currency ? Functions.resolveCurrencySymbol(stock.currency) : '-';
+            var currencyUnit = stock.currency ? stock.currency : '-';
             intradayStockChart.axisYUnit = currencyUnit;
             lastMonthStockChart.axisYUnit = currencyUnit;
             lastYearStockChart.axisYUnit = currencyUnit;

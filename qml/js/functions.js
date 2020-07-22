@@ -20,20 +20,12 @@ function renderPriceOnly(price) {
 
 function renderPrice(price, currencyString) {
     var locale = Qt.locale();
-    return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) + " " + resolveCurrencySymbol(currencyString) : "-")
+    return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) + " " + currencyString : "-")
 }
 
 function formatPrice(price, locale) {
     var precision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
     return Number(price).toLocaleString(locale, 'f', precision) ;
-}
-
-function resolveCurrencySymbol(currencyString) {
-    var currencySymbol = CURRENCY_MAP[currencyString];
-    if (currencySymbol === undefined)  {
-        return currencyString;
-    }
-    return currencySymbol;
 }
 
 function determineChangeColor(change) {
