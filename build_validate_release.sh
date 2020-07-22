@@ -19,6 +19,7 @@ export TARGET=$(ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mers
 ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost << EOF
   set -x
   cd /home/src1/projects/sailfishos/github/$PROJECT
+  rm *.o
   mb2 --no-snapshot -t $TARGET-armv7hl build
 EOF
 
