@@ -784,7 +784,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="69"/>
         <source>CAC 40</source>
-        <translation"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="70"/>
