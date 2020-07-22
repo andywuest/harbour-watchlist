@@ -120,8 +120,9 @@ Dialog {
             }
             alarm.id = stock.id
             if (stockAlarmTextSwitch.checked) {
-                alarm.minimumPrice = minimumPriceTextField.text
-                alarm.maximumPrice = maximumPriceTextField.text
+                var locale = Qt.locale()
+                alarm.minimumPrice = Number.fromLocaleString(locale, minimumPriceTextField.text)
+                alarm.maximumPrice = Number.fromLocaleString(locale, maximumPriceTextField.text)
                 Database.saveAlarm(alarm)
             } else {
                 Database.removeAlarm(alarm)

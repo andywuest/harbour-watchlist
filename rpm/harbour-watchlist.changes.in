@@ -5,6 +5,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 22.07.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.3-1
+- fixed Setting of price alert fails to follow locale settings (https://github.com/andywuest/harbour-watchlist/issues/56)
+
 * 20.07.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.2-1
 - Cover page UI polishing by Dmitry Gerasimov
 - fixed Prices of very cheap stocks are not displayed (https://github.com/andywuest/harbour-watchlist/issues/57)
