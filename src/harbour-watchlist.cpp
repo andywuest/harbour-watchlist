@@ -36,6 +36,9 @@ int main(int argc, char *argv[]) {
     Watchlist watchlist;
     context->setContextProperty("watchlist", &watchlist);
 
+    WorkerManager *workerManager = watchlist.getWorkerManager();
+    context->setContextProperty("workerManager", workerManager);
+
     EuroinvestorBackend *euroinvestorBackend = watchlist.getEuroinvestorBackend();
     context->setContextProperty("euroinvestorBackend", euroinvestorBackend);
 

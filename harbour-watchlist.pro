@@ -18,6 +18,8 @@ SOURCES += \
     src/euroinvestorbackend.cpp \
     src/harbour-watchlist.cpp \
     src/marketdata/euroinvestormarketdatabackend.cpp \
+    src/securities/securityupdateworker.cpp \
+    src/securities/workermanager.cpp \
     src/watchlist.cpp \
     src/moscowexchangebackend.cpp \
     src/abstractdatabackend.cpp \
@@ -84,6 +86,8 @@ HEADERS += \
     src/constants.h \
     src/euroinvestorbackend.h \
     src/marketdata/euroinvestormarketdatabackend.h \
+    src/securities/securityupdateworker.h \
+    src/securities/workermanager.h \
     src/watchlist.h \
     src/moscowexchangebackend.h \
     src/abstractdatabackend.h \

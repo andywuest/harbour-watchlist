@@ -23,6 +23,7 @@
 #include <QNetworkConfigurationManager>
 #include <QSettings>
 
+#include "securities/workermanager.h"
 #include "euroinvestorbackend.h"
 #include "marketdata/euroinvestormarketdatabackend.h"
 #include "moscowexchangebackend.h"
@@ -33,6 +34,7 @@ class Watchlist : public QObject {
 public:
     explicit Watchlist(QObject *parent = nullptr);
     ~Watchlist();
+    WorkerManager *getWorkerManager();
     EuroinvestorBackend *getEuroinvestorBackend();
     MoscowExchangeBackend *getMoscowExchangeBackend();
     EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
@@ -47,6 +49,9 @@ public slots:
 private:
     QNetworkAccessManager * const networkAccessManager;
     QNetworkConfigurationManager * const networkConfigurationManager;
+
+    // Worker (for async jobs) manager
+    WorkerManager *workerManager;
 
     // data backends
     EuroinvestorBackend *euroinvestorBackend;
