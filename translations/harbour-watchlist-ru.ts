@@ -627,55 +627,55 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>DAX 30</source>
-        <translation type="unfinished"></translation>
+        <translation>DAX 30</translation>
     </message>
     <message>
         <source>MDAX</source>
-        <translation type="unfinished"></translation>
+        <translation>MDAX</translation>
     </message>
     <message>
         <source>SDAX</source>
-        <translation type="unfinished"></translation>
+        <translation>SDAX</translation>
     </message>
     <message>
         <source>TecDAX</source>
-        <translation type="unfinished"></translation>
+        <translation>TecDAX</translation>
     </message>
     <message>
         <source>S&amp;P 500</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;P 500</translation>
     </message>
     <message>
         <source>NASDAQ Composite</source>
-        <translation type="unfinished"></translation>
+        <translation>NASDAQ-композит</translation>
     </message>
     <message>
         <source>Dow Jones</source>
-        <translation type="unfinished"></translation>
+        <translation>Доу Джонс</translation>
     </message>
     <message>
         <source>CAC 40</source>
-        <translation type="unfinished"></translation>
+        <translation>CAC 40</translation>
     </message>
     <message>
         <source>SBF 120</source>
-        <translation type="unfinished"></translation>
+        <translation>SBF 120</translation>
     </message>
     <message>
         <source>CAC Next20</source>
-        <translation type="unfinished"></translation>
+        <translation>CAC Next20</translation>
     </message>
     <message>
         <source>OMX C25</source>
-        <translation type="unfinished"></translation>
+        <translation>OMX C25</translation>
     </message>
     <message>
         <source>OMX Stockholm 30</source>
-        <translation type="unfinished"></translation>
+        <translation>OMX Стокгольм</translation>
     </message>
     <message>
         <source>OSEBX</source>
-        <translation type="unfinished"></translation>
+        <translation>OSEBX</translation>
     </message>
     <message>
         <source>Gold</source>
@@ -695,91 +695,91 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>EUR/USD</source>
-        <translation type="unfinished"></translation>
+        <translation>EUR/USD</translation>
     </message>
     <message>
         <source>SEK/DKK</source>
-        <translation type="unfinished"></translation>
+        <translation>SEK/DKK</translation>
     </message>
     <message>
         <source>GBP/DKK</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP/DKK</translation>
     </message>
     <message>
         <source>GBP/USD</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP/USD</translation>
     </message>
     <message>
         <source>JPY/USD</source>
-        <translation type="unfinished"></translation>
+        <translation>JPY/USD</translation>
     </message>
     <message>
         <source>CHF/EUR</source>
-        <translation type="unfinished"></translation>
+        <translation>CHF/EUR</translation>
     </message>
     <message>
         <source>GBP/EUR</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP/EUR</translation>
     </message>
     <message>
         <source>USD/EUR</source>
-        <translation type="unfinished"></translation>
+        <translation>USD/EUR</translation>
     </message>
     <message>
         <source>Bitcoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Биткоин</translation>
     </message>
     <message>
         <source>Bitcoin Cash</source>
-        <translation type="unfinished"></translation>
+        <translation>Биткоин-кэш</translation>
     </message>
     <message>
         <source>Bitcoin Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Биткоин-голд</translation>
     </message>
     <message>
         <source>Litecoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Лайткоин</translation>
     </message>
     <message>
         <source>Dash</source>
-        <translation type="unfinished"></translation>
+        <translation>Dash</translation>
     </message>
     <message>
         <source>Ethereum</source>
-        <translation type="unfinished"></translation>
+        <translation>Эфириум</translation>
     </message>
     <message>
         <source>Tether</source>
-        <translation type="unfinished"></translation>
+        <translation>Tether</translation>
     </message>
     <message>
         <source>IOTA</source>
-        <translation type="unfinished"></translation>
+        <translation>IOTA</translation>
     </message>
     <message>
         <source>Monero</source>
-        <translation type="unfinished"></translation>
+        <translation>Monero</translation>
     </message>
     <message>
         <source>Binance Coin</source>
-        <translation type="unfinished"></translation>
+        <translation>Binance Coin</translation>
     </message>
     <message>
         <source>XRP</source>
-        <translation type="unfinished"></translation>
+        <translation>XRP</translation>
     </message>
     <message>
         <source>Tezos</source>
-        <translation type="unfinished"></translation>
+        <translation>Tezos</translation>
     </message>
     <message>
         <source>Cardano</source>
-        <translation type="unfinished"></translation>
+        <translation>Cardano</translation>
     </message>
     <message>
         <source>Chainlink</source>
-        <translation type="unfinished"></translation>
+        <translation>Chainlink</translation>
     </message>
 </context>
 <context>
