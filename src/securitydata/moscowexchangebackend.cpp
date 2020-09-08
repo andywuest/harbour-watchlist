@@ -44,7 +44,7 @@ void MoscowExchangeBackend::searchName(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchName";
     QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString).arg(getLanguage())));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
@@ -53,7 +53,7 @@ void MoscowExchangeBackend::searchQuoteForNameSearch(const QString &searchString
     qDebug() << "MoscowExchangeBackend::searchQuoteForNameSearch";
     QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
 }
 
@@ -75,9 +75,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
         reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
     }
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
-   //  connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &MoscowExchangeBackend::handleRequestError);
-//    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchPricesForChartFinished()));
+    connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &MoscowExchangeBackend::handleFetchPricesForChartFinished);
 
     reply->setProperty("type", chartType);
@@ -88,7 +86,7 @@ void MoscowExchangeBackend::searchQuote(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchQuote";
     QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
 

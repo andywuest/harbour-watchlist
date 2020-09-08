@@ -39,7 +39,7 @@ void EuroinvestorBackend::searchName(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchName";
     QNetworkReply *reply = executeGetRequest(QUrl(API_SEARCH + searchString));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
 }
 
@@ -47,7 +47,7 @@ void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) 
     qDebug() << "EuroinvestorBackend::searchQuoteForNameSearch";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
 }
 
@@ -68,10 +68,10 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
         reply = executeGetRequest(QUrl(QString(API_INTRADAY_PRICES).arg(extRefId)));
     }
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
-   //  connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &EuroinvestorBackend::handleRequestError);
-//    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchPricesForChartFinished()));
-    connect(reply, &QNetworkReply::finished, this, &EuroinvestorBackend::handleFetchPricesForChartFinished);
+    // TODO not sure if connecting the error slot makes sense here if we have multiple charts
+    // maybe we only connect one chart type
+    // connectErrorSlot(reply);
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchPricesForChartFinished()));
 
     reply->setProperty("type", chartType);
 }
@@ -80,7 +80,7 @@ void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
     QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
 }
 

@@ -33,6 +33,7 @@ Page {
 
     allowedOrientations: Orientation.All
 
+    // TODO disconnect slots on exit
     AppNotification {
         id: stockAddedNotification
     }

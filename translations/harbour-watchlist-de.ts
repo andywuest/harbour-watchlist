@@ -78,25 +78,25 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>AddStockPage</name>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="71"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="72"/>
         <source>Search Results</source>
         <extracomment>AddStockPage search result header</extracomment>
         <translation>Suchergebnisse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="78"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="79"/>
         <source>Find your Stock...</source>
         <extracomment>AddStockPage search result input field</extracomment>
         <translation>Finde deine Aktie...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="114"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="115"/>
         <source>No results found</source>
         <extracomment>AddStockPage no results label</extracomment>
         <translation>Keine Ergebnisse gefunden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="151"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="152"/>
         <source>Add</source>
         <extracomment>AddStockPage add menu item</extracomment>
         <translation>Hinzufügen</translation>
@@ -182,7 +182,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>MoscowExchangeBackend</name>
     <message>
-        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="317"/>
+        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="315"/>
         <source>RUB</source>
         <translation></translation>
     </message>

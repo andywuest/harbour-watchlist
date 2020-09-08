@@ -37,7 +37,7 @@ class MoscowExchangeBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
     explicit MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
-    ~MoscowExchangeBackend();
+    ~MoscowExchangeBackend() override;
     Q_INVOKABLE void searchName(const QString &searchString) override;
     Q_INVOKABLE void searchQuote(const QString &searchString) override;
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType) override;
@@ -54,9 +54,6 @@ public slots:
 private:
 
     bool debugMode = false;
-
-    // TODO check if needed
-    static const QString MIME_TYPE_JSON;
 
     // is triggered after name search because the first json request does not contain all information we need
     void searchQuoteForNameSearch(const QString &searchString);

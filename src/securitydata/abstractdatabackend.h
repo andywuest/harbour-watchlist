@@ -26,7 +26,7 @@ class AbstractDataBackend : public QObject {
   Q_OBJECT
 public:
     explicit AbstractDataBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
-    ~AbstractDataBackend();
+    ~AbstractDataBackend() = 0;
 
     Q_INVOKABLE virtual void searchName(const QString &searchString) = 0;
     Q_INVOKABLE virtual void searchQuote(const QString &searchString) = 0;
@@ -59,10 +59,9 @@ protected:
     QNetworkReply *executeGetRequest(const QUrl &url);
     QDate getStartDateForChart(const int chartType);
     QString convertToDatabaseDateTimeFormat(const QDateTime time);
+    void connectErrorSlot(QNetworkReply *reply);
 
 protected slots:
-
-    void handleRequestError(QNetworkReply::NetworkError error);
 
 };
 

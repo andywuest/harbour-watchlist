@@ -49,12 +49,21 @@ QNetworkReply *AbstractDataBackend::executeGetRequest(const QUrl &url) {
     return manager->get(request);
 }
 
-void AbstractDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
-
-    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
+void AbstractDataBackend::connectErrorSlot(QNetworkReply *reply) {
+    // connect the error and also emit the error signal via a lambda expression
+    connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), [=](QNetworkReply::NetworkError error) {
+        qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
+        emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
+    });
 }
+
+// TODO sollte obsolete sein wenn alles auf connectErrorSlot umgestellt ist
+//void AbstractDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
+//    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+//    qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
+
+//    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
+//}
 
 QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
     QDate today = QDate::currentDate();
