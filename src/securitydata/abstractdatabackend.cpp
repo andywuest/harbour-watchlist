@@ -19,15 +19,6 @@
 #include "abstractdatabackend.h"
 
 #include <QDebug>
-#include <QFile>
-#include <QUrl>
-#include <QUrlQuery>
-#include <QUuid>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QDateTime>
-#include <QVariantMap>
-#include <QJsonDocument>
 
 AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Data Backend...";
@@ -35,7 +26,7 @@ AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject
 }
 
 AbstractDataBackend::~AbstractDataBackend() {
-    qDebug() << "Shutting down Euroinvestor Backend...";
+    qDebug() << "Shutting down AbstractDataBackend...";
 }
 
 QNetworkReply *AbstractDataBackend::executeGetRequest(const QUrl &url) {
@@ -54,14 +45,6 @@ void AbstractDataBackend::connectErrorSlot(QNetworkReply *reply) {
         emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
     });
 }
-
-// TODO sollte obsolete sein wenn alles auf connectErrorSlot umgestellt ist
-//void AbstractDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
-//    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-//    qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
-
-//    emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
-//}
 
 QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
     QDate today = QDate::currentDate();
