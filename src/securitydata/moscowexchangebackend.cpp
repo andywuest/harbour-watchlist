@@ -29,8 +29,6 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-// const QString MoscowExchangeBackend::MIME_TYPE_JSON = QString("application/json");
-
 MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
     : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
     qDebug() << "Initializing Moscow Exchange Backend...";

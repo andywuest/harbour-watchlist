@@ -23,9 +23,9 @@
 #include <QNetworkConfigurationManager>
 #include <QSettings>
 
-#include "euroinvestorbackend.h"
+#include "securitydata/euroinvestorbackend.h"
+#include "securitydata/moscowexchangebackend.h"
 #include "marketdata/euroinvestormarketdatabackend.h"
-#include "moscowexchangebackend.h"
 #include "onvistanews.h"
 
 class Watchlist : public QObject {

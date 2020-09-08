@@ -15,13 +15,13 @@ TARGET = harbour-watchlist
 CONFIG += sailfishapp
 
 SOURCES += \
-    src/euroinvestorbackend.cpp \
-    src/harbour-watchlist.cpp \
+    src/securitydata/euroinvestorbackend.cpp \
+    src/securitydata/moscowexchangebackend.cpp \
+    src/securitydata/abstractdatabackend.cpp \
+    src/securitydata/chartdatacalculator.cpp \
     src/marketdata/euroinvestormarketdatabackend.cpp \
+    src/harbour-watchlist.cpp \
     src/watchlist.cpp \
-    src/moscowexchangebackend.cpp \
-    src/abstractdatabackend.cpp \
-    src/chartdatacalculator.cpp \
     src/onvistanews.cpp
 
 DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
@@ -82,10 +82,10 @@ DISTFILES += \
 
 HEADERS += \
     src/constants.h \
-    src/euroinvestorbackend.h \
+    src/securitydata/euroinvestorbackend.h \
+    src/securitydata/moscowexchangebackend.h \
+    src/securitydata/abstractdatabackend.h \
+    src/securitydata/chartdatacalculator.h \
     src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h \
-    src/moscowexchangebackend.h \
-    src/abstractdatabackend.h \
-    src/chartdatacalculator.h \
     src/onvistanews.h
