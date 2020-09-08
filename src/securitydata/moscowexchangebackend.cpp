@@ -29,8 +29,8 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
-    : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
+MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, QObject *parent)
+    : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Moscow Exchange Backend...";
     // debug mode when we want to see everything in english
     // debugMode = true;

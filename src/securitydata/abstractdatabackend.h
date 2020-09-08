@@ -25,7 +25,7 @@
 class AbstractDataBackend : public QObject {
   Q_OBJECT
 public:
-    explicit AbstractDataBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
+    explicit AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent = 0);
     ~AbstractDataBackend() = 0;
 
     Q_INVOKABLE virtual void searchName(const QString &searchString) = 0;
@@ -41,8 +41,6 @@ public:
 
 protected:
 
-    QString applicationName;
-    QString applicationVersion;
     QNetworkAccessManager *manager;
 
     enum ChartType {

@@ -29,11 +29,9 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
+AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Data Backend...";
     this->manager = manager;
-    this->applicationName = applicationName;
-    this->applicationVersion = applicationVersion;
 }
 
 AbstractDataBackend::~AbstractDataBackend() {

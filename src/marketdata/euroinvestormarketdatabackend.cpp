@@ -25,11 +25,9 @@
 #include <QDateTime>
 #include <QJsonDocument>
 
-EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent) {
+EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Euroinvestor Market Data Backend...";
     this->manager = manager;
-    this->applicationName = applicationName;
-    this->applicationVersion = applicationVersion;
 
     // Index
     // DE

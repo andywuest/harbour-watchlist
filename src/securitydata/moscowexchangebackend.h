@@ -36,7 +36,7 @@ const char MAPI_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/
 class MoscowExchangeBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
-    explicit MoscowExchangeBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
+    explicit MoscowExchangeBackend(QNetworkAccessManager *manager, QObject *parent = 0);
     ~MoscowExchangeBackend() override;
     Q_INVOKABLE void searchName(const QString &searchString) override;
     Q_INVOKABLE void searchQuote(const QString &searchString) override;

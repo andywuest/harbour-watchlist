@@ -26,8 +26,8 @@
 #include <QDateTime>
 #include <QJsonDocument>
 
-EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent)
-    : AbstractDataBackend(manager, applicationName, applicationVersion, parent) {
+EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, QObject *parent)
+    : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
 }
 
