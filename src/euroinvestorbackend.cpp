@@ -129,7 +129,7 @@ void EuroinvestorBackend::handleSearchQuoteForNameFinished() {
 }
 
 void EuroinvestorBackend::handleSearchQuoteFinished() {
-    qDebug() << "EuroinvestorBackend::handleSearchQuoteForNameFinished";
+    qDebug() << "EuroinvestorBackend::handleSearchQuoteFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
