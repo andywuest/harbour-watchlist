@@ -25,6 +25,7 @@
 
 #include "securitydata/euroinvestorbackend.h"
 #include "securitydata/moscowexchangebackend.h"
+#include "securitydata/ingdibabackend.h"
 #include "marketdata/euroinvestormarketdatabackend.h"
 #include "onvistanews.h"
 
@@ -36,6 +37,7 @@ public:
     EuroinvestorBackend *getEuroinvestorBackend();
     MoscowExchangeBackend *getMoscowExchangeBackend();
     EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
+    IngDibaBackend *getIngDibaBackend();
     OnvistaNews *getOnvistaNews();
 
     Q_INVOKABLE bool isWiFi();
@@ -51,6 +53,7 @@ private:
     // data backends
     EuroinvestorBackend *euroinvestorBackend;
     MoscowExchangeBackend *moscowExchangeBackend;
+    IngDibaBackend *ingDibaBackend;
 
     // market data backends
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend;

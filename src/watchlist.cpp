@@ -24,6 +24,7 @@ Watchlist::Watchlist(QObject *parent) : QObject(parent),
     // data backends
     euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, this);
     moscowExchangeBackend = new MoscowExchangeBackend(this->networkAccessManager, this);
+    ingDibaBackend = new IngDibaBackend(this->networkAccessManager, this);
     // market data backends
     euroinvestorMarketDataBackend = new EuroinvestorMarketDataBackend(this->networkAccessManager, this);
     // news backends
@@ -34,7 +35,7 @@ Watchlist::~Watchlist() {
 }
 
 bool Watchlist::isWiFi() {
-    QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
+    const QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
     QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);
     while (configurationIterator.hasNext()) {
         QNetworkConfiguration activeConfiguration = configurationIterator.next();
@@ -53,6 +54,10 @@ EuroinvestorBackend *Watchlist::getEuroinvestorBackend() {
 
 MoscowExchangeBackend *Watchlist::getMoscowExchangeBackend() {
     return this->moscowExchangeBackend;
+}
+
+IngDibaBackend *Watchlist::getIngDibaBackend() {
+    return this->ingDibaBackend;
 }
 
 OnvistaNews *Watchlist::getOnvistaNews() {

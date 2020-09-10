@@ -42,6 +42,9 @@ int main(int argc, char *argv[]) {
     MoscowExchangeBackend *moscowExchangeBackend = watchlist.getMoscowExchangeBackend();
     context->setContextProperty("moscowExchangeBackend", moscowExchangeBackend);
 
+    IngDibaBackend *ingDibaBackend = watchlist.getIngDibaBackend();
+    context->setContextProperty("ingDibaBackend", ingDibaBackend);
+
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend = watchlist.getEuroinvestorMarketDataBackend();
     context->setContextProperty("euroinvestorMarketDataBackend", euroinvestorMarketDataBackend);
 

@@ -17,12 +17,24 @@ CONFIG += sailfishapp
 SOURCES += \
     src/securitydata/euroinvestorbackend.cpp \
     src/securitydata/moscowexchangebackend.cpp \
+    src/securitydata/ingdibabackend.cpp \
     src/securitydata/abstractdatabackend.cpp \
     src/securitydata/chartdatacalculator.cpp \
     src/marketdata/euroinvestormarketdatabackend.cpp \
     src/harbour-watchlist.cpp \
     src/watchlist.cpp \
     src/onvistanews.cpp
+
+HEADERS += \
+    src/constants.h \
+    src/securitydata/euroinvestorbackend.h \
+    src/securitydata/moscowexchangebackend.h \
+    src/securitydata/ingdibabackend.h \
+    src/securitydata/abstractdatabackend.h \
+    src/securitydata/chartdatacalculator.h \
+    src/marketdata/euroinvestormarketdatabackend.h \
+    src/watchlist.h \
+    src/onvistanews.h
 
 DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
 
@@ -80,12 +92,3 @@ DISTFILES += \
     qml/pages/WatchlistPage.qml \
     qml/pages/NewsPage.qml
 
-HEADERS += \
-    src/constants.h \
-    src/securitydata/euroinvestorbackend.h \
-    src/securitydata/moscowexchangebackend.h \
-    src/securitydata/abstractdatabackend.h \
-    src/securitydata/chartdatacalculator.h \
-    src/marketdata/euroinvestormarketdatabackend.h \
-    src/watchlist.h \
-    src/onvistanews.h
