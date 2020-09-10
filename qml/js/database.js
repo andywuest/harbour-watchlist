@@ -358,7 +358,7 @@ function loadStockBy(watchlistId, extRefId) {
                 result = entry;
                 console.log("loading single stockdata data from database done");
             } else {
-                console.log("no stockdata found for extRefId");
+                console.log("no stockdata found for extRefId " + extRefId);
             }
         })
     } catch (err) {
