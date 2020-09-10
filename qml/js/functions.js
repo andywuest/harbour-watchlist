@@ -97,6 +97,8 @@ function getDataBackend(backendId) {
         return euroinvestorBackend;
     } else if (BACKEND_MOSCOW_EXCHANGE === backendId) {
         return moscowExchangeBackend;
+    } else if (BACKEND_ING_DIBA === backendId) {
+        return ingDibaBackend;
     }
 }
 
