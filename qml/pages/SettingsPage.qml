@@ -31,14 +31,23 @@ import "../js/constants.js" as Constants
 Page {
     id: settingsPage
     property int currentDataBackend : 0
+    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
 
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
             console.log("store settings!");
             if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
-                console.log("reset application database");
-                Database.resetApplication()
-                Database.initApplicationTables()
+                if (settingsPage.currentDataBackend === Constants.BACKEND_EUROINVESTOR
+                        && watchlistSettings.dataBackend === Constants.BACKEND_ING_DIBA) {
+                    console.log("Migrate stockdata table to new backend");
+                    Database.migrateEuroinvestorToIngDiba(watchlistId);
+                    // TODO beim sprung zurueck muss man die aktienliste neuladen und einen refresh durchfuehren..
+                } else {
+                    console.log("reset application database");
+                    Database.resetApplication()
+                    Database.initApplicationTables()
+                }
+
             }
             watchlistSettings.sync();
         }
@@ -126,6 +135,10 @@ Page {
                     MenuItem {
                         //: SettingsPage data backend Moscow Exchange
                         text: qsTr("Moscow Exchange")
+                    }
+                    MenuItem {
+                        //: SettingsPage data backend Ing-Diba
+                        text: qsTr("Ing-Diba")
                     }
                     onActivated: {
                         watchlistSettings.dataBackend = index

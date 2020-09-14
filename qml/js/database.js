@@ -20,6 +20,7 @@ function executeInsertUpdateDeleteForTable(tableName, query, parameters, success
     try {
         var db = getOpenDatabase()
 
+        // TODO check if count can be removed
         var numberOfColumnsInTable = countTableColumns(db, tableName);
 
         db.transaction(function (tx) {
@@ -233,6 +234,12 @@ function disableAlarm(id) {
     }
     return result
     */
+}
+
+function migrateEuroinvestorToIngDiba(watchlistId) {
+    var query = 'UPDATE stockdata SET extRefId = isin where watchlistId = ?';
+    var parameters = [watchlistId];
+    return executeInsertUpdateDeleteForTable("stockdata", query, parameters, qsTr("Watchlist data migrated"), qsTr("Error migrating watchlist data"));
 }
 
 function getCurrentWatchlistId() {
