@@ -31,9 +31,6 @@ Watchlist::Watchlist(QObject *parent) : QObject(parent),
     onvistaNews = new OnvistaNews(this->networkAccessManager, this);
 }
 
-Watchlist::~Watchlist() {
-}
-
 bool Watchlist::isWiFi() {
     const QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
     QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);

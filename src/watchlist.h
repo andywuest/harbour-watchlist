@@ -33,7 +33,7 @@ class Watchlist : public QObject {
     Q_OBJECT
 public:
     explicit Watchlist(QObject *parent = nullptr);
-    ~Watchlist();
+    ~Watchlist() = default;
     EuroinvestorBackend *getEuroinvestorBackend();
     MoscowExchangeBackend *getMoscowExchangeBackend();
     EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
