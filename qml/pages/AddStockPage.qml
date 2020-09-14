@@ -165,7 +165,7 @@ Page {
                         id: resultColumn
                         width: parent.width - (2 * Theme.horizontalPageMargin)
                         height: stockNameText.height
-                                + stockNameAdditionalInfoRow.height
+                                + genericAdditionalInfoRow.height
                                 + Theme.paddingMedium
                         spacing: Theme.paddingMedium
                         anchors.verticalCenter: parent.verticalCenter
@@ -183,7 +183,7 @@ Page {
                             height: Theme.fontSizeMedium
                         }
                         Row {
-                            id: stockNameAdditionalInfoRow
+                            id: genericAdditionalInfoRow
                             height: Theme.fontSizeMedium
                             width: parent.width
 
@@ -192,9 +192,7 @@ Page {
                                 width: parent.width * 2 / 3
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
-                                text: stockMarketName
-                                    // stockMarketName
-                                //qsTr("Bank ID: %1").arg(modelData.blz)
+                                text: genericText1 // generic text - different for all backends
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
@@ -204,7 +202,7 @@ Page {
                                 width: parent.width / 3
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.secondaryColor
-                                text: isin
+                                text: isin // isin - should be available for all backends
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
