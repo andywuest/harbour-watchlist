@@ -4,7 +4,7 @@
 class ChartDataCalculator
 {
 public:
-    ChartDataCalculator();
+     ChartDataCalculator() = default;
 
     void checkCloseValue(double value);
     double getMinValue();

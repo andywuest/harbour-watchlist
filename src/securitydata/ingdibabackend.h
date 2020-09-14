@@ -66,7 +66,7 @@ private:
     QString processQuoteResult(QByteArray searchReply);
     QString parsePriceResponse(QByteArray priceReply);
 
-    QDateTime convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString);
+    QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
 
 private slots:
     void handleSearchNameFinished();

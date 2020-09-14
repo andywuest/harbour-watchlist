@@ -32,7 +32,7 @@ const char API_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/i
 class EuroinvestorBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
-    explicit EuroinvestorBackend(QNetworkAccessManager *manager, QObject *parent = 0);
+    explicit EuroinvestorBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~EuroinvestorBackend() override;
     Q_INVOKABLE void searchName(const QString &searchString) override;
     Q_INVOKABLE void searchQuote(const QString &searchString) override;
@@ -52,7 +52,7 @@ private:
     void searchQuoteForNameSearch(const QString &searchString);
     QString processQuoteSearchResult(QByteArray searchReply);
     QString parsePriceResponse(QByteArray priceReply);
-    QDateTime convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString);
+    QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
 
 private slots:
     void handleSearchNameFinished();

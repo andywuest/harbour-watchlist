@@ -311,7 +311,7 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     return resultObject;
 }
 
-QDateTime IngDibaBackend::convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString) {
+QDateTime IngDibaBackend::convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString) {
     QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
     QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
 

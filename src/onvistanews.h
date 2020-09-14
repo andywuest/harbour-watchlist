@@ -11,7 +11,7 @@ const char NEWS_USER_AGENT[] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0)
 class OnvistaNews : public QObject {
     Q_OBJECT
 public:
-    explicit OnvistaNews(QNetworkAccessManager *manager, QObject *parent = 0);
+    explicit OnvistaNews(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~OnvistaNews();
     Q_INVOKABLE void searchStockNews(const QString &isin);
 

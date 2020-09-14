@@ -25,7 +25,7 @@
 class AbstractDataBackend : public QObject {
   Q_OBJECT
 public:
-    explicit AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent = 0);
+    explicit AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~AbstractDataBackend() = 0;
 
     Q_INVOKABLE virtual void searchName(const QString &searchString) = 0;

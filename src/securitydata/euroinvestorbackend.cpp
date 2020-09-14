@@ -253,7 +253,7 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
     return dataToString;
 }
 
-QDateTime EuroinvestorBackend::convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString) {
+QDateTime EuroinvestorBackend::convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString) {
     QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
     QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
 

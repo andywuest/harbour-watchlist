@@ -173,7 +173,7 @@ void EuroinvestorMarketDataBackend::handleRequestError(QNetworkReply::NetworkErr
     emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }
 
-QDateTime EuroinvestorMarketDataBackend::convertUTCDateTimeToLocalDateTime(const QString utcDateTimeString) {
+QDateTime EuroinvestorMarketDataBackend::convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString) {
     QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
     QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
 

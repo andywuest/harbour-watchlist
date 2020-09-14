@@ -1,9 +1,6 @@
 #include "chartdatacalculator.h"
 #include "math.h"
 
-ChartDataCalculator::ChartDataCalculator() {
-}
-
 void ChartDataCalculator::checkCloseValue(double value) {
     if (min < 0.0) {
         min = value;
