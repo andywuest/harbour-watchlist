@@ -226,6 +226,8 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
         resultObject.insert("isin", resultDataArray.at(5)); // isin
         resultObject.insert("stockMarketName", resultDataArray.at(14)); // primary_boardid
         resultObject.insert("currency", "-"); // dummy for currency
+        // not persisted - displayed on the add stock page
+        resultObject.insert("genericText1", resultDataArray.at(14)); // stockMarketName
 
         resultArray.push_back(resultObject);
     }

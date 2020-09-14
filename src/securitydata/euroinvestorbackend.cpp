@@ -244,6 +244,10 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
 
         resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
 
+        // not persisted - displayed on the add stock page
+        // quote result is the same as the name search
+        resultObject.insert("genericText1", exchangeObject.value("name")); // stockMarketName
+
         resultArray.push_back(resultObject);
     }
 

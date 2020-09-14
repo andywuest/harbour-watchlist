@@ -249,12 +249,15 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
 
         // id is not mapped so far - is it used ??
         QJsonObject resultObject;
-          resultObject.insert("extRefId", suggestion["isin"]);
+        resultObject.insert("extRefId", suggestion["isin"]);
         resultObject.insert("symbol1", suggestion["wkn"]);
-          resultObject.insert("name", suggestion["text"]);
-          resultObject.insert("isin", suggestion["isin"]);
+        resultObject.insert("name", suggestion["text"]);
+        resultObject.insert("isin", suggestion["isin"]);
         resultObject.insert("stockMarketName", "-");
-       resultObject.insert("currency", suggestion["price_html"].toString().remove(QRegularExpression("[\\w\\d\\,\\.]")));
+        resultObject.insert("currency", QJsonValue(""));
+        resultObject.insert("price", suggestion["price_html"]);
+        // not persisted - displayed on the add stock page
+        resultObject.insert("genericText1", suggestion["price_html"]);
 
         resultArray.push_back(resultObject);
     }
