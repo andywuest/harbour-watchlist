@@ -7,13 +7,16 @@ var NEGATIVE_COLOR = '#FF0000';
 var SQL_TRUE = 1;
 var SQL_FALSE = 0;
 
-var CHART_TYPE_UNDEFINED = -1;
-var CHART_TYPE_INTRDAY = 0;
-var CHART_TYPE_MONTH = 1;
-var CHART_TYPE_3_MONTHS = 2;
-var CHART_TYPE_YEAR = 3;
-var CHART_TYPE_3_YEARS = 4;
-var CHART_TYPE_5_YEARS = 5;
+// constants have to be in sync with the ones defined in AbstractDataBackend
+var CHART_TYPE_UNDEFINED = 0;
+var CHART_TYPE_INTRDAY = 1;
+var CHART_TYPE_WEEK = 2;
+var CHART_TYPE_MONTH = 4;
+var CHART_TYPE_3_MONTHS = 8;
+var CHART_TYPE_YEAR = 16;
+var CHART_TYPE_3_YEARS = 32;
+var CHART_TYPE_5_YEARS = 64;
+var CHART_TYPE_MAXIMUM = 128;
 
 var SORTING_ORDER_BY_CHANGE = 0;
 var SORTING_ORDER_BY_NAME = 1;

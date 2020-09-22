@@ -64,3 +64,7 @@ QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
 QString AbstractDataBackend::convertToDatabaseDateTimeFormat(const QDateTime time) {
     return time.toString("yyyy-MM-dd") + " " + time.toString("hh:mm:ss");
 }
+
+bool AbstractDataBackend::isChartTypeSupported(const int chartTypeToCheck) {
+    return (chartTypeToCheck == (supportedChartTypes & chartTypeToCheck));
+}

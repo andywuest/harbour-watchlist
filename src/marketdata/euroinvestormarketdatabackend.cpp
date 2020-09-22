@@ -182,6 +182,6 @@ QDateTime EuroinvestorMarketDataBackend::convertUTCDateTimeToLocalDateTime(const
     return localDateTime;
 }
 
-QString EuroinvestorMarketDataBackend::convertToDatabaseDateTimeFormat(const QDateTime time) {
+QString EuroinvestorMarketDataBackend::convertToDatabaseDateTimeFormat(const QDateTime &time) {
     return time.toString("yyyy-MM-dd") + " " + time.toString("hh:mm:ss");
 }

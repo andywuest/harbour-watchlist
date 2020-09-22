@@ -24,11 +24,6 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-const char API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
-const char API_QUOTE[] = "https://api.euroinvestor.dk/instruments?ids=";
-const char API_CLOSE_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/closeprices?fromDate=%2";
-const char API_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
-
 class EuroinvestorBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
@@ -37,7 +32,6 @@ public:
     Q_INVOKABLE void searchName(const QString &searchString) override;
     Q_INVOKABLE void searchQuote(const QString &searchString) override;
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType) override;
-    Q_INVOKABLE bool isChartTypeSupported(const int chartType) override;
 
 signals:
 

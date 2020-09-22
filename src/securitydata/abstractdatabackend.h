@@ -31,7 +31,7 @@ public:
     Q_INVOKABLE virtual void searchName(const QString &searchString) = 0;
     Q_INVOKABLE virtual void searchQuote(const QString &searchString) = 0;
     Q_INVOKABLE virtual void fetchPricesForChart(const QString &extRefId, const int chartType) = 0;
-    Q_INVOKABLE virtual bool isChartTypeSupported(const int chartType) = 0;
+    Q_INVOKABLE bool isChartTypeSupported(const int chartTypeToCheck);
 
     // signals for the qml part
     Q_SIGNAL void searchResultAvailable(const QString &reply);
@@ -43,14 +43,20 @@ protected:
 
     QNetworkAccessManager *manager;
 
+    // also update constants in constants.js when you add entries / change values !
     enum ChartType {
-      INTRADAY = 0,
-      MONTH = 1,
-      THREE_MONTHS = 2,
-      YEAR = 3,
-      THREE_YEARS = 4,
-      FIVE_YEARS = 5
+      NONE = 0,
+      INTRADAY = 1,
+      WEEK = 2,
+      MONTH = 4,
+      THREE_MONTHS = 8,
+      YEAR = 16,
+      THREE_YEARS = 32,
+      FIVE_YEARS = 64,
+      MAXIMUM = 128
     };
+
+    int supportedChartTypes = ChartType::NONE;
 
     virtual QString convertCurrency(const QString &currencyString) = 0;
 

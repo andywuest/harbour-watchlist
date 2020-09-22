@@ -33,6 +33,12 @@
 IngDibaBackend::IngDibaBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Ing Diba Backend...";
+    this->supportedChartTypes = (ChartType::INTRADAY
+                                 | ChartType::WEEK
+                                 | ChartType::MONTH
+                                 | ChartType::YEAR
+                                 | ChartType::THREE_YEARS
+                                 | ChartType::MAXIMUM);
 }
 
 IngDibaBackend::~IngDibaBackend() {
@@ -331,20 +337,4 @@ QString IngDibaBackend::processQuoteResult(QByteArray searchReply) {
 
 QString IngDibaBackend::convertCurrency(const QString &currencyString) {
     return currencyString;
-}
-
-bool IngDibaBackend::isChartTypeSupported(const int chartType) {
-    switch(chartType) {
-        case ChartType::MONTH:
-        case ChartType::THREE_MONTHS:
-            return true;
-        case ChartType::INTRADAY:
-        case ChartType::FIVE_YEARS:
-        case ChartType::YEAR:
-        case ChartType::THREE_YEARS:
-            return false;
-        default:
-            qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
-            return false;
-    }
 }

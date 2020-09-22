@@ -42,7 +42,6 @@ public:
     Q_INVOKABLE void searchName(const QString &searchString) override;
     Q_INVOKABLE void searchQuote(const QString &searchString) override;
     Q_INVOKABLE void fetchPricesForChart(const QString &extRefId, const int chartType) override;
-    Q_INVOKABLE bool isChartTypeSupported(const int chartType) override;
 
 signals:
 

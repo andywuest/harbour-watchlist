@@ -34,6 +34,8 @@ MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, QOb
     qDebug() << "Initializing Moscow Exchange Backend...";
     // debug mode when we want to see everything in english
     // debugMode = true;
+    this->supportedChartTypes = (ChartType::MONTH
+                                 | ChartType::THREE_MONTHS);
 }
 
 MoscowExchangeBackend::~MoscowExchangeBackend() {
@@ -317,22 +319,6 @@ QString MoscowExchangeBackend::convertCurrency(const QString &currencyString) {
         return tr("RUB"); // "\u20BD"
     }
     return currencyString;
-}
-
-bool MoscowExchangeBackend::isChartTypeSupported(const int chartType) {
-    switch(chartType) {
-        case ChartType::MONTH:
-        case ChartType::THREE_MONTHS:
-            return true;
-        case ChartType::INTRADAY:
-        case ChartType::FIVE_YEARS:
-        case ChartType::YEAR:
-        case ChartType::THREE_YEARS:
-            return false;
-        default:
-            qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
-            return false;
-    }
 }
 
 QString MoscowExchangeBackend::getLanguage() {

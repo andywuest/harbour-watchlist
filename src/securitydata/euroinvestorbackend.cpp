@@ -18,6 +18,8 @@
 #include "euroinvestorbackend.h"
 #include "chartdatacalculator.h"
 
+#include "../constants.h"
+
 #include <QDebug>
 #include <QUrl>
 #include <QUrlQuery>
@@ -29,6 +31,11 @@
 EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
+    this->supportedChartTypes = (ChartType::INTRADAY
+                                 | ChartType::MONTH
+                                 | ChartType::THREE_MONTHS
+                                 | ChartType::YEAR
+                                 | ChartType::THREE_YEARS);
 }
 
 EuroinvestorBackend::~EuroinvestorBackend() {
@@ -37,7 +44,7 @@ EuroinvestorBackend::~EuroinvestorBackend() {
 
 void EuroinvestorBackend::searchName(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(QUrl(API_SEARCH + searchString));
+    QNetworkReply *reply = executeGetRequest(QUrl(EUROINVESTOR_API_SEARCH + searchString));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
@@ -45,7 +52,7 @@ void EuroinvestorBackend::searchName(const QString &searchString) {
 
 void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuoteForNameSearch";
-    QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
+    QNetworkReply *reply = executeGetRequest(QUrl(EUROINVESTOR_API_QUOTE + searchString));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
@@ -63,9 +70,9 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
 
     QNetworkReply *reply;
     if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
+        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
     } else {
-        reply = executeGetRequest(QUrl(QString(API_INTRADAY_PRICES).arg(extRefId)));
+        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_INTRADAY_PRICES).arg(extRefId)));
     }
 
     // TODO not sure if connecting the error slot makes sense here if we have multiple charts
@@ -78,7 +85,7 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
 
 void EuroinvestorBackend::searchQuote(const QString &searchString) {
     qDebug() << "EuroinvestorBackend::searchQuote";
-    QNetworkReply *reply = executeGetRequest(QUrl(API_QUOTE + searchString));
+    QNetworkReply *reply = executeGetRequest(QUrl(EUROINVESTOR_API_QUOTE + searchString));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
@@ -274,20 +281,4 @@ QString EuroinvestorBackend::convertCurrency(const QString &currencyString) {
         return QString("$");
     }
     return currencyString;
-}
-
-bool EuroinvestorBackend::isChartTypeSupported(const int chartType) {
-    switch(chartType) {
-        case ChartType::INTRADAY:
-        case ChartType::MONTH:
-        case ChartType::THREE_MONTHS:
-        case ChartType::YEAR:
-        case ChartType::THREE_YEARS:
-            return true;
-        case ChartType::FIVE_YEARS:
-            return false;
-        default:
-            qDebug() << "EuroinvestorBackend::isChartTypeSupported : illegal chartType received " << chartType;
-            return false;
-    }
 }

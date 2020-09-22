@@ -33,7 +33,7 @@ private:
     QString processMarketDataResult(QByteArray marketDataResult);
 
     // TODO next two methods are also in the euroinvestor backend hierarchy - needs to be consolidated
-    QString convertToDatabaseDateTimeFormat(const QDateTime time);
+    QString convertToDatabaseDateTimeFormat(const QDateTime &time);
     QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
 
 protected slots:
