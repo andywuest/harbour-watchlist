@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* XX.XX.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.0-1
+- added new Backend (Ing-Diba) to finally support funds and ETFs.
+- some internal code refactorings
+
 * 22.07.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.7.3-1
 - fixed Setting of price alert fails to follow locale settings (https://github.com/andywuest/harbour-watchlist/issues/56)
 
