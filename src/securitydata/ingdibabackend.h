@@ -57,7 +57,7 @@ private:
 
     QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
 
-    void processPreQuoteData(QByteArray preQuoteData, const QString &extRefId, const int chartType);
+    void processPreQuoteData(QNetworkReply *preChartReply);
 
 private slots:
     void handleSearchNameFinished();

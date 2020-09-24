@@ -71,7 +71,7 @@ void IngDibaBackend::searchQuoteForNameSearch(const QString &searchString) {
 }
 
 void IngDibaBackend::fetchPricesForChart(const QString &extRefId, const int chartType) {
-    qDebug() << "IngDibaBackend::fetchClosePrices";
+    qDebug() << "IngDibaBackend::fetchPricesForChart";
 
     if (!isChartTypeSupported(chartType)) {
         qDebug() << "IngDibaBackend::fetchClosePrices - chart type " << chartType << " not supported!";
@@ -81,33 +81,35 @@ void IngDibaBackend::fetchPricesForChart(const QString &extRefId, const int char
     QNetworkReply *reply;
 
     reply = executeGetRequest(QUrl(QString(ING_DIBA_API_PREQUOTE_DATA).arg(extRefId)));
-    reply->setProperty("type", chartType);
-    reply->setProperty("extRefId", extRefId);
+    reply->setProperty(NETWORK_REPLY_PROPERTY_CHART_TYPE, chartType);
+    reply->setProperty(NETWORK_REPLY_PROPERTY_EXT_REF_ID, extRefId);
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, [this, reply]()
     {
         reply->deleteLater();
 
         qDebug() << sender();
-        qDebug() << "type :" << reply->property("type");
-        qDebug() << "extRefId :" << reply->property("extRefId");
+        qDebug() << "type :" << reply->property(NETWORK_REPLY_PROPERTY_CHART_TYPE);
+        qDebug() << "extRefId :" << reply->property(NETWORK_REPLY_PROPERTY_EXT_REF_ID);
 
-        // TODO QNetworkReply *reply as parameter
-        processPreQuoteData(reply->readAll(), reply->property("extRefId").toString(), reply->property("type").toInt());
+        processPreQuoteData(reply);
     });
 }
 
-void IngDibaBackend::processPreQuoteData(QByteArray preQuoteData, const QString &extRefId, const int chartType) {
+void IngDibaBackend::processPreQuoteData(QNetworkReply *preChartReply) {
     qDebug() << "IngDibaBackend::processPreQuoteData";
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(preQuoteData);
+    const QJsonDocument jsonDocument = QJsonDocument::fromJson(preChartReply->readAll());
+    const QString extRefId = preChartReply->property(NETWORK_REPLY_PROPERTY_EXT_REF_ID).toString();
+    const int chartType = preChartReply->property(NETWORK_REPLY_PROPERTY_CHART_TYPE).toInt();
+
     if (!jsonDocument.isObject()) {
         qDebug() << "not a json object!";
     }
 
-    QJsonObject responseObject = jsonDocument.object();
-    QString valor = responseObject["valor"].toString();
-    QJsonArray chartPeriods = responseObject["chartPeriods"].toArray();
-    QString chartTypeString = this->chartTypeToStringMap[chartType];
+    const QJsonObject responseObject = jsonDocument.object();
+    const QString valor = responseObject["valor"].toString();
+    const QJsonArray chartPeriods = responseObject["chartPeriods"].toArray();
+    const QString chartTypeString = this->chartTypeToStringMap[chartType];
 
     qDebug() << "valor : " << valor;
     qDebug() << "chartTypeString : " << chartTypeString;

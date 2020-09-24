@@ -17,5 +17,8 @@ const char ING_DIBA_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/
 const char ING_DIBA_API_CHART_PRICES[] = "https://component-api.wertpapiere.ing.de/api/v1/charts/shm/%1?timeRange=%2";
 const char ING_DIBA_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/api/v1/components/chart/%1";
 
+// NetworkReply Property constants
+const char NETWORK_REPLY_PROPERTY_CHART_TYPE[] = "chartType";
+const char NETWORK_REPLY_PROPERTY_EXT_REF_ID[] = "extRefId";
 
 #endif // CONSTANTS_H
