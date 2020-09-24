@@ -298,6 +298,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>Определяет стратегию загрузки новостей</translation>
     </message>
+    <message>
+        <source>Ing-Diba</source>
+        <extracomment>SettingsPage data backend Ing-Diba</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockAlarmDialog</name>
@@ -551,37 +556,37 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>About</source>
         <extracomment>WatchlistPage about menu item</extracomment>
-        <translation>О программе</translation>
+        <translation type="unfinished">О программе</translation>
     </message>
     <message>
         <source>Settings</source>
         <extracomment>WatchlistPage settings menu item</extracomment>
-        <translation>Настройка</translation>
+        <translation type="unfinished">Настройка</translation>
     </message>
     <message>
         <source>Add stock</source>
         <extracomment>WatchlistPage add stock menu item</extracomment>
-        <translation>Добавить бумагу</translation>
+        <translation type="unfinished">Добавить бумагу</translation>
     </message>
     <message>
         <source>Refresh all quotes</source>
         <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
-        <translation>Обновить все курсы</translation>
+        <translation type="unfinished">Обновить все курсы</translation>
     </message>
     <message>
         <source>Stock quotes</source>
         <extracomment>WatchlistPage page header</extracomment>
-        <translation>Курсы</translation>
+        <translation type="unfinished">Курсы</translation>
     </message>
     <message>
         <source>Configure alarm</source>
         <extracomment>WatchlistPage configure alarm menu item</extracomment>
-        <translation>Задать оповещение</translation>
+        <translation type="unfinished">Задать оповещение</translation>
     </message>
     <message>
         <source>Remove</source>
         <extracomment>WatchlistPage remove menu item</extracomment>
-        <translation>Удалить</translation>
+        <translation type="unfinished">Удалить</translation>
     </message>
 </context>
 <context>
@@ -815,6 +820,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Error adding market data</source>
         <translation>Ошибка при добавлении котировок</translation>
+    </message>
+    <message>
+        <source>Watchlist data migrated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error migrating watchlist data</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
