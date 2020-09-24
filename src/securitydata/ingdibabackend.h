@@ -24,16 +24,6 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-// TODO FIX URLS
-const char ING_DIBA_API_SEARCH[] = "https://api.wertpapiere.ing.de/suche-autocomplete/autocomplete?query=%1";
-const char ING_DIBA_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/v1/components/instrumentheader/%1";
-// can fetch max 100 entries at a time - so about a quarter
-const char ING_DIBA_API_CLOSE_PRICES[] = "https://iss.moex.com/iss/history/engines/stock/markets/shares/boards/TQBR/securities/%1.json?from=%2%3";
-
-
-// https://component-api.wertpapiere.ing.de/api/v1/components/instrumentheader/DE0005093108
-// https://component-api.wertpapiere.ing.de/api/v1/components/instrumentheader/NL0012169213
-
 class IngDibaBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
@@ -54,7 +44,7 @@ private:
 
     int numberOfRequestedIbans = 0;
     QList<QJsonObject> searchQuoteResults;
-    QList<QString> searchQuoteErrors;
+    QMap<int, QString> chartTypeToStringMap;
 
     QJsonObject processQuoteResultSingle(QByteArray searchQuoteReply);
     QJsonObject findValueFromJsonArray(QJsonArray arr, QString key, QString value);
@@ -66,6 +56,8 @@ private:
     QString parsePriceResponse(QByteArray priceReply);
 
     QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
+
+    void processPreQuoteData(QByteArray preQuoteData, const QString &extRefId, const int chartType);
 
 private slots:
     void handleSearchNameFinished();

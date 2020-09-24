@@ -22,6 +22,8 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
+#include "chartdatacalculator.h"
+
 class AbstractDataBackend : public QObject {
   Q_OBJECT
 public:
@@ -59,6 +61,9 @@ protected:
     int supportedChartTypes = ChartType::NONE;
 
     virtual QString convertCurrency(const QString &currencyString) = 0;
+
+    QJsonObject createChartDataPoint(qint64 mSecsSinceEpoch, double priceValue);
+    QString createChartResponseString(QJsonArray resultArray, ChartDataCalculator chartDataCalculator);
 
     QNetworkReply *executeGetRequest(const QUrl &url);
     QDate getStartDateForChart(const int chartType);

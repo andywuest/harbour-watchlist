@@ -19,6 +19,9 @@
 #include "abstractdatabackend.h"
 
 #include <QDebug>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
 
 AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
     qDebug() << "Initializing Data Backend...";
@@ -68,3 +71,25 @@ QString AbstractDataBackend::convertToDatabaseDateTimeFormat(const QDateTime tim
 bool AbstractDataBackend::isChartTypeSupported(const int chartTypeToCheck) {
     return (chartTypeToCheck == (supportedChartTypes & chartTypeToCheck));
 }
+
+QJsonObject AbstractDataBackend::createChartDataPoint(qint64 mSecsSinceEpoch, double priceValue) {
+  QJsonObject resultObject;
+  resultObject.insert("x", mSecsSinceEpoch / 1000);
+  resultObject.insert("y", priceValue);
+  return resultObject;
+}
+
+QString AbstractDataBackend::createChartResponseString(QJsonArray resultArray, ChartDataCalculator chartDataCalculator) {
+    QJsonObject resultObject;
+    resultObject.insert("min", chartDataCalculator.getMinValue());
+    resultObject.insert("max", chartDataCalculator.getMaxValue());
+    resultObject.insert("fractionDigits", chartDataCalculator.getFractionDigits());
+    resultObject.insert("data", resultArray);
+
+    QJsonDocument resultDocument;
+    resultDocument.setObject(resultObject);
+
+    QString dataToString(resultDocument.toJson());
+    return dataToString;
+}
+

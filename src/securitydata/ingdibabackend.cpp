@@ -18,6 +18,8 @@
 #include "ingdibabackend.h"
 #include "chartdatacalculator.h"
 
+#include "../constants.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QUrl>
@@ -39,6 +41,12 @@ IngDibaBackend::IngDibaBackend(QNetworkAccessManager *manager, QObject *parent)
                                  | ChartType::YEAR
                                  | ChartType::THREE_YEARS
                                  | ChartType::MAXIMUM);
+    this->chartTypeToStringMap[ChartType::INTRADAY] = "Intraday";
+    this->chartTypeToStringMap[ChartType::WEEK] = "OneWeek";
+    this->chartTypeToStringMap[ChartType::MONTH] = "OneMonth";
+    this->chartTypeToStringMap[ChartType::YEAR] = "OneYear";
+    this->chartTypeToStringMap[ChartType::THREE_YEARS] = "ThreeYears";
+    this->chartTypeToStringMap[ChartType::MAXIMUM] = "Maximum";
 }
 
 IngDibaBackend::~IngDibaBackend() {
@@ -70,20 +78,45 @@ void IngDibaBackend::fetchPricesForChart(const QString &extRefId, const int char
         return;
     }
 
-    QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
-
     QNetworkReply *reply;
-    if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(ING_DIBA_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
-    } else {
-        // TODO implement
-        //reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
+
+    reply = executeGetRequest(QUrl(QString(ING_DIBA_API_PREQUOTE_DATA).arg(extRefId)));
+    reply->setProperty("type", chartType);
+    reply->setProperty("extRefId", extRefId);
+    connectErrorSlot(reply);
+    connect(reply, &QNetworkReply::finished, [this, reply]()
+    {
+        reply->deleteLater();
+
+        qDebug() << sender();
+        qDebug() << "type :" << reply->property("type");
+        qDebug() << "extRefId :" << reply->property("extRefId");
+
+        // TODO QNetworkReply *reply as parameter
+        processPreQuoteData(reply->readAll(), reply->property("extRefId").toString(), reply->property("type").toInt());
+    });
+}
+
+void IngDibaBackend::processPreQuoteData(QByteArray preQuoteData, const QString &extRefId, const int chartType) {
+    qDebug() << "IngDibaBackend::processPreQuoteData";
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(preQuoteData);
+    if (!jsonDocument.isObject()) {
+        qDebug() << "not a json object!";
     }
 
+    QJsonObject responseObject = jsonDocument.object();
+    QString valor = responseObject["valor"].toString();
+    QJsonArray chartPeriods = responseObject["chartPeriods"].toArray();
+    QString chartTypeString = this->chartTypeToStringMap[chartType];
+
+    qDebug() << "valor : " << valor;
+    qDebug() << "chartTypeString : " << chartTypeString;
+    qDebug() << "chartPeriods : " << chartPeriods;
+
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_CHART_PRICES).arg(extRefId, chartTypeString)));
+    reply->setProperty("type", chartType);
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &IngDibaBackend::handleFetchPricesForChartFinished);
-
-    reply->setProperty("type", chartType);
 }
 
 void IngDibaBackend::searchQuote(const QString &searchString) {
@@ -185,45 +218,25 @@ QString IngDibaBackend::parsePriceResponse(QByteArray reply) {
     }
 
     QJsonObject responseObject = jsonDocument.object();
-    QJsonObject historyObject = responseObject["history"].toObject();
-    QJsonArray responseArray = historyObject["data"].toArray();
+    // response only contains one element in the intruments array
+    QJsonObject firstInstrumentsObject = responseObject["instruments"].toArray().at(0).toObject();
+    QJsonArray chartDataArray = firstInstrumentsObject["data"].toArray();
 
-    QJsonDocument resultDocument;
     QJsonArray resultArray;
-
     ChartDataCalculator chartDataCalculator;
 
-    foreach (const QJsonValue & value, responseArray) {
-        QJsonArray valueArray = value.toArray();
-        QJsonObject resultObject;
+    foreach (const QJsonValue &value, chartDataArray) {
+        QJsonArray dataArray = value.toArray();
+        QVariant mSecsSinceEpochVariant = dataArray.at(0).toVariant();
+        qint64 mSecsSinceEpoch = static_cast<qint64>(mSecsSinceEpochVariant.toDouble());
 
-        QString tradeDate = valueArray.at(1).toString(); // TRADEDATE
-        // artifical time - irrelevant - since we do not display the time for these history entries
-        QString tradeDateTime = tradeDate + " 18:00:00";
-        QDateTime dateTimeTradeDate = QDateTime::fromString(tradeDateTime, Qt::ISODate);
-
-        QJsonValue closeObject = valueArray.at(11); // CLOSE
-        double closeValue = closeObject.toDouble();
-
+        double closeValue = dataArray.at(1).toDouble();
         chartDataCalculator.checkCloseValue(closeValue);
 
-        resultObject.insert("x", dateTimeTradeDate.toMSecsSinceEpoch() / 1000);
-        resultObject.insert("y", closeValue);
-
-        resultArray.push_back(resultObject);
+        resultArray.push_back(createChartDataPoint(mSecsSinceEpoch, closeValue));
     }
 
-    // resultDocument.setArray(resultArray);
-    QJsonObject resultObject;
-    resultObject.insert("min", chartDataCalculator.getMinValue());
-    resultObject.insert("max", chartDataCalculator.getMaxValue());
-    resultObject.insert("fractionDigits", chartDataCalculator.getFractionDigits());
-    resultObject.insert("data", resultArray);
-
-    resultDocument.setObject(resultObject);
-
-    QString dataToString(resultDocument.toJson());
-    return dataToString;
+    return createChartResponseString(resultArray, chartDataCalculator);
 }
 
 QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
