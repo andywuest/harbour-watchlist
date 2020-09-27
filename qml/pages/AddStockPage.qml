@@ -33,12 +33,51 @@ Page {
 
     allowedOrientations: Orientation.All
 
-    // TODO disconnect slots on exit
+    function connectSlots() {
+        Functions.log("AddStockPage - connecting - slots")
+        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        dataBackend.searchResultAvailable.connect(searchResultHandler);
+        dataBackend.requestError.connect(errorResultHandler);
+    }
+
+    function disconnectSlots() {
+        Functions.log("AddStockPage - disconnecting - slots")
+        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        dataBackend.searchResultAvailable.disconnect(searchResultHandler);
+        dataBackend.requestError.disconnect(errorResultHandler);
+    }
+
+    function searchResultHandler(result) {
+      var jsonResult = JSON.parse(result.toString())
+      Functions.log("json result from euroinvestor was: " +result)
+
+      for (var i = 0; i < jsonResult.length; i++)   {
+          if (jsonResult[i]) {
+            searchResultListModel.append(jsonResult[i]);
+          }
+      }
+
+      if (searchListView && searchListView.count) {
+          if (searchListView.count === 0 && searchField.text !== "") {
+              noResultsColumn.visible = true
+          } else {
+              noResultsColumn.visible = false
+          }
+      } else {
+          noResultsColumn.visible = true
+      }
+    }
+
+    function errorResultHandler(result) {
+        stockAddedNotification.show(result)
+    }
+
     AppNotification {
         id: stockAddedNotification
     }
 
     SilicaFlickable {
+        id: addStockFlickable
 
         anchors.fill: parent
         contentHeight: parent.height
@@ -220,39 +259,15 @@ Page {
                 VerticalScrollDecorator {
                 }
             }
-
         }
-
-        function searchResultHandler(result) {
-          var jsonResult = JSON.parse(result.toString())
-          console.log("json result from euroinvestor was: " +result)
-
-          for (var i = 0; i < jsonResult.length; i++)   {
-              if (jsonResult[i]) {
-                searchResultListModel.append(jsonResult[i]);
-              }
-          }
-
-          if (searchListView && searchListView.count) {
-              if (searchListView.count === 0 && searchField.text !== "") {
-                  noResultsColumn.visible = true
-              } else {
-                  noResultsColumn.visible = false
-              }
-          } else {
-              noResultsColumn.visible = true
-          }
-        }
-
-        function errorResultHandler(result) {
-            stockAddedNotification.show(result)
-        }
-
-        Component.onCompleted: {
-            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
-            dataBackend.searchResultAvailable.connect(searchResultHandler);
-            dataBackend.requestError.connect(errorResultHandler);
-        }
-
     }
+
+    Component.onCompleted: {
+        connectSlots();
+    }
+
+    Component.onDestruction: {
+        disconnectSlots();
+    }
+
 }
