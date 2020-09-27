@@ -253,9 +253,9 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
     QJsonObject responseObject = jsonDocument.object();
     QJsonArray suggestionTypes = responseObject["suggestion_types"].toArray(); // -> type: "direct_hit"
     QJsonArray suggestionGroups = suggestionTypes.at(0).toObject()["suggestion_groups"].toArray(); //  -> group: "wp"
-    QJsonArray suggestionGroupsDirectHit = findValueFromJsonArray(suggestionTypes, "type", "direct_hit")["suggestion_groups"].toArray(); //  -> group: "wp"
+    QJsonArray suggestionGroupsDirectHit = findFirstValueFromJsonArray(suggestionTypes, "type", "direct_hit")["suggestion_groups"].toArray(); //  -> group: "wp"
     QJsonArray suggestions = suggestionGroups.at(0).toObject()["suggestions"].toArray();
-    QJsonArray suggestionsWp = findValueFromJsonArray(suggestionGroupsDirectHit, "group", "wp")["suggestions"].toArray();
+    QJsonArray suggestionsWp = findFirstValueFromJsonArray(suggestionGroupsDirectHit, "group", "wp")["suggestions"].toArray();
 
     qDebug() << "direct hit: " << suggestionGroupsDirectHit;
 
@@ -268,19 +268,22 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
         QJsonObject suggestion = value.toObject();
         qDebug() << " sugg : " << suggestion["score"];
 
-        // id is not mapped so far - is it used ??
-        QJsonObject resultObject;
-        resultObject.insert("extRefId", suggestion["isin"]);
-        resultObject.insert("symbol1", suggestion["wkn"]);
-        resultObject.insert("name", suggestion["text"]);
-        resultObject.insert("isin", suggestion["isin"]);
-        resultObject.insert("stockMarketName", "-");
-        resultObject.insert("currency", QJsonValue(""));
-        resultObject.insert("price", suggestion["price_html"]);
-        // not persisted - displayed on the add stock page
-        resultObject.insert("genericText1", suggestion["price_html"]);
+        QString category = suggestion["category"].toString();
+        if (isValidSecurityCategory(category)) {
+            // id is not mapped so far - is it used ??
+            QJsonObject resultObject;
+            resultObject.insert("extRefId", suggestion["isin"]);
+            resultObject.insert("symbol1", suggestion["wkn"]);
+            resultObject.insert("name", suggestion["text"]);
+            resultObject.insert("isin", suggestion["isin"]);
+            resultObject.insert("stockMarketName", "-");
+            resultObject.insert("currency", QJsonValue(""));
+            resultObject.insert("price", suggestion["price_html"]);
+            // not persisted - displayed on the add stock page
+            resultObject.insert("genericText1", suggestion["price_html"]);
 
-        resultArray.push_back(resultObject);
+            resultArray.push_back(resultObject);
+        }
     }
 
     resultDocument.setArray(resultArray);
@@ -289,7 +292,12 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
     return dataToString;
 }
 
-QJsonObject IngDibaBackend::findValueFromJsonArray(QJsonArray arr, QString key, QString value) {
+bool IngDibaBackend::isValidSecurityCategory(QString category) {
+    return (category.compare(QString("Fonds"), Qt::CaseInsensitive) == 0
+            || category.compare(QString("Aktien"), Qt::CaseInsensitive) == 0);
+}
+
+QJsonObject IngDibaBackend::findFirstValueFromJsonArray(QJsonArray arr, QString key, QString value) {
     for (const auto obj : arr) {
         if (obj.toObject().value(key) == value) {
             return obj.toObject();
@@ -307,10 +315,15 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
 
     QJsonObject responseObject = jsonDocument.object();
 
+    // for US stocks the isin is not populated, but the internationalIsin - in this
+    // case use the internationalIsin
+    bool useIsin = (!responseObject.value("isin").toString().isEmpty());
+    QJsonValue isin = (useIsin ? responseObject.value("isin") : responseObject.value("internalIsin"));
+
     QJsonObject resultObject;
     resultObject.insert("name", responseObject.value("name"));
-    resultObject.insert("isin", responseObject.value("isin"));
-    resultObject.insert("extRefId", responseObject.value("isin"));
+    resultObject.insert("isin", isin);
+    resultObject.insert("extRefId", isin);
     resultObject.insert("symbol1", responseObject.value("wkn"));
     resultObject.insert("currency", responseObject.value("currency"));
     resultObject.insert("price", responseObject.value("price"));

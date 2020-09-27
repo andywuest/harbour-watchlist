@@ -47,7 +47,8 @@ private:
     QMap<int, QString> chartTypeToStringMap;
 
     QJsonObject processQuoteResultSingle(QByteArray searchQuoteReply);
-    QJsonObject findValueFromJsonArray(QJsonArray arr, QString key, QString value);
+    QJsonObject findFirstValueFromJsonArray(QJsonArray arr, QString key, QString value);
+    bool isValidSecurityCategory(QString category);
 
     // is triggered after name search because the first json request does not contain all information we need
     void searchQuoteForNameSearch(const QString &searchString);
