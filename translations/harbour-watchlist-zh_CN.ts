@@ -78,25 +78,25 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>AddStockPage</name>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="72"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="111"/>
         <source>Search Results</source>
         <extracomment>AddStockPage search result header</extracomment>
         <translation>搜索结果</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="79"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="118"/>
         <source>Find your Stock...</source>
         <extracomment>AddStockPage search result input field</extracomment>
         <translation>找到你的股票……</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="115"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="154"/>
         <source>No results found</source>
         <extracomment>AddStockPage no results label</extracomment>
         <translation>没有找到结果</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="152"/>
+        <location filename="../qml/pages/AddStockPage.qml" line="191"/>
         <source>Add</source>
         <extracomment>AddStockPage add menu item</extracomment>
         <translation>添加</translation>
