@@ -184,21 +184,21 @@ Page {
                 delegate: ListItem {
                     id: delegate
 
-                    menu: ContextMenu {
-                        MenuItem {
-                            visible: true
-                            //: AddStockPage add menu item
-                            text: qsTr("Add")
-                            onClicked: {
-                                var selectedItem = searchResultListModel.get(
-                                            index)
-                                var result = Database.persistStockData(
-                                            selectedItem,
-                                            Database.getCurrentWatchlistId())
-                                stockAddedNotification.show(result)
-                            }
-                        }
-                    }
+//                    menu: ContextMenu {
+//                        MenuItem {
+//                            visible: true
+//                            //: AddStockPage add menu item
+//                            text: qsTr("Add")
+//                            onClicked: {
+//                                var selectedItem = searchResultListModel.get(
+//                                            index)
+//                                var result = Database.persistStockData(
+//                                            selectedItem,
+//                                            Database.getCurrentWatchlistId())
+//                                stockAddedNotification.show(result)
+//                            }
+//                        }
+//                    }
 
                     Column {
                         id: resultColumn
@@ -244,6 +244,7 @@ Page {
                                 text: isin // isin - should be available for all backends
                                 textFormat: Text.StyledText
                                 elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignRight
                                 maximumLineCount: 1
                             }
                         }
@@ -251,8 +252,9 @@ Page {
 
                     onClicked: {
                         var selectedItem = searchResultListModel.get(index)
-                        console.log("Clicked " + index)
-                        console.log("name : " + selectedItem.name)
+                        var result = Database.persistStockData(selectedItem,
+                                                               Database.getCurrentWatchlistId())
+                        stockAddedNotification.show(result);
                     }
                 }
 

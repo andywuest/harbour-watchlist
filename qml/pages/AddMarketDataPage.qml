@@ -84,21 +84,21 @@ Page {
                 delegate: ListItem {
                     id: delegate
 
-                    menu: ContextMenu {
-                        MenuItem {
-                            visible: true
-                            //: AddMarketdataPage add menu item
-                            text: qsTr("Add")
-                            onClicked: {
-                                var selectedItem = searchResultListModel.get(
-                                            index)
-                                var result = Database.persistMarketdata(
-                                            selectedItem)
-                                marketdataAddedNotification.show(result)
-                                searchResultListModel.remove(index);
-                            }
-                        }
-                    }
+//                    menu: ContextMenu {
+//                        MenuItem {
+//                            visible: true
+//                            //: AddMarketdataPage add menu item
+//                            text: qsTr("Add")
+//                            onClicked: {
+//                                var selectedItem = searchResultListModel.get(
+//                                            index)
+//                                var result = Database.persistMarketdata(
+//                                            selectedItem)
+//                                marketdataAddedNotification.show(result)
+//                                searchResultListModel.remove(index);
+//                            }
+//                        }
+//                    }
 
                     Column {
                         id: resultColumn
@@ -110,15 +110,18 @@ Page {
 
                         Label {
                             id: marketDataLabel
-                            font.pixelSize: Theme.fontSizeLarge
+                            font.pixelSize: Theme.fontSizeMedium
                             text: name
                         }
                     }
 
                     onClicked: {
-                        var selectedItem = searchResultListModel.get(index)
-                        console.log("Clicked " + index)
-                        console.log("name : " + selectedItem.name)
+                        var selectedItem = searchResultListModel.get(
+                                    index)
+                        var result = Database.persistMarketdata(
+                                    selectedItem)
+                        marketdataAddedNotification.show(result)
+                        searchResultListModel.remove(index);
                     }
                 }
 
