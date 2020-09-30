@@ -241,12 +241,13 @@ SilicaFlickable {
                                 width: parent.width
                                 height: Theme.fontSizeSmall + Theme.paddingMedium
 
-                                Text {
+                                Label {
                                     id: stockQuoteName
                                     width: parent.width * 8 / 10
                                     height: parent.height
                                     text: name
-                                    // truncationMode: TruncationMode.Elide // TODO check for very long texts
+                                    truncationMode: TruncationMode.Fade// TODO check for very long texts
+                                    // elide: Text.ElideRight
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeSmall
                                     font.bold: true

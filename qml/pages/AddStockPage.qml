@@ -210,13 +210,14 @@ Page {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.horizontalCenter: parent.horizontalCenter
 
-                        Text {
+                        Label {
                             id: stockNameText
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.primaryColor
                             text: name
                             textFormat: Text.StyledText
-                            elide: Text.ElideRight
+                            //elide: Text.ElideRight
+                            truncationMode: TruncationMode.Fade // TODO check for very long texts
                             maximumLineCount: 1
                             width: parent.width
                             height: Theme.fontSizeMedium
