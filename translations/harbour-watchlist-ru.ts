@@ -53,11 +53,6 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>AddMarketDataPage</name>
     <message>
-        <source>Add</source>
-        <extracomment>AddMarketdataPage add menu item</extracomment>
-        <translation>Добавить</translation>
-    </message>
-    <message>
         <source>Market data</source>
         <extracomment>AddMarketdataPage Market data header</extracomment>
         <translation>Котировки</translation>
@@ -79,11 +74,6 @@ AboutPage title - about text title</extracomment>
         <source>No results found</source>
         <extracomment>AddStockPage no results label</extracomment>
         <translation>Ничего не найдено</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <extracomment>AddStockPage add menu item</extracomment>
-        <translation>Добавить</translation>
     </message>
 </context>
 <context>
@@ -364,101 +354,6 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
 </context>
 <context>
-    <name>StockDetailsPage</name>
-    <message>
-        <source>Currency</source>
-        <extracomment>StockDetailsPage page currency</extracomment>
-        <translation>Валюта</translation>
-    </message>
-    <message>
-        <source>General data</source>
-        <extracomment>StockDetailsPage page general data</extracomment>
-        <translation>Общая информация</translation>
-    </message>
-    <message>
-        <source>Symbol</source>
-        <extracomment>StockDetailsPage page symbol</extracomment>
-        <translation>Символ</translation>
-    </message>
-    <message>
-        <source>Stock Market</source>
-        <extracomment>StockDetailsPage page stock market</extracomment>
-        <translation>Биржа</translation>
-    </message>
-    <message>
-        <source>Trading data</source>
-        <extracomment>StockDetailsPage page trading data</extracomment>
-        <translation>Курс</translation>
-    </message>
-    <message>
-        <source>Price</source>
-        <extracomment>StockDetailsPage page price</extracomment>
-        <translation>Цена</translation>
-    </message>
-    <message>
-        <source>Timestamp</source>
-        <extracomment>StockDetailsPage page timestamp</extracomment>
-        <translation>Время</translation>
-    </message>
-    <message>
-        <source>Charts</source>
-        <extracomment>StockDetailsPage page intraday chart</extracomment>
-        <translation>График</translation>
-    </message>
-    <message>
-        <source>Intraday</source>
-        <translation>1 день</translation>
-    </message>
-    <message>
-        <source>30 days</source>
-        <translation>30 дней</translation>
-    </message>
-    <message>
-        <source>Year</source>
-        <translation>Год</translation>
-    </message>
-    <message>
-        <source>Change abs.</source>
-        <extracomment>StockDetailsPage page change absolute</extracomment>
-        <translation>Движение абс.</translation>
-    </message>
-    <message>
-        <source>Change rel.</source>
-        <extracomment>StockDetailsPage page change relative</extracomment>
-        <translation>Движение отн.</translation>
-    </message>
-    <message>
-        <source>Ask</source>
-        <extracomment>StockDetailsPage page ask</extracomment>
-        <translation>Предложение</translation>
-    </message>
-    <message>
-        <source>Bid</source>
-        <extracomment>StockDetailsPage page bid</extracomment>
-        <translation>Покупка</translation>
-    </message>
-    <message>
-        <source>High</source>
-        <extracomment>StockDetailsPage page high</extracomment>
-        <translation>Максимум</translation>
-    </message>
-    <message>
-        <source>Low</source>
-        <extracomment>StockDetailsPage page low</extracomment>
-        <translation>Минимум</translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <extracomment>StockDetailsPage page volume</extracomment>
-        <translation>Объём</translation>
-    </message>
-    <message>
-        <source>ISIN</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation>ISIN код</translation>
-    </message>
-</context>
-<context>
     <name>StockDetailsView</name>
     <message>
         <source>General data</source>
@@ -534,59 +429,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Объём</translation>
-    </message>
-</context>
-<context>
-    <name>StockOverviewPage</name>
-    <message>
-        <source>Details</source>
-        <translation>Подробности</translation>
-    </message>
-    <message>
-        <source>Charts</source>
-        <translation>Графики</translation>
-    </message>
-    <message>
-        <source>News</source>
-        <translation>Новости</translation>
-    </message>
-</context>
-<context>
-    <name>WatchlistPage</name>
-    <message>
-        <source>About</source>
-        <extracomment>WatchlistPage about menu item</extracomment>
-        <translation type="unfinished">О программе</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <extracomment>WatchlistPage settings menu item</extracomment>
-        <translation type="unfinished">Настройка</translation>
-    </message>
-    <message>
-        <source>Add stock</source>
-        <extracomment>WatchlistPage add stock menu item</extracomment>
-        <translation type="unfinished">Добавить бумагу</translation>
-    </message>
-    <message>
-        <source>Refresh all quotes</source>
-        <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished">Обновить все курсы</translation>
-    </message>
-    <message>
-        <source>Stock quotes</source>
-        <extracomment>WatchlistPage page header</extracomment>
-        <translation type="unfinished">Курсы</translation>
-    </message>
-    <message>
-        <source>Configure alarm</source>
-        <extracomment>WatchlistPage configure alarm menu item</extracomment>
-        <translation type="unfinished">Задать оповещение</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <extracomment>WatchlistPage remove menu item</extracomment>
-        <translation type="unfinished">Удалить</translation>
     </message>
 </context>
 <context>

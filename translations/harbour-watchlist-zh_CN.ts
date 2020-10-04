@@ -68,12 +68,6 @@ AboutPage title - about text title</extracomment>
         <extracomment>AddMarketdataPage Market data header</extracomment>
         <translation>市场数据</translation>
     </message>
-    <message>
-        <location filename="../qml/pages/AddMarketDataPage.qml" line="91"/>
-        <source>Add</source>
-        <extracomment>AddMarketdataPage add menu item</extracomment>
-        <translation>添加</translation>
-    </message>
 </context>
 <context>
     <name>AddStockPage</name>
@@ -94,12 +88,6 @@ AboutPage title - about text title</extracomment>
         <source>No results found</source>
         <extracomment>AddStockPage no results label</extracomment>
         <translation>没有找到结果</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AddStockPage.qml" line="191"/>
-        <source>Add</source>
-        <extracomment>AddStockPage add menu item</extracomment>
-        <translation>添加</translation>
     </message>
 </context>
 <context>
@@ -199,48 +187,48 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="101"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="109"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="106"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="114"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="111"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="122"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="119"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="130"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>刷新股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="128"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="136"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="147"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>刷新全部报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="268"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
         <source>Market data</source>
         <translation>股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="283"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="294"/>
         <source>Watchlist</source>
         <translation>清单</translation>
     </message>
@@ -248,26 +236,26 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="72"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="77"/>
         <source>Settings</source>
         <extracomment>SettingsPage settings title</extracomment>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="78"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="83"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
         <translation>下载图表数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="81"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>选择下载图表数据的方式</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="85"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="90"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="173"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always
 ----------
@@ -275,8 +263,8 @@ SettingsPage news download strategy always</extracomment>
         <translation>总是</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="94"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="177"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi
 ----------
@@ -284,78 +272,78 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>仅限 WiFi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation>仅手动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
         <translation>分类方式</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="112"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
         <translation>排列在查证券项目的方式</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
         <translation>按股价波动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="120"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
         <translation>按名称</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="131"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
         <translation>数据终端</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="134"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
         <translation>用于此清单的数据终端。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
         <translation>Euroinvestor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
         <translation>Moscow Exchange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="141"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation>请注意：修改数据终端会重置此数据库。这表示当前清单会被充值，你需要再次添加各支股票。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="166"/>
         <source>Download news data</source>
         <extracomment>SettingsPage download news data</extracomment>
         <translation>下载消息数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
         <source>Defines strategy to download the news data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>自定义下载消息的策略</translation>
@@ -431,120 +419,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockChartsView.qml" line="150"/>
         <source>3 Years</source>
         <translation>3年</translation>
-    </message>
-</context>
-<context>
-    <name>StockDetailsPage</name>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="73"/>
-        <source>General data</source>
-        <extracomment>StockDetailsPage page general data</extracomment>
-        <translation>一般数据</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="79"/>
-        <source>Currency</source>
-        <extracomment>StockDetailsPage page currency</extracomment>
-        <translation>货币</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="93"/>
-        <source>Symbol</source>
-        <extracomment>StockDetailsPage page symbol</extracomment>
-        <translation>代码</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="100"/>
-        <source>Stock Market</source>
-        <extracomment>StockDetailsPage page stock market</extracomment>
-        <translation>股票市场</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="123"/>
-        <source>30 days</source>
-        <translation>30天</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="133"/>
-        <source>Year</source>
-        <translation>年</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="142"/>
-        <source>Trading data</source>
-        <extracomment>StockDetailsPage page trading data</extracomment>
-        <translation>趋势数据</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="148"/>
-        <source>Price</source>
-        <extracomment>StockDetailsPage page price</extracomment>
-        <translation>股价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="155"/>
-        <source>Change abs.</source>
-        <extracomment>StockDetailsPage page change absolute</extracomment>
-        <translation>绝对值变动</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="162"/>
-        <source>Change rel.</source>
-        <extracomment>StockDetailsPage page change relative</extracomment>
-        <translation>相对变动</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="169"/>
-        <source>Timestamp</source>
-        <extracomment>StockDetailsPage page timestamp</extracomment>
-        <translation>时间戳</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="176"/>
-        <source>Ask</source>
-        <extracomment>StockDetailsPage page ask</extracomment>
-        <translation>卖入价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="183"/>
-        <source>Bid</source>
-        <extracomment>StockDetailsPage page bid</extracomment>
-        <translation>买出价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="190"/>
-        <source>High</source>
-        <extracomment>StockDetailsPage page high</extracomment>
-        <translation>最高价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="197"/>
-        <source>Low</source>
-        <extracomment>StockDetailsPage page low</extracomment>
-        <translation>最低价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="204"/>
-        <source>Volume</source>
-        <extracomment>StockDetailsPage page volume</extracomment>
-        <translation>成交量</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="107"/>
-        <source>Charts</source>
-        <extracomment>StockDetailsPage page intraday chart</extracomment>
-        <translation>图表</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="86"/>
-        <source>ISIN</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation>代码</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockDetailsPage.qml" line="112"/>
-        <source>Intraday</source>
-        <translation>当天</translation>
     </message>
 </context>
 <context>
@@ -638,69 +512,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
-    </message>
-</context>
-<context>
-    <name>StockOverviewPage</name>
-    <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
-        <source>Details</source>
-        <translation>详情</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="241"/>
-        <source>Charts</source>
-        <translation>图表</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="256"/>
-        <source>News</source>
-        <translation>新闻</translation>
-    </message>
-</context>
-<context>
-    <name>WatchlistPage</name>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="156"/>
-        <source>About</source>
-        <extracomment>WatchlistPage about menu item</extracomment>
-        <translation type="unfinished">关于</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="161"/>
-        <source>Settings</source>
-        <extracomment>WatchlistPage settings menu item</extracomment>
-        <translation type="unfinished">设置</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="166"/>
-        <source>Add stock</source>
-        <extracomment>WatchlistPage add stock menu item</extracomment>
-        <translation type="unfinished">添加股票</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="173"/>
-        <source>Refresh all quotes</source>
-        <extracomment>WatchlistPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished">刷新全部报价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="198"/>
-        <source>Stock quotes</source>
-        <extracomment>WatchlistPage page header</extracomment>
-        <translation type="unfinished">股票报价</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="227"/>
-        <source>Configure alarm</source>
-        <extracomment>WatchlistPage configure alarm menu item</extracomment>
-        <translation type="unfinished">配置提醒</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/WatchlistPage.qml" line="235"/>
-        <source>Remove</source>
-        <extracomment>WatchlistPage remove menu item</extracomment>
-        <translation type="unfinished">移除</translation>
     </message>
 </context>
 <context>
@@ -971,32 +782,32 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>禁用提醒出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="242"/>
+        <location filename="../qml/js/database.js" line="243"/>
         <source>Watchlist data migrated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="242"/>
+        <location filename="../qml/js/database.js" line="243"/>
         <source>Error migrating watchlist data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="274"/>
+        <location filename="../qml/js/database.js" line="275"/>
         <source>Market data added</source>
         <translation>已添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="274"/>
+        <location filename="../qml/js/database.js" line="275"/>
         <source>Error adding market data</source>
         <translation>添加股市数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="298"/>
+        <location filename="../qml/js/database.js" line="299"/>
         <source>Stock added</source>
         <translation>已添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="301"/>
         <source>Error adding stock</source>
         <translation>加载股票出错</translation>
     </message>
