@@ -127,16 +127,16 @@ SilicaFlickable {
 
     function updateQuotes() {
         console.log("updateQuotes");
-        loaded = false;
 
-        // listView.model.get(index)
         var numberOfQuotes = stocksModel.count
+
         var stocks = []
         for (var i = 0; i < numberOfQuotes; i++) {
             stocks.push(stocksModel.get(i).extRefId)
         }
 
         if (numberOfQuotes > 0) {
+            loaded = false;
             Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
         }
     }

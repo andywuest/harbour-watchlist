@@ -73,6 +73,14 @@ Page {
         }
     }
 
+    function reloadOverviewSecurities() {
+        console.log("reload Overview Securities !");
+        watchlistView.reloadAllStocks(); // reload to get the new extRefId
+        watchlistView.updateQuotes(); // also update the displayed names and prices
+        watchlistView.disconnectSlots(); // reconnect slots for new backend
+        watchlistView.connectSlots();
+    }
+
     onStatusChanged: {
         if (status === PageStatus.Active) {
             var watchlistItemCount = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_ASC).length;
@@ -104,7 +112,10 @@ Page {
             MenuItem {
                 //: OverviewPage settings menu item
                 text: qsTr("Settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+                onClicked: {
+                    var settingsPage = pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+                    settingsPage.reloadOverviewSecurities.connect(reloadOverviewSecurities)
+                }
             }
             MenuItem {
                 //: OverviewPage settings menu item

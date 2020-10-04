@@ -32,24 +32,28 @@ Page {
     id: settingsPage
     property int currentDataBackend : 0
     property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
+    signal reloadOverviewSecurities()
 
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
             console.log("store settings!");
+            var reloadSecurities = false;
             if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
                 if (settingsPage.currentDataBackend === Constants.BACKEND_EUROINVESTOR
                         && watchlistSettings.dataBackend === Constants.BACKEND_ING_DIBA) {
                     console.log("Migrate stockdata table to new backend");
                     Database.migrateEuroinvestorToIngDiba(watchlistId);
-                    // TODO beim sprung zurueck muss man die aktienliste neuladen und einen refresh durchfuehren..
                 } else {
                     console.log("reset application database");
                     Database.resetApplication()
                     Database.initApplicationTables()
                 }
-
+                reloadSecurities = true;
             }
             watchlistSettings.sync();
+            if (reloadSecurities) {
+                reloadOverviewSecurities();
+            }
         }
     }
 
