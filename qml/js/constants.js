@@ -84,13 +84,16 @@ function buildMarketDataList() {
 
     // Currency
     marketDataList.push(addMarketDataItem("CUR_EUR_USD", qsTr("EUR/USD"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_EUR_RUB", qsTr("EUR/RUB"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_SEK_DKK", qsTr("SEK/DKK"), MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_GBP_DKK", qsTr("GBP/DKK"), MARKET_DATA_TYPE_CURRENCY));
-    marketDataList.push(addMarketDataItem("CUR_GBP_USD", qsTr("GBP/USD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_JPY_USD", qsTr("JPY/USD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_CHF_EUR", qsTr("CHF/EUR"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_GBP_EUR", qsTr("GBP/EUR"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_RUB", qsTr("GBP/RUB"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_DKK", qsTr("GBP/DKK"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_GBP_USD", qsTr("GBP/USD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_USD_EUR", qsTr("USD/EUR"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_USD_RUB", qsTr("USD/RUB"), MARKET_DATA_TYPE_CURRENCY));
 
     // Crypto
     marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", qsTr("Bitcoin"), MARKET_DATA_TYPE_CRYPTO));

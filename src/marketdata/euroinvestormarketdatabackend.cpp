@@ -57,12 +57,15 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     // Currencies
     marketDataId2ExtRefId["CUR_SEK_DKK"] = "36399";
     marketDataId2ExtRefId["CUR_EUR_USD"] = "36278";
-    marketDataId2ExtRefId["CUR_GBP_DKK"] = "36274";
-    marketDataId2ExtRefId["CUR_GBP_USD"] = "35299";
+    marketDataId2ExtRefId["CUR_EUR_RUB"] = "35296";
     marketDataId2ExtRefId["CUR_JPY_USD"] = "37895";
     marketDataId2ExtRefId["CUR_CHF_EUR"] = "37786";
     marketDataId2ExtRefId["CUR_GBP_EUR"] = "36624";
+    marketDataId2ExtRefId["CUR_GBP_RUB"] = "36440";
+    marketDataId2ExtRefId["CUR_GBP_USD"] = "35299";
+    marketDataId2ExtRefId["CUR_GBP_DKK"] = "36274";
     marketDataId2ExtRefId["CUR_USD_EUR"] = "29749";
+    marketDataId2ExtRefId["CUR_USD_RUB"] = "36270";
 
     // Crypto Currencies
     marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "99567";
