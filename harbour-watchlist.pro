@@ -87,8 +87,5 @@ DISTFILES += \
     qml/pages/OverviewPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/StockAlarmDialog.qml \
-    qml/pages/StockDetailsPage.qml \
-    qml/pages/StockOverviewPage.qml \
-    qml/pages/WatchlistPage.qml \
     qml/pages/NewsPage.qml
 
