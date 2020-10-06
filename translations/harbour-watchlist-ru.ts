@@ -435,15 +435,15 @@ SettingsPage news download strategy only on wifi</extracomment>
     <name>StockOverviewPage</name>
     <message>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Подробности</translation>
     </message>
     <message>
         <source>Charts</source>
-        <translation type="unfinished">Графики</translation>
+        <translation>Графики</translation>
     </message>
     <message>
         <source>News</source>
-        <translation type="unfinished">Новости</translation>
+        <translation>Новости</translation>
     </message>
 </context>
 <context>

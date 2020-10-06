@@ -519,17 +519,17 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="241"/>
         <source>Charts</source>
-        <translation type="unfinished">Charts</translation>
+        <translation>Charts</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="256"/>
         <source>News</source>
-        <translation type="unfinished">Nachrichten</translation>
+        <translation>Nachrichten</translation>
     </message>
 </context>
 <context>
