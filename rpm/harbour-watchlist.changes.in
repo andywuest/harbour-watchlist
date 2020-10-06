@@ -5,7 +5,8 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* 05.10.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.1-1
+* 06.10.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.1-1
+- marked Ing-Diba backend as beta.
 - added accidentally deleted StockOverViewPage.
 
 * 05.10.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.0-1
