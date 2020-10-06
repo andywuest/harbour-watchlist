@@ -289,7 +289,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Определяет стратегию загрузки новостей</translation>
     </message>
     <message>
-        <source>Ing-Diba</source>
+        <source>Ing-Diba (beta)</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -429,6 +429,21 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>Объём</translation>
+    </message>
+</context>
+<context>
+    <name>StockOverviewPage</name>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charts</source>
+        <translation type="unfinished">Графики</translation>
+    </message>
+    <message>
+        <source>News</source>
+        <translation type="unfinished">Новости</translation>
     </message>
 </context>
 <context>
@@ -627,6 +642,18 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Chainlink</source>
         <translation>Chainlink</translation>
+    </message>
+    <message>
+        <source>EUR/RUB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GBP/RUB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>USD/RUB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

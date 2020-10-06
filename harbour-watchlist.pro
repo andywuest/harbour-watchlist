@@ -85,6 +85,7 @@ DISTFILES += \
     qml/pages/AddMarketDataPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/OverviewPage.qml \
+    qml/pages/StockOverviewPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/NewsPage.qml

@@ -5,8 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 05.10.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.1-1
+- added accidentally deleted StockOverViewPage.
+
 * 05.10.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.0-1
-- added new Backend (Ing-Diba) to finally support funds and ETFs.
+- not publicly release!
+- added new Backend (Ing-Diba Beta) to finally support funds and ETFs.
 - some internal code refactorings
 - some UI polishing after review by Mister1Magister
 - Add some combos for russian currency (https://github.com/andywuest/harbour-watchlist/issues/59)

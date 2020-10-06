@@ -142,7 +142,7 @@ Page {
                     }
                     MenuItem {
                         //: SettingsPage data backend Ing-Diba
-                        text: qsTr("Ing-Diba")
+                        text: qsTr("Ing-Diba (beta)")
                     }
                     onActivated: {
                         watchlistSettings.dataBackend = index
