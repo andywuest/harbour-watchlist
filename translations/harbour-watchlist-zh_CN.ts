@@ -329,7 +329,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Ing-Diba (beta)</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ing-Diba</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="155"/>
@@ -817,12 +817,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="242"/>
         <source>Watchlist data migrated</source>
-        <translation type="unfinished"></translation>
+        <translation>清单数据已迁移</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="242"/>
         <source>Error migrating watchlist data</source>
-        <translation type="unfinished"></translation>
+        <translation>迁移清单数据出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="274"/>
