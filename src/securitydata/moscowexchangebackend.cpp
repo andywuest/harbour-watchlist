@@ -18,6 +18,8 @@
 #include "moscowexchangebackend.h"
 #include "chartdatacalculator.h"
 
+#include "../constants.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QUrl>
@@ -69,13 +71,8 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 
     QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
-    QNetworkReply *reply;
-    if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
-    } else {
-        // TODO implement
-        reply = executeGetRequest(QUrl(QString(MAPI_INTRADAY_PRICES).arg(extRefId)));
-    }
+    // so far we get all data from the same service
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &MoscowExchangeBackend::handleFetchPricesForChartFinished);
@@ -322,5 +319,5 @@ QString MoscowExchangeBackend::convertCurrency(const QString &currencyString) {
 }
 
 QString MoscowExchangeBackend::getLanguage() {
-    return (debugMode ? QString(LANG_EN) : QString());
+    return (debugMode ? QString(MOSCOW_EXCHANGE_LANG_EN) : QString());
 }

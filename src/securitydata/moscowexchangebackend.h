@@ -24,15 +24,6 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-// TODO FIX URLS
-const char LANG_EN[] = "&lang=en";
-const char MOSCOW_EXCHANGE_API_SEARCH[] = "http://iss.moex.com/iss/securities.json?q=%1&group_by_filter=stock_shares&limit=15%2";
-const char MOSCOW_EXCHANGE_QUOTE[] = "https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?securities=%1%2";
-// can fetch max 100 entries at a time - so about a quarter
-const char MOSCOW_EXCHANGE_API_CLOSE_PRICES[] = "https://iss.moex.com/iss/history/engines/stock/markets/shares/boards/TQBR/securities/%1.json?from=%2%3";
-
-const char MAPI_INTRADAY_PRICES[] = "https://api.euroinvestor.dk/instruments/%1/intradays";
-
 class MoscowExchangeBackend : public AbstractDataBackend {
     Q_OBJECT
 public:
