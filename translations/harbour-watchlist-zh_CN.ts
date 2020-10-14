@@ -170,7 +170,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>MoscowExchangeBackend</name>
     <message>
-        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="319"/>
+        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="316"/>
         <source>RUB</source>
         <translation>卢布</translation>
     </message>
@@ -512,6 +512,14 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Volume</source>
         <extracomment>StockDetailsPage page volume</extracomment>
         <translation>成交量</translation>
+    </message>
+</context>
+<context>
+    <name>StockNewsView</name>
+    <message>
+        <location filename="../qml/components/StockNewsView.qml" line="88"/>
+        <source>No news items found for this security.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

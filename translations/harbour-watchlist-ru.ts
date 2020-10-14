@@ -432,6 +432,13 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
 </context>
 <context>
+    <name>StockNewsView</name>
+    <message>
+        <source>No news items found for this security.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StockOverviewPage</name>
     <message>
         <source>Details</source>
