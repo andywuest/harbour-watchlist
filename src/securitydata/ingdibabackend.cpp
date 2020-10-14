@@ -32,6 +32,8 @@
 #include <QJsonDocument>
 #include <QRegularExpression>
 
+#define LOG(x) qDebug() << "IngDibaBackend::" << x
+
 IngDibaBackend::IngDibaBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Ing Diba Backend...";
@@ -325,7 +327,7 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     resultObject.insert("isin", isin);
     resultObject.insert("extRefId", isin);
     resultObject.insert("symbol1", responseObject.value("wkn"));
-    resultObject.insert("currency", responseObject.value("currency"));
+    resultObject.insert("currency", convertCurrency(responseObject.value("currency").toString()));
     resultObject.insert("price", responseObject.value("price"));
     resultObject.insert("ask", responseObject.value("ask"));
     resultObject.insert("bid", responseObject.value("bid"));
@@ -364,5 +366,8 @@ QString IngDibaBackend::processQuoteResult(QByteArray searchReply) {
 }
 
 QString IngDibaBackend::convertCurrency(const QString &currencyString) {
+    if (QString("EUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString("\u20AC");
+    }
     return currencyString;
 }
