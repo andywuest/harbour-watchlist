@@ -69,10 +69,10 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int
     QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
     QNetworkReply *reply;
-    if (chartType > 0) {
-        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
-    } else {
+    if (chartType == ChartType::INTRADAY) {
         reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_INTRADAY_PRICES).arg(extRefId)));
+    } else {
+        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
     }
 
     // TODO not sure if connecting the error slot makes sense here if we have multiple charts
