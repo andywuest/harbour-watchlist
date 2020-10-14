@@ -34,11 +34,19 @@ SilicaFlickable {
     function searchStockNewsHandler(result) {
         var jsonResult = JSON.parse(result.toString())
         newsListModel.clear()
-        for (var i = 0; i < jsonResult.newsItems.length; i++) {
-            if (jsonResult.newsItems[i]) {
-                newsListModel.append(jsonResult.newsItems[i])
+        if (jsonResult.newsItems.length > 0) {
+            noNewsLabel.visible = false;
+            listView.visible = true;
+            for (var i = 0; i < jsonResult.newsItems.length; i++) {
+                if (jsonResult.newsItems[i]) {
+                    newsListModel.append(jsonResult.newsItems[i])
+                }
             }
+        } else {
+            noNewsLabel.visible = true;
+            listView.visible = false;
         }
+
     }
 
     function triggerNewsDataDownloadOnEntering() {
@@ -68,6 +76,17 @@ SilicaFlickable {
 
         width: parent.width
         spacing: Theme.paddingMedium
+
+        Label {
+            id: noNewsLabel
+            horizontalAlignment: Text.AlignHCenter
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2 * x
+
+            wrapMode: Text.Wrap
+            textFormat: Text.RichText
+            text: qsTr("No news items found for this security.")
+        }
 
         SilicaListView {
             id: listView
