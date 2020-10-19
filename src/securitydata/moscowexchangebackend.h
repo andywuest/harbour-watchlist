@@ -20,9 +20,9 @@
 
 #include "abstractdatabackend.h"
 
-#include <QObject>
-#include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
 class MoscowExchangeBackend : public AbstractDataBackend {
     Q_OBJECT
@@ -42,7 +42,6 @@ protected:
 public slots:
 
 private:
-
     bool debugMode = false;
 
     // is triggered after name search because the first json request does not contain all information we need

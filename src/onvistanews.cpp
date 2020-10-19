@@ -18,12 +18,13 @@
 #include "onvistanews.h"
 
 #include <QDebug>
-#include <QUrl>
-#include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
 
-OnvistaNews::OnvistaNews(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
+OnvistaNews::OnvistaNews(QNetworkAccessManager *manager, QObject *parent)
+    : QObject(parent) {
     qDebug() << "Initializing Onvista News...";
     this->manager = manager;
 }
@@ -35,7 +36,10 @@ OnvistaNews::~OnvistaNews() {
 void OnvistaNews::searchStockNews(const QString &isin) {
     QNetworkReply *reply = executeGetRequest(QUrl(QString(API_NEWS_SEARCH).arg(isin).arg(15)));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply,
+            SIGNAL(error(QNetworkReply::NetworkError)),
+            this,
+            SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchStockNews()));
 }
 
@@ -65,7 +69,7 @@ void OnvistaNews::handleSearchStockNews() {
         QJsonObject newsListObject = onvistaObject["NewsList"].toObject();
         QJsonArray newsArray = newsListObject["news"].toArray();
 
-        foreach (const QJsonValue & newsEntry, newsArray) {
+        foreach (const QJsonValue &newsEntry, newsArray) {
             QJsonObject newsObject = newsEntry.toObject();
             QString headline = newsObject["headline"].toString();
             QString content = newsObject["content"].toString();
@@ -113,7 +117,8 @@ QString OnvistaNews::filterContent(QString &content) {
 
 void OnvistaNews::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "OnvistaNews::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
+    qWarning() << "OnvistaNews::handleRequestError:" << static_cast<int>(error) << reply->errorString()
+               << reply->readAll();
 
     emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }

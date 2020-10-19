@@ -15,15 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "../constants.h"
 #include "abstractdatabackend.h"
+#include "../constants.h"
 
 #include <QDebug>
-#include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
 
-AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
+AbstractDataBackend::AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent)
+    : QObject(parent) {
     qDebug() << "Initializing Data Backend...";
     this->manager = manager;
 }
@@ -43,23 +44,38 @@ QNetworkReply *AbstractDataBackend::executeGetRequest(const QUrl &url) {
 
 void AbstractDataBackend::connectErrorSlot(QNetworkReply *reply) {
     // connect the error and also emit the error signal via a lambda expression
-    connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), [=](QNetworkReply::NetworkError error) {
-        // TODO test reply->deleteLater();
-        qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
-        emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
-    });
+    connect(reply,
+            static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
+            [=](QNetworkReply::NetworkError error) {
+                // TODO test reply->deleteLater();
+                qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error)
+                           << reply->errorString() << reply->readAll();
+                emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - "
+                                  + reply->errorString());
+            });
 }
 
 QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
     QDate today = QDate::currentDate();
     QDate startDate;
-    switch(chartType) {
-        case ChartType::INTRADAY: break;
-        case ChartType::MONTH: startDate = today.addMonths(-1); break;
-        case ChartType::THREE_MONTHS: startDate = today.addMonths(-3); break;
-        case ChartType::YEAR: startDate = today.addYears(-1); break;
-        case ChartType::THREE_YEARS: startDate = today.addYears(-3); break;
-        case ChartType::FIVE_YEARS: startDate = today.addYears(-5); break;
+    switch (chartType) {
+    case ChartType::INTRADAY:
+        break;
+    case ChartType::MONTH:
+        startDate = today.addMonths(-1);
+        break;
+    case ChartType::THREE_MONTHS:
+        startDate = today.addMonths(-3);
+        break;
+    case ChartType::YEAR:
+        startDate = today.addYears(-1);
+        break;
+    case ChartType::THREE_YEARS:
+        startDate = today.addYears(-3);
+        break;
+    case ChartType::FIVE_YEARS:
+        startDate = today.addYears(-5);
+        break;
     }
     return startDate;
 }
@@ -73,10 +89,10 @@ bool AbstractDataBackend::isChartTypeSupported(const int chartTypeToCheck) {
 }
 
 QJsonObject AbstractDataBackend::createChartDataPoint(qint64 mSecsSinceEpoch, double priceValue) {
-  QJsonObject resultObject;
-  resultObject.insert("x", mSecsSinceEpoch / 1000);
-  resultObject.insert("y", priceValue);
-  return resultObject;
+    QJsonObject resultObject;
+    resultObject.insert("x", mSecsSinceEpoch / 1000);
+    resultObject.insert("y", priceValue);
+    return resultObject;
 }
 
 QString AbstractDataBackend::createChartResponseString(QJsonArray resultArray, ChartDataCalculator chartDataCalculator) {
@@ -92,4 +108,3 @@ QString AbstractDataBackend::createChartResponseString(QJsonArray resultArray, C
     QString dataToString(resultDocument.toJson());
     return dataToString;
 }
-

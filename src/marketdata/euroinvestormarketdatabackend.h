@@ -1,14 +1,14 @@
 #ifndef EUROINVESTORMARKETDATABACKEND_H
 #define EUROINVESTORMARKETDATABACKEND_H
 
-#include <QObject>
-#include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
 const char API_MARKET_DATA[] = "https://api.euroinvestor.dk/instruments?ids=";
 
 class EuroinvestorMarketDataBackend : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 public:
     explicit EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent = 0);
     ~EuroinvestorMarketDataBackend();
@@ -21,13 +21,11 @@ public:
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 protected:
-
     QNetworkAccessManager *manager;
 
     QNetworkReply *executeGetRequest(const QUrl &url);
 
 private:
-
     QMap<QString, QString> marketDataId2ExtRefId;
 
     QString processMarketDataResult(QByteArray marketDataResult);
@@ -43,8 +41,6 @@ protected slots:
 
 private slots:
     void handleLookupMarketDataFinished();
-
 };
-
 
 #endif // EUROINVESTORMARKETDATABACKEND_H

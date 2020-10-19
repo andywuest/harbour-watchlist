@@ -18,16 +18,16 @@
 #ifndef WATCHLIST_H
 #define WATCHLIST_H
 
-#include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkConfigurationManager>
+#include <QObject>
 #include <QSettings>
 
-#include "securitydata/euroinvestorbackend.h"
-#include "securitydata/moscowexchangebackend.h"
-#include "securitydata/ingdibabackend.h"
 #include "marketdata/euroinvestormarketdatabackend.h"
 #include "onvistanews.h"
+#include "securitydata/euroinvestorbackend.h"
+#include "securitydata/ingdibabackend.h"
+#include "securitydata/moscowexchangebackend.h"
 
 class Watchlist : public QObject {
     Q_OBJECT
@@ -47,8 +47,8 @@ signals:
 public slots:
 
 private:
-    QNetworkAccessManager * const networkAccessManager;
-    QNetworkConfigurationManager * const networkConfigurationManager;
+    QNetworkAccessManager *const networkAccessManager;
+    QNetworkConfigurationManager *const networkConfigurationManager;
 
     // data backends
     EuroinvestorBackend *euroinvestorBackend;
@@ -62,7 +62,6 @@ private:
     OnvistaNews *onvistaNews;
 
     QSettings settings;
-
 };
 
 #endif // WATCHLIST_H

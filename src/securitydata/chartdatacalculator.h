@@ -1,10 +1,9 @@
 #ifndef CHARTDATACALCULATOR_H
 #define CHARTDATACALCULATOR_H
 
-class ChartDataCalculator
-{
+class ChartDataCalculator {
 public:
-     ChartDataCalculator() = default;
+    ChartDataCalculator() = default;
 
     void checkCloseValue(double value);
     double getMinValue();
@@ -14,7 +13,6 @@ public:
 private:
     double min = -1.0;
     double max = -1.0;
-
 };
 
 #endif // CHARTDATACALCULATOR_H

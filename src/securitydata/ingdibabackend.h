@@ -20,9 +20,9 @@
 
 #include "abstractdatabackend.h"
 
-#include <QObject>
-#include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
 class IngDibaBackend : public AbstractDataBackend {
     Q_OBJECT
@@ -41,7 +41,6 @@ protected:
 public slots:
 
 private:
-
     int numberOfRequestedIbans = 0;
     QList<QJsonObject> searchQuoteResults;
     QMap<int, QString> chartTypeToStringMap;

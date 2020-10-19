@@ -20,21 +20,18 @@
 
 #include "../constants.h"
 
+#include <QDateTime>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QUrl>
 #include <QUrlQuery>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QDateTime>
-#include <QJsonDocument>
 
 EuroinvestorBackend::EuroinvestorBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Euroinvestor Backend...";
-    this->supportedChartTypes = (ChartType::INTRADAY
-                                 | ChartType::MONTH
-                                 | ChartType::THREE_MONTHS
-                                 | ChartType::YEAR
+    this->supportedChartTypes = (ChartType::INTRADAY | ChartType::MONTH | ChartType::THREE_MONTHS | ChartType::YEAR
                                  | ChartType::THREE_YEARS);
 }
 
@@ -107,7 +104,7 @@ void EuroinvestorBackend::handleSearchNameFinished() {
 
         QStringList idList;
 
-        foreach (const QJsonValue & value, responseArray) {
+        foreach (const QJsonValue &value, responseArray) {
             QJsonObject rootObject = value.toObject();
             QJsonObject sourceObject = rootObject["_source"].toObject();
             idList.append(QString::number(sourceObject.value("id").toInt()));
@@ -179,17 +176,16 @@ QString EuroinvestorBackend::parsePriceResponse(QByteArray reply) {
 
     ChartDataCalculator chartDataCalculator;
 
-    foreach (const QJsonValue & value, responseArray) {
+    foreach (const QJsonValue &value, responseArray) {
         QJsonObject rootObject = value.toObject();
         QJsonObject resultObject;
 
         QJsonValue jsonUpdatedAt = rootObject.value("timestamp");
-//        QDateTime dateTimeUpdatedAt = QDateTime::fromString(jsonUpdatedAt.toString(), Qt::ISODate);
+        //        QDateTime dateTimeUpdatedAt = QDateTime::fromString(jsonUpdatedAt.toString(), Qt::ISODate);
 
         QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonUpdatedAt.toString());
 
-//        qDebug() << dateTimeUpdatedAt << " - " << updatedAtLocalTime;
-
+        //        qDebug() << dateTimeUpdatedAt << " - " << updatedAtLocalTime;
 
         double closeValue = rootObject.value("close").toDouble();
 
@@ -224,7 +220,7 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    foreach (const QJsonValue & value, responseArray) {
+    foreach (const QJsonValue &value, responseArray) {
         QJsonObject rootObject = value.toObject();
         QJsonObject exchangeObject = rootObject["exchange"].toObject();
 

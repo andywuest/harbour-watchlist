@@ -20,11 +20,11 @@
 #endif
 
 #include <sailfishapp.h>
-#include <QScopedPointer>
-#include <QQuickView>
-#include <QtQml>
-#include <QQmlContext>
 #include <QGuiApplication>
+#include <QQmlContext>
+#include <QQuickView>
+#include <QScopedPointer>
+#include <QtQml>
 
 #include "watchlist.h"
 

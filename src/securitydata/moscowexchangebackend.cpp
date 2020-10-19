@@ -20,24 +20,23 @@
 
 #include "../constants.h"
 
+#include <QDateTime>
 #include <QDebug>
 #include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QUuid>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QDateTime>
 #include <QVariantMap>
-#include <QJsonDocument>
 
 MoscowExchangeBackend::MoscowExchangeBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Moscow Exchange Backend...";
     // debug mode when we want to see everything in english
     // debugMode = true;
-    this->supportedChartTypes = (ChartType::MONTH
-                                 | ChartType::THREE_MONTHS);
+    this->supportedChartTypes = (ChartType::MONTH | ChartType::THREE_MONTHS);
 }
 
 MoscowExchangeBackend::~MoscowExchangeBackend() {
@@ -46,7 +45,8 @@ MoscowExchangeBackend::~MoscowExchangeBackend() {
 
 void MoscowExchangeBackend::searchName(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString).arg(getLanguage())));
+    QNetworkReply *reply = executeGetRequest(
+        QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString).arg(getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
@@ -72,7 +72,8 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
     QString startDateString = getStartDateForChart(chartType).toString("yyyy-MM-dd");
 
     // so far we get all data from the same service
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
+    QNetworkReply *reply = executeGetRequest(
+        QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &MoscowExchangeBackend::handleFetchPricesForChartFinished);
@@ -164,7 +165,7 @@ QString MoscowExchangeBackend::parsePriceResponse(QByteArray reply) {
 
     ChartDataCalculator chartDataCalculator;
 
-    foreach (const QJsonValue & value, responseArray) {
+    foreach (const QJsonValue &value, responseArray) {
         QJsonArray valueArray = value.toArray();
         QJsonObject resultObject;
 
@@ -208,23 +209,23 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
     QJsonObject securitiesObject = responseObject["securities"].toObject();
     QJsonArray dataArray = securitiesObject["data"].toArray();
 
-//    QJsonObject columnsObject = securitiesObject["columns"].toObject();
-//    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
+    //    QJsonObject columnsObject = securitiesObject["columns"].toObject();
+    //    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
 
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    foreach (const QJsonValue & value, dataArray) {
+    foreach (const QJsonValue &value, dataArray) {
         QJsonArray resultDataArray = value.toArray();
 
         // id is not mapped so far - is it used ??
         QJsonObject resultObject;
-        resultObject.insert("extRefId", resultDataArray.at(1)); // secId
-        resultObject.insert("symbol1", resultDataArray.at(1)); // secId
-        resultObject.insert("name", resultDataArray.at(4)); // name
-        resultObject.insert("isin", resultDataArray.at(5)); // isin
+        resultObject.insert("extRefId", resultDataArray.at(1));         // secId
+        resultObject.insert("symbol1", resultDataArray.at(1));          // secId
+        resultObject.insert("name", resultDataArray.at(4));             // name
+        resultObject.insert("isin", resultDataArray.at(5));             // isin
         resultObject.insert("stockMarketName", resultDataArray.at(14)); // primary_boardid
-        resultObject.insert("currency", "-"); // dummy for currency
+        resultObject.insert("currency", "-");                           // dummy for currency
         // not persisted - displayed on the add stock page
         resultObject.insert("genericText1", resultDataArray.at(14)); // stockMarketName
 
@@ -250,8 +251,8 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
     QJsonArray dataArray = securitiesObject["data"].toArray();
     QJsonArray marketDataArray = marketDataObject["data"].toArray();
 
-//    QJsonObject columnsObject = securitiesObject["columns"].toObject();
-//    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
+    //    QJsonObject columnsObject = securitiesObject["columns"].toObject();
+    //    QJsonObject metadataObject = securitiesObject["metadata"].toObject();
 
     QJsonDocument resultDocument;
     QJsonArray resultArray;
@@ -270,19 +271,20 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
         QJsonObject resultObject;
 
         // read from securities data
-        resultObject.insert("name", tmpDataArray.at(2)); // name
+        resultObject.insert("name", tmpDataArray.at(2));  // name
         resultObject.insert("isin", tmpDataArray.at(19)); // isin
-        resultObject.insert("currency", convertCurrency(tmpDataArray.at(24).toString())); // CURRENCYID
+        resultObject.insert("currency",
+                            convertCurrency(tmpDataArray.at(24).toString())); // CURRENCYID
 
         // read from marketdata data
-        resultObject.insert("extRefId", tmpMarketDataArray.at(0)); // secId
-        resultObject.insert("symbol1", tmpMarketDataArray.at(0)); // secId
+        resultObject.insert("extRefId", tmpMarketDataArray.at(0));        // secId
+        resultObject.insert("symbol1", tmpMarketDataArray.at(0));         // secId
         resultObject.insert("stockMarketName", tmpMarketDataArray.at(1)); // primary_boardid
 
-        resultObject.insert("price", tmpMarketDataArray.at(36)); // LCLOSEPRICE
-        resultObject.insert("high", tmpMarketDataArray.at(11)); // HIGH
-        resultObject.insert("low", tmpMarketDataArray.at(10)); // LOW
-        resultObject.insert("volume", tmpMarketDataArray.at(27)); // VOLTODAY
+        resultObject.insert("price", tmpMarketDataArray.at(36));          // LCLOSEPRICE
+        resultObject.insert("high", tmpMarketDataArray.at(11));           // HIGH
+        resultObject.insert("low", tmpMarketDataArray.at(10));            // LOW
+        resultObject.insert("volume", tmpMarketDataArray.at(27));         // VOLTODAY
         resultObject.insert("changeAbsolute", tmpMarketDataArray.at(41)); // CHANGE
         resultObject.insert("changeRelative", tmpMarketDataArray.at(25)); // LASTTOPREVPRICE
 

@@ -15,17 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "../constants.h"
 #include "euroinvestormarketdatabackend.h"
+#include "../constants.h"
 
-#include <QDebug>
-#include <QUrl>
-#include <QJsonObject>
-#include <QJsonArray>
 #include <QDateTime>
+#include <QDebug>
+#include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QUrl>
 
-EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent) {
+EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent)
+    : QObject(parent) {
     qDebug() << "Initializing Euroinvestor Market Data Backend...";
     this->manager = manager;
 
@@ -112,7 +113,10 @@ void EuroinvestorMarketDataBackend::lookupMarketData(const QString &marketDataId
     qDebug() << "EuroinvestorMarketDataBackend::lookupMarketData";
     QNetworkReply *reply = executeGetRequest(QUrl(API_MARKET_DATA + marketDataIds));
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply,
+            SIGNAL(error(QNetworkReply::NetworkError)),
+            this,
+            SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleLookupMarketDataFinished()));
 }
 
@@ -156,7 +160,6 @@ QString EuroinvestorMarketDataBackend::processMarketDataResult(QByteArray market
         QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonUpdatedAt.toString());
         resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 
-
         resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
 
         resultArray.push_back(resultObject);
@@ -168,10 +171,10 @@ QString EuroinvestorMarketDataBackend::processMarketDataResult(QByteArray market
     return dataToString;
 }
 
-
 void EuroinvestorMarketDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "EuroinvestorMarketDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString() << reply->readAll();
+    qWarning() << "EuroinvestorMarketDataBackend::handleRequestError:" << static_cast<int>(error)
+               << reply->errorString() << reply->readAll();
 
     emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }

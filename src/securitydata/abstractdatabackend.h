@@ -18,14 +18,14 @@
 #ifndef ABSTRACTDATABACKEND_H
 #define ABSTRACTDATABACKEND_H
 
-#include <QObject>
-#include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
 #include "chartdatacalculator.h"
 
 class AbstractDataBackend : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 public:
     explicit AbstractDataBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~AbstractDataBackend() = 0;
@@ -42,20 +42,19 @@ public:
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 protected:
-
     QNetworkAccessManager *manager;
 
     // also update constants in constants.js when you add entries / change values !
     enum ChartType {
-      NONE = 0,
-      INTRADAY = 1,
-      WEEK = 2,
-      MONTH = 4,
-      THREE_MONTHS = 8,
-      YEAR = 16,
-      THREE_YEARS = 32,
-      FIVE_YEARS = 64,
-      MAXIMUM = 128
+        NONE = 0,
+        INTRADAY = 1,
+        WEEK = 2,
+        MONTH = 4,
+        THREE_MONTHS = 8,
+        YEAR = 16,
+        THREE_YEARS = 32,
+        FIVE_YEARS = 64,
+        MAXIMUM = 128
     };
 
     int supportedChartTypes = ChartType::NONE;
@@ -71,7 +70,6 @@ protected:
     void connectErrorSlot(QNetworkReply *reply);
 
 protected slots:
-
 };
 
 #endif // ABSTRACTDATABACKEND_H

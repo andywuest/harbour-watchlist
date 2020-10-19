@@ -17,10 +17,11 @@
  */
 #include "watchlist.h"
 
-Watchlist::Watchlist(QObject *parent) : QObject(parent),
-    networkAccessManager(new QNetworkAccessManager(this)),
-    networkConfigurationManager(new QNetworkConfigurationManager(this)),
-    settings("harbour-watchlist", "settings") {
+Watchlist::Watchlist(QObject *parent)
+    : QObject(parent)
+    , networkAccessManager(new QNetworkAccessManager(this))
+    , networkConfigurationManager(new QNetworkConfigurationManager(this))
+    , settings("harbour-watchlist", "settings") {
     // data backends
     euroinvestorBackend = new EuroinvestorBackend(this->networkAccessManager, this);
     moscowExchangeBackend = new MoscowExchangeBackend(this->networkAccessManager, this);
@@ -32,11 +33,13 @@ Watchlist::Watchlist(QObject *parent) : QObject(parent),
 }
 
 bool Watchlist::isWiFi() {
-    const QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
+    const QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(
+        QNetworkConfiguration::Active);
     QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);
     while (configurationIterator.hasNext()) {
         QNetworkConfiguration activeConfiguration = configurationIterator.next();
-        if (activeConfiguration.bearerType() == QNetworkConfiguration::BearerWLAN || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEthernet) {
+        if (activeConfiguration.bearerType() == QNetworkConfiguration::BearerWLAN
+            || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEthernet) {
             qDebug() << "Watchlist::isWiFi : WiFi ON!";
             return true;
         }

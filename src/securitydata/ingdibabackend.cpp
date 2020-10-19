@@ -20,29 +20,25 @@
 
 #include "../constants.h"
 
+#include <QDateTime>
 #include <QDebug>
 #include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QRegularExpression>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QUuid>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QDateTime>
 #include <QVariantMap>
-#include <QJsonDocument>
-#include <QRegularExpression>
 
 #define LOG(x) qDebug() << "IngDibaBackend::" << x
 
 IngDibaBackend::IngDibaBackend(QNetworkAccessManager *manager, QObject *parent)
     : AbstractDataBackend(manager, parent) {
     qDebug() << "Initializing Ing Diba Backend...";
-    this->supportedChartTypes = (ChartType::INTRADAY
-                                 | ChartType::WEEK
-                                 | ChartType::MONTH
-                                 | ChartType::YEAR
-                                 | ChartType::THREE_YEARS
-                                 | ChartType::MAXIMUM);
+    this->supportedChartTypes = (ChartType::INTRADAY | ChartType::WEEK | ChartType::MONTH | ChartType::YEAR
+                                 | ChartType::THREE_YEARS | ChartType::MAXIMUM);
     this->chartTypeToStringMap[ChartType::INTRADAY] = "Intraday";
     this->chartTypeToStringMap[ChartType::WEEK] = "OneWeek";
     this->chartTypeToStringMap[ChartType::MONTH] = "OneMonth";
@@ -86,8 +82,7 @@ void IngDibaBackend::fetchPricesForChart(const QString &extRefId, const int char
     reply->setProperty(NETWORK_REPLY_PROPERTY_CHART_TYPE, chartType);
     reply->setProperty(NETWORK_REPLY_PROPERTY_EXT_REF_ID, extRefId);
     connectErrorSlot(reply);
-    connect(reply, &QNetworkReply::finished, [this, reply]()
-    {
+    connect(reply, &QNetworkReply::finished, [this, reply]() {
         reply->deleteLater();
 
         qDebug() << sender();
@@ -183,9 +178,7 @@ void IngDibaBackend::handleSearchQuoteFinished() {
         QJsonDocument resultDocument;
         QJsonArray resultArray;
 
-        foreach (const QJsonObject &quoteResultObject, searchQuoteResults ) {
-            resultArray.push_back(quoteResultObject);
-        }
+        foreach (const QJsonObject &quoteResultObject, searchQuoteResults) { resultArray.push_back(quoteResultObject); }
 
         resultDocument.setArray(resultArray);
         QString dataToString(resultDocument.toJson());
@@ -255,9 +248,13 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
     QJsonObject responseObject = jsonDocument.object();
     QJsonArray suggestionTypes = responseObject["suggestion_types"].toArray(); // -> type: "direct_hit"
     QJsonArray suggestionGroups = suggestionTypes.at(0).toObject()["suggestion_groups"].toArray(); //  -> group: "wp"
-    QJsonArray suggestionGroupsDirectHit = findFirstValueFromJsonArray(suggestionTypes, "type", "direct_hit")["suggestion_groups"].toArray(); //  -> group: "wp"
+    QJsonArray suggestionGroupsDirectHit = findFirstValueFromJsonArray(suggestionTypes,
+                                                                       "type",
+                                                                       "direct_hit")["suggestion_groups"]
+                                               .toArray(); //  -> group: "wp"
     QJsonArray suggestions = suggestionGroups.at(0).toObject()["suggestions"].toArray();
-    QJsonArray suggestionsWp = findFirstValueFromJsonArray(suggestionGroupsDirectHit, "group", "wp")["suggestions"].toArray();
+    QJsonArray suggestionsWp = findFirstValueFromJsonArray(suggestionGroupsDirectHit, "group", "wp")["suggestions"]
+                                   .toArray();
 
     qDebug() << "direct hit: " << suggestionGroupsDirectHit;
 
@@ -266,7 +263,7 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
     QJsonDocument resultDocument;
     QJsonArray resultArray;
 
-    foreach (const QJsonValue & value, suggestionsWp) {
+    foreach (const QJsonValue &value, suggestionsWp) {
         QJsonObject suggestion = value.toObject();
         qDebug() << " sugg : " << suggestion["score"];
 

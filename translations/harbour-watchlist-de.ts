@@ -170,7 +170,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>MoscowExchangeBackend</name>
     <message>
-        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="316"/>
+        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="318"/>
         <source>RUB</source>
         <translation></translation>
     </message>

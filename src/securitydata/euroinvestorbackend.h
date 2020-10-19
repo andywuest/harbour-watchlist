@@ -20,9 +20,9 @@
 
 #include "abstractdatabackend.h"
 
-#include <QObject>
-#include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
 class EuroinvestorBackend : public AbstractDataBackend {
     Q_OBJECT
@@ -41,7 +41,6 @@ protected:
 public slots:
 
 private:
-
     // is triggered after name search because the first json request does not contain all information we need
     void searchQuoteForNameSearch(const QString &searchString);
     QString processQuoteSearchResult(QByteArray searchReply);
