@@ -55,7 +55,7 @@ private:
     QString processQuoteResult(QByteArray searchReply);
     QString parsePriceResponse(QByteArray priceReply);
 
-    QDateTime convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString);
+    QDateTime convertTimestampToLocalTimestamp(const QString &utcDateTimeString, QTimeZone timeZone);
 
     void processPreQuoteData(QNetworkReply *preChartReply);
 
@@ -64,6 +64,11 @@ private slots:
     void handleSearchQuoteForNameFinished();
     void handleSearchQuoteFinished();
     void handleFetchPricesForChartFinished();
+
+#ifdef UNIT_TEST
+  friend class IngDibaBackendTests;
+#endif
+
 };
 
 #endif // INGDIBABACKEND_H

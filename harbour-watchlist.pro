@@ -17,9 +17,6 @@ CONFIG += sailfishapp
 SOURCES += \
     src/securitydata/euroinvestorbackend.cpp \
     src/securitydata/moscowexchangebackend.cpp \
-    src/securitydata/ingdibabackend.cpp \
-    src/securitydata/abstractdatabackend.cpp \
-    src/securitydata/chartdatacalculator.cpp \
     src/marketdata/euroinvestormarketdatabackend.cpp \
     src/harbour-watchlist.cpp \
     src/watchlist.cpp \
@@ -29,9 +26,6 @@ HEADERS += \
     src/constants.h \
     src/securitydata/euroinvestorbackend.h \
     src/securitydata/moscowexchangebackend.h \
-    src/securitydata/ingdibabackend.h \
-    src/securitydata/abstractdatabackend.h \
-    src/securitydata/chartdatacalculator.h \
     src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h \
     src/onvistanews.h
@@ -90,3 +84,4 @@ DISTFILES += \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/NewsPage.qml
 
+include(harbour-watchlist.pri)

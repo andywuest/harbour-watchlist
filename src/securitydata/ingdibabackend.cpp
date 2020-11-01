@@ -21,6 +21,7 @@
 #include "../constants.h"
 
 #include <QDateTime>
+#include <QTimeZone>
 #include <QDebug>
 #include <QFile>
 #include <QJsonArray>
@@ -293,7 +294,8 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
 
 bool IngDibaBackend::isValidSecurityCategory(QString category) {
     return (category.compare(QString("Fonds"), Qt::CaseInsensitive) == 0
-            || category.compare(QString("Aktien"), Qt::CaseInsensitive) == 0);
+            || category.compare(QString("Aktien"), Qt::CaseInsensitive) == 0
+            || category.compare(QString("ETFs"), Qt::CaseInsensitive) == 0);
 }
 
 QJsonObject IngDibaBackend::findFirstValueFromJsonArray(QJsonArray arr, QString key, QString value) {
@@ -339,7 +341,7 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     resultObject.insert("numberOfStocks", QJsonValue(0));
 
     QJsonValue jsonPriceChangeDate = responseObject.value("priceChangeDate");
-    QDateTime updatedAtLocalTime = convertUTCDateTimeToLocalDateTime(jsonPriceChangeDate.toString());
+    QDateTime updatedAtLocalTime = convertTimestampToLocalTimestamp(jsonPriceChangeDate.toString(), QTimeZone::systemTimeZone());
     resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 
     resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
@@ -347,12 +349,17 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     return resultObject;
 }
 
-QDateTime IngDibaBackend::convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString) {
-    QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
-    QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
+QDateTime IngDibaBackend::convertTimestampToLocalTimestamp(const QString &utcDateTimeString, QTimeZone timeZone) {
+//    QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
+//    QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
 
     // qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
 
+//    return localDateTime;
+    QDateTime dt = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
+    dt.setTimeZone(timeZone);
+    qDebug() << "dt : " << dt << "using timezone : " << timeZone;
+    QDateTime localDateTime = dt.toLocalTime();
     return localDateTime;
 }
 

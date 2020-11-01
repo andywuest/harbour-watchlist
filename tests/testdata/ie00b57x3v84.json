@@ -1,0 +1,34 @@
+{
+  "query": "ie00b57x3v84",
+  "total": 1,
+  "suggestion_types": [
+    {
+      "type": "direct_hit",
+      "type_name": "Top Treffer",
+      "suggestion_groups": [
+        {
+          "group": "wp",
+          "group_name": "Wertpapiere",
+          "suggestions": [
+            {
+              "category": "ETFs",
+              "score": 88,
+              "text": "iShares Dow Jones Global Sustainability Screened UCITS ETF USD",
+              "url": "https://api.www.ing.de/suche-autocomplete/event/result?link=eyJzb3VyY2UiOiJzdG9ja3NfYXV0b2NvbXBsZXRlIiwic2NzQXBpIjoiQXV0b3N1Z2dlc3QiLCJ0ZXJtIjoiaWUwMGI1N3gzdjg0IiwiY2FwdGlvbiI6ImlTaGFyZXMgRG93IEpvbmVzIEdsb2JhbCBTdXN0YWluYWJpbGl0eSBTY3JlZW5lZCBVQ0lUUyBFVEYgVVNEIiwidXJpIjoiaHR0cHM6Ly93ZXJ0cGFwaWVyZS5pbmcuZGUvREUvc2hvd3BhZ2UuYXNweD9wYWdlSUQ9NzAmaGFuZGxlcj1TdWdnZXN0JnF1ZXJ5PVNlbGVjdEluc3RydW1lbnQlN0M1NjM0MzMlN0NJRTAwQjU3WDNWODQlN0NBMUg3WlQlN0MxMjU5MjgzMSU3Q0Z1bmQlN0MwJTdDMCU3QyU3QyU3QyU3QzAlN0MwIiwiZ3JvdXAiOiJXUCJ9",
+              "wkn": "A1H7ZT",
+              "price": 38.165,
+              "wp_date": "30.10.",
+              "change_absolute": 0.265,
+              "change_percent": 0.6992,
+              "price_html": "38,165 EUR",
+              "change_percent_html": "<span class=\"bull\">+0,70%</span>",
+              "buyUrl": "https://api.www.ing.de/suche-autocomplete/event/result?link=eyJsaW5rQWN0aW9uIjoiQnV5Iiwic291cmNlIjoic3RvY2tzX2F1dG9jb21wbGV0ZSIsInNjc0FwaSI6IkF1dG9zdWdnZXN0IiwidGVybSI6ImllMDBiNTd4M3Y4NCIsImNhcHRpb24iOiJpU2hhcmVzIERvdyBKb25lcyBHbG9iYWwgU3VzdGFpbmFiaWxpdHkgU2NyZWVuZWQgVUNJVFMgRVRGIFVTRCIsInVyaSI6Imh0dHBzOi8vYmFua2luZy5pbmcuZGUvYXBwL2RhX2thdWY_aXNpbj1JRTAwQjU3WDNWODQiLCJncm91cCI6IldQIn0%3D",
+              "sellUrl": "https://api.www.ing.de/suche-autocomplete/event/result?link=eyJsaW5rQWN0aW9uIjoiU2VsbCIsInNvdXJjZSI6InN0b2Nrc19hdXRvY29tcGxldGUiLCJzY3NBcGkiOiJBdXRvc3VnZ2VzdCIsInRlcm0iOiJpZTAwYjU3eDN2ODQiLCJjYXB0aW9uIjoiaVNoYXJlcyBEb3cgSm9uZXMgR2xvYmFsIFN1c3RhaW5hYmlsaXR5IFNjcmVlbmVkIFVDSVRTIEVURiBVU0QiLCJ1cmkiOiJodHRwczovL2JhbmtpbmcuaW5nLmRlL2FwcC9kYV92ZXJrYXVmP2lzaW49SUUwMEI1N1gzVjg0IiwiZ3JvdXAiOiJXUCJ9",
+              "isin": "IE00B57X3V84"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
