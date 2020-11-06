@@ -5,7 +5,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.2-1
+* 06.11.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.2-1
 - fixed Intraday chart shows 30 day chart (https://github.com/andywuest/harbour-watchlist/issues/64)
 - fixed Ing-Diba: use currency symbol instead of string (https://github.com/andywuest/harbour-watchlist/issues/65)
 - added support for ETFs for Ing-Diba backend (was previously filtered out)
