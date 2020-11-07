@@ -519,7 +519,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/StockNewsView.qml" line="88"/>
         <source>No news items found for this security.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到关于该证券的新闻。</translation>
     </message>
 </context>
 <context>
@@ -682,7 +682,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="87"/>
         <source>EUR/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>欧元/卢布</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="88"/>
@@ -692,7 +692,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="92"/>
         <source>GBP/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>英镑/卢布</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="93"/>
@@ -727,7 +727,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="96"/>
         <source>USD/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>美元/卢布</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="99"/>
