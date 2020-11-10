@@ -1,19 +1,18 @@
-#include <QtTest/QtTest>
 #include "ingdibabackendtests.h"
+#include <QtTest/QtTest>
 
-void IngDibaBackendTests::init()
-{
-  ingDibaBackend = new IngDibaBackend(nullptr, nullptr);
+void IngDibaBackendTests::init() {
+    ingDibaBackend = new IngDibaBackend(nullptr, nullptr);
 }
 
 void IngDibaBackendTests::testIngConvertTimestampToLocalTimestamp() {
-   qDebug() << "dir : " << QCoreApplication::applicationFilePath();
-   qDebug() << "Timezone for test : " << QTimeZone::systemTimeZone();
-   QString testDate = QString("2020-10-14T20:22:24+02:00");
-   QTimeZone testTimeZone = QTimeZone("Europe/Berlin");
-   QDateTime convertedDateTime = ingDibaBackend->convertTimestampToLocalTimestamp(testDate, testTimeZone);
-   QString dateTimeFormatted = convertedDateTime.toString("yyyy-MM-dd") + " " + convertedDateTime.toString("hh:mm:ss");
-   QCOMPARE(dateTimeFormatted, QString("2020-10-14 20:22:24"));
+    qDebug() << "dir : " << QCoreApplication::applicationFilePath();
+    qDebug() << "Timezone for test : " << QTimeZone::systemTimeZone();
+    QString testDate = QString("2020-10-14T20:22:24+02:00");
+    QTimeZone testTimeZone = QTimeZone("Europe/Berlin");
+    QDateTime convertedDateTime = ingDibaBackend->convertTimestampToLocalTimestamp(testDate, testTimeZone);
+    QString dateTimeFormatted = convertedDateTime.toString("yyyy-MM-dd") + " " + convertedDateTime.toString("hh:mm:ss");
+    QCOMPARE(dateTimeFormatted, QString("2020-10-14 20:22:24"));
 }
 
 void IngDibaBackendTests::testIsValidSecurityCategory() {

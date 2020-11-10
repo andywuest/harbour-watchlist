@@ -1,8 +1,8 @@
 #ifndef INGDIBABACKENDTEST_H
 #define INGDIBABACKENDTEST_H
 
-#include <QObject>
 #include "src/securitydata/ingdibabackend.h"
+#include <QObject>
 
 class IngDibaBackendTests : public QObject {
     Q_OBJECT
@@ -15,7 +15,6 @@ private slots:
     void testIngConvertTimestampToLocalTimestamp();
     void testIsValidSecurityCategory();
     void testProcessSearchResult();
-
 };
 
 #endif // INGDIBABACKENDTEST_H
