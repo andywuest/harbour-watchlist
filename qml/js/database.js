@@ -184,7 +184,7 @@ function loadAlarm(id) {
 function countTableColumns(db, tableName) {
     var columns = 0;
     db.transaction(function (tx) {
-        var results = tx.executeSql('SELECT COUNT(*) as count FROM alarm');
+        var results = tx.executeSql('SELECT COUNT(*) as count FROM ' + tableName);
         columns = results.rows.item(0).count;
     })
     log("number of persisted columns for " + tableName + " : " + columns);
@@ -255,10 +255,10 @@ function persistStockData(data, watchlistId) {
 
         db.transaction(function (tx) {
             tx.executeSql(
-                        'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
+                        'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, currencySymbol, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
                         + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, volume, watchlistId) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        [data.id, '' + data.extRefId, data.name, data.currency, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
+                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        [data.id, '' + data.extRefId, data.name, data.currency, data.currencySymbol, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
                          data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, data.currency, data.high,
                          data.low, data.ask, data.bid, data.volume, finalWatchlistId])
         })
@@ -389,10 +389,12 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
     try {
         var db = Database.getOpenDatabase()
         db.transaction(function (tx) {
-            var query = 'SELECT id, extRefId, name, currency, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, price, changeAbsolute '
-                    +' ,changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId '
-                    +' ,ask, bid, high, low, volume '
-                    +' FROM stockdata ORDER BY ' + sortString;
+            var query = 'SELECT id, extRefId, name, currency, currencySymbol, '
+                    + ' stockMarketSymbol, stockMarketName, isin, '
+                    + ' symbol1, symbol2, price, changeAbsolute, '
+                    + ' changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId, '
+                    + ' ask, bid, high, low, volume '
+                    + ' FROM stockdata ORDER BY ' + sortString;
             console.log("query : " + query);
             var dbResult = tx.executeSql(query, [])
             // create same object as from json response
@@ -407,6 +409,7 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     entry.extRefId = row.extRefId;
                     entry.name = row.name;
                     entry.currency = row.currency;
+                    entry.currencySymbol = row.currencySymbol;
                     entry.stockMarketSymbol = row.stockMarketSymbol;
                     entry.stockMarketName = row.stockMarketName;
                     entry.isin = row.isin;

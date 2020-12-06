@@ -258,7 +258,7 @@ SilicaFlickable {
                                     id: stockQuoteChange
                                     width: parent.width * 2 / 10
                                     height: parent.height
-                                    text: Functions.renderPrice(price, currency);
+                                    text: Functions.renderPrice(price, currencySymbol);
                                     color: Theme.highlightColor
                                     font.pixelSize: Theme.fontSizeSmall
                                     font.bold: true
@@ -282,44 +282,44 @@ SilicaFlickable {
                                 }
                             }
 
-                            Row {
-                                id: secondRow
-                                width: parent.width
-                                visible: false
-                                height: Theme.fontSizeMedium + Theme.paddingMedium
+//                            Row {
+//                                id: secondRow
+//                                width: parent.width
+//                                visible: false
+//                                height: Theme.fontSizeMedium + Theme.paddingMedium
 
-                                //                                    anchors {
-                                //                                        left: parent.left
-                                //                                        right: parent.right
-                                //                                        top: firstRow.bottom
-                                //                                    }
-                                Column {
-                                    id: tweetAuthorColumn2
-                                    width: parent.width * 3 / 6
+//                                //                                    anchors {
+//                                //                                        left: parent.left
+//                                //                                        right: parent.right
+//                                //                                        top: firstRow.bottom
+//                                //                                    }
+//                                Column {
+//                                    id: tweetAuthorColumn2
+//                                    width: parent.width * 3 / 6
 
-                                    // height: parent.width *2 / 6
-                                    //spacing: Theme.paddingSmall
-                                    Text {
-                                        id: title2
-                                        text: ""
-                                        font.pixelSize: Theme.fontSizeMedium
-                                    }
-                                }
+//                                    // height: parent.width *2 / 6
+//                                    //spacing: Theme.paddingSmall
+//                                    Text {
+//                                        id: title2
+//                                        text: ""
+//                                        font.pixelSize: Theme.fontSizeMedium
+//                                    }
+//                                }
 
-                                Column {
-                                    id: tweetContentColumn2
-                                    width: parent.width * 3 / 6 //- Theme.horizontalPageMargin
+//                                Column {
+//                                    id: tweetContentColumn2
+//                                    width: parent.width * 3 / 6 //- Theme.horizontalPageMargin
 
-                                    //spacing: Theme.paddingSmall
-                                    Text {
-                                        id: lastPrice2
-                                        text: Functions.renderPrice(price, currency);
-                                        color: Functions.determineChangeColor(changeAbsolute)
-                                        font.pixelSize: Theme.fontSizeMedium
-                                        horizontalAlignment: Text.AlignHCenter
-                                    }
-                                }
-                            }
+//                                    //spacing: Theme.paddingSmall
+//                                    Text {
+//                                        id: lastPrice2
+//                                        text: "aaa" + Functions.renderPrice(price, currencySymbol);
+//                                        color: Functions.determineChangeColor(changeAbsolute)
+//                                        font.pixelSize: Theme.fontSizeMedium
+//                                        horizontalAlignment: Text.AlignHCenter
+//                                    }
+//                                }
+//                            }
 
                             Row {
                                 id: thirdRow
@@ -378,7 +378,7 @@ SilicaFlickable {
     }
 
     Component.onCompleted: {
-        Database.initApplicationTables()
+        // Database.initApplicationTables()
         connectSlots();
         reloadAllStocks();
         loaded = true;

@@ -227,7 +227,8 @@ QString EuroinvestorBackend::processQuoteSearchResult(QByteArray searchReply) {
         QJsonObject resultObject;
         resultObject.insert("extRefId", rootObject.value("id"));
         resultObject.insert("name", rootObject.value("name"));
-        resultObject.insert("currency", convertCurrency(rootObject.value("currency").toString()));
+        resultObject.insert("currency", rootObject.value("currency"));
+        resultObject.insert("currencySymbol", convertCurrency(rootObject.value("currency").toString()));
         resultObject.insert("price", rootObject.value("last"));
         resultObject.insert("symbol1", rootObject.value("symbol"));
         resultObject.insert("isin", rootObject.value("isin"));

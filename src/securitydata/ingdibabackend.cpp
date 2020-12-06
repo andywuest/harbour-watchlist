@@ -326,7 +326,8 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     resultObject.insert("isin", isin);
     resultObject.insert("extRefId", isin);
     resultObject.insert("symbol1", responseObject.value("wkn"));
-    resultObject.insert("currency", convertCurrency(responseObject.value("currency").toString()));
+    resultObject.insert("currency", responseObject.value("currency"));
+    resultObject.insert("currencySymbol", convertCurrency(responseObject.value("currency").toString()));
     resultObject.insert("price", responseObject.value("price"));
     resultObject.insert("ask", responseObject.value("ask"));
     resultObject.insert("bid", responseObject.value("bid"));

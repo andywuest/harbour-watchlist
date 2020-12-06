@@ -146,16 +146,17 @@ SilicaFlickable {
     Component.onCompleted: {
         if (stock) {
             currencyLabelValueRow.value = stock.currency ? stock.currency : '';
+            var currencySymbol = stock.currencySymbol;
             isinLabelValueRow.value = stock.isin ? stock.isin : '';
             symbolLabelValueRow.value = stock.symbol1 ? stock.symbol1 : ''; // TODO warum symbol1
             stockMarketNameLabelValueRow.value = stock.stockMarketName ? stock.stockMarketName : '';
-            askLabelValueRow.value = stock.ask ? Functions.renderPrice(stock.ask, stock.currency) : '';
-            bidLabelValueRow.value = stock.bid ? Functions.renderPrice(stock.bid, stock.currency) : '';
-            highLabelValueRow.value = stock.high ? Functions.renderPrice(stock.high, stock.currency) : '';
-            lowLabelValueRow.value = stock.low ? Functions.renderPrice(stock.low, stock.currency) : '';
-            changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, stock.currency) : '';
+            askLabelValueRow.value = stock.ask ? Functions.renderPrice(stock.ask, currencySymbol) : '';
+            bidLabelValueRow.value = stock.bid ? Functions.renderPrice(stock.bid, currencySymbol) : '';
+            highLabelValueRow.value = stock.high ? Functions.renderPrice(stock.high, currencySymbol) : '';
+            lowLabelValueRow.value = stock.low ? Functions.renderPrice(stock.low, currencySymbol) : '';
+            changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, currencySymbol) : '';
             changeRelativeLabelValueRow.value = stock.changeRelative ? Functions.renderChange(stock.price, stock.changeRelative, '%') : '';
-            priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, stock.currency) : '';
+            priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, currencySymbol) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
         }

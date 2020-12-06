@@ -231,7 +231,7 @@ CoverBackground {
                         id: stockQuoteChange
                         width: parent.width / 2
                         height: parent.height
-                        text: Functions.renderPrice(price, currency)
+                        text: Functions.renderPrice(price, currencySymbol)
                         color: Theme.highlightColor
                         font.pixelSize: Theme.fontSizeTiny
                         font.bold: true
@@ -252,7 +252,7 @@ CoverBackground {
         }
 
         Component.onCompleted: {
-            Database.initApplicationTables()
+            // Database.initApplicationTables()
             var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
             dataBackend.quoteResultAvailable.connect(quoteResultHandler)
             dataBackend.requestError.connect(errorResultHandler)
