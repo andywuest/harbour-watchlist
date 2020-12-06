@@ -38,17 +38,6 @@ function deleteTableEntry(id, tableName) {
     var query = 'DELETE FROM ' + tableName + ' WHERE id = ?';
     var parameters = [id];
     executeInsertUpdateDeleteForTable(tableName, query, parameters, "", "");
-    /*
-    try {
-        var db = Database.getOpenDatabase();
-        db.transaction(function (tx) {
-            var result = tx.executeSql('DELETE FROM ' + tableName + ' WHERE id = ?', [id]);
-            log("deleted entry with id " + id + " from " + tableName);
-        })
-    } catch (err) {
-        log("Error deleting entry from " + tableName  + " table: " + err)
-    }
-    */
 }
 
 // drops all application tables
@@ -189,51 +178,12 @@ function saveAlarm(alarm) {
     var query = 'INSERT OR REPLACE INTO alarm(id, minimumPrice, maximumPrice, triggered) VALUES (?, ?, ?, ?)';
     var parameters = [alarm.id, alarm.minimumPrice, alarm.maximumPrice, SQL_FALSE];
     return executeInsertUpdateDeleteForTable("alarm", query, parameters, qsTr("Alarm added"), qsTr("Error adding alarm"));
-
-/*
-    var result = ""
-    try {
-        var db = getOpenDatabase()
-        console.log("trying to insert row for alarm  " + alarm.id + ", " + alarm.minimumPrice + ", and maxprice : " + alarm.minimumPrice);
-        console.log("final alarm id " + alarm.id);
-
-        var numberOfPersistedAlarms = countTableColumns(db, "alarm");
-
-        db.transaction(function (tx) {
-            tx.executeSql('INSERT OR REPLACE INTO alarm(id, minimumPrice, maximumPrice, triggered) '
-                        + 'VALUES (?, ?, ?, ?)'
-                        ,
-                        [alarm.id, alarm.minimumPrice, alarm.maximumPrice, SQL_FALSE])
-        })
-        result = qsTr("Alarm added")
-    } catch (err) {
-        result = qsTr("Error adding alarm")
-        console.log(result + err)
-    }
-    return result
-    */
 }
 
 function disableAlarm(id) {
     var query = 'UPDATE alarm SET triggered = ? WHERE id = ?';
     var parameters = [SQL_TRUE, id];
     return executeInsertUpdateDeleteForTable("alarm", query, parameters, qsTr("Alarm disabled"), qsTr("Error disabling alarm"));
-    /*
-    var result = ""
-    try {
-        var db = getOpenDatabase()
-
-
-        db.transaction(function (tx) {
-            tx.executeSql(query, [SQL_TRUE, id]);
-        })
-        result = qsTr("Alarm disabled")
-    } catch (err) {
-        result = qsTr("Error disabling alarm")
-        console.log(result + err)
-    }
-    return result
-    */
 }
 
 function migrateEuroinvestorToIngDiba(watchlistId) {
@@ -343,7 +293,6 @@ function loadMarketDataBy(extRefId) {
     }
     return result;
 }
-
 
 function loadStockBy(watchlistId, extRefId) {
     var result;
