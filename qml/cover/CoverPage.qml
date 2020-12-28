@@ -27,7 +27,7 @@ import "../js/functions.js" as Functions
 
 CoverBackground {
     id: coverPage
-    property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
+    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
     property bool loading : false;
 
     function reloadAllStocks() {
