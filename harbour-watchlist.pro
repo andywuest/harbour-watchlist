@@ -57,6 +57,7 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 DISTFILES += \
     qml/components/AlarmNotification.qml \
     qml/components/EmptyModelColumnLabel.qml \
+    qml/components/LabelOnlyRow.qml \
     qml/components/LabelValueRow.qml \
     qml/components/MarketdataView.qml \
     qml/components/StockChart.qml \
@@ -79,6 +80,7 @@ DISTFILES += \
     qml/pages/AddMarketDataPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/OverviewPage.qml \
+    qml/pages/StockNotesDialog.qml \
     qml/pages/StockOverviewPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/StockAlarmDialog.qml \

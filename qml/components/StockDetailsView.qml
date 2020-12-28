@@ -141,6 +141,18 @@ SilicaFlickable {
             label: qsTr("Volume")
             value: ''
         }
+
+        SectionHeader {
+            //: StockDetailsPage page security notes
+            text: qsTr("Notes")
+            visible: notesText.visible
+        }
+
+        LabelOnlyRow {
+            id: notesRow
+            label: ''
+        }
+
     }
 
     Component.onCompleted: {
@@ -159,6 +171,11 @@ SilicaFlickable {
             priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, currencySymbol) : '';
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
+            var notes = Database.loadStockNotes(stock.id);
+            if (notes) {
+                notesRow.label = notes;
+                notesRow.visible = true;
+            }
         }
     }
 

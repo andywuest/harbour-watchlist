@@ -1,6 +1,6 @@
 // .pragma library
 
-Qt.include("constants.js")
+Qt.include("constants.js");
 Qt.include('functions.js');
 
 var SORT_BY_NAME_ASC = " name ASC ";
@@ -51,9 +51,10 @@ function resetApplication() {
             tx.executeSql('DROP TABLE IF EXISTS backend');
             tx.executeSql('DROP TABLE IF EXISTS alarm');
             tx.executeSql('DROP TABLE IF EXISTS marketdata');
+            tx.executeSql('DROP TABLE IF EXISTS stockdata_ext');
         })
     } catch (err) {
-        console.log("Error deleting tables for application in database : " + err)
+        console.log("Error deleting tables for application in database : " + err);
     }
 }
 
@@ -62,6 +63,14 @@ function initApplicationTables() {
     try {
         var db = getOpenDatabase()
         console.log("Current DB version is : " + db.version)
+
+//        use this tx to change the version
+//        db.changeVersion(
+//                    "1.1.1", "1.1",
+//                    function (tx) {
+//                    })
+
+        db = getOpenDatabase()
 
         // cleanup start
         if (db.version === "") {
@@ -107,14 +116,19 @@ function initApplicationTables() {
                 });
             });
         }
+
+        db = getOpenDatabase()
         // version update 1.0 -> 1.1
         if (db.version === "1.0") {
             console.log("Performing DB update from 1.0 to 1.1!")
             db.changeVersion("1.0", "1.1", function (tx) {
-                tx.executeSql("ALTER TABLE stockdata ADD COLUMN currencySymbol text");
-                tx.executeSql("ALTER TABLE stockdata ADD COLUMN comment text");
-                tx.executeSql("ALTER TABLE stockdata ADD COLUMN referencePrice real DEFAULT 0.0");
-            });
+                tx.executeSql(
+                            "ALTER TABLE stockdata ADD COLUMN currencySymbol text");
+                // stockdata extended data
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS stockdata_ext'
+                            + ' (id INTEGER, notes text, referencePrice real DEFAULT 0.0, PRIMARY KEY (id))');
+            })
         }
     } catch (err) {
         console.log("Error creating tables for application in database : " + err)
@@ -200,13 +214,52 @@ function saveAlarm(alarm) {
 function disableAlarm(id) {
     var query = 'UPDATE alarm SET triggered = ? WHERE id = ?';
     var parameters = [SQL_TRUE, id];
-    return executeInsertUpdateDeleteForTable("alarm", query, parameters, qsTr("Alarm disabled"), qsTr("Error disabling alarm"));
+    return executeInsertUpdateDeleteForTable("alarm", query, parameters,
+                                             qsTr("Alarm disabled"),
+                                             qsTr("Error disabling alarm"));
+}
+
+function saveStockNotes(id, notes) {
+    var query = 'INSERT OR REPLACE INTO stockdata_ext(id, notes) VALUES (?, ?)';
+    var parameters = [id, notes];
+    return executeInsertUpdateDeleteForTable("stockdata_ext", query,
+                                             parameters,
+                                             qsTr("Stock notes updated"),
+                                             qsTr("Error updating stock notes"));
 }
 
 function migrateEuroinvestorToIngDiba(watchlistId) {
     var query = 'UPDATE stockdata SET extRefId = isin where watchlistId = ?';
     var parameters = [watchlistId];
-    return executeInsertUpdateDeleteForTable("stockdata", query, parameters, qsTr("Watchlist data migrated"), qsTr("Error migrating watchlist data"));
+    return executeInsertUpdateDeleteForTable(
+                "stockdata", query, parameters,
+                qsTr("Watchlist data migrated"),
+                qsTr("Error migrating watchlist data"));
+}
+
+function loadStockNotes(id) {
+    var result
+    try {
+        var db = Database.getOpenDatabase();
+        db.transaction(function (tx) {
+            var query = 'SELECT notes FROM stockdata_ext WHERE id = ?';
+            var dbResult = tx.executeSql(query, [id]);
+            // create same object as from json response
+            if (dbResult.rows.length === 1) {
+                var row = dbResult.rows.item(0);
+                var entry = {
+                }
+                entry['notes'] = row['notes'];
+                result = entry;
+                console.log("loading single security notes from database done");
+            } else {
+                console.log("no stockdata notes found for id " + id);
+            }
+        });
+    } catch (err) {
+        console.log("Error loading single security notes from database: " + err);
+    }
+    return result['notes'];
 }
 
 function getCurrentWatchlistId() {
@@ -235,7 +288,7 @@ function getCurrentWatchlistId() {
 function persistMarketdata(data) {
     var query = 'INSERT OR REPLACE INTO marketdata(id, typeId, name, longName, extRefId, currency, symbol, stockMarketSymbol, stockMarketName, '
                         + 'last, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?)';
+                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     var parameters = [data.id, data.typeId, data.name, data.longName, '' + data.extRefId, data.currency, data.symbol, data.stockMarketSymbol, data.stockMarketName,
                          data.last, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp];
     return executeInsertUpdateDeleteForTable("marketdata", query, parameters, qsTr("Market data added"), qsTr("Error adding market data"));

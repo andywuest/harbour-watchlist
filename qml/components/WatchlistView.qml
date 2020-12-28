@@ -212,6 +212,14 @@ SilicaFlickable {
                         text: qsTr("Remove")
                         onClicked: deleteStockData(index)
                     }
+                    MenuItem {
+                        //: WatchlistView show stock notes dialog
+                        text: qsTr("Stock notes")
+                        onClicked: {
+                            var selectedStock = stockQuotesListView.model.get(index);
+                            pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"), { selectedSecurity: selectedStock })
+                        }
+                    }
                 }
 
                 Item {
