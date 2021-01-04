@@ -327,7 +327,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
-        <source>Ing-Diba (beta)</source>
+        <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -426,92 +426,98 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="46"/>
         <source>General data</source>
-        <extracomment>StockDetailsPage page general data</extracomment>
+        <extracomment>StockDetailsView page general data</extracomment>
         <translation>Allgemeine Daten</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="52"/>
         <source>Currency</source>
-        <extracomment>StockDetailsPage page currency</extracomment>
+        <extracomment>StockDetailsView page currency</extracomment>
         <translation>Währung</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="59"/>
-        <source>Isin</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
-        <translation></translation>
+        <source>ISIN</source>
+        <extracomment>StockDetailsView page isin</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="66"/>
         <source>Symbol</source>
-        <extracomment>StockDetailsPage page symbol</extracomment>
+        <extracomment>StockDetailsView page symbol</extracomment>
         <translation></translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="73"/>
         <source>Stock Market</source>
-        <extracomment>StockDetailsPage page stock market</extracomment>
+        <extracomment>StockDetailsView page stock market</extracomment>
         <translation>Börse</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="79"/>
         <source>Trading data</source>
-        <extracomment>StockDetailsPage page trading data</extracomment>
+        <extracomment>StockDetailsView page trading data</extracomment>
         <translation>Handelsdaten</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="85"/>
         <source>Price</source>
-        <extracomment>StockDetailsPage page price</extracomment>
+        <extracomment>StockDetailsView page price</extracomment>
         <translation>Preis</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="92"/>
         <source>Change abs.</source>
-        <extracomment>StockDetailsPage page change absolute</extracomment>
+        <extracomment>StockDetailsView page change absolute</extracomment>
         <translation>Veränderung abs.</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="99"/>
         <source>Change rel.</source>
-        <extracomment>StockDetailsPage page change relative</extracomment>
+        <extracomment>StockDetailsView page change relative</extracomment>
         <translation>Veränderung rel.</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="106"/>
         <source>Timestamp</source>
-        <extracomment>StockDetailsPage page timestamp</extracomment>
+        <extracomment>StockDetailsView page timestamp</extracomment>
         <translation>Letzte Aktualisierung</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="113"/>
         <source>Ask</source>
-        <extracomment>StockDetailsPage page ask</extracomment>
+        <extracomment>StockDetailsView page ask</extracomment>
         <translation>Brief</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="120"/>
         <source>Bid</source>
-        <extracomment>StockDetailsPage page bid</extracomment>
+        <extracomment>StockDetailsView page bid</extracomment>
         <translation>Geld</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="127"/>
         <source>High</source>
-        <extracomment>StockDetailsPage page high</extracomment>
+        <extracomment>StockDetailsView page high</extracomment>
         <translation>Hoch</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="134"/>
         <source>Low</source>
-        <extracomment>StockDetailsPage page low</extracomment>
+        <extracomment>StockDetailsView page low</extracomment>
         <translation>Tief</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="141"/>
         <source>Volume</source>
-        <extracomment>StockDetailsPage page volume</extracomment>
+        <extracomment>StockDetailsView page volume</extracomment>
         <translation>Volumen</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="148"/>
+        <source>Notes</source>
+        <extracomment>StockDetailsView page security notes</extracomment>
+        <translation>Notizen</translation>
     </message>
 </context>
 <context>
@@ -520,6 +526,26 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockNewsView.qml" line="88"/>
         <source>No news items found for this security.</source>
         <translation>Keine Nachrichten für dieses Wertpapier gefunden.</translation>
+    </message>
+</context>
+<context>
+    <name>StockNotesDialog</name>
+    <message>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="40"/>
+        <source>Stock notes</source>
+        <translation>Wertpapier Notizen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="46"/>
+        <source>Enter your notes here!</source>
+        <extracomment>StockNotesDialog textarea to enter notes</extracomment>
+        <translation>Geben Sie Ihre Notizen hier ein!</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="59"/>
+        <source>Clear</source>
+        <extracomment>StockNotesDialog clear button</extracomment>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
@@ -565,6 +591,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Entfernen</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WatchlistView.qml" line="217"/>
+        <source>Stock notes</source>
+        <extracomment>WatchlistView show stock notes dialog</extracomment>
+        <translation>Wertpapier Notizen</translation>
     </message>
 </context>
 <context>
@@ -803,52 +835,62 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="191"/>
+        <location filename="../qml/js/database.js" line="211"/>
         <source>Alarm added</source>
         <translation>Alarm hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="191"/>
+        <location filename="../qml/js/database.js" line="211"/>
         <source>Error adding alarm</source>
         <translation>Fehler beim Hinzufügen des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="220"/>
+        <location filename="../qml/js/database.js" line="218"/>
         <source>Alarm disabled</source>
         <translation>Alarm deaktiviert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="220"/>
+        <location filename="../qml/js/database.js" line="219"/>
         <source>Error disabling alarm</source>
         <translation>Fehler beim deaktivieren des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="242"/>
+        <location filename="../qml/js/database.js" line="227"/>
+        <source>Stock notes updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="228"/>
+        <source>Error updating stock notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="240"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-Daten migriert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="242"/>
+        <location filename="../qml/js/database.js" line="241"/>
         <source>Error migrating watchlist data</source>
         <translation>Fehler beim Migrieren der Watchlist-Daten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="274"/>
+        <location filename="../qml/js/database.js" line="300"/>
         <source>Market data added</source>
         <translation>Marktdaten hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="274"/>
+        <location filename="../qml/js/database.js" line="300"/>
         <source>Error adding market data</source>
         <translation>Fehler beim Hinzufügen von Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="298"/>
+        <location filename="../qml/js/database.js" line="324"/>
         <source>Stock added</source>
         <translation>Aktie hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="326"/>
         <source>Error adding stock</source>
         <translation>Fehler beim Hinzufügen der Aktie</translation>
     </message>
@@ -856,18 +898,18 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="45"/>
+        <location filename="../qml/js/functions.js" line="46"/>
         <source>hh:mm:ss</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="59"/>
+        <location filename="../qml/js/functions.js" line="60"/>
         <source>hh:mm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="45"/>
-        <location filename="../qml/js/functions.js" line="61"/>
+        <location filename="../qml/js/functions.js" line="46"/>
+        <location filename="../qml/js/functions.js" line="62"/>
         <source>dd.MM.yyyy</source>
         <translation></translation>
     </message>

@@ -289,7 +289,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Определяет стратегию загрузки новостей</translation>
     </message>
     <message>
-        <source>Ing-Diba (beta)</source>
+        <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -357,84 +357,111 @@ SettingsPage news download strategy only on wifi</extracomment>
     <name>StockDetailsView</name>
     <message>
         <source>General data</source>
-        <extracomment>StockDetailsPage page general data</extracomment>
+        <extracomment>StockDetailsView page general data</extracomment>
         <translation>Общая информация</translation>
     </message>
     <message>
         <source>Currency</source>
-        <extracomment>StockDetailsPage page currency</extracomment>
+        <extracomment>StockDetailsView page currency</extracomment>
         <translation>Валюта</translation>
     </message>
     <message>
-        <source>Isin</source>
+        <source>ISIN</source>
         <extracomment>StockDetailsPage page isin</extracomment>
         <translation>ISIN код</translation>
     </message>
     <message>
         <source>Symbol</source>
-        <extracomment>StockDetailsPage page symbol</extracomment>
+        <extracomment>StockDetailsView page symbol</extracomment>
         <translation>Символ</translation>
     </message>
     <message>
         <source>Stock Market</source>
-        <extracomment>StockDetailsPage page stock market</extracomment>
+        <extracomment>StockDetailsView page stock market</extracomment>
         <translation>Биржа</translation>
     </message>
     <message>
         <source>Trading data</source>
-        <extracomment>StockDetailsPage page trading data</extracomment>
+        <extracomment>StockDetailsView page trading data</extracomment>
         <translation>Курс</translation>
     </message>
     <message>
         <source>Price</source>
-        <extracomment>StockDetailsPage page price</extracomment>
+        <extracomment>StockDetailsView page price</extracomment>
         <translation>Цена</translation>
     </message>
     <message>
         <source>Change abs.</source>
-        <extracomment>StockDetailsPage page change absolute</extracomment>
+        <extracomment>StockDetailsView page change absolute</extracomment>
         <translation>Движение абс.</translation>
     </message>
     <message>
         <source>Change rel.</source>
-        <extracomment>StockDetailsPage page change relative</extracomment>
+        <extracomment>StockDetailsView page change relative</extracomment>
         <translation>Движение отн.</translation>
     </message>
     <message>
         <source>Timestamp</source>
-        <extracomment>StockDetailsPage page timestamp</extracomment>
+        <extracomment>StockDetailsView page timestamp</extracomment>
         <translation>Время</translation>
     </message>
     <message>
         <source>Ask</source>
-        <extracomment>StockDetailsPage page ask</extracomment>
+        <extracomment>StockDetailsView page ask</extracomment>
         <translation>Предложение</translation>
     </message>
     <message>
         <source>Bid</source>
-        <extracomment>StockDetailsPage page bid</extracomment>
+        <extracomment>StockDetailsView page bid</extracomment>
         <translation>Покупка</translation>
     </message>
     <message>
         <source>High</source>
-        <extracomment>StockDetailsPage page high</extracomment>
+        <extracomment>StockDetailsView page high</extracomment>
         <translation>Максимум</translation>
     </message>
     <message>
         <source>Low</source>
-        <extracomment>StockDetailsPage page low</extracomment>
+        <extracomment>StockDetailsView page low</extracomment>
         <translation>Минимум</translation>
     </message>
     <message>
         <source>Volume</source>
-        <extracomment>StockDetailsPage page volume</extracomment>
+        <extracomment>StockDetailsView page volume</extracomment>
         <translation>Объём</translation>
+    </message>
+    <message>
+        <source>Notes</source>
+        <extracomment>StockDetailsView page security notes</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ISIN</source>
+        <extracomment>StockDetailsView page isin</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StockNewsView</name>
     <message>
         <source>No news items found for this security.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StockNotesDialog</name>
+    <message>
+        <source>Stock notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter your notes here!</source>
+        <extracomment>StockNotesDialog textarea to enter notes</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <extracomment>StockNotesDialog clear button</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -474,6 +501,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>Список бумаг пуст. Добавьте бумаги с помощью меню.</translation>
+    </message>
+    <message>
+        <source>Stock notes</source>
+        <extracomment>WatchlistView show stock notes dialog</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -703,6 +735,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Error migrating watchlist data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stock notes updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error updating stock notes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
