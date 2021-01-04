@@ -56,7 +56,7 @@ SilicaFlickable {
         LabelValueRow {
             id: isinLabelValueRow
             //: StockDetailsView page isin
-            label: qsTr("Isin")
+            label: qsTr("ISIN")
             value: ''
         }
 
