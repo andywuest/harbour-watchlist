@@ -19,7 +19,6 @@ import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 
-
 // QTBUG-34418
 //import "."
 import "../js/database.js" as Database
@@ -43,6 +42,7 @@ Dialog {
 
         TextArea {
             id: stockNotesTextArea
+            //: StockNotesDialog textarea to enter notes
             placeholderText: qsTr("Enter your notes here!")
             width: parent.width
             anchors {
@@ -51,13 +51,23 @@ Dialog {
                 margins: Theme.paddingLarge
             }
         }
+
+        Button {
+            width: parent.width - (6 * Theme.paddingLarge)
+            x: 3 * Theme.paddingLarge
+            //: StockNotesDialog clear button
+            text: qsTr("Clear")
+            onClicked: {
+                stockNotesTextArea.text = "";
+            }
+        }
     }
 
     Component.onCompleted: {
         var security = Database.loadStockBy(watchlistId, selectedSecurity.extRefId);
         if (security) {
             var notes = Database.loadStockNotes(security.id);
-            console.log("Restoring security notes : " + notes);
+            Functions.log("Restoring security notes : " + notes);
             if (notes) {
                 stockNotesTextArea.text = notes;
             }
@@ -68,7 +78,7 @@ Dialog {
         if (DialogResult.Accepted == result) {
             var security = Database.loadStockBy(watchlistId, selectedSecurity.extRefId);
             if (security) {
-                console.log("Saving stock notes : " + stockNotesTextArea.text);
+                Functions.log("Saving stock notes : " + stockNotesTextArea.text);
                 Database.saveStockNotes(security.id, stockNotesTextArea.text);
             }
         }

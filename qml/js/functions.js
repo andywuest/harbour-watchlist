@@ -20,7 +20,7 @@ function renderPriceOnly(price) {
 
 function renderPrice(price, currencyString) {
     var locale = Qt.locale();
-    return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) + " " + currencyString : "-")
+    return ((price && price !== 0.0) ? formatPrice(price, locale) + " " + currencyString : "")
 }
 
 function formatPrice(price, locale) {
@@ -39,6 +39,7 @@ function determineChangeColor(change) {
 }
 
 function renderDateTimeString(dateTimeString) {
+    // TODO undefined check here
     if (dateTimeString !== null && dateTimeString !== "undefined"
             && dateTimeString !== "") {
         var date = Date.fromLocaleString(Qt.locale("de_DE"), dateTimeString, "yyyy-MM-dd hh:mm:ss")

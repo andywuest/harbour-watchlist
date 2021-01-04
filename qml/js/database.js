@@ -228,6 +228,10 @@ function saveStockNotes(id, notes) {
                                              qsTr("Error updating stock notes"));
 }
 
+function loadStockNotes(id) {
+    return loadValueFromTable(id, 'stockdata_ext', 'notes');
+}
+
 function migrateEuroinvestorToIngDiba(watchlistId) {
     var query = 'UPDATE stockdata SET extRefId = isin where watchlistId = ?';
     var parameters = [watchlistId];
@@ -237,29 +241,31 @@ function migrateEuroinvestorToIngDiba(watchlistId) {
                 qsTr("Error migrating watchlist data"));
 }
 
-function loadStockNotes(id) {
+function loadValueFromTable(id, table, columnName) {
     var result
+    var tableColumnText = table + "." + columnName;
     try {
         var db = Database.getOpenDatabase();
         db.transaction(function (tx) {
-            var query = 'SELECT notes FROM stockdata_ext WHERE id = ?';
+            var query = 'SELECT ' + columnName + ' FROM ' + table + ' WHERE id = ?';
             var dbResult = tx.executeSql(query, [id]);
             // create same object as from json response
             if (dbResult.rows.length === 1) {
                 var row = dbResult.rows.item(0);
                 var entry = {
                 }
-                entry['notes'] = row['notes'];
+                entry[columnName] = row[columnName];
                 result = entry;
-                console.log("loading single security notes from database done");
+                console.log("loading single " + tableColumnText + " from database done");
             } else {
-                console.log("no stockdata notes found for id " + id);
+                console.log("no " + tableColumnText + " found for id " + id);
             }
         });
     } catch (err) {
-        console.log("Error loading single security notes from database: " + err);
+        console.log("Error loading single column " + tableColumnText
+                    + "security notes from database: " + err);
     }
-    return result['notes'];
+    return (result ? result[columnName] : '');
 }
 
 function getCurrentWatchlistId() {

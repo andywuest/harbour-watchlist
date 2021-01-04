@@ -42,115 +42,117 @@ SilicaFlickable {
         }
 
         SectionHeader {
-            //: StockDetailsPage page general data
+            //: StockDetailsView page general data
             text: qsTr("General data")
         }
 
         LabelValueRow {
             id: currencyLabelValueRow
-            //: StockDetailsPage page currency
+            //: StockDetailsView page currency
             label: qsTr("Currency")
             value: ''
         }
 
         LabelValueRow {
             id: isinLabelValueRow
-            //: StockDetailsPage page isin
+            //: StockDetailsView page isin
             label: qsTr("Isin")
             value: ''
         }
 
         LabelValueRow {
             id: symbolLabelValueRow
-            //: StockDetailsPage page symbol
+            //: StockDetailsView page symbol
             label: qsTr("Symbol")
             value: ''
         }
 
         LabelValueRow {
             id: stockMarketNameLabelValueRow
-            //: StockDetailsPage page stock market
+            //: StockDetailsView page stock market
             label: qsTr("Stock Market")
             value: ''
         }
 
         SectionHeader {
-            //: StockDetailsPage page trading data
+            //: StockDetailsView page trading data
             text: qsTr("Trading data")
         }
 
         LabelValueRow {
             id: priceLabelValueRow
-            //: StockDetailsPage page price
+            //: StockDetailsView page price
             label: qsTr("Price")
             value: ''
         }
 
         LabelValueRow {
             id: changeAbsoluteLabelValueRow
-            //: StockDetailsPage page change absolute
+            //: StockDetailsView page change absolute
             label: qsTr("Change abs.")
             value: ''
         }
 
         LabelValueRow {
             id: changeRelativeLabelValueRow
-            //: StockDetailsPage page change relative
+            //: StockDetailsView page change relative
             label: qsTr("Change rel.")
             value: ''
         }
 
         LabelValueRow {
             id: timestampLabelValueRow
-            //: StockDetailsPage page timestamp
+            //: StockDetailsView page timestamp
             label: qsTr("Timestamp")
             value: ''
         }
 
         LabelValueRow {
             id: askLabelValueRow
-            //: StockDetailsPage page ask
+            //: StockDetailsView page ask
             label: qsTr("Ask")
             value: ''
         }
 
         LabelValueRow {
             id: bidLabelValueRow
-            //: StockDetailsPage page bid
+            //: StockDetailsView page bid
             label: qsTr("Bid")
             value: ''
         }
 
         LabelValueRow {
             id: highLabelValueRow
-            //: StockDetailsPage page high
+            //: StockDetailsView page high
             label: qsTr("High")
             value: ''
         }
 
         LabelValueRow {
             id: lowLabelValueRow
-            //: StockDetailsPage page low
+            //: StockDetailsView page low
             label: qsTr("Low")
             value: ''
         }
 
         LabelValueRow {
             id: volumeLabelValueRow
-            //: StockDetailsPage page volume
+            //: StockDetailsView page volume
             label: qsTr("Volume")
             value: ''
         }
 
         SectionHeader {
-            //: StockDetailsPage page security notes
+            id: notesSectionHeader
+            //: StockDetailsView page security notes
             text: qsTr("Notes")
-            visible: notesText.visible
+            visible: notesRow.visible
         }
 
         LabelOnlyRow {
             id: notesRow
             label: ''
+            visible: false;
         }
 
     }
@@ -162,17 +164,17 @@ SilicaFlickable {
             isinLabelValueRow.value = stock.isin ? stock.isin : '';
             symbolLabelValueRow.value = stock.symbol1 ? stock.symbol1 : ''; // TODO warum symbol1
             stockMarketNameLabelValueRow.value = stock.stockMarketName ? stock.stockMarketName : '';
-            askLabelValueRow.value = stock.ask ? Functions.renderPrice(stock.ask, currencySymbol) : '';
-            bidLabelValueRow.value = stock.bid ? Functions.renderPrice(stock.bid, currencySymbol) : '';
-            highLabelValueRow.value = stock.high ? Functions.renderPrice(stock.high, currencySymbol) : '';
-            lowLabelValueRow.value = stock.low ? Functions.renderPrice(stock.low, currencySymbol) : '';
+            askLabelValueRow.value = Functions.renderPrice(stock.ask, currencySymbol);
+            bidLabelValueRow.value = Functions.renderPrice(stock.bid, currencySymbol);
+            highLabelValueRow.value = Functions.renderPrice(stock.high, currencySymbol);
+            lowLabelValueRow.value = Functions.renderPrice(stock.low, currencySymbol);
             changeAbsoluteLabelValueRow.value = stock.changeAbsolute ? Functions.renderChange(stock.price, stock.changeAbsolute, currencySymbol) : '';
             changeRelativeLabelValueRow.value = stock.changeRelative ? Functions.renderChange(stock.price, stock.changeRelative, '%') : '';
-            priceLabelValueRow.value = stock.price ? Functions.renderPrice(stock.price, currencySymbol) : '';
+            priceLabelValueRow.value = Functions.renderPrice(stock.price, currencySymbol);
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
             var notes = Database.loadStockNotes(stock.id);
-            if (notes) {
+            if (notes && notes !== '') {
                 notesRow.label = notes;
                 notesRow.visible = true;
             }
