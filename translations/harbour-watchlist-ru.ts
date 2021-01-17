@@ -367,7 +367,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>ISIN</source>
-        <extracomment>StockDetailsPage page isin</extracomment>
+        <extracomment>StockDetailsView page isin</extracomment>
         <translation>ISIN код</translation>
     </message>
     <message>
@@ -433,11 +433,6 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Notes</source>
         <extracomment>StockDetailsView page security notes</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ISIN</source>
-        <extracomment>StockDetailsView page isin</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
