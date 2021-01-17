@@ -56,17 +56,17 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     marketDataId2ExtRefId["COM_PALLADIUM"] = "8353";
 
     // Currencies
-    marketDataId2ExtRefId["CUR_SEK_DKK"] = "36399";
-    marketDataId2ExtRefId["CUR_EUR_USD"] = "36278";
-    marketDataId2ExtRefId["CUR_EUR_RUB"] = "35296";
-    marketDataId2ExtRefId["CUR_JPY_USD"] = "37895";
-    marketDataId2ExtRefId["CUR_CHF_EUR"] = "37786";
-    marketDataId2ExtRefId["CUR_GBP_EUR"] = "36624";
-    marketDataId2ExtRefId["CUR_GBP_RUB"] = "36440";
-    marketDataId2ExtRefId["CUR_GBP_USD"] = "35299";
-    marketDataId2ExtRefId["CUR_GBP_DKK"] = "36274";
-    marketDataId2ExtRefId["CUR_USD_EUR"] = "29749";
-    marketDataId2ExtRefId["CUR_USD_RUB"] = "36270";
+    marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
+    marketDataId2ExtRefId["CUR_EUR_USD"] = "216178";
+    marketDataId2ExtRefId["CUR_EUR_RUB"] = "216156";
+    marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
+    marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
+    marketDataId2ExtRefId["CUR_GBP_EUR"] = "216236";
+    marketDataId2ExtRefId["CUR_GBP_RUB"] = "216298";
+    marketDataId2ExtRefId["CUR_GBP_USD"] = "216318";
+    marketDataId2ExtRefId["CUR_GBP_DKK"] = "216231";
+    marketDataId2ExtRefId["CUR_USD_EUR"] = "217023";
+    marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
 
     // Crypto Currencies
     marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "99567";
