@@ -5,7 +5,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2020 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.3-1
+* 23.01.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.3-1
 - differentiate between currency symbol and currency string
 - added stock notes dialog, notes will be displayed in the stock details view
 - fixed Some market data stopped working (https://github.com/andywuest/harbour-watchlist/issues/72)
