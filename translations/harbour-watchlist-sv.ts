@@ -329,7 +329,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ing-Diba</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="155"/>
@@ -439,7 +439,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="59"/>
         <source>ISIN</source>
         <extracomment>StockDetailsView page isin</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ISIN</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="66"/>
@@ -517,7 +517,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
         <source>Notes</source>
         <extracomment>StockDetailsView page security notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Notiser</translation>
     </message>
 </context>
 <context>
@@ -525,7 +525,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/StockNewsView.qml" line="88"/>
         <source>No news items found for this security.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga nyhetsobjekt hittades för denna säkerhet.</translation>
     </message>
 </context>
 <context>
@@ -533,19 +533,19 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="40"/>
         <source>Stock notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktienotiser</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="46"/>
         <source>Enter your notes here!</source>
         <extracomment>StockNotesDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ange dina notiser här!</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="59"/>
         <source>Clear</source>
         <extracomment>StockNotesDialog clear button</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Rensa</translation>
     </message>
 </context>
 <context>
@@ -596,7 +596,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Aktienotiser</translation>
     </message>
 </context>
 <context>
@@ -857,12 +857,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="227"/>
         <source>Stock notes updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktienotiser uppdaterade</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="228"/>
         <source>Error updating stock notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte uppdatera aktienotiser</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="240"/>
