@@ -158,7 +158,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/components/MarketdataView.qml" line="164"/>
         <source>The market data list is empty. Please add market data via the pulley menu.</source>
         <extracomment>MarketdataView empty marketdata label</extracomment>
-        <translation>股市数据为空，请通过滚轮菜单添加。</translation>
+        <translation>股市数据为空，请通过滑轮菜单添加。</translation>
     </message>
     <message>
         <location filename="../qml/components/MarketdataView.qml" line="194"/>
@@ -329,7 +329,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>Ing-Diba</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="155"/>
@@ -439,7 +439,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="59"/>
         <source>ISIN</source>
         <extracomment>StockDetailsView page isin</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>ISIN</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="66"/>
@@ -517,7 +517,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
         <source>Notes</source>
         <extracomment>StockDetailsView page security notes</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>安全说明</translation>
     </message>
 </context>
 <context>
@@ -533,19 +533,19 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="40"/>
         <source>Stock notes</source>
-        <translation type="unfinished"></translation>
+         <translation>股票证明</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="46"/>
         <source>Enter your notes here!</source>
         <extracomment>StockNotesDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>在此输入你的证明！</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="59"/>
         <source>Clear</source>
         <extracomment>StockNotesDialog clear button</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>清空</translation>
     </message>
 </context>
 <context>
@@ -578,7 +578,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="174"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
-        <translation>清单为空。请通过滚轮菜单添加股票。</translation>
+        <translation>清单为空。请通过滑轮菜单添加股票。</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="204"/>
@@ -596,7 +596,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
-        <translation type="unfinished"></translation>
+         <translation>股票证明</translation>
     </message>
 </context>
 <context>
@@ -857,12 +857,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="227"/>
         <source>Stock notes updated</source>
-        <translation type="unfinished"></translation>
+         <translation>股票证明已更新</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="228"/>
         <source>Error updating stock notes</source>
-        <translation type="unfinished"></translation>
+         <translation>更新股票证明出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="240"/>
