@@ -329,7 +329,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-         <translation>Ing-Diba</translation>
+        <translation>Ing-Diba</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="155"/>
@@ -439,7 +439,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="59"/>
         <source>ISIN</source>
         <extracomment>StockDetailsView page isin</extracomment>
-         <translation>ISIN</translation>
+        <translation>ISIN</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="66"/>
@@ -517,7 +517,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
         <source>Notes</source>
         <extracomment>StockDetailsView page security notes</extracomment>
-         <translation>安全说明</translation>
+        <translation>安全说明</translation>
     </message>
 </context>
 <context>
@@ -533,19 +533,19 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="40"/>
         <source>Stock notes</source>
-         <translation>股票证明</translation>
+        <translation>股票证明</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="46"/>
         <source>Enter your notes here!</source>
         <extracomment>StockNotesDialog textarea to enter notes</extracomment>
-         <translation>在此输入你的证明！</translation>
+        <translation>在此输入你的证明！</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockNotesDialog.qml" line="59"/>
         <source>Clear</source>
         <extracomment>StockNotesDialog clear button</extracomment>
-         <translation>清空</translation>
+        <translation>清空</translation>
     </message>
 </context>
 <context>
@@ -596,7 +596,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
-         <translation>股票证明</translation>
+        <translation>股票证明</translation>
     </message>
 </context>
 <context>
@@ -835,62 +835,62 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Alarm added</source>
         <translation>已添加提醒</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Error adding alarm</source>
         <translation>添加提醒出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="218"/>
+        <location filename="../qml/js/database.js" line="223"/>
         <source>Alarm disabled</source>
         <translation>已禁用提醒</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="219"/>
+        <location filename="../qml/js/database.js" line="224"/>
         <source>Error disabling alarm</source>
         <translation>禁用提醒出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="227"/>
+        <location filename="../qml/js/database.js" line="232"/>
         <source>Stock notes updated</source>
-         <translation>股票证明已更新</translation>
+        <translation>股票证明已更新</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="228"/>
+        <location filename="../qml/js/database.js" line="233"/>
         <source>Error updating stock notes</source>
-         <translation>更新股票证明出错</translation>
+        <translation>更新股票证明出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="240"/>
+        <location filename="../qml/js/database.js" line="245"/>
         <source>Watchlist data migrated</source>
         <translation>清单数据已迁移</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="241"/>
+        <location filename="../qml/js/database.js" line="246"/>
         <source>Error migrating watchlist data</source>
         <translation>迁移清单数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Market data added</source>
         <translation>已添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Error adding market data</source>
         <translation>添加股市数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="324"/>
+        <location filename="../qml/js/database.js" line="329"/>
         <source>Stock added</source>
         <translation>已添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="326"/>
+        <location filename="../qml/js/database.js" line="331"/>
         <source>Error adding stock</source>
         <translation>加载股票出错</translation>
     </message>

@@ -835,62 +835,62 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Alarm added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Error adding alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="218"/>
+        <location filename="../qml/js/database.js" line="223"/>
         <source>Alarm disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="219"/>
+        <location filename="../qml/js/database.js" line="224"/>
         <source>Error disabling alarm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="227"/>
+        <location filename="../qml/js/database.js" line="232"/>
         <source>Stock notes updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="228"/>
+        <location filename="../qml/js/database.js" line="233"/>
         <source>Error updating stock notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="240"/>
+        <location filename="../qml/js/database.js" line="245"/>
         <source>Watchlist data migrated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="241"/>
+        <location filename="../qml/js/database.js" line="246"/>
         <source>Error migrating watchlist data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Market data added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Error adding market data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="324"/>
+        <location filename="../qml/js/database.js" line="329"/>
         <source>Stock added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="326"/>
+        <location filename="../qml/js/database.js" line="331"/>
         <source>Error adding stock</source>
         <translation type="unfinished"></translation>
     </message>

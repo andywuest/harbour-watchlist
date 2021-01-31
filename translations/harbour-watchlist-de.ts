@@ -835,62 +835,62 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Alarm added</source>
         <translation>Alarm hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="211"/>
+        <location filename="../qml/js/database.js" line="216"/>
         <source>Error adding alarm</source>
         <translation>Fehler beim Hinzufügen des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="218"/>
+        <location filename="../qml/js/database.js" line="223"/>
         <source>Alarm disabled</source>
         <translation>Alarm deaktiviert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="219"/>
+        <location filename="../qml/js/database.js" line="224"/>
         <source>Error disabling alarm</source>
         <translation>Fehler beim deaktivieren des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="227"/>
+        <location filename="../qml/js/database.js" line="232"/>
         <source>Stock notes updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="228"/>
+        <location filename="../qml/js/database.js" line="233"/>
         <source>Error updating stock notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="240"/>
+        <location filename="../qml/js/database.js" line="245"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-Daten migriert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="241"/>
+        <location filename="../qml/js/database.js" line="246"/>
         <source>Error migrating watchlist data</source>
         <translation>Fehler beim Migrieren der Watchlist-Daten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Market data added</source>
         <translation>Marktdaten hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="300"/>
+        <location filename="../qml/js/database.js" line="305"/>
         <source>Error adding market data</source>
         <translation>Fehler beim Hinzufügen von Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="324"/>
+        <location filename="../qml/js/database.js" line="329"/>
         <source>Stock added</source>
         <translation>Aktie hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="326"/>
+        <location filename="../qml/js/database.js" line="331"/>
         <source>Error adding stock</source>
         <translation>Fehler beim Hinzufügen der Aktie</translation>
     </message>
