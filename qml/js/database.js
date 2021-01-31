@@ -1,7 +1,7 @@
 // .pragma library
 
-Qt.include("constants.js");
-Qt.include('functions.js');
+Qt.include("constants.js")
+Qt.include('functions.js')
 
 var SORT_BY_NAME_ASC = " name ASC ";
 var SORT_BY_CHANGE_ASC = " changeRelative ASC ";
@@ -44,6 +44,7 @@ function deleteTableEntry(id, tableName) {
 function resetApplication() {
     try {
         var db = getOpenDatabase()
+        var currentDbVersion = db.version
         console.log("Dropping all tables of the application!")
         db.transaction(function (tx) {
             tx.executeSql('DROP TABLE IF EXISTS stockdata');
@@ -53,6 +54,9 @@ function resetApplication() {
             tx.executeSql('DROP TABLE IF EXISTS marketdata');
             tx.executeSql('DROP TABLE IF EXISTS stockdata_ext');
         })
+        console.log("Changing DB Version from " + currentDbVersion
+                    + " to \"\" to be able to start from scratch.")
+        db.changeVersion(currentDbVersion, "", function (tx) {})
     } catch (err) {
         console.log("Error deleting tables for application in database : " + err);
     }
@@ -74,46 +78,44 @@ function initApplicationTables() {
 
         // cleanup start
         if (db.version === "") {
-            console.log("Creating all tables of the application if they do not yet exist!")
+            console.log("Creating all tables of the application for version 1.0 if they do not yet exist!")
             db.changeVersion("", "1.0", function (tx) {
-                db.transaction(function (tx) {
-                    // backend
-                    tx.executeSql(
-                                'CREATE TABLE IF NOT EXISTS backend'
-                                + ' (id INTEGER, name text NOT NULL, PRIMARY KEY (id))')
-                    tx.executeSql(
-                                'INSERT INTO backend (name) VALUES ("Euroinvestor")')
-                    // watchlist
-                    tx.executeSql(
-                                'CREATE TABLE IF NOT EXISTS watchlist'
-                                + ' (id INTEGER, backendId INTEGER NOT NULL, name text NOT NULL, PRIMARY KEY (id), '
-                                + ' FOREIGN KEY(backendId) REFERENCES backend(id))')
-                    tx.executeSql(
-                                'INSERT INTO watchlist (name, backendId) VALUES ("DEFAULT", (SELECT id FROM backend WHERE name = "Euroinvestor"))')
-                    // stockdata - TODO unique constraint (watchlistId, extRefId)
-                    tx.executeSql(
-                                'CREATE TABLE IF NOT EXISTS stockdata'
-                                + ' (id INTEGER, name text, extRefId text NOT NULL, currency text, '
-                                + ' stockMarketSymbol text, stockMarketName text, isin text, symbol1 text, symbol2 text, '
-                                + ' price real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
-                                + ' ask real DEFAULT 0.0, bid real DEFAULT 0.0, high real DEFAULT 0.0, low real DEFAULT 0.0, '
-                                + ' open real DEFAULT 0.0, previousClose real DEFAULT 0.0, volume INTEGER DEFAULT 0, '
-                                + ' quoteTimestamp text, lastChangeTimestamp text, watchlistId INTEGER NOT NULL, '
-                                + ' PRIMARY KEY(id), FOREIGN KEY(watchlistId) REFERENCES watchlist(id))')
-                    // alarm
-                    tx.executeSql(
-                                'CREATE TABLE IF NOT EXISTS alarm'
-                                + ' (id INTEGER, minimumPrice real DEFAULT null, maximumPrice real DEFAULT null, triggered INTEGER NOT NULL, '
-                                + ' PRIMARY KEY(id))')
-                    // market data
-                    tx.executeSql(
-                                'CREATE TABLE IF NOT EXISTS marketdata'
-                                + ' (id text NOT NULL, typeId INTEGER NOT NULL, name text, longName text, extRefId text NOT NULL, currency text, '
-                                + ' symbol text, stockMarketSymbol text, stockMarketName text, '
-                                + ' last real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
-                                + ' quoteTimestamp text, lastChangeTimestamp text, '
-                                + ' PRIMARY KEY(id)) WITHOUT ROWID')
-                });
+                // backend
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS backend'
+                            + ' (id INTEGER, name text NOT NULL, PRIMARY KEY (id))')
+                tx.executeSql(
+                            'INSERT INTO backend (name) VALUES ("Euroinvestor")')
+                // watchlist
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS watchlist'
+                            + ' (id INTEGER, backendId INTEGER NOT NULL, name text NOT NULL, PRIMARY KEY (id), '
+                            + ' FOREIGN KEY(backendId) REFERENCES backend(id))')
+                tx.executeSql(
+                            'INSERT INTO watchlist (name, backendId) VALUES ("DEFAULT", (SELECT id FROM backend WHERE name = "Euroinvestor"))')
+                // stockdata - TODO unique constraint (watchlistId, extRefId)
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS stockdata'
+                            + ' (id INTEGER, name text, extRefId text NOT NULL, currency text, '
+                            + ' stockMarketSymbol text, stockMarketName text, isin text, symbol1 text, symbol2 text, '
+                            + ' price real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
+                            + ' ask real DEFAULT 0.0, bid real DEFAULT 0.0, high real DEFAULT 0.0, low real DEFAULT 0.0, '
+                            + ' open real DEFAULT 0.0, previousClose real DEFAULT 0.0, volume INTEGER DEFAULT 0, '
+                            + ' quoteTimestamp text, lastChangeTimestamp text, watchlistId INTEGER NOT NULL, '
+                            + ' PRIMARY KEY(id), FOREIGN KEY(watchlistId) REFERENCES watchlist(id))')
+                // alarm
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS alarm'
+                            + ' (id INTEGER, minimumPrice real DEFAULT null, maximumPrice real DEFAULT null, triggered INTEGER NOT NULL, '
+                            + ' PRIMARY KEY(id))')
+                // market data
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS marketdata'
+                            + ' (id text NOT NULL, typeId INTEGER NOT NULL, name text, longName text, extRefId text NOT NULL, currency text, '
+                            + ' symbol text, stockMarketSymbol text, stockMarketName text, '
+                            + ' last real DEFAULT 0.0, changeAbsolute real DEFAULT 0.0, changeRelative real DEFAULT 0.0, '
+                            + ' quoteTimestamp text, lastChangeTimestamp text, '
+                            + ' PRIMARY KEY(id)) WITHOUT ROWID')
             });
         }
 
@@ -130,6 +132,9 @@ function initApplicationTables() {
                             + ' (id INTEGER, notes text, referencePrice real DEFAULT 0.0, PRIMARY KEY (id))');
             })
         }
+
+        // open database again to make sure we have latest version
+        db = getOpenDatabase()
     } catch (err) {
         console.log("Error creating tables for application in database : " + err)
     }
