@@ -33,3 +33,5 @@ cd $RPM_VALIDATOR
 git pull
 ./rpmvalidation.sh ../RPMS/$PROJECT*.rpm
 
+cd ..
+rm -rf $RPM_VALIDATOR
