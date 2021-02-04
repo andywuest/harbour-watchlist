@@ -199,7 +199,7 @@ void IngDibaBackend::handleFetchPricesForChartFinished() {
     QByteArray resultByteArray = reply->readAll();
     QString result = QString(resultByteArray);
 
-    qDebug() << "IngDibaBackend::handleFetchPricesForChartFinished result " << result;
+    // qDebug() << "IngDibaBackend::handleFetchPricesForChartFinished result " << result;
 
     QString jsonResponseString = parsePriceResponse(resultByteArray);
 
