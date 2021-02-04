@@ -390,33 +390,33 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="96"/>
+        <location filename="../qml/components/StockChartsView.qml" line="88"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="102"/>
+        <location filename="../qml/components/StockChartsView.qml" line="94"/>
         <source>Intraday</source>
         <translation>Intradag</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="114"/>
+        <location filename="../qml/components/StockChartsView.qml" line="106"/>
         <source>30 days</source>
         <translation>30 dagar</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="126"/>
+        <location filename="../qml/components/StockChartsView.qml" line="118"/>
         <source>3 months</source>
         <translation>3 månader</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="138"/>
+        <location filename="../qml/components/StockChartsView.qml" line="130"/>
         <source>1 Year</source>
         <translation>1 år</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="150"/>
+        <location filename="../qml/components/StockChartsView.qml" line="142"/>
         <source>3 Years</source>
         <translation>3 år</translation>
     </message>
@@ -551,17 +551,17 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockOverviewPage</name>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="226"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="227"/>
         <source>Details</source>
         <translation>Detaljerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="241"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="242"/>
         <source>Charts</source>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="256"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="257"/>
         <source>News</source>
         <translation>Nyheter</translation>
     </message>
