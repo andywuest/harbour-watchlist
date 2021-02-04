@@ -31,6 +31,8 @@ SilicaFlickable {
     property var stock
     property string extRefId
     property int screenHeight : 0
+    property var chartDataMap : ({})
+    property bool isActive : false
 
     contentHeight: stockChartsColumn.height
 
@@ -39,26 +41,16 @@ SilicaFlickable {
     }
 
     function fetchPricesForChartHandler(result, type) {
-        var response = JSON.parse(result);
-
-        if (type === Constants.CHART_TYPE_INTRDAY) {
-            updateStockChart(response, intradayStockChart);
-        } else if (type === Constants.CHART_TYPE_MONTH) {
-            updateStockChart(response, lastMonthStockChart);
-        } else if (type === Constants.CHART_TYPE_3_MONTHS) {
-            updateStockChart(response, lastThreeMonthStockChart);
-        } else if (type === Constants.CHART_TYPE_YEAR) {
-            updateStockChart(response, lastYearStockChart);
-        } else if (type === Constants.CHART_TYPE_3_YEARS) {
-            updateStockChart(response, lastThreeYearsStockChart);
-        }
+        chartDataMap[type] = JSON.parse(result);
     }
 
     function updateStockChart(response, chart) {
-        chart.minY = (response.min / 1.0);
-        chart.maxY = (response.max / 1.0);
-        chart.setPoints(response.data);
-        chart.fractionDigits = response.fractionDigits;
+        if (response && response.data) {
+            chart.minY = (response.min / 1.0);
+            chart.maxY = (response.max / 1.0);
+            chart.setPoints(response.data);
+            chart.fractionDigits = response.fractionDigits;
+        }
     }
 
     function triggerChartDataDownloadOnEntering() {
@@ -155,7 +147,6 @@ SilicaFlickable {
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
-
     }
 
     Component.onCompleted: {
@@ -182,6 +173,16 @@ SilicaFlickable {
     Component.onDestruction: {
         Functions.log("disconnecting signal")
         getDataBackend().fetchPricesForChartAvailable.disconnect(fetchPricesForChartHandler)
+    }
+
+    onIsActiveChanged: {
+        if (isActive) {
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_INTRDAY], intradayStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_MONTH], lastMonthStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_MONTHS], lastThreeMonthStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_YEAR], lastYearStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_YEARS], lastThreeYearsStockChart)
+        }
     }
 
     VerticalScrollDecorator {

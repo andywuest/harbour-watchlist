@@ -142,6 +142,7 @@ Page {
                             height: parent.height
                             screenHeight: overviewOverviewPage.height
                             stock: theStock
+                            isActive: chartsButtonPortrait.isActive
                         }
                     }
 
