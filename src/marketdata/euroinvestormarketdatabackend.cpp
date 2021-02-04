@@ -50,10 +50,10 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     marketDataId2ExtRefId["INDEX_OMC_C25"] = "64283";
 
     // Commodities
-    marketDataId2ExtRefId["COM_GOLD"] = "8352";
-    marketDataId2ExtRefId["COM_SILVER"] = "8351";
-    marketDataId2ExtRefId["COM_PLATINUM"] = "8354";
-    marketDataId2ExtRefId["COM_PALLADIUM"] = "8353";
+    marketDataId2ExtRefId["COM_GOLD"] = "224286";
+    marketDataId2ExtRefId["COM_SILVER"] = "224285";
+    marketDataId2ExtRefId["COM_PLATINUM"] = "224288";
+    marketDataId2ExtRefId["COM_PALLADIUM"] = "224287";
 
     // Currencies
     marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
