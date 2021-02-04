@@ -7,6 +7,7 @@
 
 * xx.xx.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.5-1
 - finally fixed commodities Some market data stopped working (https://github.com/andywuest/harbour-watchlist/issues/72)
+- render chart data only when view is active
 
 * 31.01.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.4-1
 - fixed Error adding stock when trying to add any stock (https://github.com/andywuest/harbour-watchlist/issues/75)
