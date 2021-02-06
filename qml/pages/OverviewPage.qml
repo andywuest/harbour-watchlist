@@ -164,19 +164,6 @@ Page {
                 }
             }
 
-            /*
-            Column {
-                id: overviewColumnHeader
-                width: parent.width
-                height: overviewColumnPageHeader.height
-
-                PageHeader {
-                    id: overviewColumnPageHeader
-                    title: "TODO REMOVE"
-                }
-            }
-            */
-
             Row {
                 id: overviewRow
                 width: parent.width

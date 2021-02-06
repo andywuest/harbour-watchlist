@@ -81,13 +81,6 @@ Page {
         contentHeight: parent.height
         contentWidth: parent.width
 
-//        PullDownMenu {
-//            MenuItem {
-//                text: qsTr("About Watchlist")
-//                onClicked: pageStack.push(aboutPage)
-//            }
-//        }
-
         Column {
             id: overviewColumn
             visible: true
