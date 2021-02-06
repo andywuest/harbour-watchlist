@@ -223,12 +223,12 @@ AboutPage title - about text title</extracomment>
         <translation>Alle Kurse aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="266"/>
         <source>Market data</source>
         <translation>Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="294"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="281"/>
         <source>Watchlist</source>
         <translation></translation>
     </message>
@@ -551,17 +551,17 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockOverviewPage</name>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="227"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="220"/>
         <source>Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="242"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="235"/>
         <source>Charts</source>
         <translation>Charts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="257"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="250"/>
         <source>News</source>
         <translation>Nachrichten</translation>
     </message>
