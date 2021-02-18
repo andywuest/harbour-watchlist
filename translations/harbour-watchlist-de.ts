@@ -178,7 +178,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>NewsPage</name>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="45"/>
+        <location filename="../qml/pages/NewsPage.qml" line="47"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation>Nachrichten</translation>
@@ -273,6 +273,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="97"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation>Manuell</translation>
@@ -329,7 +330,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="155"/>
@@ -439,7 +440,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="59"/>
         <source>ISIN</source>
         <extracomment>StockDetailsView page isin</extracomment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="66"/>
@@ -523,9 +524,14 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockNewsView</name>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="88"/>
+        <location filename="../qml/components/StockNewsView.qml" line="99"/>
         <source>No news items found for this security.</source>
         <translation>Keine Nachrichten für dieses Wertpapier gefunden.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockNewsView.qml" line="111"/>
+        <source>Fetch news manually via pulley menu.</source>
+        <translation>Nachrichten können manuell über das Pulley-Menü geladen werden.</translation>
     </message>
 </context>
 <context>
@@ -551,17 +557,23 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockOverviewPage</name>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="220"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="89"/>
+        <source>Fetch news</source>
+        <extracomment>StockOverviewPage fetch news menu item</extracomment>
+        <translation>Nachrichten laden</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="230"/>
         <source>Details</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="235"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="245"/>
         <source>Charts</source>
         <translation>Charts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="250"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="260"/>
         <source>News</source>
         <translation>Nachrichten</translation>
     </message>
@@ -714,7 +726,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="87"/>
         <source>EUR/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="88"/>
@@ -724,7 +736,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="92"/>
         <source>GBP/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="93"/>
@@ -759,7 +771,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="96"/>
         <source>USD/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="99"/>

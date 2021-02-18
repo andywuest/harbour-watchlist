@@ -178,7 +178,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>NewsPage</name>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="45"/>
+        <location filename="../qml/pages/NewsPage.qml" line="47"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation>Nyheter</translation>
@@ -273,6 +273,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="97"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation>Endast manuellt</translation>
@@ -523,9 +524,14 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockNewsView</name>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="88"/>
+        <location filename="../qml/components/StockNewsView.qml" line="99"/>
         <source>No news items found for this security.</source>
         <translation>Inga nyhetsobjekt hittades för denna säkerhet.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockNewsView.qml" line="111"/>
+        <source>Fetch news manually via pulley menu.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -551,17 +557,23 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockOverviewPage</name>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="220"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="89"/>
+        <source>Fetch news</source>
+        <extracomment>StockOverviewPage fetch news menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="230"/>
         <source>Details</source>
         <translation>Detaljerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="235"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="245"/>
         <source>Charts</source>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockOverviewPage.qml" line="250"/>
+        <location filename="../qml/pages/StockOverviewPage.qml" line="260"/>
         <source>News</source>
         <translation>Nyheter</translation>
     </message>

@@ -442,6 +442,10 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>No news items found for this security.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Fetch news manually via pulley menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockNotesDialog</name>
@@ -473,6 +477,11 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>News</source>
         <translation>Новости</translation>
+    </message>
+    <message>
+        <source>Fetch news</source>
+        <extracomment>StockOverviewPage fetch news menu item</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
