@@ -132,7 +132,7 @@ SilicaFlickable {
     }
 
     function isShowCurrency(type) {
-        return (Constants.MARKET_DATA_TYPE_INDEX !== type);
+        return (Constants.MARKET_DATA_TYPE_INDEX !== type && Constants.MARKET_DATA_TYPE_CURRENCY !== type);
     }
 
     AppNotification {
@@ -320,10 +320,14 @@ SilicaFlickable {
     }
 
     Component.onCompleted: {
-//         Database.initApplicationTables()
         connectSlots();
         reloadAllMarketData();
         loaded = true;
+    }
+
+    Component.onDestruction: {
+        Functions.log("disconnecting signal");
+        disconnectSlots();
     }
 
     LoadingIndicator {
