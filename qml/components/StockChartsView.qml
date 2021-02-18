@@ -59,6 +59,16 @@ SilicaFlickable {
                 (strategy === Constants.CHART_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
     }
 
+    function repaintCharts() {
+        if (isActive) {
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_INTRDAY], intradayStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_MONTH], lastMonthStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_MONTHS], lastThreeMonthStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_YEAR], lastYearStockChart)
+            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_YEARS], lastThreeYearsStockChart)
+        }
+    }
+
     Timer {
         id: fetchPricesForChartTimer
         interval: 100
@@ -176,17 +186,15 @@ SilicaFlickable {
     }
 
     onIsActiveChanged: {
-        if (isActive) {
-            updateStockChart(chartDataMap[Constants.CHART_TYPE_INTRDAY], intradayStockChart)
-            updateStockChart(chartDataMap[Constants.CHART_TYPE_MONTH], lastMonthStockChart)
-            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_MONTHS], lastThreeMonthStockChart)
-            updateStockChart(chartDataMap[Constants.CHART_TYPE_YEAR], lastYearStockChart)
-            updateStockChart(chartDataMap[Constants.CHART_TYPE_3_YEARS], lastThreeYearsStockChart)
-        }
+        repaintCharts();
     }
 
     VerticalScrollDecorator {
         flickable: stockChartsViewFlickable
+    }
+
+    onVisibleChanged: {
+        repaintCharts();
     }
 
 }
