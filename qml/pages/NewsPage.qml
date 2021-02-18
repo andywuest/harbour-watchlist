@@ -18,6 +18,8 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
+import "../js/functions.js" as Functions
+
 Page {
     id: newsPage
     property var newsItem

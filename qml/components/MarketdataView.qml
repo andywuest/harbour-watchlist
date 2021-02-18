@@ -338,6 +338,4 @@ SilicaFlickable {
         width: parent.width
     }
 
-
-
 }

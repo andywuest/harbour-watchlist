@@ -175,6 +175,10 @@ Page {
                         //: SettingsPage news download strategy only on wifi
                         text: qsTr("Only on WiFi")
                     }
+                    MenuItem {
+                        //: SettingsPage download strategy only manually
+                        text: qsTr("Only manually")
+                    }
                     // so far - there is no manually - maybe a button in the future
                     onActivated: {
                         watchlistSettings.newsDataDownloadStrategy = index

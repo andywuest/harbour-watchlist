@@ -22,16 +22,20 @@ import Sailfish.Silica 1.0
 import "../js/constants.js" as Constants
 import "../js/functions.js" as Functions
 
+import "../components/thirdparty"
+
 SilicaFlickable {
     id: stockNewsViewFlickable
 
     property string isin
+    property bool loading : false
 
     anchors.fill: parent
     contentHeight: stockNewsColumn.height
     contentWidth: parent.width
 
     function searchStockNewsHandler(result) {
+        loading = false;
         var jsonResult = JSON.parse(result.toString())
         newsListModel.clear()
         if (jsonResult.newsItems.length > 0) {
@@ -46,7 +50,11 @@ SilicaFlickable {
             noNewsLabel.visible = true;
             listView.visible = false;
         }
+        noAutomaticDownloadLabel.visible = false;
+    }
 
+    function fetchNews() {
+        fetchNewsTimer.start();
     }
 
     function triggerNewsDataDownloadOnEntering() {
@@ -61,6 +69,7 @@ SilicaFlickable {
         running: false
         repeat: false
         onTriggered: {
+            loading = true;
             var newsBackend = Functions.getNewsBackend()
             newsBackend.searchStockNews(isin)
         }
@@ -82,10 +91,23 @@ SilicaFlickable {
             horizontalAlignment: Text.AlignHCenter
             x: Theme.horizontalPageMargin
             width: parent.width - 2 * x
+            visible: triggerNewsDataDownloadOnEntering()
 
             wrapMode: Text.Wrap
             textFormat: Text.RichText
             text: qsTr("No news items found for this security.")
+        }
+
+        Label {
+            id: noAutomaticDownloadLabel
+            horizontalAlignment: Text.AlignHCenter
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2 * x
+            visible: !triggerNewsDataDownloadOnEntering()
+
+            wrapMode: Text.Wrap
+            textFormat: Text.RichText
+            text: qsTr("Fetch news manually via pulley menu.")
         }
 
         SilicaListView {
@@ -174,7 +196,7 @@ SilicaFlickable {
             Functions.getNewsBackend().searchNewsResultAvailable.connect(searchStockNewsHandler)
 
             if (triggerNewsDataDownloadOnEntering()) {
-                fetchNewsTimer.start()
+                fetchNews();
             }
         }
     }
@@ -184,4 +206,17 @@ SilicaFlickable {
         Functions.getNewsBackend().searchNewsResultAvailable.disconnect(
                     searchStockNewsHandler)
     }
+
+    LoadingIndicator {
+        id: stockNewsLoadingIndicator
+        visible: loading
+        Behavior on opacity {
+            NumberAnimation {
+            }
+        }
+        opacity: loading ? 1 : 0
+        height: parent.height
+        width: parent.width
+    }
+
 }

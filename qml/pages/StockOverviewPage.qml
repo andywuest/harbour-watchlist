@@ -5,6 +5,7 @@ import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 
 import "../components"
+import "../js/functions.js" as Functions
 
 Page {
     id: overviewOverviewPage
@@ -80,6 +81,15 @@ Page {
         visible: true
         contentHeight: parent.height
         contentWidth: parent.width
+
+        PullDownMenu {
+            visible: newsButtonPortrait.isActive
+            MenuItem {
+                //: StockOverviewPage fetch news menu item
+                text: qsTr("Fetch news")
+                onClicked: stockNewsView.fetchNews();
+            }
+        }
 
         Column {
             id: overviewColumn
