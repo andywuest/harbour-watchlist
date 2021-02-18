@@ -5,6 +5,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.6-1
+- added option to manually fetch news (via pulley in news tab of security)
+
 * 06.02.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.8.5-1
 - finally fixed commodities Some market data stopped working (https://github.com/andywuest/harbour-watchlist/issues/72)
 - render chart data only when view is active (hopefully improves transition smoothness)
