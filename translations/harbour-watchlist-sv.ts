@@ -391,33 +391,33 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="88"/>
+        <location filename="../qml/components/StockChartsView.qml" line="98"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="94"/>
+        <location filename="../qml/components/StockChartsView.qml" line="104"/>
         <source>Intraday</source>
         <translation>Intradag</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="106"/>
+        <location filename="../qml/components/StockChartsView.qml" line="116"/>
         <source>30 days</source>
         <translation>30 dagar</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="118"/>
+        <location filename="../qml/components/StockChartsView.qml" line="128"/>
         <source>3 months</source>
         <translation>3 månader</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="130"/>
+        <location filename="../qml/components/StockChartsView.qml" line="140"/>
         <source>1 Year</source>
         <translation>1 år</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="142"/>
+        <location filename="../qml/components/StockChartsView.qml" line="152"/>
         <source>3 Years</source>
         <translation>3 år</translation>
     </message>
@@ -524,12 +524,12 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockNewsView</name>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="99"/>
+        <location filename="../qml/components/StockNewsView.qml" line="98"/>
         <source>No news items found for this security.</source>
         <translation>Inga nyhetsobjekt hittades för denna säkerhet.</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="111"/>
+        <location filename="../qml/components/StockNewsView.qml" line="110"/>
         <source>Fetch news manually via pulley menu.</source>
         <translation type="unfinished"></translation>
     </message>
