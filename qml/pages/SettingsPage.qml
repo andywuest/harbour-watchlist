@@ -103,6 +103,33 @@ Page {
             }
 
             ComboBox {
+                id: newsDataDownloadComboBox
+                //: SettingsPage download news data
+                label: qsTr("Download news data")
+                currentIndex: watchlistSettings.newsDataDownloadStrategy
+                //: SettingsPage download strategy explanation
+                description: qsTr("Defines strategy to download the news data")
+                menu: ContextMenu {
+                    MenuItem {
+                        //: SettingsPage news download strategy always
+                        text: qsTr("Always")
+                    }
+                    MenuItem {
+                        //: SettingsPage news download strategy only on wifi
+                        text: qsTr("Only on WiFi")
+                    }
+                    MenuItem {
+                        //: SettingsPage download strategy only manually
+                        text: qsTr("Only manually")
+                    }
+                    // so far - there is no manually - maybe a button in the future
+                    onActivated: {
+                        watchlistSettings.newsDataDownloadStrategy = index
+                    }
+                }
+            }
+
+            ComboBox {
                 id: sortingOrderComboBox
                 //: SettingsPage sorting order watchlist page
                 label: qsTr("Sorting order")
@@ -157,33 +184,6 @@ Page {
                 padding: Theme.paddingLarge
                 width: parent.width - 2 * Theme.paddingLarge
                 wrapMode: Text.Wrap
-            }
-
-            ComboBox {
-                id: newsDataDownloadComboBox
-                //: SettingsPage download news data
-                label: qsTr("Download news data")
-                currentIndex: watchlistSettings.newsDataDownloadStrategy
-                //: SettingsPage download strategy explanation
-                description: qsTr("Defines strategy to download the news data")
-                menu: ContextMenu {
-                    MenuItem {
-                        //: SettingsPage news download strategy always
-                        text: qsTr("Always")
-                    }
-                    MenuItem {
-                        //: SettingsPage news download strategy only on wifi
-                        text: qsTr("Only on WiFi")
-                    }
-                    MenuItem {
-                        //: SettingsPage download strategy only manually
-                        text: qsTr("Only manually")
-                    }
-                    // so far - there is no manually - maybe a button in the future
-                    onActivated: {
-                        watchlistSettings.newsDataDownloadStrategy = index
-                    }
-                }
             }
 
         }
