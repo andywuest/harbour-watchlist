@@ -255,7 +255,7 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always
 ----------
@@ -264,7 +264,7 @@ SettingsPage news download strategy always</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="93"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi
 ----------
@@ -273,78 +273,78 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="97"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation>仅手动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="135"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
         <translation>分类方式</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
         <translation>排列在查证券项目的方式</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
         <translation>按股价波动</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
         <translation>按名称</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
         <translation>数据终端</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
         <translation>用于此清单的数据终端。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
         <translation>Euroinvestor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="141"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
         <translation>Moscow Exchange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="145"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation>Ing-Diba</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="155"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="182"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation>请注意：修改数据终端会重置此数据库。这表示当前清单会被充值，你需要再次添加各支股票。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="165"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
         <source>Download news data</source>
         <extracomment>SettingsPage download news data</extracomment>
         <translation>下载消息数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
         <source>Defines strategy to download the news data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>自定义下载消息的策略</translation>
