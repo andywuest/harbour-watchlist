@@ -531,7 +531,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/StockNewsView.qml" line="110"/>
         <source>Fetch news manually via pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämta nyheter manuellt via toppmenyn.</translation>
     </message>
 </context>
 <context>
@@ -560,7 +560,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/StockOverviewPage.qml" line="89"/>
         <source>Fetch news</source>
         <extracomment>StockOverviewPage fetch news menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Hämta nyheter</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="230"/>
