@@ -531,7 +531,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/components/StockNewsView.qml" line="110"/>
         <source>Fetch news manually via pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>通过滑轮菜单获取新闻。</translation>
     </message>
 </context>
 <context>
@@ -560,7 +560,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/StockOverviewPage.qml" line="89"/>
         <source>Fetch news</source>
         <extracomment>StockOverviewPage fetch news menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>获取新闻</translation>
     </message>
     <message>
         <location filename="../qml/pages/StockOverviewPage.qml" line="230"/>
@@ -631,7 +631,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="47"/>
         <source>Crypto</source>
-        <translation>Crypto</translation>
+        <translation>数字加密货币</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="62"/>
