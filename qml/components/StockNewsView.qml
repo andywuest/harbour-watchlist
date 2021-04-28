@@ -53,6 +53,11 @@ SilicaFlickable {
         noAutomaticDownloadLabel.visible = false;
     }
 
+    function errorResultHandler(result) {
+        newsUpdateProblemNotification.show(result)
+        loading = false;
+    }
+
     function fetchNews() {
         fetchNewsTimer.start();
     }
@@ -61,6 +66,10 @@ SilicaFlickable {
         var strategy = watchlistSettings.newsDataDownloadStrategy;
         return (strategy === Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ALWAYS ||
                 (strategy === Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI && watchlist.isWiFi()));
+    }
+
+    AppNotification {
+        id: newsUpdateProblemNotification
     }
 
     Timer {
@@ -193,7 +202,9 @@ SilicaFlickable {
             isin = (stock.isin) ? stock.isin : ''
 
             // connect signal slot for chart update
-            Functions.getNewsBackend().searchNewsResultAvailable.connect(searchStockNewsHandler)
+            var newsBackend = Functions.getNewsBackend();
+            newsBackend.searchNewsResultAvailable.connect(searchStockNewsHandler);
+            newsBackend.requestError.connect(errorResultHandler);
 
             if (triggerNewsDataDownloadOnEntering()) {
                 fetchNews();
@@ -202,9 +213,10 @@ SilicaFlickable {
     }
 
     Component.onDestruction: {
-        Functions.log("disconnecting signal");
-        Functions.getNewsBackend().searchNewsResultAvailable.disconnect(
-                    searchStockNewsHandler)
+        Functions.log("[StockNewsView] disconnecting signals");
+        var newsBackend = Functions.getNewsBackend();
+        newsBackend.searchNewsResultAvailable.disconnect(searchStockNewsHandler);
+        newsBackend.requestError.disconnect(errorResultHandler);
     }
 
     LoadingIndicator {

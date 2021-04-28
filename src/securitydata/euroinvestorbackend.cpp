@@ -154,7 +154,7 @@ void EuroinvestorBackend::handleFetchPricesForChartFinished() {
     QByteArray resultByteArray = reply->readAll();
     QString result = QString(resultByteArray);
 
-    qDebug() << "EuroinvestorBackend::handleFetchPricesForChartFinished result " << result;
+    // qDebug() << "EuroinvestorBackend::handleFetchPricesForChartFinished result " << result;
 
     QString jsonResponseString = parsePriceResponse(resultByteArray);
 
