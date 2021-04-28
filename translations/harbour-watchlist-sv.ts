@@ -524,12 +524,12 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockNewsView</name>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="98"/>
+        <location filename="../qml/components/StockNewsView.qml" line="107"/>
         <source>No news items found for this security.</source>
         <translation>Inga nyhetsobjekt hittades för denna säkerhet.</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockNewsView.qml" line="110"/>
+        <location filename="../qml/components/StockNewsView.qml" line="119"/>
         <source>Fetch news manually via pulley menu.</source>
         <translation>Hämta nyheter manuellt via toppmenyn.</translation>
     </message>
