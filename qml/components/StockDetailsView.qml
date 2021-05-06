@@ -143,10 +143,18 @@ SilicaFlickable {
         }
 
         SectionHeader {
-            id: notesSectionHeader
-            //: StockDetailsView page security notes
-            text: qsTr("Notes")
-            visible: notesRow.visible
+            id: additionalInformationSectionHeader
+            //: StockDetailsView page additional information section header
+            text: qsTr("Additional information")
+            visible: notesRow.visible || referencePriceLabelValueRow.visible
+        }
+
+        LabelValueRow {
+            id: referencePriceLabelValueRow
+            //: StockDetailsView page reference price
+            label: qsTr("Reference price")
+            value: ''
+            visible: false;
         }
 
         LabelOnlyRow {
@@ -177,6 +185,11 @@ SilicaFlickable {
             if (notes && notes !== '') {
                 notesRow.label = notes;
                 notesRow.visible = true;
+            }
+            var referencePrice = Database.loadReferencePrice(stock.id);
+            if (referencePrice) {
+                referencePriceLabelValueRow.value = Number(referencePrice).toLocaleString(Qt.locale())
+                referencePriceLabelValueRow.visible = true;
             }
         }
     }

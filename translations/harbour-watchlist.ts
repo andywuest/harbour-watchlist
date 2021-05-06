@@ -234,6 +234,30 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>ReferencePriceDialog</name>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="42"/>
+        <source>Configure reference price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="43"/>
+        <source>Reference price for the security which can be used to display the performance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="51"/>
+        <source>Reference price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
+        <source>Enter the reference price here!</source>
+        <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>
@@ -516,8 +540,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
-        <source>Notes</source>
-        <extracomment>StockDetailsView page security notes</extracomment>
+        <source>Additional information</source>
+        <extracomment>StockDetailsView page additional information section header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="155"/>
+        <source>Reference price</source>
+        <extracomment>StockDetailsView page reference price</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -608,6 +638,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WatchlistView.qml" line="225"/>
+        <source>Configure reference price</source>
+        <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -868,41 +904,55 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="232"/>
+        <location filename="../qml/js/database.js" line="237"/>
         <source>Stock notes updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="233"/>
+        <location filename="../qml/js/database.js" line="238"/>
         <source>Error updating stock notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="245"/>
+        <location filename="../qml/js/database.js" line="246"/>
+        <location filename="../qml/js/database.js" line="251"/>
+        <source>Stock referencePrice updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="247"/>
+        <location filename="../qml/js/database.js" line="252"/>
+        <source>Error updating stock referencePrice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="268"/>
         <source>Watchlist data migrated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="246"/>
+        <location filename="../qml/js/database.js" line="269"/>
         <source>Error migrating watchlist data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="305"/>
+        <location filename="../qml/js/database.js" line="328"/>
         <source>Market data added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="305"/>
+        <location filename="../qml/js/database.js" line="328"/>
         <source>Error adding market data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="329"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Stock added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="331"/>
+        <location filename="../qml/js/database.js" line="354"/>
         <source>Error adding stock</source>
         <translation type="unfinished"></translation>
     </message>

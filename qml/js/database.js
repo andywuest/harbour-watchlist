@@ -225,16 +225,39 @@ function disableAlarm(id) {
 }
 
 function saveStockNotes(id, notes) {
-    var query = 'INSERT OR REPLACE INTO stockdata_ext(id, notes) VALUES (?, ?)';
-    var parameters = [id, notes];
-    return executeInsertUpdateDeleteForTable("stockdata_ext", query,
+    var query = 'INSERT OR IGNORE INTO stockdata_ext(notes, id) VALUES (?, ?)';
+    var parameters = [notes, id];
+    executeInsertUpdateDeleteForTable("stockdata_ext", query,
+                                             parameters,
+                                             qsTr("Stock notes updated"),
+                                             qsTr("Error updating stock notes"));
+    var updateQuery = 'UPDATE stockdata_ext SET notes = ? WHERE id = ?';
+    return executeInsertUpdateDeleteForTable("stockdata_ext", updateQuery,
                                              parameters,
                                              qsTr("Stock notes updated"),
                                              qsTr("Error updating stock notes"));
 }
 
+function saveReferencePrice(id, referencePrice) {
+    var query = 'INSERT OR IGNORE INTO stockdata_ext(referencePrice, id) VALUES (?, ?)';
+    var parameters = [referencePrice, id];
+    executeInsertUpdateDeleteForTable("stockdata_ext", query,
+                                             parameters,
+                                             qsTr("Stock referencePrice updated"),
+                                             qsTr("Error updating stock referencePrice"));
+    var updateQuery = 'UPDATE stockdata_ext SET referencePrice = ? WHERE id = ?';
+    return executeInsertUpdateDeleteForTable("stockdata_ext", updateQuery,
+                                             parameters,
+                                             qsTr("Stock referencePrice updated"),
+                                             qsTr("Error updating stock referencePrice"));
+}
+
 function loadStockNotes(id) {
     return loadValueFromTable(id, 'stockdata_ext', 'notes');
+}
+
+function loadReferencePrice(id) {
+    return loadValueFromTable(id, 'stockdata_ext', 'referencePrice');
 }
 
 function migrateEuroinvestorToIngDiba(watchlistId) {

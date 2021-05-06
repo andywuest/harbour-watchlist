@@ -220,6 +220,14 @@ SilicaFlickable {
                             pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"), { selectedSecurity: selectedStock })
                         }
                     }
+                    MenuItem {
+                        //: WatchlistView show refenrence price dialog
+                        text: qsTr("Configure reference price")
+                        onClicked: {
+                            var selectedStock = stockQuotesListView.model.get(index);
+                            pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"), { selectedSecurity: selectedStock })
+                        }
+                    }
                 }
 
                 Item {

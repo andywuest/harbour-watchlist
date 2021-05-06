@@ -199,6 +199,26 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>ReferencePriceDialog</name>
+    <message>
+        <source>Reference price for the security which can be used to display the performance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the reference price here!</source>
+        <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure reference price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reference price</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
@@ -431,8 +451,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Объём</translation>
     </message>
     <message>
-        <source>Notes</source>
-        <extracomment>StockDetailsView page security notes</extracomment>
+        <source>Additional information</source>
+        <extracomment>StockDetailsView page additional information section header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reference price</source>
+        <extracomment>StockDetailsView page reference price</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -509,6 +534,11 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure reference price</source>
+        <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -747,6 +777,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Error updating stock notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stock referencePrice updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error updating stock referencePrice</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

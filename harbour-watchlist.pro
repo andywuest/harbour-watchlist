@@ -80,6 +80,7 @@ DISTFILES += \
     qml/pages/AddMarketDataPage.qml \
     qml/pages/AddStockPage.qml \
     qml/pages/OverviewPage.qml \
+    qml/pages/ReferencePriceDialog.qml \
     qml/pages/StockNotesDialog.qml \
     qml/pages/StockOverviewPage.qml \
     qml/pages/SettingsPage.qml \
