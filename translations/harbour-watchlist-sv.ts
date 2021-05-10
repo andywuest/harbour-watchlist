@@ -238,23 +238,23 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="42"/>
         <source>Configure reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurera referenspris</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="43"/>
         <source>Reference price for the security which can be used to display the performance.</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenspris för säkerheten, vilket kan användas för att visa prestanda.</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="51"/>
         <source>Reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenspris</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
         <source>Enter the reference price here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ange referenspriset här!</translation>
     </message>
 </context>
 <context>
@@ -542,13 +542,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
         <source>Additional information</source>
         <extracomment>StockDetailsView page additional information section header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tilläggsinformation</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="155"/>
         <source>Reference price</source>
         <extracomment>StockDetailsView page reference price</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Referenspris</translation>
     </message>
 </context>
 <context>
@@ -644,7 +644,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="225"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurera referenspris</translation>
     </message>
 </context>
 <context>
@@ -918,13 +918,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/js/database.js" line="246"/>
         <location filename="../qml/js/database.js" line="251"/>
         <source>Stock referencePrice updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiereferenspris uppdaterat</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="247"/>
         <location filename="../qml/js/database.js" line="252"/>
         <source>Error updating stock referencePrice</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte uppdatera aktiereferenspris</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="268"/>
