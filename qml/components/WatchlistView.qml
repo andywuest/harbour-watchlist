@@ -141,6 +141,17 @@ SilicaFlickable {
         }
     }
 
+    function updateReferencePriceInModel(securityId, referencePrice) {
+        Functions.log("[WatchlistView] Received updateReferencePriceInModel " + securityId + ", " + referencePrice);
+        var numberOfQuotes = stocksModel.count
+        for (var i = 0; i < numberOfQuotes; i++) {
+            if (stocksModel.get(i).id === securityId) {
+                stocksModel.get(i).referencePrice = referencePrice;
+                Functions.log("[WatchlistView] Updated reference price in model!");
+            }
+        }
+    }
+
     AppNotification {
         id: stockUpdateProblemNotification
     }
@@ -225,7 +236,8 @@ SilicaFlickable {
                         text: qsTr("Configure reference price")
                         onClicked: {
                             var selectedStock = stockQuotesListView.model.get(index);
-                            pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"), { selectedSecurity: selectedStock })
+                            var referencePricePage = pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"), { selectedSecurity: selectedStock })
+                            referencePricePage.updateReferencePriceInModel.connect(updateReferencePriceInModel);
                         }
                     }
                 }

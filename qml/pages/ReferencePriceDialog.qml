@@ -29,6 +29,13 @@ Dialog {
     property var selectedSecurity
     property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
     property bool referencePriceEnabled: false
+    signal updateReferencePriceInModel(int securityId, real referencePrice)
+
+    function updateReferencePrice(security, referencePrice) {
+        Functions.log("[ReferencePrice] Saving reference price : " + referencePrice);
+        Database.saveReferencePrice(security.id, referencePrice);
+        updateReferencePriceInModel(security.id, referencePrice);
+    }
 
     Column {
         id: topColumn
@@ -87,11 +94,9 @@ Dialog {
                 if (referencePriceTextSwitch.checked) {
                     var locale = Qt.locale()
                     var referencePrice = Number.fromLocaleString(locale, referencePriceTextField.text)
-                    Functions.log("[ReferencePrice] Saving reference price : " + referencePrice);
-                    Database.saveReferencePrice(security.id, referencePrice);
+                    updateReferencePrice(security, referencePrice);
                 } else {
-                    Functions.log("[ReferencePrice] Saving reference price to null");
-                    Database.saveReferencePrice(security.id, null);
+                    updateReferencePrice(security, null);
                 }
             }
         }
