@@ -90,6 +90,7 @@ Dialog {
                     Functions.log("[ReferencePrice] Saving reference price : " + referencePrice);
                     Database.saveReferencePrice(security.id, referencePrice);
                 } else {
+                    Functions.log("[ReferencePrice] Saving reference price to null");
                     Database.saveReferencePrice(security.id, null);
                 }
             }

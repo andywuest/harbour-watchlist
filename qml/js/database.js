@@ -476,12 +476,22 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
     try {
         var db = Database.getOpenDatabase()
         db.transaction(function (tx) {
-            var query = 'SELECT id, extRefId, name, currency, currencySymbol, '
+            // use COALESCE to set null values to default values
+            var query = 'SELECT s.id, extRefId, name, currency, currencySymbol, '
                     + ' stockMarketSymbol, stockMarketName, isin, '
-                    + ' symbol1, symbol2, price, changeAbsolute, '
-                    + ' changeRelative, quoteTimestamp, lastChangeTimestamp, watchlistId, '
-                    + ' ask, bid, high, low, volume '
-                    + ' FROM stockdata ORDER BY ' + sortString;
+                    + ' symbol1, symbol2, COALESCE(price, 0.0) as price, '
+                    + ' COALESCE(changeAbsolute, 0.0) as changeAbsolute, '
+                    + ' COALESCE(changeRelative, 0.0) as changeRelative, '
+                    + ' COALESCE(quoteTimestamp, "") as quoteTimestamp, '
+                    + ' COALESCE(lastChangeTimestamp, "") as lastChangeTimestamp, '
+                    + ' watchlistId, ask, bid, high, low, volume, '
+                    // columns from stockdata_ext
+                    + ' COALESCE(se.notes, "") as notes, '
+                    + ' COALESCE(se.referencePrice, 0.0) as referencePrice '
+                    + ' FROM stockdata s '
+                    + ' LEFT OUTER JOIN stockdata_ext se '
+                    + ' ON s.id = se.id '
+                    + ' ORDER BY ' + sortString;
             console.log("query : " + query);
             var dbResult = tx.executeSql(query, [])
             // create same object as from json response
@@ -507,13 +517,15 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     entry.high = row.high;
                     entry.low = row.low;
                     entry.volume = row.volume;
-                    // nicht gesetzt attribute koennen speater nicht mehr gesetzt werden (wenn mal als model verwendet)
-                    entry.price = (row.price === null ? 0.0 : row.price);
-                    entry.changeAbsolute = (row.changeAbsolute === null ? 0.0 : row.changeAbsolute);
-                    entry.changeRelative = (row.changeRelative === null ? 0.0 : row.changeRelative);
-                    entry.quoteTimestamp = (row.quoteTimestamp === null ? "" : row.quoteTimestamp);
-                    entry.lastChangeTimestamp = (row.lastChangeTimestamp === null ? "" : row.lastChangeTimestamp);
+                    entry.price = row.price;
+                    entry.changeAbsolute = row.changeAbsolute;
+                    entry.changeRelative = row.changeRelative;
+                    entry.quoteTimestamp = row.quoteTimestamp;
+                    entry.lastChangeTimestamp = row.lastChangeTimestamp;
                     entry.watchlistId = row.watchlistId;
+                    // stockdata_ext
+                    entry.notes = row.notes;
+                    entry.referencePrice = row.referencePrice;
                     result.push(entry);
                 }
                 console.log("loading stockdata data from database done");

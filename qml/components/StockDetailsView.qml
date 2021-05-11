@@ -181,13 +181,13 @@ SilicaFlickable {
             priceLabelValueRow.value = Functions.renderPrice(stock.price, currencySymbol);
             volumeLabelValueRow.value = stock.volume ? stock.volume : '';
             timestampLabelValueRow.value = stock.quoteTimestamp ? Functions.renderDateTimeString(stock.quoteTimestamp) : '';
-            var notes = Database.loadStockNotes(stock.id);
+            var notes = stock.notes;
             if (notes && notes !== '') {
                 notesRow.label = notes;
                 notesRow.visible = true;
             }
-            var referencePrice = Database.loadReferencePrice(stock.id);
-            if (referencePrice) {
+            var referencePrice = stock.referencePrice;
+            if (referencePrice && referencePrice !== 0.0) {
                 referencePriceLabelValueRow.value = Number(referencePrice).toLocaleString(Qt.locale())
                 referencePriceLabelValueRow.visible = true;
             }
