@@ -141,6 +141,7 @@ SilicaFlickable {
         }
     }
 
+    // TODO consolidate methods updateReferencePriceInModel and updateNotesInModel
     function updateReferencePriceInModel(securityId, referencePrice) {
         Functions.log("[WatchlistView] Received updateReferencePriceInModel " + securityId + ", " + referencePrice);
         var numberOfQuotes = stocksModel.count
@@ -148,6 +149,17 @@ SilicaFlickable {
             if (stocksModel.get(i).id === securityId) {
                 stocksModel.get(i).referencePrice = referencePrice;
                 Functions.log("[WatchlistView] Updated reference price in model!");
+            }
+        }
+    }
+
+    function updateNotesInModel(securityId, notes) {
+        Functions.log("[WatchlistView] Received updateNotesInModel " + securityId + ", " + notes);
+        var numberOfQuotes = stocksModel.count
+        for (var i = 0; i < numberOfQuotes; i++) {
+            if (stocksModel.get(i).id === securityId) {
+                stocksModel.get(i).notes = notes;
+                Functions.log("[WatchlistView] Updated notes in model!");
             }
         }
     }
@@ -228,7 +240,8 @@ SilicaFlickable {
                         text: qsTr("Stock notes")
                         onClicked: {
                             var selectedStock = stockQuotesListView.model.get(index);
-                            pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"), { selectedSecurity: selectedStock })
+                            var notesPage = pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"), { selectedSecurity: selectedStock })
+                            notesPage.updateNotesInModel.connect(updateNotesInModel)
                         }
                     }
                     MenuItem {

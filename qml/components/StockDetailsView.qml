@@ -157,6 +157,14 @@ SilicaFlickable {
             visible: false;
         }
 
+        LabelValueRow {
+            id: performanceRelativeLabelValueRow
+            //: StockDetailsView page performance
+            label: qsTr("Performance")
+            value: ''
+            visible: false;
+        }
+
         LabelOnlyRow {
             id: notesRow
             label: ''
@@ -188,8 +196,10 @@ SilicaFlickable {
             }
             var referencePrice = stock.referencePrice;
             if (referencePrice && referencePrice !== 0.0) {
-                referencePriceLabelValueRow.value = Number(referencePrice).toLocaleString(Qt.locale())
+                referencePriceLabelValueRow.value = Functions.renderPrice(referencePrice, currencySymbol);
+                performanceRelativeLabelValueRow.value = Functions.renderChange(stock.price, stock.performanceRelative, '%')
                 referencePriceLabelValueRow.visible = true;
+                performanceRelativeLabelValueRow.visible = true;
             }
         }
     }

@@ -487,7 +487,8 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     + ' watchlistId, ask, bid, high, low, volume, '
                     // columns from stockdata_ext
                     + ' COALESCE(se.notes, "") as notes, '
-                    + ' COALESCE(se.referencePrice, 0.0) as referencePrice '
+                    + ' COALESCE(se.referencePrice, 0.0) as referencePrice, '
+                    + ' ROUND(100 * (price - COALESCE(referencePrice, 0.0)) / COALESCE(referencePrice, 0.0), 2) as performanceRelative '
                     + ' FROM stockdata s '
                     + ' LEFT OUTER JOIN stockdata_ext se '
                     + ' ON s.id = se.id '
@@ -526,6 +527,7 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     // stockdata_ext
                     entry.notes = row.notes;
                     entry.referencePrice = row.referencePrice;
+                    entry.performanceRelative = row.performanceRelative; // calculated!
                     result.push(entry);
                 }
                 console.log("loading stockdata data from database done");

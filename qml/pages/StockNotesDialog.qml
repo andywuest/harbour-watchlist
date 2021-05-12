@@ -28,6 +28,7 @@ Dialog {
     id: stockNotesDialog
     property var selectedSecurity
     property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
+    signal updateNotesInModel(int securityId, string notes)
 
     Column {
         id: topColumn
@@ -80,6 +81,7 @@ Dialog {
             if (security) {
                 Functions.log("Saving stock notes : " + stockNotesTextArea.text);
                 Database.saveStockNotes(security.id, stockNotesTextArea.text);
+                updateNotesInModel(security.id, stockNotesTextArea.text);
             }
         }
     }
