@@ -39,3 +39,5 @@ RPMS
 /.idea/
 /watchlist.iml
 .directory
+/tests_qml/qmlresults.xml
+/tests/cppresults.xml
