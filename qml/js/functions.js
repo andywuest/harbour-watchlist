@@ -29,13 +29,12 @@ function formatPrice(price, locale) {
 }
 
 function determineChangeColor(change) {
-    var color = Theme.primaryColor
     if (change < 0.0) {
-        color = NEGATIVE_COLOR
+        return NEGATIVE_COLOR
     } else if (change > 0.0) {
-        color = POSITIVE_COLOR
+        return POSITIVE_COLOR
     }
-    return color
+    return Theme.primaryColor
 }
 
 function renderDateTimeString(dateTimeString) {
