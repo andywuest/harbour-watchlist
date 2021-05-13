@@ -85,6 +85,13 @@ DISTFILES += \
     qml/pages/StockOverviewPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/StockAlarmDialog.qml \
-    qml/pages/NewsPage.qml
+    qml/pages/NewsPage.qml \
+    test_qml/tst_database.qml \
+    test_qml/tst_functions.qml
+
+tests.files = tests_qml/tst_*
+# tests.path = /usr/share/harbour-watchlist/tests
+INSTALLS += tests_qml
+OTHER_FILES += tests_qml/tst_*
 
 include(harbour-watchlist.pri)
