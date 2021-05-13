@@ -7,5 +7,5 @@ rm moc_*
 
 qmake 
 make
-./IngDibaBackendTest -o cppresults.xml,xunitxml
+./IngDibaBackendTest -o cppresults.xml,xml
 
