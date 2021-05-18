@@ -187,48 +187,48 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="109"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="112"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="114"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="117"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="122"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="125"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="130"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="133"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="142"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="147"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="266"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="269"/>
         <source>Market data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="281"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="284"/>
         <source>Watchlist</source>
         <translation type="unfinished"></translation>
     </message>
@@ -236,22 +236,22 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>ReferencePriceDialog</name>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="42"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="49"/>
         <source>Configure reference price</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="43"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="50"/>
         <source>Reference price for the security which can be used to display the performance.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="51"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
         <source>Reference price</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="65"/>
         <source>Enter the reference price here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
         <translation type="unfinished"></translation>
@@ -328,36 +328,48 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="157"/>
+        <source>Show performance row</source>
+        <extracomment>SettingsPage show performance row title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
+        <extracomment>SettingsPage show performance row description</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="182"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="194"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -550,6 +562,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>StockDetailsView page reference price</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="163"/>
+        <source>Performance</source>
+        <extracomment>StockDetailsView page performance</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockNewsView</name>
@@ -567,18 +585,18 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockNotesDialog</name>
     <message>
-        <location filename="../qml/pages/StockNotesDialog.qml" line="40"/>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="41"/>
         <source>Stock notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockNotesDialog.qml" line="46"/>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="47"/>
         <source>Enter your notes here!</source>
         <extracomment>StockNotesDialog textarea to enter notes</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StockNotesDialog.qml" line="59"/>
+        <location filename="../qml/pages/StockNotesDialog.qml" line="60"/>
         <source>Clear</source>
         <extracomment>StockNotesDialog clear button</extracomment>
         <translation type="unfinished"></translation>
@@ -611,39 +629,45 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="167"/>
+        <location filename="../qml/components/WatchlistView.qml" line="190"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="174"/>
+        <location filename="../qml/components/WatchlistView.qml" line="197"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="204"/>
+        <location filename="../qml/components/WatchlistView.qml" line="227"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="212"/>
+        <location filename="../qml/components/WatchlistView.qml" line="235"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="217"/>
+        <location filename="../qml/components/WatchlistView.qml" line="240"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="225"/>
+        <location filename="../qml/components/WatchlistView.qml" line="249"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WatchlistView.qml" line="362"/>
+        <source>Performance</source>
+        <extracomment>WatchlistView Performance label</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -960,18 +984,18 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="46"/>
+        <location filename="../qml/js/functions.js" line="45"/>
         <source>hh:mm:ss</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="60"/>
+        <location filename="../qml/js/functions.js" line="59"/>
         <source>hh:mm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="46"/>
-        <location filename="../qml/js/functions.js" line="62"/>
+        <location filename="../qml/js/functions.js" line="45"/>
+        <location filename="../qml/js/functions.js" line="61"/>
         <source>dd.MM.yyyy</source>
         <translation type="unfinished"></translation>
     </message>

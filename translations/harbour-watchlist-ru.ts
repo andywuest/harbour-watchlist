@@ -313,6 +313,16 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show performance row</source>
+        <extracomment>SettingsPage show performance row title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
+        <extracomment>SettingsPage show performance row description</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockAlarmDialog</name>
@@ -460,6 +470,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>StockDetailsView page reference price</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Performance</source>
+        <extracomment>StockDetailsView page performance</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockNewsView</name>
@@ -539,6 +554,11 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance</source>
+        <extracomment>WatchlistView Performance label</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

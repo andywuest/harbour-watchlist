@@ -151,6 +151,18 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id: stockAlarmTextSwitch
+                //: SettingsPage show performance row title
+                text: qsTr("Show performance row")
+                //: SettingsPage show performance row description
+                description: qsTr("Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.")
+                checked: watchlistSettings.showPerformanceRow
+                onCheckedChanged: {
+                    watchlistSettings.showPerformanceRow = checked
+                }
+            }
+
             ComboBox {
                 id: dataBackendComboBox
                 //: SettingsPage data backend for watchlist

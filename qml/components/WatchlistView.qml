@@ -274,7 +274,9 @@ SilicaFlickable {
                             width: parent.width // - (2 * Theme.horizontalPageMargin)
                             // x: Theme.horizontalPageMargin
                             height: firstRow.height + changeRow.height
-                            /* + secondRow.height*/ + thirdRow.height
+                            /* + secondRow.height*/ + changeValuesRow.height
+                                    + (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
+
                             anchors.verticalCenter: parent.verticalCenter
 
                             Row {
@@ -323,52 +325,12 @@ SilicaFlickable {
                                 }
                             }
 
-//                            Row {
-//                                id: secondRow
-//                                width: parent.width
-//                                visible: false
-//                                height: Theme.fontSizeMedium + Theme.paddingMedium
-
-//                                //                                    anchors {
-//                                //                                        left: parent.left
-//                                //                                        right: parent.right
-//                                //                                        top: firstRow.bottom
-//                                //                                    }
-//                                Column {
-//                                    id: tweetAuthorColumn2
-//                                    width: parent.width * 3 / 6
-
-//                                    // height: parent.width *2 / 6
-//                                    //spacing: Theme.paddingSmall
-//                                    Text {
-//                                        id: title2
-//                                        text: ""
-//                                        font.pixelSize: Theme.fontSizeMedium
-//                                    }
-//                                }
-
-//                                Column {
-//                                    id: tweetContentColumn2
-//                                    width: parent.width * 3 / 6 //- Theme.horizontalPageMargin
-
-//                                    //spacing: Theme.paddingSmall
-//                                    Text {
-//                                        id: lastPrice2
-//                                        text: "aaa" + Functions.renderPrice(price, currencySymbol);
-//                                        color: Functions.determineChangeColor(changeAbsolute)
-//                                        font.pixelSize: Theme.fontSizeMedium
-//                                        horizontalAlignment: Text.AlignHCenter
-//                                    }
-//                                }
-//                            }
-
                             Row {
-                                id: thirdRow
+                                id: changeValuesRow
                                 width: parent.width
                                 height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
                                 Text {
-                                    id: changeDateText
                                     width: parent.width / 2
                                     height: parent.height
                                     text: Functions.determineQuoteDate(quoteTimestamp)
@@ -378,11 +340,36 @@ SilicaFlickable {
                                 }
 
                                 Text {
-                                    id: changePercentageText
                                     width: parent.width / 2
                                     height: parent.height
                                     text: Functions.renderChange(price, changeRelative, '%')
                                     color: Functions.determineChangeColor(changeRelative)
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignRight
+                                }
+                            }
+
+                            Row {
+                                id: performanceRow
+                                width: parent.width
+                                visible: watchlistSettings.showPerformanceRow
+                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    //: WatchlistView Performance label
+                                    text: qsTr("Performance")
+                                    color: Theme.primaryColor
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignLeft
+                                }
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    text: Functions.renderChange(referencePrice, performanceRelative, '%')
+                                    color: Functions.determineChangeColor(performanceRelative)
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight
                                 }
@@ -402,9 +389,9 @@ SilicaFlickable {
                 }
 
                 function deleteStockData(index) {
-                    console.log(index)
                     var stockData = stockQuotesListView.model.get(index)
-                    console.log("remove stock  : " + stockData.name)
+                    Functions.log("[WatchlistView] remove stock with index " + index
+                                  + " - " + stockData.name);
                     Database.deleteStockData(stockData.id)
                     reloadAllStocks()
                 }
@@ -419,7 +406,6 @@ SilicaFlickable {
     }
 
     Component.onCompleted: {
-        // Database.initApplicationTables()
         connectSlots();
         reloadAllStocks();
         loaded = true;
