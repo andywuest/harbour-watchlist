@@ -330,13 +330,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="157"/>
         <source>Show performance row</source>
         <extracomment>SettingsPage show performance row title</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visa prestandarad</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
         <extracomment>SettingsPage show performance row description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visar övergripande prestanda för en säkerhet. Prestanda beräknas bara om ett referenspris har konfigurerats för säkerheten.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="169"/>
@@ -566,7 +566,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="163"/>
         <source>Performance</source>
         <extracomment>StockDetailsView page performance</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Prestanda</translation>
     </message>
 </context>
 <context>
@@ -668,7 +668,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="362"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Prestanda</translation>
     </message>
 </context>
 <context>
