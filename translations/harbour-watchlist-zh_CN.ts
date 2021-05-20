@@ -238,23 +238,23 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="49"/>
         <source>Configure reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>配置参考价</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="50"/>
         <source>Reference price for the security which can be used to display the performance.</source>
-        <translation type="unfinished"></translation>
+        <translation>可用于显示业绩的证券的参考价格。</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
         <source>Reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>参考价</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="65"/>
         <source>Enter the reference price here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>在此输入参考价！</translation>
     </message>
 </context>
 <context>
@@ -330,13 +330,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="157"/>
         <source>Show performance row</source>
         <extracomment>SettingsPage show performance row title</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>输入表现行</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
         <extracomment>SettingsPage show performance row description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>显示证券的整体表现。只有在为该证券配置了参考价的情况下，才会计算业绩。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="169"/>
@@ -554,19 +554,19 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="148"/>
         <source>Additional information</source>
         <extracomment>StockDetailsView page additional information section header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>附加信息</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="155"/>
         <source>Reference price</source>
         <extracomment>StockDetailsView page reference price</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>参考价</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="163"/>
         <source>Performance</source>
         <extracomment>StockDetailsView page performance</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>表现</translation>
     </message>
 </context>
 <context>
@@ -662,13 +662,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="249"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>配置参考价</translation>
     </message>
     <message>
         <location filename="../qml/components/WatchlistView.qml" line="362"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>表现</translation>
     </message>
 </context>
 <context>
@@ -942,13 +942,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/js/database.js" line="246"/>
         <location filename="../qml/js/database.js" line="251"/>
         <source>Stock referencePrice updated</source>
-        <translation type="unfinished"></translation>
+        <translation>股票参考价更新</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="247"/>
         <location filename="../qml/js/database.js" line="252"/>
         <source>Error updating stock referencePrice</source>
-        <translation type="unfinished"></translation>
+        <translation>更新股票参考价出错</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="268"/>
