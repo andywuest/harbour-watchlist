@@ -48,6 +48,7 @@ int main(int argc, char *argv[]) {
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend = watchlist.getEuroinvestorMarketDataBackend();
     context->setContextProperty("euroinvestorMarketDataBackend", euroinvestorMarketDataBackend);
 
+    // TODO remove me - does not work anymore
     OnvistaNews *onvistaNews = watchlist.getOnvistaNews();
     context->setContextProperty("onvistaNews", onvistaNews);
 

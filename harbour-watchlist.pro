@@ -20,7 +20,7 @@ SOURCES += \
     src/marketdata/euroinvestormarketdatabackend.cpp \
     src/harbour-watchlist.cpp \
     src/watchlist.cpp \
-    src/onvistanews.cpp
+    src/newsdata/onvistanews.cpp
 
 HEADERS += \
     src/constants.h \
@@ -28,7 +28,7 @@ HEADERS += \
     src/securitydata/moscowexchangebackend.h \
     src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h \
-    src/onvistanews.h
+    src/newsdata/onvistanews.h
 
 DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
 

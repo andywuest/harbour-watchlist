@@ -1,1 +1,5 @@
 https://www.ing.de/suche/?query=amadeus
+
+Stock news:
+https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/DE000BASF111?pageNumber=1&newsCategory=0
+-> response: see test data
