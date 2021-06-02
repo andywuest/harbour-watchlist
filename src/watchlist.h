@@ -24,7 +24,8 @@
 #include <QSettings>
 
 #include "marketdata/euroinvestormarketdatabackend.h"
-#include "onvistanews.h"
+#include "newsdata/onvistanews.h"
+#include "newsdata/ingdibanews.h"
 #include "securitydata/euroinvestorbackend.h"
 #include "securitydata/ingdibabackend.h"
 #include "securitydata/moscowexchangebackend.h"
@@ -39,6 +40,7 @@ public:
     EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
     IngDibaBackend *getIngDibaBackend();
     OnvistaNews *getOnvistaNews();
+    IngDibaNews *getIngDibaNews();
 
     Q_INVOKABLE bool isWiFi();
 
@@ -60,6 +62,7 @@ private:
 
     // news backends
     OnvistaNews *onvistaNews;
+    IngDibaNews *ingDibaNews;
 
     QSettings settings;
 };
