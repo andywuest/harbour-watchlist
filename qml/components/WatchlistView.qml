@@ -1,6 +1,6 @@
 /*
  * harbour-watchlist - Sailfish OS Version
- * Copyright © 2019 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ * Copyright © 2019-2021 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -92,9 +92,8 @@ SilicaFlickable {
     }
 
     function reloadAllStocks() {
-        console.log("reloading all stocks");
-        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
-        var stocks = Database.loadAllStockData(watchlistId, sortOrder);
+        Functions.log("[WatchlistView] reloading all stocks");
+        var stocks = Database.loadAllStockData(watchlistId, Functions.getConfiguredSecuritySortOrder());
 
         // stockQuotePage.
         maxChange = Functions.calculateMaxChange(stocks)
@@ -103,7 +102,7 @@ SilicaFlickable {
         // when stockmodel is not empty and the number of stocks in the db is different -> stock has been added
         // is there a more transparent way to find out that a stock was added?
        if (stocksModel.count >= 0 && stocksModel.count < stocks.length)  {
-            console.log(" most like stock was added -> trigger reload");
+            Functions.log("[WatchlistView] most like stock was added -> trigger reload");
             triggerUpdateQuotes = true;
         }
 

@@ -33,6 +33,8 @@ ApplicationWindow {
         property int sortingOrder: Constants.SORTING_ORDER_BY_CHANGE
         property int dataBackend: Constants.BACKEND_EUROINVESTOR
         property int newsDataDownloadStrategy: Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI
+        property bool showPerformanceRow: false
+        property bool sortByPerformanceRow: false
     }
 
     initialPage: Component {

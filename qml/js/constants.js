@@ -46,6 +46,12 @@ MARKET_DATA_TYPE_LABEL[MARKET_DATA_TYPE_COMMODITY] = qsTr("Commodity");
 MARKET_DATA_TYPE_LABEL[MARKET_DATA_TYPE_CURRENCY] = qsTr("Currency");
 MARKET_DATA_TYPE_LABEL[MARKET_DATA_TYPE_CRYPTO] = qsTr("Crypto");
 
+var SORT_BY_NAME_ASC = " name ASC ";
+var SORT_BY_CHANGE_ASC = " changeRelative ASC ";
+var SORT_BY_CHANGE_DESC = " changeRelative DESC ";
+var SORT_BY_PERFORMANCE_ASC = " performanceRelative ASC ";
+var SORT_BY_PERFORMANCE_DESC = " performanceRelative DESC ";
+
 function addMarketDataItem(id, name, marketDataType) {
     var entry = {};
     entry.id = id;

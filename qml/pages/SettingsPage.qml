@@ -152,7 +152,7 @@ Page {
             }
 
             TextSwitch {
-                id: stockAlarmTextSwitch
+                id: performanceRowTextSwitch
                 //: SettingsPage show performance row title
                 text: qsTr("Show performance row")
                 //: SettingsPage show performance row description
@@ -160,6 +160,19 @@ Page {
                 checked: watchlistSettings.showPerformanceRow
                 onCheckedChanged: {
                     watchlistSettings.showPerformanceRow = checked
+                }
+            }
+
+            TextSwitch {
+                id: sortByPerformanceRowTextSwitch
+                //: SettingsPage sort by performance row
+                text: qsTr("Sort by performance row")
+                //: SettingsPage sort by performance row description
+                description: qsTr("Sorts the watchlist by the performance row.")
+                checked: watchlistSettings.sortByPerformanceRow
+                visible: performanceRowTextSwitch.checked
+                onCheckedChanged: {
+                    watchlistSettings.sortByPerformanceRow = checked
                 }
             }
 

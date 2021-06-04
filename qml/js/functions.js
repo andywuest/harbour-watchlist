@@ -124,3 +124,13 @@ function lookupMarketDataName(marketDataId) {
     }
     return "-";
 }
+
+function getConfiguredSecuritySortOrder() {
+    if (watchlistSettings.sortingOrder !== Constants.SORTING_ORDER_BY_CHANGE) {
+        return Constants.SORT_BY_NAME_ASC;
+    }
+    if (watchlistSettings.sortByPerformanceRow && watchlistSettings.sortByPerformanceRow === true) {
+        return Constants.SORT_BY_PERFORMANCE_ASC;
+    }
+    return Constants.SORT_BY_CHANGE_ASC;
+}

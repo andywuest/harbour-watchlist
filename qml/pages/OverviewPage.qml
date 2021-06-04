@@ -86,7 +86,7 @@ Page {
             // TODO this comparison sucks, because it does not properly detect when a stock is changed
             // TODO also we are selecting twice the securities of the watchlist
             // TODO we need a better way to indicate security changes
-            var watchlistItemCount = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_ASC).length;
+            var watchlistItemCount = Database.loadAllStockData(watchlistId, Functions.getConfiguredSecuritySortOrder()).length;
             if (watchlistItemCount !== watchlistView.getWatchlistItemCount()) {
                 watchlistView.reloadAllStocks();
             }
