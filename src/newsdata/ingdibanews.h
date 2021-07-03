@@ -35,7 +35,6 @@ public:
 signals:
 
 protected:
-
     QString processSearchResult(QByteArray searchReply);
 
 public slots:
@@ -43,11 +42,15 @@ public slots:
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
-    QString filterContent(QString &content);
+    QString filterContent(const QString &content);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);
     void handleSearchStockNews();
+
+#ifdef UNIT_TEST
+    friend class IngDibaBackendTests; // to test non public methods
+#endif
 };
 
 #endif // ING_DIBA_NEWS_H

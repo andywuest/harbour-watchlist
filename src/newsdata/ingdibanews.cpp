@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "ingdibanews.h"
-#include "constants.h"
+#include "../constants.h"
 
 #include <QDebug>
 #include <QJsonArray>
@@ -75,7 +75,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
             QString headline = newsObject["headline"].toString();
             QString content = newsObject["content"].toString();
             QString source = newsObject["id"].toString();
-            QString url = QString.empty(); // not supported
+            QString url = QString::null;                          // not supported
             QString dateTime = newsObject["newsDate"].toString(); // TODO parsen in richtiges datetime
 
             QJsonObject resultObject;
@@ -104,8 +104,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
     return dataToString;
 }
 
-
-QString IngDibaNews::filterContent(QString &content) {
+QString IngDibaNews::filterContent(const QString &content) {
     // TODO evtl. implementieren
     return content;
 }

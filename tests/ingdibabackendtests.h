@@ -20,8 +20,8 @@
 
 #include <QObject>
 
-#include "src/securitydata/ingdibabackend.h"
 #include "src/newsdata/ingdibanews.h"
+#include "src/securitydata/ingdibabackend.h"
 
 class IngDibaBackendTests : public QObject {
     Q_OBJECT
@@ -31,7 +31,6 @@ private:
     IngDibaNews *ingDibaNews;
 
 protected:
-
     QByteArray readFileData(QString fileName);
 
 private slots:
