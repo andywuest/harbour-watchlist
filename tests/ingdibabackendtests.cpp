@@ -80,11 +80,10 @@ void IngDibaBackendTests::testIngDibaNewsProcessSearchResult() {
     // TODO QCOMPARE first news data entry
 }
 
-QByteArray IngDibaBackendTests::readFileData(QString fileName) {
+QByteArray IngDibaBackendTests::readFileData(const QString &fileName) {
     QFile f("testdata/" + fileName);
     if (!f.open(QFile::ReadOnly | QFile::Text)) {
         QString msg = "Testfile " + fileName + " not found!";
-        // QFAIL(msg.toLocal8Bit().data());
         return QByteArray();
     }
 

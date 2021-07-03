@@ -31,7 +31,7 @@ private:
     IngDibaNews *ingDibaNews;
 
 protected:
-    QByteArray readFileData(QString fileName);
+    QByteArray readFileData(const QString &fileName);
 
 private slots:
     void init();
