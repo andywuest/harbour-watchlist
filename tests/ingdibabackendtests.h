@@ -22,6 +22,7 @@
 
 #include "src/newsdata/ingdibanews.h"
 #include "src/securitydata/ingdibabackend.h"
+#include "src/ingdibautils.h"
 
 class IngDibaBackendTests : public QObject {
     Q_OBJECT
@@ -37,7 +38,7 @@ private slots:
     void init();
 
     // ING-DIBA Security Backend
-    void testIngDibaBackendConvertTimestampToLocalTimestamp();
+    void testIngDibaUtilsConvertTimestampToLocalTimestamp();
     void testIngDibaBackendIsValidSecurityCategory();
     void testIngDibaBackendProcessSearchResult();
 

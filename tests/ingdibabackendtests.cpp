@@ -23,12 +23,12 @@ void IngDibaBackendTests::init() {
     ingDibaNews = new IngDibaNews(nullptr, nullptr);
 }
 
-void IngDibaBackendTests::testIngDibaBackendConvertTimestampToLocalTimestamp() {
+void IngDibaBackendTests::testIngDibaUtilsConvertTimestampToLocalTimestamp() {
     qDebug() << "dir : " << QCoreApplication::applicationFilePath();
     qDebug() << "Timezone for test : " << QTimeZone::systemTimeZone();
     QString testDate = QString("2020-10-14T20:22:24+02:00");
     QTimeZone testTimeZone = QTimeZone("Europe/Berlin");
-    QDateTime convertedDateTime = ingDibaBackend->convertTimestampToLocalTimestamp(testDate, testTimeZone);
+    QDateTime convertedDateTime = IngDibaUtils::convertTimestampToLocalTimestamp(testDate, testTimeZone);
     QString dateTimeFormatted = convertedDateTime.toString("yyyy-MM-dd") + " " + convertedDateTime.toString("hh:mm:ss");
     QCOMPARE(dateTimeFormatted, QString("2020-10-14 20:22:24"));
 }
@@ -75,7 +75,7 @@ void IngDibaBackendTests::testIngDibaNewsProcessSearchResult() {
     QJsonObject newsEntry = resultArray.at(0).toObject();
     QCOMPARE(newsEntry["source"], "DJN.576664");
     QCOMPARE(newsEntry["headline"], "Merkel-Vertraute reisen nach Washington zu Gesprächen über Nord Stream 2");
-    QCOMPARE(newsEntry["dateTime"], "2021-06-01T01:00:00+02:00"); // TODO richtiger conversion fehlt noch
+    QCOMPARE(newsEntry["dateTime"], "Di. Juni 1 01:00:00 2021"); // TODO richtiger conversion fehlt noch
 
     // TODO QCOMPARE first news data entry
 }

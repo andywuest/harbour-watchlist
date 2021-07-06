@@ -17,6 +17,7 @@
  */
 #include "ingdibanews.h"
 #include "../constants.h"
+#include "../ingdibautils.h"
 
 #include <QDebug>
 #include <QJsonArray>
@@ -84,7 +85,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
             resultObject.insert("content", filterContent(content));
             resultObject.insert("source", source);
             resultObject.insert("url", url);
-            resultObject.insert("dateTime", dateTime);
+            resultObject.insert("dateTime", IngDibaUtils::convertTimestampToLocalTimestamp(dateTime, QTimeZone::systemTimeZone()).toString());
 
             // TODO evtl. html tags filtern -  Link-Tags entfernen <a>
 
