@@ -42,7 +42,7 @@ public slots:
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
-    QString filterContent(const QString &content);
+    QString filterContent(QString &content);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);

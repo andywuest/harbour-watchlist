@@ -80,6 +80,12 @@ void IngDibaBackendTests::testIngDibaNewsProcessSearchResult() {
     // TODO QCOMPARE first news data entry
 }
 
+void IngDibaBackendTests::testIngDibaNewsFilterContent() {
+   QString content = "<p>\n  FRANKFURT (Dow Jones)--In der deutschen  </p>\n<p>\n  Die Vereinigten Staaten .. Lage wünschenswert. </p>\n<p>\n  Kontakt zum Autor: unternehmen.de@dowjones.com </p>\n<p>\n  DJG/sha </p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  July 04, 2021 11:10 ET (15:10 GMT)</p>";
+   const QString expectedContent = " FRANKFURT (Dow Jones)--In der deutschen Die Vereinigten Staaten .. Lage wünschenswert. Kontakt zum Autor: unternehmen.de@dowjones.com DJG/sha (END) Dow Jones Newswires July 04, 2021 11:10 ET (15:10 GMT) ";
+   QCOMPARE(ingDibaNews->filterContent(content), expectedContent);
+}
+
 QByteArray IngDibaBackendTests::readFileData(const QString &fileName) {
     QFile f("testdata/" + fileName);
     if (!f.open(QFile::ReadOnly | QFile::Text)) {

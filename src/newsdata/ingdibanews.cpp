@@ -105,8 +105,11 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
     return dataToString;
 }
 
-QString IngDibaNews::filterContent(const QString &content) {
-    // TODO evtl. implementieren
+QString IngDibaNews::filterContent(QString &content) {
+    QRegExp allTagsRegExp("<[^>]*>");
+    QRegExp whiteSpaces("[\\s\\n]+");
+    content.replace(allTagsRegExp, " ");
+    content.replace(whiteSpaces, " ");
     return content;
 }
 
