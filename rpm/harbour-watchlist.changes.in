@@ -5,6 +5,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.9.1-1
+- added new news backend since Onvista was disfunctional.
+
 * 19.05.2021 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.9.0-1
 - fixed notification for no longer working news backend
 - added dialog to enter a reference price via context menu in list (https://github.com/andywuest/harbour-watchlist/issues/28)
