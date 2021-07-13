@@ -1,6 +1,6 @@
 .pragma library
 
-var loggingEnabled = true;
+var loggingEnabled = false;
 var POSITIVE_COLOR = '#00FF00';
 var NEGATIVE_COLOR = '#FF0000';
 

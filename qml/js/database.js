@@ -376,20 +376,19 @@ function loadMarketDataBy(extRefId) {
         var db = Database.getOpenDatabase()
         db.transaction(function (tx) {
             var query = 'SELECT id, typeId FROM marketdata WHERE extRefId = ?';
-            console.log("query : " + query);
-            console.log("query : " + extRefId);
+            log("query : " + query + ", extRef : " + extRefId);
             var dbResult = tx.executeSql(query, [extRefId])
             // create same object as from json response
             if (dbResult.rows.length > 0) {
-                console.log("stockdata row count : " + dbResult.rows.length);
+                log("stockdata row count : " + dbResult.rows.length);
                 var row = dbResult.rows.item(0);
                 var entry = {};
                 entry.id = row.id;
                 entry.typeId = row.typeId;
                 result = entry;
-                console.log("loading single market data from database done");
+                log("loading single market data from database done");
             } else {
-                console.log("no market data found for extRefId");
+                log("no market data found for extRefId");
             }
         })
     } catch (err) {
@@ -404,19 +403,17 @@ function loadStockBy(watchlistId, extRefId) {
         var db = Database.getOpenDatabase()
         db.transaction(function (tx) {
             var query = 'SELECT id, watchlistId FROM stockdata WHERE extRefId = ? and watchlistId = ?';
-            console.log("query : " + query);
-            console.log("query : " + extRefId);
-            console.log("query : " + watchlistId);
+            log("query : " + query + ", extRef :" + extRefId + ", watchlistId : " + watchlistId);
             var dbResult = tx.executeSql(query, [extRefId, watchlistId])
             // create same object as from json response
             if (dbResult.rows.length > 0) {
-                console.log("stockdata row count : " + dbResult.rows.length);
+                log("stockdata row count : " + dbResult.rows.length);
                     var row = dbResult.rows.item(0);
                     var entry = {};
                     entry.id = row.id;
                     entry.watchlistId = row.watchlistId;
                 result = entry;
-                console.log("loading single stockdata data from database done");
+                log("loading single stockdata data from database done");
             } else {
                 console.log("no stockdata found for extRefId " + extRefId);
             }
@@ -497,11 +494,11 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
             var dbResult = tx.executeSql(query, [])
             // create same object as from json response
             if (dbResult.rows.length > 0) {
-                console.log("stockdata row count : " + dbResult.rows.length);
+                log("stockdata row count : " + dbResult.rows.length);
                 for (var i = 0; i < dbResult.rows.length; i++) {
                     var row = dbResult.rows.item(i);
                     var entry = {};
-                    console.log("row : " + row.name + ", change rel : " + row.changeRelative);
+                    log("row : " + row.name + ", change rel : " + row.changeRelative);
                     entry.id = row.id;
                     entry.watchlistId = watchListId;
                     entry.extRefId = row.extRefId;

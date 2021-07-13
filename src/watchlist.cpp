@@ -69,7 +69,6 @@ IngDibaNews *Watchlist::getIngDibaNews() {
     return this->ingDibaNews;
 }
 
-
 EuroinvestorMarketDataBackend *Watchlist::getEuroinvestorMarketDataBackend() {
     return this->euroinvestorMarketDataBackend;
 }
