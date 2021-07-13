@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "ingdibabackend.h"
-#include "chartdatacalculator.h"
 #include "../ingdibautils.h"
+#include "chartdatacalculator.h"
 
 #include "../constants.h"
 
@@ -344,7 +344,7 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
 
     QJsonValue jsonPriceChangeDate = responseObject.value("priceChangeDate");
     QDateTime updatedAtLocalTime = IngDibaUtils::convertTimestampToLocalTimestamp(jsonPriceChangeDate.toString(),
-                                                                    QTimeZone::systemTimeZone());
+                                                                                  QTimeZone::systemTimeZone());
     resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 
     resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));

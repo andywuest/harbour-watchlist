@@ -85,7 +85,9 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
             resultObject.insert("content", filterContent(content));
             resultObject.insert("source", source);
             resultObject.insert("url", url);
-            resultObject.insert("dateTime", IngDibaUtils::convertTimestampToLocalTimestamp(dateTime, QTimeZone::systemTimeZone()).toString());
+            resultObject.insert("dateTime",
+                                IngDibaUtils::convertTimestampToLocalTimestamp(dateTime, QTimeZone::systemTimeZone())
+                                    .toString());
 
             // TODO evtl. html tags filtern -  Link-Tags entfernen <a>
 
