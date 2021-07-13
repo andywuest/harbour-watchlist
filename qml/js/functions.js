@@ -103,7 +103,8 @@ function getDataBackend(backendId) {
 }
 
 function getNewsBackend() {
-    return onvistaNews
+    // return onvistaNews
+    return ingDibaNews;
 }
 
 function getMarketDataBackend() {

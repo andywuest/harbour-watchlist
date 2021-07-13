@@ -55,7 +55,7 @@ private:
     QString processQuoteResult(QByteArray searchReply);
     QString parsePriceResponse(QByteArray priceReply);
 
-    QDateTime convertTimestampToLocalTimestamp(const QString &utcDateTimeString, QTimeZone timeZone);
+    // QDateTime convertTimestampToLocalTimestamp(const QString &utcDateTimeString, QTimeZone timeZone);
 
     void processPreQuoteData(QNetworkReply *preChartReply);
 

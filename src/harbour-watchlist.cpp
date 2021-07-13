@@ -48,8 +48,8 @@ int main(int argc, char *argv[]) {
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend = watchlist.getEuroinvestorMarketDataBackend();
     context->setContextProperty("euroinvestorMarketDataBackend", euroinvestorMarketDataBackend);
 
-    OnvistaNews *onvistaNews = watchlist.getOnvistaNews();
-    context->setContextProperty("onvistaNews", onvistaNews);
+    IngDibaNews *ingDibaNews = watchlist.getIngDibaNews();
+    context->setContextProperty("ingDibaNews", ingDibaNews);
 
     context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
 

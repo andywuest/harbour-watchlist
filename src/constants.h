@@ -1,3 +1,20 @@
+/*
+ * harbour-watchlist - Sailfish OS Version
+ * Copyright © 2021 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
@@ -27,6 +44,8 @@ const char ING_DIBA_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/
 // currencyId and exchangeId seem not to be relevant
 const char ING_DIBA_API_CHART_PRICES[] = "https://component-api.wertpapiere.ing.de/api/v1/charts/shm/%1?timeRange=%2";
 const char ING_DIBA_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/api/v1/components/chart/%1";
+
+const char ING_DIBA_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/%1?pageNumber=%2&newsCategory=0";
 
 // NetworkReply Property constants
 const char NETWORK_REPLY_PROPERTY_CHART_TYPE[] = "chartType";

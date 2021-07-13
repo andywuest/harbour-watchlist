@@ -1,5 +1,5 @@
-#ifndef ONVISTANEWS_H
-#define ONVISTANEWS_H
+#ifndef ONVISTA_NEWS_H
+#define ONVISTA_NEWS_H
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -34,4 +34,4 @@ private slots:
     void handleSearchStockNews();
 };
 
-#endif // ONVISTANEWS_H
+#endif // ONVISTA_NEWS_H

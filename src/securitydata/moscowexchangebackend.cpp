@@ -271,9 +271,9 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
         QJsonObject resultObject;
 
         // read from securities data
-        resultObject.insert("name", tmpDataArray.at(2));  // name
-        resultObject.insert("isin", tmpDataArray.at(19)); // isin
-        resultObject.insert("currency", convertCurrency(tmpDataArray.at(24).toString())); // CURRENCYID
+        resultObject.insert("name", tmpDataArray.at(2));                                        // name
+        resultObject.insert("isin", tmpDataArray.at(19));                                       // isin
+        resultObject.insert("currency", convertCurrency(tmpDataArray.at(24).toString()));       // CURRENCYID
         resultObject.insert("currencySymbol", convertCurrency(tmpDataArray.at(24).toString())); // CURRENCYID
 
         // read from marketdata data

@@ -1,0 +1,201 @@
+{
+  "categoryList": {
+    "0": "Alle",
+    "1": "Top News",
+    "3": "Marktberichte",
+    "4": "Videos",
+    "5": "Konjunkturdaten",
+    "6": "Analysen"
+  },
+  "moreNewsLinks": [
+    {
+      "value": "https://wertpapiere.ing.de/Investieren/Aktie/Aktuelles/DE000BASF111",
+      "label": "Mehr Nachrichten"
+    }
+  ],
+  "webtrekkPixelSettings": {
+    "magnify": "lupe__nachrichten__sh.content.link_intern",
+    "category": "kategorien__nachrichten__sh.content.link_dropdown",
+    "news": "nachricht__nachrichten__sh.content.link_intern",
+    "moreNews": "mehr__nachrichten_aktuelles__sh.content.link_intern",
+    "lessNews": "weniger__nachrichten_aktuelles__sh.content.link_intern"
+  },
+  "labels": {
+    "buttonShowMore": "Mehr anzeigen",
+    "buttonShowLess": "Weniger anzeigen",
+    "title": "Nachrichten",
+    "noInformationAvailable": "Keine Informationen vorhanden"
+  },
+  "_links": [],
+  "items": [
+    {
+      "id": "DJN.576664",
+      "newsDate": "2021-06-01T01:00:00+02:00",
+      "headline": "Merkel-Vertraute reisen nach Washington zu Gesprächen über Nord Stream 2",
+      "content": "<p>\n  BERLIN (Dow Jones)--Wenige Tage vor der ersten Europa-Visite des neuen US-Präsidenten Joe Biden ist in dieser Woche ein hochrangiges Verhandlungsteam von Bundeskanzlerin Angela Merkel nach Washington gereist, um mit der US-Regierung auch über das umstrittene Gaspipeline-Projekt Nord Stream 2 zu sprechen. Dies berichten die Zeitungen der Funke Mediengruppe unter Berufung auf amerikanische und deutsche Regierungskreise. </p>\n<p>\n  Geleitet wird die Delegation von Jan Hecker, außenpolitischer Berater der Kanzlerin, und Lars-Hendrik Röller, Merkels Chef-Wirtschaftsberater und Sherpa bei den internationalen Gipfelrunden G 7 und G 20. Sie werden unter anderem mit Bidens Nationalem Sicherheitsberater Jake Sullivan und der neuen Handelsbeauftragten Katherine Tai zusammentreffen. </p>\n<p>\n  Das Auswärtige Amt in Berlin ist dem Vernehmen nach durch Staatssekretärin Antje Leendertse vertreten. Sie koordinierte zuletzt den transatlantischen Kontakt zu Nord Stream 2. Die nahezu fertiggestellte Pipeline soll zum Verdruss der USA Europa zusätzlich mit russischem Gas versorgen. </p>\n<p>\n  Bei der Begegnung Röllers mit Thai - der Nachfolgerin des Handelsbeauftragten der Trump-Regierung, Robert Lightizer - wird auch erwartet, dass die unveränderten Spannungen im transatlantischen Wirtschaftsleben zur Sprache kommen. Nachdem er die Verhandlungen über das Wirtschaftsabkommen TTIP gestoppt hatte, ließ der frühere Präsident Donald Trump etwa Strafzölle auf Stahl- und Aluminiumimporte aus Europa verhängen, worauf die Europäische Union mit Vergeltungszöllen reagierte. Diese Strafmaßnahmen sind viereinhalb Monate nach Amtsantritt Bidens noch immer in Kraft. </p>\n<p>\n  Kontakt zum Autor: konjunktur.de@dowjones.com </p>\n<p>\n  DJG/aat/mgo </p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  May 31, 2021 19:00 ET (23:00 GMT)</p>",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DJN.576060",
+      "newsDate": "2021-05-31T08:21:00+02:00",
+      "headline": "Baerbock: Nord Stream 2 darf auch wegen Belarus nicht kommen",
+      "content": "<p>\n  BERLIN (Dow Jones)--Die Kanzlerkandidatin der Grünen, Annalena Baerbock, hat eine Ausweitung der Sanktionen gegen Belarus nach der Entführung eines regimekritischen Journalisten und die Nichtfertigstellung der russischen Ölpipeline Nord Stream 2 gefordert. \"Die wichtigste Quelle ist das Ölgeschäft. Deswegen muss man als allererstes die Sanktionen, die gegenwärtig auf Personen ausgerichtet sind, auf das Ölgeschäft erweitern\", sagte die Grünen-Vorsitzende in einem Politiktalk der Bild-Zeitung zum weiteren Vorgehen gegen das Regime des weißrussischen Präsidenten Alexander Lukaschenko. </p>\n<p>\n  Das System Lukaschenkos habe aber vor allem Bestand, \"weil es unterstützt wird aus dem Kreml heraus\". Deshalb sei aus ihrer Sicht Gasleitung Nord Stream 2 \"eine so zentrale geostrategische Frage\". Leider könne Europa da gegenwärtig nicht mit einer Stimme sprechen, \"weil die Deutschen ausscheren\". </p>\n<p>\n  Mit Blick auf die Ukraine warf sie der Bundesregierung vor, eine Doppelstrategie zu verfolgen: \"Auf der einen Seite sagt man, man unterstützt die Sanktionen der EU, auf der anderen Seite unterstützt diese Bundesregierung die Nord Stream 2 Pipeline, die genau diese Sanktionen konterkariert\". Nord Stream 2 dürfe \"nicht vollendet werden\". </p>\n<p>\n  Kontakt zum Autor: andreas.kissler@wsj.com </p>\n<p>\n  DJG/ank/apo </p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  May 31, 2021 02:21 ET (06:21 GMT)</p>",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DPA.1932986",
+      "newsDate": "2021-05-28T17:10:21+02:00",
+      "headline": "ROUNDUP: Die große Wasserstoff-Allianz - Milliarden für die Energiewende",
+      "content": "BERLIN (dpa-AFX) - Zukunft Wasserstoff: Mit Milliardengeldern will die Bundesregierung auf dem Weg zu mehr Klimaschutz den grundlegenden Umbau in der Wirtschaft unterstützen. Es geht um neue Energieträger - und es sollen Arbeitsplätze gesichert werden, zum Beispiel in der Stahlindustrie. 62 deutsche Projekte sollen sich an einer großen europäischen Wasserstoff-Allianz beteiligen. Stahlkonzerne spielen dabei eine wichtige Rolle, daneben geht es um Vorhaben in der Chemie- und Autoindustrie sowie um den Aufbau einer Infrastruktur. Die Projekte sollen mit mehr als acht Milliarden Euro staatlich gefördert werden.<p />    \"Wir machen damit einen großen Schritt auf dem Weg hin zur Klimaneutralität unserer Wirtschaft\", sagte Wirtschaftsminister Peter Altmaier (CDU) am Freitag in Berlin. Besonders in der Stahl- und in der Chemieindustrie könnten durch die Wasserstoffprojekte jährlich mehrere Millionen Tonnen CO2 eingespart werden. Durch die europäische Initiative würden massive Investitionen auch von privaten Trägern in die Zukunftstechnologie angestoßen, insgesamt gehe es um 33 Milliarden Euro.<p />    Altmaier sprach von einem Projekt, \"das es in dieser Größenordnung im industriepolitischen und klimapolitischen Bereich noch nicht gegeben hat\". Die Projekte bildeten die gesamte Wertschöpfungskette ab. Sie reichen von der Wasserstofferzeugung, über den Transport bis hin zur Anwendung in der Industrie und sind über ganz Deutschland verteilt.<p />    Verkehrsminister Andreas Scheuer betonte: \"Wir machen Deutschland zum Wasserstoff-Land.\" Derzeit sei der Verkehr noch zu mehr als 95 Prozent von fossilen Energien abhängig. \"Wir müssen und wollen den Umstieg auf eine klimafreundliche Mobilität dringend vorantreiben\", betonte der CSU-Politiker.<p />    Ziel der EU ist es, bei der Wasserstofftechnologie weltweit führend zu werden. Dafür sollten die Kräfte gebündelt werden, so Altmaier. \"Das sichert Wettbewerbsfähigkeit und Arbeitsplätze.\" Der Minister betonte die Bedeutung des Umbaus in der Stahlindustrie, die für sieben Prozent des CO2-Ausstosses in Deutschland stehe.<p />    Die Stahlindustrie steht in einem harten weltweiten Wettbewerb. Die Unternehmen seien auf eine \"politische Flankierung\" von Klimaschutz-Investitionen angewiesen, um einen entscheidenden Beitrag zum Erreichen der Klimaziele leisten zu können, hieß es bei der Wirtschaftsvereinigung Stahl.<p />    Vor allem \"grüner\" Wasserstoff, für dessen Herstellung Ökostrom eingesetzt wird, soll beim klimafreundlichen Umbau von Produktionsprozessen in der Wirtschaft eine große Rolle spielen - also bei der Energiewende weg von den fossilen Brennstoffen Kohle und Gas. Eingesetzt werden soll der \"grüne\" Wasserstoff etwa zur Herstellung synthetischer Kraftstoffe bei Autos, als Treibstoff in Brennstoffzellen-Fahrzeugen oder als Rohstoff in der Industrie.<p />    Wasserstoff werde neben der direkten Elektrifizierung eine zentrale Rolle bei der Energiewende spielen, sagte die \"Wirtschaftsweise\" Veronika Grimm der Deutschen Presse-Agentur. Sie ist auch im Nationalen Wasserstoffrat. \"Man kann vom neuen Öl sprechen\", unterstrich sie die Bedeutung. Es sei sehr wichtig, die Wasserstofftechnologie europäisch voranzutreiben. Es werde eine europäische Infrastruktur benötigt etwa für den Schwerlastverkehr.<p />    Geplant ist auf EU-Ebene ein sogenanntes IPCEI-Projekt - das sind wichtige strategische Vorhaben. Ein solches gibt es etwa bereits zum Aufbau einer Batteriezellenfertigung. Die deutschen Projekte werden nun an die EU gemeldet. Ziel ist es laut Bundesministerien, dass die Projekte noch in diesem Jahr von der EU-Kommission beihilferechtlich genehmigt werden können.<p />    In einem vor kurzem von der Bundesregierung beschlossenen Klimapakt ist von einem \"beschleunigten Hochlauf\" der Wasserstoffwirtschaft die Rede. Hintergrund sind Nachbesserungen beim Klimaschutzgesetz - dazu hatte das Bundesverfassungsgericht die Politik in einem wegweisenden Urteil verdonnert.<p />    Umstritten ist aber, in welchen Bereichen genau \"grüner\" Wasserstoff wie sehr zum Einsatz kommen soll - also etwa in der Stahlindustrie, bei Autos und Flugzeugen oder bei der Wärmeversorgung. Derzeit ist der Energieträger noch knapp und vergleichsweise teuer. \"Viele sagen, Wasserstoff sei der Champagner unter den alternativen Kraftstoffen\", sagte Scheuer: \"viel zu teuer, viel zu knapp und viel zu aufwendig in der Herstellung\". Das sei aber falsch. \"Wir brauchen den Wasserstoff als Tafelwasser\", forderte er.<p />    Die \"Wirtschaftsweise\" Grimm sieht für den Hochlauf der Wasserstoffwirtschaft aber noch dringenden Handlungsbedarf. Die Betreiber von Elektrolyseanlagen müssten konsequenter von der EEG-Umlage zur Förderung des Ökostroms befreit werden, als es die jetzigen Pläne vorsehen. Niedrigere Strompreise seien eine wichtige Voraussetzung dafür, dass die Förderbedarfe im Rahmen bleiben und die Technik sich durchsetzen könne.<p />    Zwar werde langfristig viel klimaneutraler Wasserstoff oder auch Strom importiert, aber in Deutschland müssten die erneuerbaren Energien deutlich zügiger ausgebaut werden, sagte Grimm. Dazu müsse mehr getan werden, um Planungsprozesse zu beschleunigen und die Akzeptanz in der Bevölkerung für neue Windräder zu erhöhen.<p />    SPD-Fraktionsvize Matthias Miersch sagte: \"Wir brauchen mehr Tempo und beherztes Handeln, damit Wasserstoff nicht ewig Champagner, also teure Ausnahme bleibt.\" Ohne erneuerbare Energien sei auch Wasserstoff auf Dauer nur ein \"Energiewende-Placebo\". Grünen-Fraktionsvize Oliver Krischer sagte: \"Ohne den parallelen Ausbau der Erneuerbaren in Deutschland macht die Wasserstoffstrategie der Bundesregierung keinen Sinn.\"/hoe/DP/stw",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DJN.575705",
+      "newsDate": "2021-05-28T13:02:00+02:00",
+      "headline": "MÄRKTE EUROPA/Euro-Stoxx-50 auf 13-Jahres-Hoch - Siemens erholt",
+      "content": "<p>\n  Von Herbert Rude </p>\n<p>\n  FRANKFURT (Dow Jones)--Weiterhin mit Gewinnen zeigen sich Europas Börsen am Freitagmittag: Der <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=DE0008469008&\" title=\"Übersicht DAX\">DAX</a> steigt um 0,5 Prozent auf 15.481 Punkte, der <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=EU0009658145&\" title=\"Übersicht EURO STOXX 50\">Euro-Stoxx-50</a> zieht um 0,6 Prozent auf 4.062 Punkte an. Damit lässt der Euro-Stoxx-50 die 4.000er Marke weiter hinter sich und steht auf dem höchsten Stand seit über 13 Jahren. Dem DAX fehlt noch ein gutes halbes Prozent zu seinem jüngsten Allzeit-Hoch. Die Pandemie-Zahlen in Europa weisen weiter nach unten, und der Gegenwind von der Währungsseite hat seit Donnerstag deutlich abgenommen. Mit 1,2186 Dollar steht der Euro nach wie vor unter der Marke von 1,22 Dollar. </p>\n<p>\n  Die Stimmung profitiert laut Marktteilnehmern auch vom Investitionspaket von US-Präsident Biden. Dieses dürfte über Jahre die Gewinne der US-Unternehmen sprudeln lassen, so der Tenor. Zudem gibt es Presseberichte, wonach Biden Ausgaben von 6 Billionen Dollar für das Fiskaljahr 2022 anstrebt. </p>\n<p>\n  In den USA stehen dann am Nachmittag die Persönlichen Ausgaben und Einkommen sowie der Chicago-Einkaufsmanager-Index im Blick. Auch bei letzterem wird besonders auf Preiskomponenten geachtet und weniger auf die als selbstverständlich betrachtete gute Auftragslage. Wie am Morgen bekannt wurde, sind die deutschen Importpreise im April im Jahresvergleich um 10,3 Prozent gestiegen - so schnell wie seit mehr als zehn Jahren nicht mehr. </p>\n<p>\n  Angeführt wird der Aufschwung in Europa von Finanzdienstleistern und Versicherungsaktien. Ihre Stoxx-Branchenindizes gewinnen jeweils etwa 1,2 Prozent. Leicht im Minus liegt lediglich der Stoxx-Auto-Index, der sich mit 0,2 Prozent Abschlag nur knapp behauptet. Hier geben <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0007100000&\" title=\"Übersicht Daimler\">Daimler</a> 1,1 Prozent ab. </p>\n<pre>\n   <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0007236101&\" title=\"Übersicht Siemens\">Siemens</a> erholt </pre>\n<p>\n  Siemens erholen sich um 3,2 Prozent nach einem überraschenden Abverkauf zum Handelsschluss am Donnerstag. Nachrichten dazu konnten Händler nicht ausmachen. Daneben steigen MTU um weitere 2 Prozent und <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE000BASF111&\" title=\"Übersicht BASF\">BASF</a> um 1,7 Prozent. </p>\n<p>\n  Umgekehrt geben <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0005552004&\" title=\"Übersicht Deutsche Post\">Deutsche Post</a> um 1,8 Prozent nach, sie hatten in der Schlussauktion am Donnerstag kräftig zugelegt. <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0005785802&\" title=\"Übersicht Fresenius Medical Care \">FMC</a> verlieren 1 Prozent und <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0005140008&\" title=\"Übersicht Deutsche Bank\">Deutsche Bank</a> 0,3 Prozent. </p>\n<p>\n  Leicht positiv für <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE0007164600&\" title=\"Übersicht SAP\">SAP</a> werden die guten Zahlen von Salesforce gesehen, SAP steigen um 0,4 Prozent. Der SAP-Konkurrent hat im ersten Quartal die Schätzungen der Wall Street übertroffen und den Jahresausblick angehoben. Zuviel erwarten Händler davon allerdings nicht: Die deutlich breiter aufgestellte SAP habe bereits den Ausblick für das Cloud-Geschäft nach oben genommen, heißt es. </p>\n<p>\n  In der zweiten Reihe notieren <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE000KSAG888&\" title=\"Übersicht K+S\">K+S</a> gut behauptet und können so die jüngsten Aufschläge noch etwas ausbauen, sie gelten als Gewinner eventueller Sanktionen gegen Belarus. Dazu kommt die Partnerschaft von BHP mit Nutrien bei der Entwicklung der Jansen-Kali-Lagerstätte in Kanada. Morgan Stanley unterstreicht, dies könnte zu Angebotsdisziplin am Markt führen und damit künftige Preisrisiken für die Branche senken. <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=NL0000235190&\" title=\"Übersicht Airbus\">Airbus</a> bauen ihre Gewinnstrecke mit einem Plus von 2,9 Prozent weiter aus. </p>\n<pre>\n   König &amp; Bauer auf Erholungskurs </pre>\n<p>\n  In der dritten Reihe steigen König &amp; Bauer um 5,7 Prozent auf 28,50 Euro, nachdem Warburg das Kursziel auf 38 von 33 Euro erhöht hat. Dagegen geben <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=LU1250154413&\" title=\"Übersicht Adler Group\">Adler Group</a> um 1,1 Prozent nach, obwohl neue Zahlen positiv bewertet werden. Die Mieteinnahmen konnten deutlich gesteigert werden, die Jahresprognose wurde bekräftigt. Zudem ist mit der Übernahme der <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE000A0HN5C6&\" title=\"Übersicht Deutsche Wohnen\">Deutsche Wohnen</a> durch <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE000A1ML7J1&\" title=\"Übersicht Vonovia\">Vonovia</a> der Sektor mit seiner Konsolidierung im Fokus. Nachdem die Analysten und Investoren den Zusammenschluss positiv bewertet hätten, seien weitere Übernahmen zu erwarten. Vonovia legen um 0,3 Prozent zu. </p>\n<p>\n  <a href=\"/DE/Showpage.aspx?pageID=23&ISIN=DE000TUAG000&\" title=\"Übersicht TUI\">Tui</a> hat sich finanziellen Spielraum verschafft und seinen Minderheitsanteil an einem Immobilienportfolio mit 21 Objekten an die Familie Riu verkauft. Auch wenn es sich dabei um den Verkauf eines Teils des Tafelsilbers handeln dürfte, wird die Verbesserung der Liquiditätssituation an der Börse positiv beurteilt. Die Aktien geben 0,3 Prozent ab. </p>\n<pre>\n=== \nAktienindex              zuletzt      +/- %     absolut      +/- % YTD \nEuro-Stoxx-50           4.065,14       0,64       25,93          14,43 \n<a href=\"/DE/Showpage.aspx?pageID=45&ISIN=EU0009658160&\" title=\"Übersicht STOXX Europe 50\">Stoxx-50</a>                3.462,66       0,58       20,10          11,40 \nDAX                    15.499,94       0,61       93,21          12,98 \n<a href=\"/DE/Showpage.aspx?pageID=45&ISIN=DE0008467416&\" title=\"Übersicht MDAX\">MDAX</a>                   33.284,71       0,84      275,90           8,08 \n<a href=\"/DE/Showpage.aspx?pageID=45&ISIN=DE0007203275&\" title=\"Übersicht TecDAX\">TecDAX</a>                  3.406,01       0,72       24,51           6,01 \n<a href=\"/DE/Showpage.aspx?pageID=45&ISIN=DE0009653386&\" title=\"Übersicht SDAX\">SDAX</a>                   16.321,66       0,57       91,94          10,54 \nFTSE                    7.045,89       0,37       26,22           8,65 \n<a href=\"/DE/Showpage.aspx?pageID=45&ISIN=FR0003500008&\" title=\"Übersicht CAC 40\">CAC</a>                     6.479,38       0,68       43,67          16,72 \n \nRentenmarkt              zuletzt                absolut        +/- YTD \nDt. Zehnjahresrendite      -0,18                  -0,01          -0,42 \nUS-Zehnjahresrendite        1,61                   0,00          -1,07 \n \nDEVISEN                  zuletzt      +/- %   Fr, 8:53h  Do, 17:04 Uhr   % YTD \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=EU0009652759&\" title=\"Übersicht EUR/USD\">EUR/USD</a>                   1,2176     -0,16%      1,2225         1,2215   -0,3% \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=EU0009652627&\" title=\"Übersicht EUR/JPY\">EUR/JPY</a>                   133,82     -0,09%      132,97         132,98   +6,1% \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=EU0009654078&\" title=\"Übersicht EUR/CHF\">EUR/CHF</a>                   1,0954     +0,12%      1,0960         1,0991   +1,3% \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=EU0009653088&\" title=\"Übersicht EUR/GBP\">EUR/GBP</a>                   0,8587     +0,02%      0,8620         0,8629   -3,9% \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=XC0009659910&\" title=\"Übersicht USD/JPY\">USD/JPY</a>                   109,92     +0,09%      108,77         108,86   +6,4% \n<a href=\"/DE/Showpage.aspx?pageID=57&ISIN=GB0031973075&\" title=\"Übersicht GBP/USD\">GBP/USD</a>                   1,4179     -0,15%      1,4181         1,4158   +3,8% \nUSD/CNH (Offshore)        6,3634     -0,16%      6,4351         6,4343   -2,1% \nBitcoin \nBTC/USD                35.986,01     -7,82%   39.666,76      41.724,11  +23,9% \n \nROHOEL                   zuletzt  VT-Settl.       +/- %        +/- USD   % YTD \nWTI/Nymex                  67,24      66,85       +0,6%           0,39  +38,6% \nBrent/ICE                  69,72      69,46       +0,4%           0,26  +35,6% \n \nMETALLE                  zuletzt     Vortag       +/- %        +/- USD   % YTD \n<a href=\"/DE/Showpage.aspx?pageID=52&ISIN=XD0002747026&\" title=\"Übersicht Gold\">Gold</a> (Spot)             1.893,05   1.896,70       -0,2%          -3,65   -0,3% \n<a href=\"/DE/Showpage.aspx?pageID=52&ISIN=XD0002747208&\" title=\"Übersicht Silber\">Silber</a> (Spot)              27,65      27,88       -0,8%          -0,22   +4,8% \n<a href=\"/DE/Showpage.aspx?pageID=52&ISIN=XD0002746903&\" title=\"Übersicht Platin\">Platin</a> (Spot)           1.182,43   1.182,50       -0,0%          -0,08  +10,5% \nKupfer-Future               0,00       4,53          0%              0  +28,6% \n=== </pre>\n<p>\n  Kontakt zum Autor: maerkte.de@dowjones.com </p>\n<p>\n  DJG/hru/raz </p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  May 28, 2021 07:02 ET (11:02 GMT)</p>",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DPA.1932833",
+      "newsDate": "2021-05-28T10:43:43+02:00",
+      "headline": "Bundesrat vertagt Befassung mit Pestizid-Verordnung",
+      "content": "BERLIN (dpa-AFX) - Der Bundesrat hat die Befassung mit der Verordnung zur Begrenzung von Pestiziden kurzfristig vertagt. Das teilte Bundesratspräsident Rainer Haseloff (CDU) am Freitag zu Beginn der Sitzung mit. Damit dürfte sich der Bundesrat frühestens auf seiner nächsten Sitzung Ende Juni mit der sogenannten Pflanzenschutzanwendungsverordnung befassen.<p />    Zuvor hatte es in Teilen der großen Koalition erneut Streit über die Verordnung gegeben, die unter anderem den Ausstieg aus dem Wirkstoff Glyphosat regelt. Das Bundesumweltministerium befürchtet, dass das gesamte Paket zum stärkeren Schutz von Insekten in Gefahr sein könnte. Kürzlich war auch ein weiterer Teil des Vorhabens, die Änderung des Bundesnaturschutzgesetzes, wieder kurzfristig von der Tagesordnung des Bundestags genommen worden. Jetzt bleiben zur Verabschiedung beider Vorhaben in dieser Legislaturperiode nur noch wenige Wochen.<p />    Das Bundeskabinett hatte das Insektenschutzpaket im Februar nach langem Ringen beschlossen. Zuvor gab es viel Protest von Landwirten, die durch mehr Insektenschutz-Auflagen größere Einschränkungen in der täglichen Arbeit und wirtschaftliche Einbußen befürchten. Auch Teile der Union, etwa Unionsfraktionsvize Stephan Stracke (CSU), mahnten eine \"verträgliche Lösung\" für Landwirte an./faa/DP/jha",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DPAV.9392",
+      "newsDate": "2021-05-28T10:31:00+02:00",
+      "headline": "VIDEO: Zaghafte Erholungsversuche im Dax, Post-Aktien geben nach Rekordstand nach",
+      "content": "Auf Wochensicht bahnt sich ein kleines Plus im Dax an. Der Monat Mai sieht etwas besser aus. Trotzdem fehlen die Impluse für eine nachhaltige Unterstützung. Im Dax fallen Siemens und die Deutsche Post auf.",
+      "fileUrlMp4": "https://cdn-ingdiba.s3-eu-west-1.amazonaws.com/ING_280521b.mp4",
+      "fileSizeMp4": 18307052,
+      "fileUrlThumbnail": "https://cdn-ingdiba.s3-eu-west-1.amazonaws.com/ING_280521b_small.jpg",
+      "fileUrlThumbnailLarge": "https://cdn-ingdiba.s3-eu-west-1.amazonaws.com/ING_280521b.jpg",
+      "videoSource": "Quelle: dpa-AFX",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DPA.1932656",
+      "newsDate": "2021-05-27T17:43:12+02:00",
+      "headline": "WDH/Schulze: Länder sollten Pestizid-Verordnung im Bundesrat zustimmen",
+      "content": "(Am Ende des ersten Absatzes muss es \"Bundesrat\" heißen.)<p />    BERLIN (dpa-AFX) - Bundesumweltministerin Svenja Schulze (SPD) hat die Länder aufgefordert, an diesem Freitag im Bundesrat der geänderten Pflanzenschutz-Anwendungsverordnung zuzustimmen. \"Die Unionsparteien dürfen an den Kabinettstischen in den Ländern die Verordnung nicht weiter blockieren\", sagte Schulze am Donnerstag. Das Bundesumweltministerium fürchtet, dass die nach hartem Koalitionsringen erarbeitete Verordnung zum Schutz von Insekten an diesem Freitag im Bundesrat abgelehnt werden könnte.<p />    \"Wer der Verordnung seine Zustimmung verweigert, schadet nicht nur dem Insektenschutz, sondern trägt vor allem auch die Verantwortung für ein Scheitern des lange vereinbarten Glyphosatausstiegs\", erklärte die Ministerin weiter.<p />    Mit der Verordnung soll unter anderem erreicht werden, dass der Einsatz von Glyphosat zunächst stark eingeschränkt und ab 1. Januar 2024 ganz verboten wird. Außerdem sieht sie vor, den Einsatz zahlreicher anderer Pflanzenschutzmittel in Schutzgebieten zu untersagen.<p />    Lange hatte es in der großen Koalition zu den Maßnahmen für mehr Insektenschutz keine Einigung gegeben. Der zweite Teil des dazugehörigen Gesetzespakets, die Änderung des Bundesnaturschutzgesetzes, war erst kürzlich wieder von der Tagesordnung des Bundestags genommen worden.<p />    Wie die Agrarexpertin und stellvertretende CDU-Bundesvorsitzende Silvia Breher vor wenigen Tagen erklärte, gebe es zum Gesamtpaket noch Unstimmigkeiten. Breher hatte zuletzt dafür plädiert, die für diesen Freitag geplante Verabschiedung der Pflanzenschutz-Anwendungsverordnung im Bundesrat zu verschieben. Es gebe noch Anpassungsbedarf zu Ausgleichszahlungen an Landwirte und zur Frage, ob einzelne Bundesländer auch weiterhin \"abweichende Regeln\" anwenden könnten, erklärte Breher. Zugleich betonte sie: \"Wir haben kein Interesse an einem Scheitern. Auch bei den Ländern und in der Landwirtschaft ist der Wunsch da, es gemeinsam hinzubekommen.\"/faa/DP/zb/he",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    },
+    {
+      "id": "DPA.1932639",
+      "newsDate": "2021-05-27T17:08:36+02:00",
+      "headline": "Schulze: Länder sollten Pestizid-Verordnung im Bundesrat zustimmen",
+      "content": "BERLIN (dpa-AFX) - Bundesumweltministerin Svenja Schulze (SPD) hat die Länder aufgefordert, an diesem Freitag im Bundesrat der geänderten Pflanzenschutz-Anwendungsverordnung zuzustimmen. \"Die Unionsparteien dürfen an den Kabinettstischen in den Ländern die Verordnung nicht weiter blockieren\", sagte Schulze am Donnerstag. Das Bundesumweltministerium fürchtet, dass die nach hartem Koalitionsringen erarbeitete Verordnung zum Schutz von Insekten an diesem Freitag im Bundestag abgelehnt werden könnte.<p />    \"Wer der Verordnung seine Zustimmung verweigert, schadet nicht nur dem Insektenschutz, sondern trägt vor allem auch die Verantwortung für ein Scheitern des lange vereinbarten Glyphosatausstiegs\", erklärte die Ministerin weiter.<p />    Mit der Verordnung soll unter anderem erreicht werden, dass der Einsatz von Glyphosat zunächst stark eingeschränkt und ab 1. Januar 2024 ganz verboten wird. Außerdem sieht sie vor, den Einsatz zahlreicher anderer Pflanzenschutzmittel in Schutzgebieten zu untersagen.<p />    Lange hatte es in der großen Koalition zu den Maßnahmen für mehr Insektenschutz keine Einigung gegeben. Der zweite Teil des dazugehörigen Gesetzespakets, die Änderung des Bundesnaturschutzgesetzes, war erst kürzlich wieder von der Tagesordnung des Bundestags genommen worden.<p />    Wie die Agrarexpertin und stellvertretende CDU-Bundesvorsitzende Silvia Breher vor wenigen Tagen erklärte, gebe es zum Gesamtpaket noch Unstimmigkeiten. Breher hatte zuletzt dafür plädiert, die für diesen Freitag geplante Verabschiedung der Pflanzenschutz-Anwendungsverordnung im Bundesrat zu verschieben. Es gebe noch Anpassungsbedarf zu Ausgleichszahlungen an Landwirte und zur Frage, ob einzelne Bundesländer auch weiterhin \"abweichende Regeln\" anwenden könnten, erklärte Breher. Zugleich betonte sie: \"Wir haben kein Interesse an einem Scheitern. Auch bei den Ländern und in der Landwirtschaft ist der Wunsch da, es gemeinsam hinzubekommen.\"/faa/DP/zb",
+      "newsInstruments": [],
+      "formatDefinitions": [
+        {
+          "propertyName": "newsDate",
+          "formatString": "DD.MM.YY",
+          "valueType": "Date"
+        },
+        {
+          "propertyName": "newsDatePopup",
+          "formatString": "DD.MM.YYYY, HH:mm",
+          "valueType": "Date"
+        }
+      ],
+      "_links": []
+    }
+  ],
+  "pageNumber": 1,
+  "pageSize": 8,
+  "hasMorePages": true,
+  "maxPageNumber": 26
+}
