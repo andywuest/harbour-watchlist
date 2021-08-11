@@ -133,7 +133,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="297"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="330"/>
         <source>No data - Click to fetch data</source>
         <translation>Ingen data. - Tryck för att hämta.</translation>
     </message>
