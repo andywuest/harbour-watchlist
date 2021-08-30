@@ -382,6 +382,10 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>3 Years</source>
         <translation>3 года</translation>
     </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Обновление...</translation>
+    </message>
 </context>
 <context>
     <name>StockDetailsView</name>

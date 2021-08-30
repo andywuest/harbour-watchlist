@@ -16,6 +16,7 @@ Item {
 
     property alias clickEnabled: backgroundArea.enabled
     property string graphTitle: ""
+    property string graphBodyText: qsTr("No data - Click to fetch data")
 
     property alias axisX: _axisXobject
     Axis {
@@ -294,7 +295,7 @@ Item {
                 anchors.centerIn: parent
                 color: lineColor
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("No data - Click to fetch data");
+                text: graphBodyText
                 visible: noData
             }
         }
