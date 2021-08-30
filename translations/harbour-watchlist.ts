@@ -133,7 +133,7 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>GraphData</name>
     <message>
-        <location filename="../qml/components/thirdparty/GraphData.qml" line="297"/>
+        <location filename="../qml/components/thirdparty/GraphData.qml" line="19"/>
         <source>No data - Click to fetch data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -427,33 +427,38 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>StockChartsView</name>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="98"/>
+        <location filename="../qml/components/StockChartsView.qml" line="103"/>
         <source>Charts</source>
         <extracomment>StockChartsView chart section header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="104"/>
+        <location filename="../qml/components/StockChartsView.qml" line="109"/>
         <source>Intraday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="116"/>
+        <location filename="../qml/components/StockChartsView.qml" line="122"/>
         <source>30 days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="128"/>
+        <location filename="../qml/components/StockChartsView.qml" line="135"/>
         <source>3 months</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="140"/>
+        <location filename="../qml/components/StockChartsView.qml" line="36"/>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockChartsView.qml" line="148"/>
         <source>1 Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="152"/>
+        <location filename="../qml/components/StockChartsView.qml" line="161"/>
         <source>3 Years</source>
         <translation type="unfinished"></translation>
     </message>

@@ -33,6 +33,7 @@ SilicaFlickable {
     property int screenHeight : 0
     property var chartDataMap : ({})
     property bool isActive : false
+    readonly property string loadingLabel: qsTr("Loading...")
 
     contentHeight: stockChartsColumn.height
 
@@ -42,6 +43,10 @@ SilicaFlickable {
 
     function fetchPricesForChartHandler(result, type) {
         chartDataMap[type] = JSON.parse(result);
+        if (!triggerChartDataDownloadOnEntering()) {
+            // manually triggered chart download
+            repaintCharts();
+        }
     }
 
     function updateStockChart(response, chart) {
@@ -106,6 +111,7 @@ SilicaFlickable {
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 Functions.log("chart intraday clicked !")
+                intradayStockChart.graphBodyText = loadingLabel
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_INTRDAY);
             }
         }
@@ -118,6 +124,7 @@ SilicaFlickable {
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 Functions.log("chart month clicked !")
+                lastMonthStockChart.graphBodyText = loadingLabel
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_MONTH);
             }
         }
@@ -130,6 +137,7 @@ SilicaFlickable {
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 Functions.log("chart 3 month clicked !")
+                lastThreeMonthStockChart.graphBodyText = loadingLabel
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_MONTHS);
             }
         }
@@ -142,6 +150,7 @@ SilicaFlickable {
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 Functions.log("chart year clicked !")
+                lastYearStockChart.graphBodyText = loadingLabel
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_YEAR);
             }
         }
@@ -154,6 +163,7 @@ SilicaFlickable {
             graphHeight: screenHeight * 0.15625
             onClicked: {
                 Functions.log("chart year clicked !")
+                lastThreeYearsStockChart.graphBodyText = loadingLabel
                 getDataBackend().fetchPricesForChart(extRefId, Constants.CHART_TYPE_3_YEARS);
             }
         }
