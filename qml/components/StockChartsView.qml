@@ -180,6 +180,33 @@ SilicaFlickable {
             lastYearStockChart.axisYUnit = currencyUnit;
             lastThreeYearsStockChart.axisYUnit = currencyUnit;
 
+            var infoLines = {};
+            infoLines.referencePrice = {};
+            infoLines.referencePrice.color = "#FF0000";
+            infoLines.referencePrice.value = stock.referencePrice;
+            infoLines.alarmMinimumPrice = {};
+            infoLines.alarmMinimumPrice.color = "#FFFF00";
+            infoLines.alarmMinimumPrice.value = -1;
+            infoLines.alarmMaximumPrice = {};
+            infoLines.alarmMaximumPrice.color = "#FFFACD";
+            infoLines.alarmMaximumPrice.value = -1;
+
+            var alarm = Database.loadAlarm(stock.id);
+            if (alarm !== undefined && alarm !== null && alarm.id !== undefined) {
+                if (alarm.minimumPrice !== null && alarm.minimumPrice !== "") {
+                    infoLines.alarmMinimumPrice.value = Number(alarm.minimumPrice);
+                }
+                if (alarm.maximumPrice !== null && alarm.maximumPrice !== "") {
+                    infoLines.alarmMaximumPrice.value = Number(alarm.maximumPrice);
+                }
+            }
+
+            intradayStockChart.infoLines = infoLines;
+            lastMonthStockChart.infoLines = infoLines;
+            lastThreeMonthStockChart.infoLines = infoLines;
+            lastYearStockChart.infoLines = infoLines;
+            lastThreeYearsStockChart.infoLines = infoLines;
+
             // connect signal slot for chart update
             getDataBackend().fetchPricesForChartAvailable.connect(fetchPricesForChartHandler)
             if (triggerChartDataDownloadOnEntering()) {

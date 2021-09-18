@@ -35,6 +35,7 @@ Item {
 
     property var valueConverter
     property var dateFormatter // formatter for x-axis labels
+    property var infoLines: ({})
 
     property bool valueTotal: false
 
@@ -222,6 +223,33 @@ Item {
                 property real stepX: (parent.width / (points.length- 2)) // - lineWidth
                 property real stepY: (maxY-minY)/(height-2)
 
+                function drawInfoLine(ctx, infoLine) {
+                    if (infoLine.value < minY && infoLine.value > maxY) {
+                        console.log("Reference price not within chart data for chart " + chartType
+                                    + " - skipping it!");
+                        return;
+                    }
+
+                    ctx.save();
+
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = infoLine.color;
+                    ctx.globalAlpha = 0.6;
+                    var y = (height - Math.floor((infoLine.value - minY) / stepY) - 1);
+
+                    console.log("drawPriceLine  y:" + y + ", minY : " + minY + ", maxY : " + maxY);
+
+                    //i=0 and i=axisY.grid skipped, top/bottom line
+                    for (var i=1;i<axisY.grid;i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(0, y);
+                        ctx.lineTo(width, y);
+                        ctx.stroke();
+                    }
+
+                    ctx.restore();
+                }
+
                 function drawGrid(ctx) {
                     ctx.save();
 
@@ -256,6 +284,12 @@ Item {
                     if (end > 0) {
                         drawGrid(ctx);
                     }
+
+                    console.log("info lines : " + infoLines);
+                    drawInfoLine(ctx, infoLines.referencePrice);
+                    // for now only draw lines for reference price
+                    // drawInfoLine(ctx, infoLines.alarmMinimumPrice);
+                    // drawInfoLine(ctx, infoLines.alarmMaximumPrice);
 
                     ctx.save()
                     ctx.strokeStyle = lineColor;
