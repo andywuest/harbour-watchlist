@@ -9,7 +9,7 @@ Name:       harbour-watchlist
 # << macros
 
 Summary:    Sailfish OS Stock Watchlist Application
-Version:    0.9.1
+Version:    0.9.2
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
