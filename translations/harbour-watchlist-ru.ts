@@ -752,6 +752,10 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>USD/RUB</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>EUR/CAD</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>database</name>

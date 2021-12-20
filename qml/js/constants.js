@@ -84,6 +84,7 @@ function buildMarketDataList() {
 
     // Currency
     marketDataList.push(addMarketDataItem("CUR_EUR_USD", qsTr("EUR/USD"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_EUR_CAD", qsTr("EUR/CAD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_EUR_RUB", qsTr("EUR/RUB"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_SEK_DKK", qsTr("SEK/DKK"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_JPY_USD", qsTr("JPY/USD"), MARKET_DATA_TYPE_CURRENCY));
