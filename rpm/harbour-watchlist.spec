@@ -44,8 +44,8 @@ export VERSION_NUMBER=%{version}
 make %{?_smp_mflags}
 
 # >> build post
-#echo "Strip the binary!"
-#strip %{name}
+echo "Strip the binary!"
+strip %{name}
 # << build post
 
 %install
