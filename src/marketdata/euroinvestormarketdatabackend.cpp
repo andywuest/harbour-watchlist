@@ -58,6 +58,7 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     // Currencies
     marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
     marketDataId2ExtRefId["CUR_EUR_USD"] = "216178";
+    marketDataId2ExtRefId["CUR_EUR_CAD"] = "216074";
     marketDataId2ExtRefId["CUR_EUR_RUB"] = "216156";
     marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
     marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
