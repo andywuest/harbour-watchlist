@@ -28,6 +28,11 @@ function formatPrice(price, locale) {
     return Number(price).toLocaleString(locale, 'f', precision) ;
 }
 
+function formatCurrencyPrice(price, locale) {
+    var precision = (price >= 1.0 ? CURRENCY_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
+    return Number(price).toLocaleString(locale, 'f', precision) ;
+}
+
 function determineChangeColor(change) {
     if (change < 0.0) {
         return NEGATIVE_COLOR
