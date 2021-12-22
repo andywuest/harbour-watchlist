@@ -131,6 +131,15 @@ SilicaFlickable {
         }
     }
 
+    function renderPriceLocal(typeId,last) {
+        if (typeId === 3) {
+            // is currency, we require greater num. significant digits
+            return Functions.renderCurrencyPrice(last, isShowCurrency(typeId) ? currency : '');
+        } else {
+            return Functions.renderPrice(last, isShowCurrency(typeId) ? currency : '');
+        }
+    }
+
     function isShowCurrency(type) {
         return (Constants.MARKET_DATA_TYPE_INDEX !== type && Constants.MARKET_DATA_TYPE_CURRENCY !== type);
     }
@@ -239,7 +248,8 @@ SilicaFlickable {
                                     id: stockQuoteChange
                                     width: parent.width * 2 / 10
                                     height: parent.height
-                                    text: Functions.renderPrice(last, isShowCurrency(typeId) ? currency : '');
+                                    //text: Functions.renderPrice(last, isShowCurrency(typeId) ? currency : '');
+                                    text: renderPriceLocal(typeId,last); //, isShowCurrency(typeId) ? currency : '');
                                     color: Theme.highlightColor
                                     font.pixelSize: Theme.fontSizeSmall
                                     font.bold: true
