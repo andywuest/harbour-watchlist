@@ -25,6 +25,8 @@
           <dryRun>false</dryRun>
           <includes>
             <include>qml/**/*.qml</include>
+            <include>**/*.h</include>
+            <include>**/*.cpp</include>
           </includes>
           <excludes>
             <exclude>**/thirdparty/**</exclude>

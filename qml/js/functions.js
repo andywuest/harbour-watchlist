@@ -25,7 +25,7 @@ function renderPrice(price, currencyString) {
 
 function formatPrice(price, locale) {
     var precision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
-    return Number(price).toLocaleString(locale, 'f', precision) ;
+    return Number(price).toLocaleString(locale, 'f', precision);
 }
 
 function determineChangeColor(change) {
