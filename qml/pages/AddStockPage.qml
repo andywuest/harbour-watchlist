@@ -35,14 +35,14 @@ Page {
 
     function connectSlots() {
         Functions.log("AddStockPage - connecting - slots")
-        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
         dataBackend.searchResultAvailable.connect(searchResultHandler);
         dataBackend.requestError.connect(errorResultHandler);
     }
 
     function disconnectSlots() {
         Functions.log("AddStockPage - disconnecting - slots")
-        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
         dataBackend.searchResultAvailable.disconnect(searchResultHandler);
         dataBackend.requestError.disconnect(errorResultHandler);
     }
@@ -101,7 +101,7 @@ Page {
                 repeat: false
                 onTriggered: {
                     searchResultListModel.clear()
-                    Functions.getDataBackend(watchlistSettings.dataBackend).searchName(searchField.text);
+                    getSecurityDataBackend(watchlistSettings.dataBackend).searchName(searchField.text);
                 }
             }
 

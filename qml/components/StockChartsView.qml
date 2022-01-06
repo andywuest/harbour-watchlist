@@ -38,7 +38,7 @@ SilicaFlickable {
     contentHeight: stockChartsColumn.height
 
     function getDataBackend() {
-        return Functions.getDataBackend(watchlistSettings.dataBackend);
+        return getSecurityDataBackend(watchlistSettings.dataBackend);
     }
 
     function fetchPricesForChartHandler(result, type) {

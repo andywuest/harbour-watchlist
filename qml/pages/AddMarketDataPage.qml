@@ -133,7 +133,7 @@ Page {
 
         Component.onCompleted: {
             var marketDataList = Constants.MARKET_DATA_LIST;
-            var backend = Functions.getMarketDataBackend();
+            var backend = getMarketDataBackend();
 
             // add all supported and not yet assigned market datas to list
             for (var i = 0; i < marketDataList.length; i++) {

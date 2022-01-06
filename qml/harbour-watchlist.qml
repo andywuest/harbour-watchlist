@@ -18,7 +18,9 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import Nemo.Configuration 1.0
+
 import "pages"
+import "cover"
 
 import "js/constants.js" as Constants
 
@@ -36,11 +38,37 @@ ApplicationWindow {
         property bool showPerformanceRow: false
     }
 
-    initialPage: Component {
+    function getSecurityDataBackend(backendId) {
+        if (Constants.BACKEND_EUROINVESTOR === backendId) {
+            return euroinvestorBackend;
+        } else if (Constants.BACKEND_MOSCOW_EXCHANGE === backendId) {
+            return moscowExchangeBackend;
+        } else if (Constants.BACKEND_ING_DIBA === backendId) {
+            return ingDibaBackend;
+        }
+    }
+
+    function getNewsBackend() {
+        return ingDibaNews;
+    }
+
+    function getMarketDataBackend() {
+        return euroinvestorMarketDataBackend;
+    }
+
+    Component {
+        id: overviewPage
         OverviewPage {
         }
     }
 
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    Component {
+        id: coverPage
+        CoverPage {
+        }
+    }
+
+    initialPage: overviewPage
+    cover: coverPage
     allowedOrientations: defaultAllowedOrientations
 }

@@ -143,7 +143,7 @@ function initApplicationTables() {
 function loadTriggeredAlarms(watchlistId, lower) {
     var result = [];
     try {
-        var db = Database.getOpenDatabase();
+        var db = getOpenDatabase();
         db.transaction(function (tx) {
             var query = 'SELECT s.id AS id, s.name AS name, s.price as price, s.currency as currency, a.minimumPrice as minimumPrice, a.maximumPrice as maximumPrice '
                     + ' FROM alarm a INNER JOIN stockdata s ON a.id = s.id'
@@ -176,7 +176,7 @@ function loadTriggeredAlarms(watchlistId, lower) {
 function loadAlarm(id) {
     var result = null;
     try {
-        var db = Database.getOpenDatabase();
+        var db = getOpenDatabase();
         db.transaction(function (tx) {
             var dbResult = tx.executeSql(
                         'SELECT minimumPrice, maximumPrice FROM alarm WHERE id = ?',
@@ -273,7 +273,7 @@ function loadValueFromTable(id, table, columnName) {
     var result
     var tableColumnText = table + "." + columnName;
     try {
-        var db = Database.getOpenDatabase();
+        var db = getOpenDatabase();
         db.transaction(function (tx) {
             var query = 'SELECT ' + columnName + ' FROM ' + table + ' WHERE id = ?';
             var dbResult = tx.executeSql(query, [id]);
@@ -299,7 +299,7 @@ function loadValueFromTable(id, table, columnName) {
 function getCurrentWatchlistId() {
     var result = null;
     try {
-        var db = Database.getOpenDatabase();
+        var db = getOpenDatabase();
         db.transaction(function (tx) {
             var dbResult = tx.executeSql(
                         'SELECT id FROM watchlist WHERE name = ?',
@@ -373,7 +373,7 @@ function deleteStockData(stockDataId) {
 function loadMarketDataBy(extRefId) {
     var result;
     try {
-        var db = Database.getOpenDatabase()
+        var db = getOpenDatabase()
         db.transaction(function (tx) {
             var query = 'SELECT id, typeId FROM marketdata WHERE extRefId = ?';
             log("query : " + query + ", extRef : " + extRefId);
@@ -400,7 +400,7 @@ function loadMarketDataBy(extRefId) {
 function loadStockBy(watchlistId, extRefId) {
     var result;
     try {
-        var db = Database.getOpenDatabase()
+        var db = getOpenDatabase()
         db.transaction(function (tx) {
             var query = 'SELECT id, watchlistId FROM stockdata WHERE extRefId = ? and watchlistId = ?';
             log("query : " + query + ", extRef :" + extRefId + ", watchlistId : " + watchlistId);
@@ -427,7 +427,7 @@ function loadStockBy(watchlistId, extRefId) {
 function loadAllMarketData() {
     var result = [];
     try {
-        var db = Database.getOpenDatabase()
+        var db = getOpenDatabase()
         db.transaction(function (tx) {
             var query = 'SELECT id, typeId, extRefId, name, longName, currency, symbol, stockMarketSymbol, stockMarketName, last, changeAbsolute '
                     +' ,changeRelative, quoteTimestamp, lastChangeTimestamp FROM marketdata';
@@ -471,7 +471,7 @@ function loadAllMarketData() {
 function loadAllStockData(watchListId, sortString) { // TODO implement watchlistid
     var result = [];
     try {
-        var db = Database.getOpenDatabase()
+        var db = getOpenDatabase()
         db.transaction(function (tx) {
             // use COALESCE to set null values to default values
             var query = 'SELECT s.id, extRefId, name, currency, currencySymbol, '

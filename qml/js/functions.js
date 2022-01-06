@@ -1,3 +1,4 @@
+.pragma library
 
 Qt.include('constants.js');
 
@@ -90,25 +91,6 @@ function calculateWidth(price, change, maxChange, parentWidth) {
         console.log("change length: " + result)
         return result
     }
-}
-
-function getDataBackend(backendId) {
-    if (BACKEND_EUROINVESTOR === backendId) {
-        return euroinvestorBackend;
-    } else if (BACKEND_MOSCOW_EXCHANGE === backendId) {
-        return moscowExchangeBackend;
-    } else if (BACKEND_ING_DIBA === backendId) {
-        return ingDibaBackend;
-    }
-}
-
-function getNewsBackend() {
-    // return onvistaNews
-    return ingDibaNews;
-}
-
-function getMarketDataBackend() {
-    return euroinvestorMarketDataBackend;
 }
 
 function log(message) {

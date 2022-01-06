@@ -50,14 +50,14 @@ SilicaFlickable {
 
     function connectSlots() {
         console.log("connect - slots");
-        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
         dataBackend.quoteResultAvailable.connect(quoteResultHandler);
         dataBackend.requestError.connect(errorResultHandler);
     }
 
     function disconnectSlots() {
         console.log("disconnect - slots");
-        var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
         dataBackend.quoteResultAvailable.disconnect(quoteResultHandler);
         dataBackend.requestError.disconnect(errorResultHandler);
     }
@@ -137,7 +137,7 @@ SilicaFlickable {
 
         if (numberOfQuotes > 0) {
             loaded = false;
-            Functions.getDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
+            getSecurityDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
         }
     }
 

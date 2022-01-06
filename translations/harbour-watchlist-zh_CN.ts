@@ -994,18 +994,18 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="45"/>
+        <location filename="../qml/js/functions.js" line="46"/>
         <source>hh:mm:ss</source>
         <translation>hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="59"/>
+        <location filename="../qml/js/functions.js" line="60"/>
         <source>hh:mm</source>
         <translation>hh:mm</translation>
     </message>
     <message>
-        <location filename="../qml/js/functions.js" line="45"/>
-        <location filename="../qml/js/functions.js" line="61"/>
+        <location filename="../qml/js/functions.js" line="46"/>
+        <location filename="../qml/js/functions.js" line="62"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyy</translation>
     </message>

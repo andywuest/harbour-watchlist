@@ -79,7 +79,7 @@ SilicaFlickable {
         repeat: false
         onTriggered: {
             loading = true;
-            var newsBackend = Functions.getNewsBackend()
+            var newsBackend = getNewsBackend()
             newsBackend.searchStockNews(isin)
         }
     }
@@ -202,7 +202,7 @@ SilicaFlickable {
             isin = (stock.isin) ? stock.isin : ''
 
             // connect signal slot for chart update
-            var newsBackend = Functions.getNewsBackend();
+            var newsBackend = getNewsBackend();
             newsBackend.searchNewsResultAvailable.connect(searchStockNewsHandler);
             newsBackend.requestError.connect(errorResultHandler);
 
@@ -214,7 +214,7 @@ SilicaFlickable {
 
     Component.onDestruction: {
         Functions.log("[StockNewsView] disconnecting signals");
-        var newsBackend = Functions.getNewsBackend();
+        var newsBackend = getNewsBackend();
         newsBackend.searchNewsResultAvailable.disconnect(searchStockNewsHandler);
         newsBackend.requestError.disconnect(errorResultHandler);
     }

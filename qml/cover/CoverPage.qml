@@ -61,7 +61,7 @@ CoverBackground {
         }
 
         if (stocks.length > 0) {
-            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
             dataBackend.searchQuote(stockExtRefIds.join(','))
         } else {
             loading = false;
@@ -253,7 +253,7 @@ CoverBackground {
 
         Component.onCompleted: {
             // Database.initApplicationTables()
-            var dataBackend = Functions.getDataBackend(watchlistSettings.dataBackend);
+            var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
             dataBackend.quoteResultAvailable.connect(quoteResultHandler)
             dataBackend.requestError.connect(errorResultHandler)
             reloadAllStocks()
