@@ -585,8 +585,8 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Криптовалюты</translation>
     </message>
     <message>
-        <source>DAX 30</source>
-        <translation>DAX 30</translation>
+        <source>DAX 40</source>
+        <translation>DAX 40</translation>
     </message>
     <message>
         <source>MDAX</source>

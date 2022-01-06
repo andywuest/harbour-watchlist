@@ -700,7 +700,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="62"/>
-        <source>DAX 30</source>
+        <source>DAX 40</source>
         <translation></translation>
     </message>
     <message>

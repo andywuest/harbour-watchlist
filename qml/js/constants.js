@@ -59,7 +59,7 @@ function buildMarketDataList() {
     var marketDataList = [];
     // Index
     // DE
-    marketDataList.push(addMarketDataItem("INDEX_DAX", qsTr("DAX 30"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_DAX", qsTr("DAX 40"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_MDAX", qsTr("MDAX"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_SDAX", qsTr("SDAX"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_TECDAX", qsTr("TecDAX"), MARKET_DATA_TYPE_INDEX));
