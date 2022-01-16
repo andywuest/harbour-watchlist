@@ -23,6 +23,7 @@ import "pages"
 import "cover"
 
 import "js/constants.js" as Constants
+import "js/functions.js" as Functions
 
 ApplicationWindow {
 
@@ -54,6 +55,11 @@ ApplicationWindow {
 
     function getMarketDataBackend() {
         return euroinvestorMarketDataBackend;
+    }
+
+    function determineChangeColor(change) {
+        // we cannot use the Function directory - because library has no access to Theme
+        return Functions.determineChangeColor(change, Theme.primaryColor);
     }
 
     Component {

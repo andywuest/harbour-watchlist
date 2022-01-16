@@ -239,7 +239,7 @@ SilicaFlickable {
                                     id: stockQuoteChange
                                     width: parent.width * 2 / 10
                                     height: parent.height
-                                    text: Functions.renderPrice(last, isShowCurrency(typeId) ? currency : '');
+                                    text: Functions.renderPrice(last, isShowCurrency(typeId) ? currency : '', typeId);
                                     color: Theme.highlightColor
                                     font.pixelSize: Theme.fontSizeSmall
                                     font.bold: true
@@ -283,7 +283,7 @@ SilicaFlickable {
                                     width: parent.width / 2
                                     height: parent.height
                                     text: Functions.renderChange(last, changeRelative, '%')
-                                    color: Functions.determineChangeColor(changeRelative)
+                                    color: determineChangeColor(changeRelative)
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight
                                 }

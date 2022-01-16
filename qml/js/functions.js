@@ -19,23 +19,29 @@ function renderPriceOnly(price) {
     return ((price !== undefined && price !== 0.0) ? formatPrice(price, locale) : "");
 }
 
-function renderPrice(price, currencyString) {
+function renderPrice(price, currencyString, marketDataType) {
     var locale = Qt.locale();
+    if (marketDataType && marketDataType === MARKET_DATA_TYPE_CURRENCY) {
+        return ((price && price !== 0.0) ? formatPrice(price, locale, CURRENCY_FRACTION_DIGITS) + " " + currencyString : "")
+    }
     return ((price && price !== 0.0) ? formatPrice(price, locale) + " " + currencyString : "")
 }
 
-function formatPrice(price, locale) {
-    var precision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
-    return Number(price).toLocaleString(locale, 'f', precision);
+function formatPrice(price, locale, precision) {
+    var localPrecision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
+    if (precision) {
+        localPrecision = precision;
+    }
+    return Number(price).toLocaleString(locale, 'f', localPrecision);
 }
 
-function determineChangeColor(change) {
+function determineChangeColor(change, defaultColor) {
     if (change < 0.0) {
         return NEGATIVE_COLOR
     } else if (change > 0.0) {
         return POSITIVE_COLOR
     }
-    return Theme.primaryColor
+    return defaultColor;
 }
 
 function renderDateTimeString(dateTimeString) {

@@ -243,7 +243,7 @@ CoverBackground {
                         width: parent.width / 2
                         height: parent.height
                         text: Functions.renderChange(price, changeRelative, '%')
-                        color: Functions.determineChangeColor(changeRelative)
+                        color: determineChangeColor(changeRelative)
                         font.pixelSize: Theme.fontSizeTiny
                         horizontalAlignment: Text.AlignRight
                     }

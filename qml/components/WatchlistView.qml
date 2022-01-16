@@ -321,7 +321,7 @@ SilicaFlickable {
                                                           maxChange,
                                                           parent.width)
                                     height: parent.height
-                                    color: Functions.determineChangeColor(changeRelative)
+                                    color: determineChangeColor(changeRelative)
                                 }
                             }
 
@@ -343,7 +343,7 @@ SilicaFlickable {
                                     width: parent.width / 2
                                     height: parent.height
                                     text: Functions.renderChange(price, changeRelative, '%')
-                                    color: Functions.determineChangeColor(changeRelative)
+                                    color: determineChangeColor(changeRelative)
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight
                                 }
@@ -369,7 +369,7 @@ SilicaFlickable {
                                     width: parent.width / 2
                                     height: parent.height
                                     text: Functions.renderChange(referencePrice, performanceRelative, '%')
-                                    color: Functions.determineChangeColor(performanceRelative)
+                                    color: determineChangeColor(performanceRelative)
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight
                                 }
