@@ -70,7 +70,7 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
     marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
 
     // Crypto Currencies
-    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "99567";
+    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "252303";
     marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "99570";
     marketDataId2ExtRefId["CRYPTO_BITCOIN_GOLD"] = "99604";
     marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "99571";
