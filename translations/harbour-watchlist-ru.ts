@@ -693,10 +693,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Биткоин-кэш</translation>
     </message>
     <message>
-        <source>Bitcoin Gold</source>
-        <translation>Биткоин-голд</translation>
-    </message>
-    <message>
         <source>Litecoin</source>
         <translation>Лайткоин</translation>
     </message>
@@ -719,10 +715,6 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Monero</source>
         <translation>Monero</translation>
-    </message>
-    <message>
-        <source>Binance Coin</source>
-        <translation>Binance Coin</translation>
     </message>
     <message>
         <source>XRP</source>
@@ -754,6 +746,10 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>EUR/CAD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Binance USD</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

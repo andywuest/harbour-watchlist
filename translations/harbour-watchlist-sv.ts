@@ -443,7 +443,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>30 dagar</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="135"/>
+        <location filename="../qml/components/StockChartsView.qml" line="136"/>
         <source>3 months</source>
         <translation>3 månader</translation>
     </message>
@@ -453,12 +453,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Läser in...</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="148"/>
+        <location filename="../qml/components/StockChartsView.qml" line="150"/>
         <source>1 Year</source>
         <translation>1 år</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="161"/>
+        <location filename="../qml/components/StockChartsView.qml" line="164"/>
         <source>3 Years</source>
         <translation>3 år</translation>
     </message>
@@ -819,6 +819,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/js/constants.js" line="109"/>
+        <source>Binance USD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/js/constants.js" line="91"/>
         <source>JPY/USD</source>
         <translation type="unfinished"></translation>
@@ -855,61 +860,51 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="103"/>
-        <source>Bitcoin Gold</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/constants.js" line="104"/>
         <source>Litecoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="105"/>
+        <location filename="../qml/js/constants.js" line="104"/>
         <source>Dash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="106"/>
+        <location filename="../qml/js/constants.js" line="105"/>
         <source>Ethereum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="107"/>
+        <location filename="../qml/js/constants.js" line="106"/>
         <source>Tether</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="108"/>
+        <location filename="../qml/js/constants.js" line="107"/>
         <source>IOTA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="109"/>
+        <location filename="../qml/js/constants.js" line="108"/>
         <source>Monero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="110"/>
-        <source>Binance Coin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/constants.js" line="111"/>
         <source>XRP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="112"/>
+        <location filename="../qml/js/constants.js" line="111"/>
         <source>Tezos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="113"/>
+        <location filename="../qml/js/constants.js" line="112"/>
         <source>Cardano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="114"/>
+        <location filename="../qml/js/constants.js" line="113"/>
         <source>Chainlink</source>
         <translation type="unfinished"></translation>
     </message>

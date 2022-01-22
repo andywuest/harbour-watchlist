@@ -443,7 +443,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>30天</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="135"/>
+        <location filename="../qml/components/StockChartsView.qml" line="136"/>
         <source>3 months</source>
         <translation>3个月</translation>
     </message>
@@ -453,12 +453,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>正在加载……</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="148"/>
+        <location filename="../qml/components/StockChartsView.qml" line="150"/>
         <source>1 Year</source>
         <translation>1年</translation>
     </message>
     <message>
-        <location filename="../qml/components/StockChartsView.qml" line="161"/>
+        <location filename="../qml/components/StockChartsView.qml" line="164"/>
         <source>3 Years</source>
         <translation>3年</translation>
     </message>
@@ -819,6 +819,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>英镑/美元</translation>
     </message>
     <message>
+        <location filename="../qml/js/constants.js" line="109"/>
+        <source>Binance USD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/js/constants.js" line="91"/>
         <source>JPY/USD</source>
         <translation>日元/美元</translation>
@@ -855,61 +860,51 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="103"/>
-        <source>Bitcoin Gold</source>
-        <translation>比特币黄金</translation>
-    </message>
-    <message>
-        <location filename="../qml/js/constants.js" line="104"/>
         <source>Litecoin</source>
         <translation>莱特币</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="105"/>
+        <location filename="../qml/js/constants.js" line="104"/>
         <source>Dash</source>
         <translation>达世币</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="106"/>
+        <location filename="../qml/js/constants.js" line="105"/>
         <source>Ethereum</source>
         <translation>以太坊</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="107"/>
+        <location filename="../qml/js/constants.js" line="106"/>
         <source>Tether</source>
         <translation>泰达币</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="108"/>
+        <location filename="../qml/js/constants.js" line="107"/>
         <source>IOTA</source>
         <translation>IOTA</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="109"/>
+        <location filename="../qml/js/constants.js" line="108"/>
         <source>Monero</source>
         <translation>门罗币</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="110"/>
-        <source>Binance Coin</source>
-        <translation>币安币</translation>
-    </message>
-    <message>
-        <location filename="../qml/js/constants.js" line="111"/>
         <source>XRP</source>
         <translation>XRP</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="112"/>
+        <location filename="../qml/js/constants.js" line="111"/>
         <source>Tezos</source>
         <translation>Tezos</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="113"/>
+        <location filename="../qml/js/constants.js" line="112"/>
         <source>Cardano</source>
         <translation>Cardano</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="114"/>
+        <location filename="../qml/js/constants.js" line="113"/>
         <source>Chainlink</source>
         <translation>Chainlink</translation>
     </message>
