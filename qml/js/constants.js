@@ -100,14 +100,13 @@ function buildMarketDataList() {
     // Crypto
     marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN", qsTr("Bitcoin"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_CASH", qsTr("Bitcoin Cash"), MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_BITCOIN_GOLD", qsTr("Bitcoin Gold"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_LITECOIN", qsTr("Litecoin"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_DASH", qsTr("Dash"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_ETHEREUM", qsTr("Ethereum"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_TETHER", qsTr("Tether"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_IOTA", qsTr("IOTA"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_MONERO", qsTr("Monero"), MARKET_DATA_TYPE_CRYPTO));
-    marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_COIN", qsTr("Binance Coin"), MARKET_DATA_TYPE_CRYPTO));
+    marketDataList.push(addMarketDataItem("CRYPTO_BINANCE_USD", qsTr("Binance USD"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_XRP", qsTr("XRP"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_TEZOS", qsTr("Tezos"), MARKET_DATA_TYPE_CRYPTO));
     marketDataList.push(addMarketDataItem("CRYPTO_CARDANO", qsTr("Cardano"), MARKET_DATA_TYPE_CRYPTO));

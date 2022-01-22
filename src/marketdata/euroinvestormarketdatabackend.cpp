@@ -71,21 +71,19 @@ EuroinvestorMarketDataBackend::EuroinvestorMarketDataBackend(QNetworkAccessManag
 
     // Crypto Currencies
     marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "252303";
-    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "99570";
-    marketDataId2ExtRefId["CRYPTO_BITCOIN_GOLD"] = "99604";
-    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "99571";
-    marketDataId2ExtRefId["CRYPTO_DASH"] = "99582";
-    marketDataId2ExtRefId["CRYPTO_ETHEREUM"] = "99568";
-    marketDataId2ExtRefId["CRYPTO_TETHER"] = "99572";
-    marketDataId2ExtRefId["CRYPTO_IOTA"] = "99585";
-    marketDataId2ExtRefId["CRYPTO_MONERO"] = "99576";
-    marketDataId2ExtRefId["CRYPTO_EOS"] = "99573";
-    marketDataId2ExtRefId["CRYPTO_MONERO"] = "99576";
-    marketDataId2ExtRefId["CRYPTO_BINANCE_COIN"] = "99574";
-    marketDataId2ExtRefId["CRYPTO_XRP"] = "99569";
+    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "252699";
+    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "252302";
+    marketDataId2ExtRefId["CRYPTO_DASH"] = "252674";
+    marketDataId2ExtRefId["CRYPTO_ETHEREUM"] = "252268";
+    marketDataId2ExtRefId["CRYPTO_TETHER"] = "252204";
+    marketDataId2ExtRefId["CRYPTO_IOTA"] = "252568";
+    marketDataId2ExtRefId["CRYPTO_MONERO"] = "252587";
+    marketDataId2ExtRefId["CRYPTO_EOS"] = "252557";
+    marketDataId2ExtRefId["CRYPTO_BINANCE_USD"] = "252094";
+    marketDataId2ExtRefId["CRYPTO_XRP"] = "252294";
     marketDataId2ExtRefId["CRYPTO_CARDANO"] = "99577";
-    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "99584";
-    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "99587";
+    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "252574";
+    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "238649";
 }
 
 EuroinvestorMarketDataBackend::~EuroinvestorMarketDataBackend() {
