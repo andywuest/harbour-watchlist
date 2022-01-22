@@ -17,6 +17,7 @@ Item {
     property alias clickEnabled: backgroundArea.enabled
     property string graphTitle: ""
     property string graphBodyText: qsTr("No data - Click to fetch data")
+    property bool showTrendTriangle: false
 
     property alias axisX: _axisXobject
     Axis {
@@ -223,6 +224,31 @@ Item {
                 property real stepX: (parent.width / (points.length- 2)) // - lineWidth
                 property real stepY: (maxY-minY)/(height-2)
 
+                function drawTrendTriangle(ctx, startValue, endValue) {
+                    var yStart = (height - Math.floor((startValue - minY) / stepY) - 1);
+                    var yEnd = (height - Math.floor((endValue - minY) / stepY) - 1);
+
+                    console.log("drawTrendTriangle  yStart:" + yStart
+                                + ", yEnd : " + yEnd);
+
+                    ctx.save();
+                    ctx.lineWidth = 1;
+                    ctx.globalAlpha = 0.45;
+
+                    // the triangle
+                    ctx.beginPath();
+                    ctx.moveTo(0, yStart);
+                    ctx.lineTo(width, yStart);
+                    ctx.lineTo(width, yEnd);
+                    ctx.closePath();
+
+                    // the fill color
+                    context.fillStyle = yStart > yEnd ? "#009900" : "#ff3300";
+                    context.fill();
+
+                    ctx.restore();
+                }
+
                 function drawInfoLine(ctx, infoLine) {
                     if (infoLine.value < minY && infoLine.value > maxY) {
                         console.log("Reference price not within chart data for chart " + chartType
@@ -230,22 +256,18 @@ Item {
                         return;
                     }
 
-                    ctx.save();
+                    var y = (height - Math.floor((infoLine.value - minY) / stepY) - 1);
+                    console.log("drawPriceLine  y:" + y + ", minY : " + minY + ", maxY : " + maxY);
 
+                    ctx.save();
                     ctx.lineWidth = 1;
                     ctx.strokeStyle = infoLine.color;
                     ctx.globalAlpha = 0.6;
-                    var y = (height - Math.floor((infoLine.value - minY) / stepY) - 1);
 
-                    console.log("drawPriceLine  y:" + y + ", minY : " + minY + ", maxY : " + maxY);
-
-                    //i=0 and i=axisY.grid skipped, top/bottom line
-                    for (var i=1;i<axisY.grid;i++) {
-                        ctx.beginPath();
-                        ctx.moveTo(0, y);
-                        ctx.lineTo(width, y);
-                        ctx.stroke();
-                    }
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(width, y);
+                    ctx.stroke();
 
                     ctx.restore();
                 }
@@ -290,6 +312,10 @@ Item {
                     // for now only draw lines for reference price
                     // drawInfoLine(ctx, infoLines.alarmMinimumPrice);
                     // drawInfoLine(ctx, infoLines.alarmMaximumPrice);
+
+                    if (showTrendTriangle) {
+                        drawTrendTriangle(ctx, points[0].y, points[end -1].y);
+                    }
 
                     ctx.save()
                     ctx.strokeStyle = lineColor;

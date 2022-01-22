@@ -122,6 +122,7 @@ SilicaFlickable {
             graphTitle: qsTr("30 days")
             chartType: Constants.CHART_TYPE_MONTH
             graphHeight: screenHeight * 0.15625
+            showTrendTriangle: true
             onClicked: {
                 Functions.log("chart month clicked !")
                 lastMonthStockChart.graphBodyText = loadingLabel
@@ -135,6 +136,7 @@ SilicaFlickable {
             graphTitle: qsTr("3 months")
             chartType: Constants.CHART_TYPE_3_MONTHS
             graphHeight: screenHeight * 0.15625
+            showTrendTriangle: true
             onClicked: {
                 Functions.log("chart 3 month clicked !")
                 lastThreeMonthStockChart.graphBodyText = loadingLabel
@@ -148,6 +150,7 @@ SilicaFlickable {
             graphTitle: qsTr("1 Year")
             chartType: Constants.CHART_TYPE_YEAR
             graphHeight: screenHeight * 0.15625
+            showTrendTriangle: true
             onClicked: {
                 Functions.log("chart year clicked !")
                 lastYearStockChart.graphBodyText = loadingLabel
@@ -161,6 +164,7 @@ SilicaFlickable {
             graphTitle: qsTr("3 Years")
             chartType: Constants.CHART_TYPE_3_YEARS
             graphHeight: screenHeight * 0.15625
+            showTrendTriangle: true
             onClicked: {
                 Functions.log("chart year clicked !")
                 lastThreeYearsStockChart.graphBodyText = loadingLabel
