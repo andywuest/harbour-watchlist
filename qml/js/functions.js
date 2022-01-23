@@ -23,20 +23,14 @@ function renderPrice(price, currencyString) {
     return ((price && price !== 0.0) ? formatPrice(price, locale) + " " + currencyString : "")
 }
 
-function renderCurrencyPrice(price, currencyString) {
-    var locale = Qt.locale();
-    return ((price && price !== 0.0) ? formatCurrencyPrice(price, locale) + " " + currencyString : "")
-}
-
 function formatPrice(price, locale) {
-    var precision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
-    return Number(price).toLocaleString(locale, 'f', precision) ;
+    var localPrecision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
+    if (precision) {
+            localPrecision = precision;
+    }
+    return Number(price).toLocaleString(locale, 'f', localPrecision);
 }
 
-function formatCurrencyPrice(price, locale) {
-    var precision = (price >= 1.0 ? CURRENCY_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
-    return Number(price).toLocaleString(locale, 'f', precision) ;
-}
 
 function determineChangeColor(change) {
     if (change < 0.0) {
