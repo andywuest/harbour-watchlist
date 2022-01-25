@@ -47,6 +47,8 @@ const char ING_DIBA_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing
 
 const char ING_DIBA_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/%1?pageNumber=%2&newsCategory=0";
 
+const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/upcoming";
+
 // NetworkReply Property constants
 const char NETWORK_REPLY_PROPERTY_CHART_TYPE[] = "chartType";
 const char NETWORK_REPLY_PROPERTY_EXT_REF_ID[] = "extRefId";

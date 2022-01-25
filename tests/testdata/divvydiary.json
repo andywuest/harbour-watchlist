@@ -1,0 +1,46 @@
+{
+   "dividends": [
+      {
+         "id": 480107,
+         "exDate": "2022-01-13",
+         "payDate": "2022-01-25",
+         "name": "American Financial Group Inc",
+         "symbol": "AFG",
+         "amount": 0.56,
+         "isin": "US0259321042",
+         "wkn": "894969",
+         "currency": "USD"
+      },
+      {
+         "id": 511702,
+         "exDate": "2022-01-21",
+         "payDate": "2022-01-25",
+         "name": "Amundi Money Market Fund - Short Term (USD) - IC (D)",
+         "symbol": "",
+         "amount": 0,
+         "isin": "LU0567780712",
+         "wkn": "A1C4ER",
+         "currency": "USD"
+      },
+      {
+         "id": 477312,
+         "exDate": "2022-01-20",
+         "payDate": "2022-02-25",
+         "name": "Williams-Sonoma Inc",
+         "symbol": "WSM",
+         "amount": 0.71,
+         "isin": "US9699041011",
+         "wkn": "867980",
+         "currency": "USD"
+      }
+   ],
+   "exchangerates": {
+      "AED": 4.149918,
+      "AFN": 117.193447,
+      "YER": 282.744397,
+      "ZAR": 17.205265,
+      "ZMK": 10169.98276,
+      "ZMW": 19.940005,
+      "ZWL": 363.810515
+   }
+}
