@@ -39,10 +39,17 @@ Page {
         case 0:
             marketdataButtonPortrait.isActive = true
             watchlistButtonPortrait.isActive = false
+            dividendsButtonPortrait.isActive = false
             break
         case 1:
             marketdataButtonPortrait.isActive = false
             watchlistButtonPortrait.isActive = true
+            dividendsButtonPortrait.isActive = false
+            break
+        case 2:
+            marketdataButtonPortrait.isActive = false
+            watchlistButtonPortrait.isActive = false
+            dividendsButtonPortrait.isActive = true
             break
         default:
             console.log("Some strange navigation happened!")
@@ -70,6 +77,16 @@ Page {
             viewsSlideshow.opacity = 0
             slideshowVisibleTimer.goToTab(1)
             openTab(1)
+        }
+    }
+
+    function handleDividendsClicked() {
+        if (overviewPage.activeTabId === 2) {
+            watchlistView.scrollToTop()
+        } else {
+            viewsSlideshow.opacity = 0
+            slideshowVisibleTimer.goToTab(2)
+            openTab(2)
         }
     }
 
@@ -199,6 +216,18 @@ Page {
                             height: parent.height
                         }
                     }
+
+                    Item {
+                        id: dividendsColumn
+                        width: viewsSlideshow.width
+                        height: viewsSlideshow.height
+
+                        DividendsView {
+                            id: dividendsView
+                            width: parent.width
+                            height: parent.height
+                        }
+                    }
                 }
 
                 Timer {
@@ -261,7 +290,7 @@ Page {
                     width: parent.width
                     Item {
                         id: marketdataButtonColumn
-                        width: parent.width / 2
+                        width: parent.width / 3
                         height: parent.height - Theme.paddingMedium
                         NavigationRowButton {
                             id: marketdataButtonPortrait
@@ -276,7 +305,7 @@ Page {
                     }
                     Item {
                         id: watchlistButtonColumn
-                        width: parent.width / 2
+                        width: parent.width / 3
                         height: parent.height - navigationRowSeparator.height
                         NavigationRowButton {
                             id: watchlistButtonPortrait
@@ -286,6 +315,21 @@ Page {
 
                             function runOnClick() {
                                 handleWatchlistClicked()
+                            }
+                        }
+                    }
+                    Item {
+                        id: dividendsButtonColumn
+                        width: parent.width / 3
+                        height: parent.height - navigationRowSeparator.height
+                        NavigationRowButton {
+                            id: dividendsButtonPortrait
+                            anchors.top: parent.top
+                            buttonText: qsTr("Dividends")
+                            iconSource: "image://theme/icon-m-date"
+
+                            function runOnClick() {
+                                handleDividendsClicked()
                             }
                         }
                     }

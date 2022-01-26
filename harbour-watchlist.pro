@@ -54,6 +54,7 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
 
 DISTFILES += \
     qml/components/AlarmNotification.qml \
+    qml/components/DividendsView.qml \
     qml/components/EmptyModelColumnLabel.qml \
     qml/components/LabelOnlyRow.qml \
     qml/components/LabelValueRow.qml \
