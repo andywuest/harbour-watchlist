@@ -21,6 +21,9 @@ function renderPriceOnly(price) {
 
 function renderPrice(price, currencyString, marketDataType) {
     var locale = Qt.locale();
+    if (marketDataType && marketDataType === MARKET_DATA_TYPE_DIVIDENDS) {
+        return ((price && price !== 0.0) ? formatPrice(price, locale, DEFAULT_FRACTION_DIGITS) + " " + currencyString : "")
+    }
     if (marketDataType && marketDataType === MARKET_DATA_TYPE_CURRENCY) {
         return ((price && price !== 0.0) ? formatPrice(price, locale, CURRENCY_FRACTION_DIGITS) + " " + currencyString : "")
     }

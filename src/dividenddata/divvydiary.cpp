@@ -53,7 +53,7 @@ QNetworkReply *DivvyDiary::executeGetRequest(const QUrl &url) {
 }
 
 void DivvyDiary::handleFetchDividendDates() {
-    qDebug() << "DivvyDiary::handleSearchStockNews";
+    qDebug() << "DivvyDiary::handleFetchDividendDates";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {

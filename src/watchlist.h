@@ -29,6 +29,7 @@
 #include "securitydata/euroinvestorbackend.h"
 #include "securitydata/ingdibabackend.h"
 #include "securitydata/moscowexchangebackend.h"
+#include "dividenddata/divvydiary.h"
 
 class Watchlist : public QObject {
     Q_OBJECT
@@ -41,6 +42,7 @@ public:
     IngDibaBackend *getIngDibaBackend();
     OnvistaNews *getOnvistaNews();
     IngDibaNews *getIngDibaNews();
+    DivvyDiary *getDivvyDiaryBackend();
 
     Q_INVOKABLE bool isWiFi();
 
@@ -63,6 +65,9 @@ private:
     // news backends
     OnvistaNews *onvistaNews;
     IngDibaNews *ingDibaNews;
+
+    // dividend backends
+    DivvyDiary *divvyDiaryBackend;
 
     QSettings settings;
 };

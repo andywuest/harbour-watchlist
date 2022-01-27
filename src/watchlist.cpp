@@ -31,6 +31,7 @@ Watchlist::Watchlist(QObject *parent)
     // news backends
     onvistaNews = new OnvistaNews(this->networkAccessManager, this);
     ingDibaNews = new IngDibaNews(this->networkAccessManager, this);
+    divvyDiaryBackend = new DivvyDiary(this->networkAccessManager, this);
 }
 
 bool Watchlist::isWiFi() {
@@ -71,4 +72,8 @@ IngDibaNews *Watchlist::getIngDibaNews() {
 
 EuroinvestorMarketDataBackend *Watchlist::getEuroinvestorMarketDataBackend() {
     return this->euroinvestorMarketDataBackend;
+}
+
+DivvyDiary *Watchlist::getDivvyDiaryBackend() {
+    return this->divvyDiaryBackend;
 }

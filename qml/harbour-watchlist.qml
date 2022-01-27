@@ -57,6 +57,10 @@ ApplicationWindow {
         return euroinvestorMarketDataBackend;
     }
 
+    function getDividendBackend() {
+        return divvyDiaryBackend;
+    }
+
     function determineChangeColor(change) {
         // we cannot use the Function directory - because library has no access to Theme
         return Functions.determineChangeColor(change, Theme.primaryColor);

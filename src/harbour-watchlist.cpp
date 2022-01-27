@@ -48,8 +48,9 @@ int main(int argc, char *argv[]) {
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend = watchlist.getEuroinvestorMarketDataBackend();
     context->setContextProperty("euroinvestorMarketDataBackend", euroinvestorMarketDataBackend);
 
-    IngDibaNews *ingDibaNews = watchlist.getIngDibaNews();
-    context->setContextProperty("ingDibaNews", ingDibaNews);
+    context->setContextProperty("ingDibaNews", watchlist.getIngDibaNews());
+
+    context->setContextProperty("divvyDiaryBackend", watchlist.getDivvyDiaryBackend());
 
     context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
 

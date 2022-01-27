@@ -48,23 +48,31 @@ SilicaFlickable {
 //        return dividendsModel.count;
 //    }
 
-//    function connectSlots() {
-//        console.log("connect - slots");
-//        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
-//        dataBackend.quoteResultAvailable.connect(quoteResultHandler);
-//        dataBackend.requestError.connect(errorResultHandler);
-//    }
+    function connectSlots() {
+        Functions.log("[DividendsView] connect - slots");
+        var dataBackend = getDividendBackend();
+        dataBackend.fetchDividendDatesResultAvailable.connect(dividendDatesResultHandler);
+        dataBackend.requestError.connect(errorResultHandler);
+    }
 
-//    function disconnectSlots() {
-//        console.log("disconnect - slots");
-//        var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
-//        dataBackend.quoteResultAvailable.disconnect(quoteResultHandler);
-//        dataBackend.requestError.disconnect(errorResultHandler);
-//    }
+    function disconnectSlots() {
+        Functions.log("[DividendsView] disconnect - slots");
+        var dataBackend = getDividendBackend();
+        dataBackend.fetchDividendDatesResultAvailable.disconnect(dividendDatesResultHandler);
+        dataBackend.requestError.disconnect(errorResultHandler);
+    }
 
-//    function quoteResultHandler(result) {
-//      var jsonResult = JSON.parse(result.toString())
-//      console.log("json result from data backend was: " +result)
+    function dividendDatesResultHandler(result) {
+      var jsonResult = JSON.parse(result.toString())
+      Functions.log("[DividendsView] dividend result: " +result)
+
+      // TODO instead write to DB
+        for (var i = 0; i < jsonResult.dividends.length; i++) {
+            dividendsModel.append(jsonResult.dividends[i])
+            Functions.log("adding " + jsonResult.dividends[i].isin);
+        }
+
+
 //      for (var i = 0; i < jsonResult.length; i++)   {
 //          var stockQuote = jsonResult[i];
 //          var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
@@ -76,16 +84,17 @@ SilicaFlickable {
 //          }
 //      }
 //      reloadAllDividends()
-//      loaded = true;
+        reloadAllDividends();
+      loaded = true;
 
 //      Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
 //      Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
-//    }
+    }
 
-//    function errorResultHandler(result) {
-//        stockUpdateProblemNotification.show(result)
-//        loaded = true;
-//    }
+    function errorResultHandler(result) {
+        dividendDatesUpdateProblemNotification.show(result)
+        loaded = true;
+    }
 
     function updateEmptyModelColumnVisibility() {
         dividendsEmptyModelColumnLabel.isVisible = (dividendsModel.count === 0);
@@ -113,7 +122,7 @@ SilicaFlickable {
 //            connectSlots();
 //        }
 
-        dividendsModel.clear()
+        // dividendsModel.clear()
 //        for (var i = 0; i < stocks.length; i++) {
 //            dividendsModel.append(stocks[i])
 //        }
@@ -125,8 +134,9 @@ SilicaFlickable {
 //        }
     }
 
-//    function updateQuotes() {
-//        console.log("updateQuotes");
+    function updateDividendDates() {
+        Functions.log("[DividendsView] - DividendDates");
+
 
 //        var numberOfQuotes = dividendsModel.count
 
@@ -139,7 +149,8 @@ SilicaFlickable {
 //            loaded = false;
 //            getSecurityDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
 //        }
-//    }
+        getDividendBackend().fetchDividendDates();
+    }
 
 //    // TODO consolidate methods updateReferencePriceInModel and updateNotesInModel
 //    function updateReferencePriceInModel(securityId, referencePrice) {
@@ -165,7 +176,7 @@ SilicaFlickable {
 //    }
 
     AppNotification {
-        id: stockUpdateProblemNotification
+        id: dividendDatesUpdateProblemNotification
     }
 
     AlarmNotification {
@@ -269,12 +280,12 @@ SilicaFlickable {
 
                         // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
                         Column {
-                            id: stockQuoteColumn
+                            id: dividendColumn
                             width: parent.width // - (2 * Theme.horizontalPageMargin)
                             // x: Theme.horizontalPageMargin
                             height: firstRow.height // + changeRow.height
-                            /* + secondRow.height*/ + changeValuesRow.height
-                                    + (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
+                            /* + secondRow.height*/ + dividendDateRow.height
+//                                    + (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
 
                             anchors.verticalCenter: parent.verticalCenter
 
@@ -287,7 +298,7 @@ SilicaFlickable {
                                     id: stockQuoteName
                                     width: parent.width * 8 / 10
                                     height: parent.height
-                                    text: name
+                                    text: isin
                                     truncationMode: TruncationMode.Fade// TODO check for very long texts
                                     // elide: Text.ElideRight
                                     color: Theme.primaryColor
@@ -300,7 +311,7 @@ SilicaFlickable {
                                     id: stockQuoteChange
                                     width: parent.width * 2 / 10
                                     height: parent.height
-                                    text: Functions.renderPrice(price, currencySymbol);
+                                    text: Functions.renderPrice(amount, currency, Constants.MARKET_DATA_TYPE_DIVIDENDS);
                                     color: Theme.highlightColor
                                     font.pixelSize: Theme.fontSizeSmall
                                     font.bold: true
@@ -325,14 +336,14 @@ SilicaFlickable {
 //                            }
 
                             Row {
-                                id: changeValuesRow
+                                id: dividendDateRow
                                 width: parent.width
                                 height: Theme.fontSizeExtraSmall + Theme.paddingSmall
 
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: Functions.determineQuoteDate(quoteTimestamp)
+                                    text: "" //  Functions.determineQuoteDate(quoteTimestamp)
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignLeft
@@ -341,38 +352,40 @@ SilicaFlickable {
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: Functions.renderChange(price, changeRelative, '%')
-                                    color: determineChangeColor(changeRelative)
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    horizontalAlignment: Text.AlignRight
-                                }
-                            }
-
-                            Row {
-                                id: performanceRow
-                                width: parent.width
-                                visible: watchlistSettings.showPerformanceRow
-                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
-                                Text {
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    //: DividendsView Performance label
-                                    text: qsTr("Performance")
+                                    text: payDate // Functions.renderChange(price, changeRelative, '%')
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
-                                    horizontalAlignment: Text.AlignLeft
-                                }
-
-                                Text {
-                                    width: parent.width / 2
-                                    height: parent.height
-                                    text: Functions.renderChange(referencePrice, performanceRelative, '%')
-                                    color: determineChangeColor(performanceRelative)
-                                    font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight
                                 }
                             }
+
+//                            Row {
+//                                id: performanceRow
+//                                width: parent.width
+//                                visible: watchlistSettings.showPerformanceRow
+//                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+//                                Text {
+//                                    width: parent.width / 2
+//                                    height: parent.height
+//                                    //: DividendsView Performance label
+//                                    text: qsTr("Performance")
+//                                    color: Theme.primaryColor
+//                                    font.pixelSize: Theme.fontSizeExtraSmall
+//                                    horizontalAlignment: Text.AlignLeft
+//                                }
+
+//                                Text {
+//                                    width: parent.width / 2
+//                                    height: parent.height
+//                                    text: Functions.renderChange(referencePrice, performanceRelative, '%')
+//                                    color: determineChangeColor(performanceRelative)
+//                                    font.pixelSize: Theme.fontSizeExtraSmall
+//                                    horizontalAlignment: Text.AlignRight
+//                                }
+//                            }
+
+
                         }
                     }
 
@@ -405,7 +418,7 @@ SilicaFlickable {
     }
 
     Component.onCompleted: {
-//        connectSlots();
+        connectSlots();
         reloadAllDividends();
         loaded = true;
     }

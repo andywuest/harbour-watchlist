@@ -171,6 +171,12 @@ Page {
                     watchlistView.updateQuotes()
                 }
             }
+            MenuItem {
+                //: OverviewPage refresh all quotes menu item
+                text: qsTr("Refresh dividend dates")
+                visible: activeTabId == 2/* && watchlistView.isWatchlistNotEmpty()*/
+                onClicked: dividendsView.updateDividendDates()
+            }
         }
 
         Column {
