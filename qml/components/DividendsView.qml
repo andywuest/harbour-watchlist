@@ -66,11 +66,25 @@ SilicaFlickable {
       var jsonResult = JSON.parse(result.toString())
       Functions.log("[DividendsView] dividend result: " +result)
 
+      Database.deleteAllTableEntries("dividends");
+
       // TODO instead write to DB
         for (var i = 0; i < jsonResult.dividends.length; i++) {
-            dividendsModel.append(jsonResult.dividends[i])
-            Functions.log("adding " + jsonResult.dividends[i].isin);
+            Functions.log("[DividendsView] adding " + jsonResult.dividends[i].isin);
+            Database.persistDividends(jsonResult.dividends[i]);
         }
+
+//        var marketData = jsonResult[i];
+//        var loadedMarketData = Database.loadMarketDataBy('' + marketData.extRefId)
+//        if (loadedMarketData) {
+//            // copy id / typeId
+//            marketData.id = loadedMarketData.id;
+//            marketData.typeId = loadedMarketData.typeId;
+//            // persist
+//            Database.persistMarketdata(marketData)
+//        }
+
+
 
 
 //      for (var i = 0; i < jsonResult.length; i++)   {
@@ -83,9 +97,9 @@ SilicaFlickable {
 //              Database.persistStockData(stockQuote, watchlistId)
 //          }
 //      }
-//      reloadAllDividends()
+
         reloadAllDividends();
-      loaded = true;
+        loaded = true;
 
 //      Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
 //      Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
@@ -103,7 +117,8 @@ SilicaFlickable {
     function reloadAllDividends() {
         Functions.log("[DividendsView] reloading all dividends ");
 //        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
-//        var stocks = Database.loadAllStockData(watchlistId, sortOrder);
+        var sortOrder = " exDateInteger ASC";
+        var dividends = Database.loadAllDividendData(watchlistId, sortOrder);
 
 //        // stockQuotePage.
 //        maxChange = Functions.calculateMaxChange(stocks)
@@ -122,10 +137,10 @@ SilicaFlickable {
 //            connectSlots();
 //        }
 
-        // dividendsModel.clear()
-//        for (var i = 0; i < stocks.length; i++) {
-//            dividendsModel.append(stocks[i])
-//        }
+        dividendsModel.clear()
+        for (var i = 0; i < dividends.length; i++) {
+            dividendsModel.append(dividends[i])
+        }
 
         updateEmptyModelColumnVisibility();
 
@@ -149,6 +164,7 @@ SilicaFlickable {
 //            loaded = false;
 //            getSecurityDataBackend(watchlistSettings.dataBackend).searchQuote(stocks.join(','));
 //        }
+        loaded = false;
         getDividendBackend().fetchDividendDates();
     }
 
@@ -298,7 +314,7 @@ SilicaFlickable {
                                     id: stockQuoteName
                                     width: parent.width * 8 / 10
                                     height: parent.height
-                                    text: isin
+                                    text: name
                                     truncationMode: TruncationMode.Fade// TODO check for very long texts
                                     // elide: Text.ElideRight
                                     color: Theme.primaryColor

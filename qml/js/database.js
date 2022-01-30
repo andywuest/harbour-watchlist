@@ -34,6 +34,11 @@ function executeInsertUpdateDeleteForTable(tableName, query, parameters, success
     return result
 }
 
+function deleteAllTableEntries(tableName) {
+    var query = 'DELETE FROM ' + tableName;
+    executeInsertUpdateDeleteForTable(tableName, query, [], "", "");
+}
+
 function deleteTableEntry(id, tableName) {
     var query = 'DELETE FROM ' + tableName + ' WHERE id = ?';
     var parameters = [id];
@@ -53,6 +58,7 @@ function resetApplication() {
             tx.executeSql('DROP TABLE IF EXISTS alarm');
             tx.executeSql('DROP TABLE IF EXISTS marketdata');
             tx.executeSql('DROP TABLE IF EXISTS stockdata_ext');
+            tx.executeSql('DROP TABLE IF EXISTS dividends');
         })
         console.log("Changing DB Version from " + currentDbVersion
                     + " to \"\" to be able to start from scratch.")
@@ -130,6 +136,21 @@ function initApplicationTables() {
                 tx.executeSql(
                             'CREATE TABLE IF NOT EXISTS stockdata_ext'
                             + ' (id INTEGER, notes text, referencePrice real DEFAULT 0.0, PRIMARY KEY (id))');
+            })
+        }
+
+        db = getOpenDatabase()
+        // version update 1.1 -> 1.2
+        if (db.version === "1.1") {
+            console.log("Performing DB update from 1.1 to 1.2!")
+            db.changeVersion("1.1", "1.2", function (tx) {
+                // dividends
+                tx.executeSql(
+                            'CREATE TABLE IF NOT EXISTS dividends'
+                            + ' (id INTEGER NOT NULL, exDate text, exDateInteger INTEGER, payDate text, '
+                            + ' payDateInteger INTEGER, symbol text, isin text, wkn text, '
+                            + ' amount real, currency text, '
+                            + ' PRIMARY KEY(id))');
             })
         }
 
@@ -319,6 +340,17 @@ function getCurrentWatchlistId() {
     return result;
 }
 
+//id text NOT NULL, exDate text, payDate text, symbol text, isin text, wkn text, '
+//                            + ' amount real, currency text,
+
+function persistDividends(data) {
+    var query = 'INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, '
+                        + 'symbol, isin, wkn, amount, currency) '
+                        + 'VALUES (?, 1, ?, 2, ?, ?, ?, ?, ?)';
+    var parameters = [data.exDate, data.payDate, data.symbol, data.isin, data.wkn, data.amount, data.currency];
+    return executeInsertUpdateDeleteForTable("dividends", query, parameters, qsTr("Dividend data added"), qsTr("Error adding dividend data"));
+}
+
 function persistMarketdata(data) {
     var query = 'INSERT OR REPLACE INTO marketdata(id, typeId, name, longName, extRefId, currency, symbol, stockMarketSymbol, stockMarketName, '
                         + 'last, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp) '
@@ -468,6 +500,41 @@ function loadAllMarketData() {
     return result;
 }
 
+function loadAllDividendData(watchlistId, sortString) {
+    var result = [];
+    try {
+        var db = getOpenDatabase();
+        db.transaction(function (tx) {
+            // use COALESCE to set null values to default values
+            var query = 'SELECT d.exDate, d.payDate, d.symbol, d.wkn, d.isin, d.amount, d.currency, s.name '
+                    + ' FROM stockdata s '
+                    + ' INNER JOIN dividends d '
+                    + ' ON s.isin = d.isin '
+                    + ' ORDER BY ' + sortString;
+
+            console.log("[loadDividendData] query : " + query);
+            var dbResult = tx.executeSql(query, [])
+            // create response object
+            if (dbResult.rows.length > 0) {
+                for (var i = 0; i < dbResult.rows.length; i++) {
+                    var row = dbResult.rows.item(i);
+                    var entry = {};
+                    log("[loadDividendData] row : " + row.name + ", change rel : " + row.changeRelative);
+                    entry.exDate = row.exDate;
+                    entry.payDate = row.payDate;
+                    entry.name = row.name;
+                    entry.amount = row.amount;
+                    entry.currency = row.currency;
+                    result.push(entry);
+                }
+            }
+        });
+    } catch (err) {
+        console.log("Error loading dividend data from database: " + err)
+    }
+    return result;
+}
+
 function loadAllStockData(watchListId, sortString) { // TODO implement watchlistid
     var result = [];
     try {
@@ -485,7 +552,7 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     // columns from stockdata_ext
                     + ' COALESCE(se.notes, "") as notes, '
                     + ' COALESCE(se.referencePrice, 0.0) as referencePrice, '
-                    + ' ROUND(100 * (price - COALESCE(referencePrice, 0.0)) / COALESCE(referencePrice, 0.0), 2) as performanceRelative '
+                    + ' COALESCE(ROUND(100 * (price - COALESCE(referencePrice, 0.0)) / COALESCE(referencePrice, 0.0), 2), 0.0) as performanceRelative '
                     + ' FROM stockdata s '
                     + ' LEFT OUTER JOIN stockdata_ext se '
                     + ' ON s.id = se.id '
