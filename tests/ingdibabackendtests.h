@@ -20,10 +20,10 @@
 
 #include <QObject>
 
+#include "src/dividenddata/divvydiary.h"
 #include "src/ingdibautils.h"
 #include "src/newsdata/ingdibanews.h"
 #include "src/securitydata/ingdibabackend.h"
-#include "src/dividenddata/divvydiary.h"
 
 class IngDibaBackendTests : public QObject {
     Q_OBJECT
@@ -50,7 +50,6 @@ private slots:
 
     // DivvDiary Dividends Backend
     void testDivvDiaryDividendsProcessSearchResult();
-
 };
 
 #endif // ING_DIBA_BACKEND_TEST_H

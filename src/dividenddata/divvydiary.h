@@ -21,6 +21,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 class DivvyDiary : public QObject {
     Q_OBJECT
@@ -29,7 +31,7 @@ public:
     ~DivvyDiary();
     Q_INVOKABLE void fetchDividendDates();
 
-    Q_SIGNAL void fetchDividendDatesResultAvailable(const QString &reply);
+    Q_SIGNAL void fetchDividendDatesResultAvailable();
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
@@ -42,6 +44,11 @@ public slots:
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
+    QSqlDatabase db;
+
+    void initializeDatabase();
+
+    void executeQuery(QString &queryString, QMap<QString, QVariant> dataMap);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);

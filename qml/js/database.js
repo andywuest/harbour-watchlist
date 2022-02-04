@@ -519,7 +519,7 @@ function loadAllDividendData(watchlistId, sortString) {
                 for (var i = 0; i < dbResult.rows.length; i++) {
                     var row = dbResult.rows.item(i);
                     var entry = {};
-                    log("[loadDividendData] row : " + row.name + ", change rel : " + row.changeRelative);
+                    log("[loadDividendData] row : " + row.name + ", amount : " + row.amount);
                     entry.exDate = row.exDate;
                     entry.payDate = row.payDate;
                     entry.name = row.name;

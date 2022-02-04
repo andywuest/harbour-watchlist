@@ -62,47 +62,10 @@ SilicaFlickable {
         dataBackend.requestError.disconnect(errorResultHandler);
     }
 
-    function dividendDatesResultHandler(result) {
-      var jsonResult = JSON.parse(result.toString())
-      Functions.log("[DividendsView] dividend result: " +result)
-
-      Database.deleteAllTableEntries("dividends");
-
-      // TODO instead write to DB
-        for (var i = 0; i < jsonResult.dividends.length; i++) {
-            Functions.log("[DividendsView] adding " + jsonResult.dividends[i].isin);
-            Database.persistDividends(jsonResult.dividends[i]);
-        }
-
-//        var marketData = jsonResult[i];
-//        var loadedMarketData = Database.loadMarketDataBy('' + marketData.extRefId)
-//        if (loadedMarketData) {
-//            // copy id / typeId
-//            marketData.id = loadedMarketData.id;
-//            marketData.typeId = loadedMarketData.typeId;
-//            // persist
-//            Database.persistMarketdata(marketData)
-//        }
-
-
-
-
-//      for (var i = 0; i < jsonResult.length; i++)   {
-//          var stockQuote = jsonResult[i];
-//          var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
-//          if (stock) {
-//              // copy id
-//              stockQuote.id = stock.id;
-//              // persist
-//              Database.persistStockData(stockQuote, watchlistId)
-//          }
-//      }
-
+    function dividendDatesResultHandler() {
+        Functions.log("[DividendsView] dividend data updated");
         reloadAllDividends();
         loaded = true;
-
-//      Database.loadTriggeredAlarms(watchlistId, true).forEach(stockAlarmNotification.createMinimumAlarm);
-//      Database.loadTriggeredAlarms(watchlistId, false).forEach(stockAlarmNotification.createMaximumAlarm);
     }
 
     function errorResultHandler(result) {
@@ -116,8 +79,7 @@ SilicaFlickable {
 
     function reloadAllDividends() {
         Functions.log("[DividendsView] reloading all dividends ");
-//        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
-        var sortOrder = " exDateInteger ASC";
+        var sortOrder = " payDateInteger ASC";
         var dividends = Database.loadAllDividendData(watchlistId, sortOrder);
 
 //        // stockQuotePage.
@@ -190,6 +152,7 @@ SilicaFlickable {
 //            }
 //        }
 //    }
+
 
     AppNotification {
         id: dividendDatesUpdateProblemNotification

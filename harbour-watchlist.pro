@@ -14,6 +14,9 @@ TARGET = harbour-watchlist
 
 CONFIG += sailfishapp
 
+QT += sql \
+    core
+
 SOURCES += \
     src/securitydata/euroinvestorbackend.cpp \
     src/securitydata/moscowexchangebackend.cpp \
