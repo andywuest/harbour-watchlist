@@ -28,7 +28,7 @@ class DivvyDiary : public QObject {
     Q_OBJECT
 public:
     explicit DivvyDiary(QNetworkAccessManager *manager, QObject *parent = nullptr);
-    ~DivvyDiary();
+    ~DivvyDiary() override;
     Q_INVOKABLE void fetchDividendDates();
 
     Q_SIGNAL void fetchDividendDatesResultAvailable();
@@ -48,7 +48,7 @@ private:
 
     void initializeDatabase();
 
-    void executeQuery(QString &queryString, QMap<QString, QVariant> dataMap);
+    void executeQuery(QString &queryString, QMap<QString, QVariant> &dataMap);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);

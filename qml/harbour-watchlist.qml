@@ -37,6 +37,7 @@ ApplicationWindow {
         property int dataBackend: Constants.BACKEND_EUROINVESTOR
         property int newsDataDownloadStrategy: Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI
         property bool showPerformanceRow: false
+        property date dividendsDataLastUpdate
     }
 
     function getSecurityDataBackend(backendId) {

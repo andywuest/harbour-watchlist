@@ -140,7 +140,7 @@ QString DivvyDiary::processSearchResult(QByteArray searchReply) {
     return dataToString;
 }
 
-void DivvyDiary::executeQuery(QString &queryString, QMap<QString, QVariant> dataMap) {
+void DivvyDiary::executeQuery(QString &queryString, QMap<QString, QVariant> &dataMap) {
     if (db.open()) {
         QSqlQuery query;
         query.prepare(queryString);
