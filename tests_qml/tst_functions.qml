@@ -32,6 +32,8 @@ TestCase {
         compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_COMMODITY), "0,541234 EUR")
         compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_CURRENCY), "0,5412 EUR")
         compare(Functions.renderPrice(12.1213, 'EUR', Constants.MARKET_DATA_TYPE_CRYPTO), "12,12 EUR")
+        compare(Functions.renderPrice(12.1213, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "12,12 EUR")
+        compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "0,54 EUR")
     }
 
 }
