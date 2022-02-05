@@ -90,6 +90,14 @@ Page {
         }
     }
 
+    function isDividendUpdateLongEnoughInThePast() {
+        // allow updates every 14 days
+        if (watchlistSettings.dividendsDataLastUpdate) {
+            return (watchlistSettings.dividendsDataLastUpdate + 14 < new Date());
+        }
+        return true;
+    }
+
     function reloadOverviewSecurities() {
         console.log("reload Overview Securities !");
         watchlistView.reloadAllStocks(); // reload to get the new extRefId
@@ -174,7 +182,7 @@ Page {
             MenuItem {
                 //: OverviewPage refresh all quotes menu item
                 text: qsTr("Refresh dividend dates")
-                visible: activeTabId == 2/* && watchlistView.isWatchlistNotEmpty()*/
+                visible: activeTabId == 2 && isDividendUpdateLongEnoughInThePast()
                 onClicked: dividendsView.updateDividendDates()
             }
         }

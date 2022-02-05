@@ -340,17 +340,6 @@ function getCurrentWatchlistId() {
     return result;
 }
 
-//id text NOT NULL, exDate text, payDate text, symbol text, isin text, wkn text, '
-//                            + ' amount real, currency text,
-
-function persistDividends(data) {
-    var query = 'INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, '
-                        + 'symbol, isin, wkn, amount, currency) '
-                        + 'VALUES (?, 1, ?, 2, ?, ?, ?, ?, ?)';
-    var parameters = [data.exDate, data.payDate, data.symbol, data.isin, data.wkn, data.amount, data.currency];
-    return executeInsertUpdateDeleteForTable("dividends", query, parameters, qsTr("Dividend data added"), qsTr("Error adding dividend data"));
-}
-
 function persistMarketdata(data) {
     var query = 'INSERT OR REPLACE INTO marketdata(id, typeId, name, longName, extRefId, currency, symbol, stockMarketSymbol, stockMarketName, '
                         + 'last, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp) '
