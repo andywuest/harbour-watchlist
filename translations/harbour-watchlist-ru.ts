@@ -110,6 +110,23 @@ AboutPage title - about text title</extracomment>
     </message>
 </context>
 <context>
+    <name>DividendsView</name>
+    <message>
+        <source>Dividend dates</source>
+        <extracomment>DividendsView page header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The dividend dates have not yet been loaded. Please load them via the pulley menu.</source>
+        <extracomment>DividendsView empty marketdata label</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last update: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GraphData</name>
     <message>
         <source>No data - Click to fetch data</source>
@@ -196,6 +213,15 @@ AboutPage title - about text title</extracomment>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Добавить котировки</translation>
+    </message>
+    <message>
+        <source>Dividends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh dividend dates</source>
+        <extracomment>OverviewPage refresh all quotes menu item</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -809,6 +835,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Error updating stock referencePrice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dividend data added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error adding dividend data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
