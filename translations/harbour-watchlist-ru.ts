@@ -837,14 +837,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Error updating stock referencePrice</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Dividend data added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error adding dividend data</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>functions</name>

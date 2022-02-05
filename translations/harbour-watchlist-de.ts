@@ -207,59 +207,59 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="129"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="137"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="134"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="142"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="142"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Marktdaten hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="158"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>Marktdaten aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="159"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="167"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>Aktie hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="167"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="175"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Alle Kurse aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="176"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="184"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Dividendentermine aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="304"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="312"/>
         <source>Market data</source>
         <translation>Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="319"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="327"/>
         <source>Watchlist</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="334"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="342"/>
         <source>Dividends</source>
         <translation>Dividenden</translation>
     </message>
@@ -997,32 +997,22 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Fehler beim Migrieren der Watchlist-Daten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="351"/>
-        <source>Dividend data added</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/database.js" line="351"/>
-        <source>Error adding dividend data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/database.js" line="360"/>
+        <location filename="../qml/js/database.js" line="349"/>
         <source>Market data added</source>
         <translation>Marktdaten hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="360"/>
+        <location filename="../qml/js/database.js" line="349"/>
         <source>Error adding market data</source>
         <translation>Fehler beim Hinzufügen von Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="384"/>
+        <location filename="../qml/js/database.js" line="373"/>
         <source>Stock added</source>
         <translation>Aktie hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="386"/>
+        <location filename="../qml/js/database.js" line="375"/>
         <source>Error adding stock</source>
         <translation>Fehler beim Hinzufügen der Aktie</translation>
     </message>
