@@ -27,6 +27,7 @@ import "../js/database.js" as Database
 Page {
     id: overviewPage
 
+    readonly property int dividendsUpdateDays: 2 // allow update only every x days
     property int watchlistId: 1
     allowedOrientations: Orientation.Portrait // so far only Portait mode
 
@@ -91,10 +92,12 @@ Page {
     }
 
     function isDividendUpdateLongEnoughInThePast() {
-        // allow updates every 14 days
-        if (watchlistSettings.dividendsDataLastUpdate) {
-            return (watchlistSettings.dividendsDataLastUpdate + 14 < new Date());
-        }
+        // allow updates every x days
+//        console.log("last update : " + watchlistSettings.dividendsDataLastUpdate)
+//        console.log("now : " + new Date())
+//        if (watchlistSettings.dividendsDataLastUpdate) {
+//            return (watchlistSettings.dividendsDataLastUpdate > new Date() - 14);
+//        }
         return true;
     }
 
@@ -340,7 +343,7 @@ Page {
                             id: dividendsButtonPortrait
                             anchors.top: parent.top
                             buttonText: qsTr("Dividends")
-                            iconSource: "image://theme/icon-m-date"
+                            iconSource: "image://theme/icon-m-events"
 
                             function runOnClick() {
                                 handleDividendsClicked()

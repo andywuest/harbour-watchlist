@@ -243,7 +243,7 @@ Page {
                             id: chartsButtonPortrait
                             anchors.top: parent.top
                             buttonText: qsTr("Charts")
-                            iconSource: "image://theme/icon-m-note"
+                            iconSource: "image://theme/icon-m-diagnostic"
 
                             function runOnClick() {
                                 handleChartsClicked()
