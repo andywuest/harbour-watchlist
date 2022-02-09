@@ -93,8 +93,8 @@ Page {
 
     function isDividendUpdateLongEnoughInThePast() {
         // allow updates every x days
-//        console.log("last update : " + watchlistSettings.dividendsDataLastUpdate)
-//        console.log("now : " + new Date())
+        console.log("last update : " + watchlistSettings.dividendsDataLastUpdate)
+        console.log("now : " + new Date())
 //        if (watchlistSettings.dividendsDataLastUpdate) {
 //            return (watchlistSettings.dividendsDataLastUpdate > new Date() - 14);
 //        }

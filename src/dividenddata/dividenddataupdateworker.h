@@ -43,7 +43,8 @@ public:
 signals:
     void updateCompleted(int);
 
-public slots:
+protected:
+    QString convertCurrency(const QString &currencyString);
 
 private:
     QSqlDatabase database;

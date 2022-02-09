@@ -214,7 +214,7 @@ SilicaFlickable {
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: ""
+                                    text: payDate
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignLeft
@@ -223,7 +223,7 @@ SilicaFlickable {
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: payDate
+                                    text: "TODO-summe"
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight

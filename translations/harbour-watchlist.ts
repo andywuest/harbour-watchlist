@@ -207,59 +207,59 @@ AboutPage title - about text title</extracomment>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="144"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="140"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="149"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="145"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="157"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="153"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="165"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="161"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="174"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="170"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="182"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="178"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="191"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="187"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="319"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="315"/>
         <source>Market data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="334"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="330"/>
         <source>Watchlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="349"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="345"/>
         <source>Dividends</source>
         <translation type="unfinished"></translation>
     </message>

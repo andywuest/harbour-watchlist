@@ -92,7 +92,7 @@ void DividendDataUpdateWorker::performUpdate() {
             dataMap.insert(":wkn", dividendsObject["wkn"].toString());
             dataMap.insert(":symbol", dividendsObject["symbol"].toString());
             dataMap.insert(":amount", dividendsObject["amount"].toDouble());
-            dataMap.insert(":currency", dividendsObject["currency"].toString());
+            dataMap.insert(":currency", convertCurrency(dividendsObject["currency"].toString()));
 
             executeQuery(query, dataMap);
             rows++;
@@ -129,4 +129,14 @@ void DividendDataUpdateWorker::executeQuery(const QString &queryString, const QM
     } else {
         qDebug() << "Cant open DB";
     }
+}
+
+QString DividendDataUpdateWorker::convertCurrency(const QString &currencyString) {
+    if (QString("EUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString("\u20AC");
+    }
+    if (QString("USD").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString("$");
+    }
+    return currencyString;
 }
