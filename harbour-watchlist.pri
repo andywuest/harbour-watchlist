@@ -1,4 +1,5 @@
 HEADERS += $$PWD/src/securitydata/ingdibabackend.h \
+        $$PWD/src/dividenddata/dividenddataupdateworker.h \
         $$PWD/src/dividenddata/divvydiary.h \
         $$PWD/src/ingdibautils.h \
         $$PWD/src/securitydata/abstractdatabackend.h \
@@ -8,6 +9,7 @@ HEADERS += $$PWD/src/securitydata/ingdibabackend.h \
         $$PWD/src/constants.h
 
 SOURCES += $$PWD/src/securitydata/ingdibabackend.cpp \
+            $$PWD/src/dividenddata/dividenddataupdateworker.cpp \
             $$PWD/src/dividenddata/divvydiary.cpp \
             $$PWD/src/ingdibautils.cpp \
             $$PWD/src/securitydata/abstractdatabackend.cpp \

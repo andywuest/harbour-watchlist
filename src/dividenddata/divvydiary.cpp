@@ -24,35 +24,21 @@
 #include <QJsonObject>
 #include <QUrl>
 
-#include <QQmlApplicationEngine>
-#include <QSqlError>
-#include <QUrlQuery>
-
 DivvyDiary::DivvyDiary(QNetworkAccessManager *manager, QObject *parent)
     : QObject(parent) {
     qDebug() << "Initializing DivvyDiary ...";
     this->manager = manager;
 
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    connect(&dividendDataUpdateWorker, SIGNAL(updateCompleted(int)), this, SLOT(handleDividendDataUpdateCompleted(int)));
 }
 
 DivvyDiary::~DivvyDiary() {
     qDebug() << "Shutting down DivvyDiary ...";
 }
 
-void DivvyDiary::initializeDatabase() {
-    if (db.databaseName().isEmpty()) {
-        QQmlApplicationEngine engine;
-        qDebug() << "path : " << engine.offlineStoragePath();
-
-        // https://lists.qt-project.org/pipermail/interest/2016-March/021316.html
-        QString path(engine.offlineStoragePath() + "/Databases/"
-                     + QCryptographicHash::hash("harbour-watchlist", QCryptographicHash::Md5).toHex() + ".sqlite");
-
-        qDebug() << "path : " << path;
-
-        db.setDatabaseName(path);
-    }
+void DivvyDiary::handleDividendDataUpdateCompleted(int rows) {
+    qDebug() << "DivvyDiary::handleDividendDataUpdateCompleted - rows : " << rows;
+    emit fetchDividendDatesResultAvailable(rows);
 }
 
 void DivvyDiary::fetchDividendDates() {
@@ -81,88 +67,11 @@ void DivvyDiary::handleFetchDividendDates() {
         return;
     }
 
-    processSearchResult(reply->readAll());
-    emit fetchDividendDatesResultAvailable();
-}
-
-QString DivvyDiary::processSearchResult(QByteArray searchReply) {
-    initializeDatabase();
-
-    QMap<QString, QVariant> emptyMap;
-    QString deleteQuery = QString("DELETE FROM dividends");
-
-    executeQuery(deleteQuery, emptyMap);
-
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
-    if (jsonDocument.isObject()) {
-        QJsonObject rootObject = jsonDocument.object();
-        QJsonArray dividendsArray = rootObject["dividends"].toArray();
-        rootObject.remove("exchangerates");
-
-        // TODO run in worker
-        foreach (const QJsonValue &dividendsEntry, dividendsArray) {
-            QJsonObject dividendsObject = dividendsEntry.toObject();
-
-            // add new ones
-            QDate payDate = QDate::fromString(dividendsObject["payDate"].toString(), "yyyy-MM-dd");
-            QDate exDate = QDate::fromString(dividendsObject["exDate"].toString(), "yyyy-MM-dd");
-            QDateTime payDateTime = QDateTime(payDate, QTime(0, 0), Qt::LocalTime);
-            QDateTime exDateTime = QDateTime(exDate, QTime(0, 0), Qt::LocalTime);
-
-            QString query = QString("INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
-                                    "symbol, amount, currency) ")
-                            + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
-                                      ":symbol, :amount, :currency)");
-
-            QMap<QString, QVariant> dataMap;
-            dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":payDate", payDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":exDateInteger", exDateTime.toMSecsSinceEpoch());
-            dataMap.insert(":payDateInteger", payDateTime.toMSecsSinceEpoch());
-            dataMap.insert(":isin", dividendsObject["isin"].toString());
-            dataMap.insert(":wkn", dividendsObject["wkn"].toString());
-            dataMap.insert(":symbol", dividendsObject["symbol"].toString());
-            dataMap.insert(":amount", dividendsObject["amount"].toDouble());
-            dataMap.insert(":currency", dividendsObject["currency"].toString());
-
-            executeQuery(query, dataMap);
-        }
+    while (this->dividendDataUpdateWorker.isRunning()) {
+        this->dividendDataUpdateWorker.requestInterruption();
     }
-
-    if (db.open()) {
-        db.commit();
-        db.close();
-    }
-
-    QString dataToString(jsonDocument.toJson());
-
-    return dataToString;
-}
-
-void DivvyDiary::executeQuery(QString &queryString, QMap<QString, QVariant> &dataMap) {
-    if (db.open()) {
-        QSqlQuery query;
-        query.prepare(queryString);
-
-        if (!dataMap.empty()) {
-            for (QString &key : dataMap.keys()) {
-                query.bindValue(key, dataMap.value(key));
-            }
-        }
-
-        if (!query.exec()) {
-            qDebug() << "SQL Statement Error" << query.lastError();
-        } else {
-            db.commit();
-        }
-
-        db.close();
-
-        // qDebug() << " executed query : " << queryString;
-    } else {
-        qDebug() << "Cant open DB";
-    }
+    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()));
+    this->dividendDataUpdateWorker.start();
 }
 
 void DivvyDiary::handleRequestError(QNetworkReply::NetworkError error) {

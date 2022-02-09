@@ -53,8 +53,8 @@ SilicaFlickable {
         dataBackend.requestError.disconnect(errorResultHandler);
     }
 
-    function dividendDatesResultHandler() {
-        Functions.log("[DividendsView] dividend data updated");
+    function dividendDatesResultHandler(rows) {
+        Functions.log("[DividendsView] dividend data updated - number of rows : " + rows);
 
         watchlistSettings.dividendsDataLastUpdate = new Date();
         dividendsHeader.description = getLastUpdateString();

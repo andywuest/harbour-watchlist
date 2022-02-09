@@ -21,8 +21,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
-#include <QSqlDatabase>
-#include <QSqlQuery>
+
+#include "dividenddataupdateworker.h"
 
 class DivvyDiary : public QObject {
     Q_OBJECT
@@ -31,20 +31,18 @@ public:
     ~DivvyDiary() override;
     Q_INVOKABLE void fetchDividendDates();
 
-    Q_SIGNAL void fetchDividendDatesResultAvailable();
+    Q_SIGNAL void fetchDividendDatesResultAvailable(int rows);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
-
-protected:
-    QString processSearchResult(QByteArray searchReply);
-
-public slots:
+    void dividendDataUpdateSuccessful(const QVariantList &result);
 
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
-    QSqlDatabase db;
+
+    // worker - separate thread since expensive
+    DividendDataUpdateWorker dividendDataUpdateWorker;
 
     void initializeDatabase();
 
@@ -53,6 +51,7 @@ private:
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);
     void handleFetchDividendDates();
+    void handleDividendDataUpdateCompleted(int);
 
 #ifdef UNIT_TEST
     friend class IngDibaBackendTests; // to test non public methods
