@@ -25,7 +25,7 @@ class IngDibaUtils {
 public:
     IngDibaUtils() = default;
 
-    static QDateTime convertTimestampToLocalTimestamp(const QString &utcDateTimeString, QTimeZone timeZone);
+    static QDateTime convertTimestampToLocalTimestamp(const QString &utcDateTimeString, const QTimeZone &timeZone);
 };
 
 #endif // ING_DIBA_UTILS_H

@@ -66,7 +66,7 @@ protected:
 
     QNetworkReply *executeGetRequest(const QUrl &url);
     QDate getStartDateForChart(const int chartType);
-    QString convertToDatabaseDateTimeFormat(const QDateTime time);
+    QString convertToDatabaseDateTimeFormat(const QDateTime &time);
     void connectErrorSlot(QNetworkReply *reply);
 
 protected slots:

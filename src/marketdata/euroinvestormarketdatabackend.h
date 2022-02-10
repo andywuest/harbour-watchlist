@@ -10,7 +10,7 @@ const char API_MARKET_DATA[] = "https://api.euroinvestor.dk/instruments?ids=";
 class EuroinvestorMarketDataBackend : public QObject {
     Q_OBJECT
 public:
-    explicit EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent = 0);
+    explicit EuroinvestorMarketDataBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~EuroinvestorMarketDataBackend();
 
     Q_INVOKABLE void lookupMarketData(const QString &marketDataIds);

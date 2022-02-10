@@ -80,7 +80,7 @@ QDate AbstractDataBackend::getStartDateForChart(const int chartType) {
     return startDate;
 }
 
-QString AbstractDataBackend::convertToDatabaseDateTimeFormat(const QDateTime time) {
+QString AbstractDataBackend::convertToDatabaseDateTimeFormat(const QDateTime &time) {
     return time.toString("yyyy-MM-dd") + " " + time.toString("hh:mm:ss");
 }
 
