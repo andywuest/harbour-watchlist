@@ -155,6 +155,12 @@ SilicaFlickable {
                 contentHeight: dividendsItem.height + (2 * Theme.paddingMedium)
                 contentWidth: parent.width
 
+                onClicked: {
+                    var selectedDividendData = dividendsListView.model.get(index);
+                    var securities = Database.loadStockData(1, Database.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
+                    pageStack.push(Qt.resolvedUrl("../pages/StockOverviewPage.qml"), { stock: securities[0] });
+                }
+
                 // no context menu
 
                 Item {
@@ -223,7 +229,7 @@ SilicaFlickable {
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: "TODO-summe"
+                                    text: "" // "TODO-summe"
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight

@@ -305,16 +305,16 @@ Item {
 
                     if (end > 0) {
                         drawGrid(ctx);
-                    }
 
-                    console.log("info lines : " + infoLines);
-                    drawInfoLine(ctx, infoLines.referencePrice);
-                    // for now only draw lines for reference price
-                    // drawInfoLine(ctx, infoLines.alarmMinimumPrice);
-                    // drawInfoLine(ctx, infoLines.alarmMaximumPrice);
+                        console.log("info lines : " + infoLines);
+                        // for now only draw lines for reference price
+                        // drawInfoLine(ctx, infoLines.alarmMinimumPrice);
+                        // drawInfoLine(ctx, infoLines.alarmMaximumPrice);
+                        drawInfoLine(ctx, infoLines.referencePrice);
 
-                    if (showTrendTriangle) {
-                        drawTrendTriangle(ctx, points[0].y, points[end -1].y);
+                        if (showTrendTriangle) {
+                            drawTrendTriangle(ctx, points[0].y, points[end - 1].y);
+                        }
                     }
 
                     ctx.save()

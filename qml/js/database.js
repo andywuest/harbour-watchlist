@@ -495,7 +495,7 @@ function loadAllDividendData(watchlistId, sortString) {
         var db = getOpenDatabase();
         db.transaction(function (tx) {
             // use COALESCE to set null values to default values
-            var query = 'SELECT d.exDate, d.payDate, d.symbol, d.wkn, d.isin, d.amount, d.currency, s.name '
+            var query = 'SELECT d.exDate, d.payDate, d.symbol, d.wkn, d.isin, d.amount, d.currency, s.name, s.extRefId '
                     + ' FROM stockdata s '
                     + ' INNER JOIN dividends d '
                     + ' ON s.isin = d.isin '
@@ -514,6 +514,7 @@ function loadAllDividendData(watchlistId, sortString) {
                     entry.name = row.name;
                     entry.amount = row.amount;
                     entry.currency = row.currency;
+                    entry.extRefId = row.extRefId;
                     result.push(entry);
                 }
             }
@@ -524,7 +525,11 @@ function loadAllDividendData(watchlistId, sortString) {
     return result;
 }
 
-function loadAllStockData(watchListId, sortString) { // TODO implement watchlistid
+function loadAllStockData(watchListId, sortString) {
+    return loadStockData(watchListId, sortString, '');
+}
+
+function loadStockData(watchListId, sortString, extRefId) { // TODO implement watchlistid
     var result = [];
     try {
         var db = getOpenDatabase()
@@ -545,6 +550,8 @@ function loadAllStockData(watchListId, sortString) { // TODO implement watchlist
                     + ' FROM stockdata s '
                     + ' LEFT OUTER JOIN stockdata_ext se '
                     + ' ON s.id = se.id '
+                    // restrict to single stock
+                    + (extRefId !== '' ? ' WHERE s.extRefId = ' + extRefId : '')
                     + ' ORDER BY ' + sortString;
             console.log("query : " + query);
             var dbResult = tx.executeSql(query, [])
