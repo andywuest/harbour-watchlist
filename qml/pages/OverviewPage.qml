@@ -23,11 +23,12 @@ import Nemo.Notifications 1.0
 import "../components"
 
 import "../js/database.js" as Database
+import "../js/functions.js" as Functions
 
 Page {
     id: overviewPage
 
-    readonly property int dividendsUpdateDays: 2 // allow update only every x days
+    readonly property int dividendsUpdateDays: 7 // allow update only every x days
     property int watchlistId: 1
     allowedOrientations: Orientation.Portrait // so far only Portait mode
 
@@ -93,11 +94,13 @@ Page {
 
     function isDividendUpdateLongEnoughInThePast() {
         // allow updates every x days
-        console.log("last update : " + watchlistSettings.dividendsDataLastUpdate)
-        console.log("now : " + new Date())
-//        if (watchlistSettings.dividendsDataLastUpdate) {
-//            return (watchlistSettings.dividendsDataLastUpdate > new Date() - 14);
-//        }
+        var refDatePassed = new Date(new Date().setDate(new Date().getDate() - dividendsUpdateDays))
+        Functions.log("[OverviewPage] dividend last update : " + watchlistSettings.dividendsDataLastUpdate)
+        Functions.log("[OverviewPage] dividend calculated ref date : " + refDatePassed);
+        Functions.log("[OverviewPage] now : " + new Date())
+        if (watchlistSettings.dividendsDataLastUpdate) {
+            return (watchlistSettings.dividendsDataLastUpdate > refDatePassed);
+        }
         return true;
     }
 
