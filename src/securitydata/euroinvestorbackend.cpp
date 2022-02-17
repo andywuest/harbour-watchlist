@@ -69,7 +69,7 @@ void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, int chart
     if (chartType == ChartType::INTRADAY) {
         reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_INTRADAY_PRICES).arg(extRefId)));
     } else {
-        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_CLOSE_PRICES).arg(extRefId).arg(startDateString)));
+        reply = executeGetRequest(QUrl(QString(EUROINVESTOR_API_CLOSE_PRICES).arg(extRefId, startDateString)));
     }
 
     // TODO not sure if connecting the error slot makes sense here if we have multiple charts

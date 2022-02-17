@@ -551,7 +551,7 @@ function loadStockData(watchListId, sortString, extRefId) { // TODO implement wa
                     + ' LEFT OUTER JOIN stockdata_ext se '
                     + ' ON s.id = se.id '
                     // restrict to single stock
-                    + (extRefId !== '' ? ' WHERE s.extRefId = ' + extRefId : '')
+                    + (extRefId !== '' ? " WHERE s.extRefId = '" + extRefId + "'" : '')
                     + ' ORDER BY ' + sortString;
             log("[loadStockData] query : " + query);
             var dbResult = tx.executeSql(query, [])
