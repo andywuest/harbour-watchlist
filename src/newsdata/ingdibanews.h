@@ -26,7 +26,7 @@ class IngDibaNews : public QObject {
     Q_OBJECT
 public:
     explicit IngDibaNews(QNetworkAccessManager *manager, QObject *parent = nullptr);
-    ~IngDibaNews();
+    ~IngDibaNews() override;
     Q_INVOKABLE void searchStockNews(const QString &isin);
 
     Q_SIGNAL void searchNewsResultAvailable(const QString &reply);

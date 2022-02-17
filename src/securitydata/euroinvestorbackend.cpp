@@ -55,7 +55,7 @@ void EuroinvestorBackend::searchQuoteForNameSearch(const QString &searchString) 
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
 }
 
-void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, const int chartType) {
+void EuroinvestorBackend::fetchPricesForChart(const QString &extRefId, int chartType) {
     qDebug() << "EuroinvestorBackend::fetchClosePrices";
 
     if (!isChartTypeSupported(chartType)) {
@@ -152,8 +152,8 @@ void EuroinvestorBackend::handleFetchPricesForChartFinished() {
     }
 
     QByteArray resultByteArray = reply->readAll();
-    QString result = QString(resultByteArray);
 
+    // QString result = QString(resultByteArray);
     // qDebug() << "EuroinvestorBackend::handleFetchPricesForChartFinished result " << result;
 
     QString jsonResponseString = parsePriceResponse(resultByteArray);

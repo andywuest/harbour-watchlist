@@ -198,8 +198,8 @@ void IngDibaBackend::handleFetchPricesForChartFinished() {
     }
 
     QByteArray resultByteArray = reply->readAll();
-    QString result = QString(resultByteArray);
 
+    // QString result = QString(resultByteArray);
     // qDebug() << "IngDibaBackend::handleFetchPricesForChartFinished result " << result;
 
     QString jsonResponseString = parsePriceResponse(resultByteArray);
@@ -227,7 +227,7 @@ QString IngDibaBackend::parsePriceResponse(QByteArray reply) {
     foreach (const QJsonValue &value, chartDataArray) {
         QJsonArray dataArray = value.toArray();
         QVariant mSecsSinceEpochVariant = dataArray.at(0).toVariant();
-        qint64 mSecsSinceEpoch = static_cast<qint64>(mSecsSinceEpochVariant.toDouble());
+        auto mSecsSinceEpoch = static_cast<qint64>(mSecsSinceEpochVariant.toDouble());
 
         double closeValue = dataArray.at(1).toDouble();
         chartDataCalculator.checkCloseValue(closeValue);
