@@ -157,6 +157,9 @@ SilicaFlickable {
 
                 onClicked: {
                     var selectedDividendData = dividendsListView.model.get(index);
+                    Functions.log("[DividendsView] security selected " + index);
+                    Functions.log("[DividendsView] security selected extRefId "
+                                  + (selectedDividendData ? selectedDividendData.extRefId : "-"));
                     var securities = Database.loadStockData(1, Database.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
                     pageStack.push(Qt.resolvedUrl("../pages/StockOverviewPage.qml"), { stock: securities[0] });
                 }

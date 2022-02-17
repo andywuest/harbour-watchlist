@@ -209,14 +209,14 @@ function loadAlarm(id) {
                 alarm.minimumPrice = dbResult.rows.item(0).minimumPrice;
                 alarm.maximumPrice = dbResult.rows.item(0).maximumPrice;
                 alarm.triggered = dbResult.rows.item(0).triggered;
-                console.log("alarm is " + JSON.stringify(alarm));
+                console.log("[loadAlarm] alarm is " + JSON.stringify(alarm));
                 result = alarm;
             } else {
-                console.log("alarm not found !");
+                console.log("[loadAlarm] no alarm not found");
             }
         })
     } catch (err) {
-        console.log("Error selecting alarm id from database: " + err)
+        console.log("[loadAlarm] Error selecting alarm id from database: " + err)
     }
     return result;
 }
@@ -553,15 +553,15 @@ function loadStockData(watchListId, sortString, extRefId) { // TODO implement wa
                     // restrict to single stock
                     + (extRefId !== '' ? ' WHERE s.extRefId = ' + extRefId : '')
                     + ' ORDER BY ' + sortString;
-            console.log("query : " + query);
+            log("[loadStockData] query : " + query);
             var dbResult = tx.executeSql(query, [])
             // create same object as from json response
             if (dbResult.rows.length > 0) {
-                log("stockdata row count : " + dbResult.rows.length);
+                log("[loadStockData] stockdata row count : " + dbResult.rows.length);
                 for (var i = 0; i < dbResult.rows.length; i++) {
                     var row = dbResult.rows.item(i);
                     var entry = {};
-                    log("row : " + row.name + ", change rel : " + row.changeRelative);
+                    log("[loadStockData] row : " + row.name + ", change rel : " + row.changeRelative);
                     entry.id = row.id;
                     entry.watchlistId = watchListId;
                     entry.extRefId = row.extRefId;
@@ -590,9 +590,9 @@ function loadStockData(watchListId, sortString, extRefId) { // TODO implement wa
                     entry.performanceRelative = row.performanceRelative; // calculated!
                     result.push(entry);
                 }
-                console.log("loading stockdata data from database done");
+                log("[loadStockData] loading stockdata data from database done");
             } else {
-                console.log("no stockdata found");
+                log("[loadStockData] no stockdata found");
             }
         })
     } catch (err) {

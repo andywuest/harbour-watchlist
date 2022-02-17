@@ -54,7 +54,7 @@ Page {
             dividendsButtonPortrait.isActive = true
             break
         default:
-            console.log("Some strange navigation happened!")
+            Functions.log("[OverviewPage] Some strange navigation happened!")
         }
     }
 
@@ -99,13 +99,13 @@ Page {
         Functions.log("[OverviewPage] dividend calculated ref date : " + refDatePassed);
         Functions.log("[OverviewPage] now : " + new Date())
         if (watchlistSettings.dividendsDataLastUpdate) {
-            return (watchlistSettings.dividendsDataLastUpdate > refDatePassed);
+            return (watchlistSettings.dividendsDataLastUpdate < refDatePassed);
         }
         return true;
     }
 
     function reloadOverviewSecurities() {
-        console.log("reload Overview Securities !");
+        Functions.log("[OverviewPage] reload Overview Securities !");
         watchlistView.reloadAllStocks(); // reload to get the new extRefId
         watchlistView.updateQuotes(); // also update the displayed names and prices
         watchlistView.disconnectSlots(); // reconnect slots for new backend

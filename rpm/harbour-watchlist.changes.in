@@ -5,6 +5,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.x.x-1
+- added new tab that shows the upcoming dividend payments for your sercurities
+
 * 22.01.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.9.3-1
 - fixed label for DAX 30 -> now DAX 40
 - code cleanup and consolidation
