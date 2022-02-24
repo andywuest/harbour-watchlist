@@ -135,19 +135,19 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/components/DividendsView.qml" line="96"/>
         <source>Last update: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdaterat: %1</translation>
     </message>
     <message>
         <location filename="../qml/components/DividendsView.qml" line="129"/>
         <source>Dividend dates</source>
         <extracomment>DividendsView page header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Utdelningsdatum</translation>
     </message>
     <message>
         <location filename="../qml/components/DividendsView.qml" line="137"/>
         <source>The dividend dates have not yet been loaded. Please load them via the pulley menu.</source>
         <extracomment>DividendsView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Utdelningsdatum har ännu inte hämtats. Hämta dem via toppmenyn.</translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@ AboutPage title - about text title</extracomment>
         <location filename="../qml/pages/OverviewPage.qml" line="190"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera utdelningsdatum</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="318"/>
@@ -261,7 +261,7 @@ AboutPage title - about text title</extracomment>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="348"/>
         <source>Dividends</source>
-        <translation type="unfinished"></translation>
+        <translation>Utdelningar</translation>
     </message>
 </context>
 <context>
