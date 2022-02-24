@@ -7,7 +7,7 @@ rest services that the page https://www.euroinvestor.dk/ uses. The other backend
 the offical Moscow Exchange API backend. In the future i plan
 to support more backend, e.g. Deutsche Boerse, so you can get more stocks for your
 specific market country. Additionally there is a news backend with provides some
-stock news news (however in German only). The market overview page also allows
+stock news (however in German only). The market overview page also allows
 you to display market indices and crypto currencies.
 
 ## Features
@@ -18,6 +18,8 @@ you to display market indices and crypto currencies.
 - Update Quotes
 - Add alarms to individual stocks
 - Two different data backend (Euroinvestor / Moscow Exchange)
+- Show charts for the securities in the watchlist for different periods of time
+- Show upcoming dividend payments for the securities in the watchlist 
 
 
 ## Author
@@ -31,7 +33,8 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 ![Stock search](/screenshots/watchlist1.png?raw=true "Stock search")
 ![Alarm configuration](/screenshots/watchlist3.png?raw=true "Alarm configuration")
 ![Stock details](/screenshots/watchlist4.png?raw=true "Stock details")
-
+![Security charts](/screenshots/watchlist7.png?raw=true "Security charts")
+![Dividend payments](/screenshots/watchlist8.png?raw=true "Dividend payments")
 
 ## Build
 Simply clone this repository.
