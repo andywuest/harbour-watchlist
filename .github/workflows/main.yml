@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2                                 # checkout the repo
 
       - name: Install qmltestrunner                               # install qmltestrunner packages
-        run: sudo apt-get install -y qtdeclarative5-dev-tools
+        run: sudo dhclient eth1 && sudo apt-get install -y qtdeclarative5-dev-tools
 
       - name: Run QML / C++ Tests
         run: |
