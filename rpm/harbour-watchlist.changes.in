@@ -5,6 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.xxxx Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.10.1-1
+
+- updated swedish translation
+- added french translation (thanks pherjung)
+- opt-out of sailjail (for now)
+
 * 24.02.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.10.0-1
 - added new tab that shows the upcoming dividend payments for your sercurities
 

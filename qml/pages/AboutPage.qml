@@ -114,7 +114,8 @@ Page {
                 label: qsTr("Translators")
                 text: qsTr("Viacheslav Dikonov (ru)") + "\n" +
                       "Åke Engelbrektson (sv)\n" +
-                      "@KhanPuking (zh_CN)"
+                      "@KhanPuking (zh_CN)\n" +
+                      "pherjung (fr)"
                 separator: true
             }
 

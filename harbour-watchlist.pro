@@ -52,7 +52,8 @@ CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-watchlist-de.ts \
     translations/harbour-watchlist-ru.ts \
     translations/harbour-watchlist-sv.ts \
-    translations/harbour-watchlist-zh_CN.ts
+    translations/harbour-watchlist-zh_CN.ts \
+    harbour-watchlist-fr.ts
 
 
 DISTFILES += \

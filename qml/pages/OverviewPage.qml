@@ -28,7 +28,7 @@ import "../js/functions.js" as Functions
 Page {
     id: overviewPage
 
-    readonly property int dividendsUpdateDays: 7 // allow update only every x days
+    readonly property int dividendsUpdateDays: 3 // allow update only every x days
     property int watchlistId: 1
     allowedOrientations: Orientation.Portrait // so far only Portait mode
 

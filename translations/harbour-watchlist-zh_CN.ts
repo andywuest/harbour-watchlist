@@ -48,13 +48,13 @@ AboutPage title - about text title</extracomment>
         <translation>Viacheslav Dikonov (俄语)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="127"/>
+        <location filename="../qml/pages/AboutPage.qml" line="128"/>
         <source>Contributors</source>
         <extracomment>AboutPage contributors label</extracomment>
         <translation>贡献者</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="150"/>
+        <location filename="../qml/pages/AboutPage.qml" line="151"/>
         <source>Source code</source>
         <extracomment>AboutPage about source label</extracomment>
         <translation>源代码</translation>
