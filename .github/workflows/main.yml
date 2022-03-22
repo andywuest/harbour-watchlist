@@ -8,7 +8,24 @@ on:
       - '*'
 
 jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2                                 # checkout the repo
+
+      - name: Install qmltestrunner                               # install qmltestrunner packages
+        run: sudo apt-get install -y qtdeclarative5-dev-tools
+
+      - name Run QML / C++ Tests
+        run: |
+          cd tests_qml && ./runTests.sh                           # run the QML tests  
+          cd ..                                                   # go back
+          cd tests && ./runTests.sh                               # run the C++ tests 
+
   build:
+    name: Build Versions
     runs-on: ubuntu-latest
 
     steps:
