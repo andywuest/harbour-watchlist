@@ -2,5 +2,5 @@
 
 rm -rf *.xml
 
-qmltestrunner -o qmlresults.xml,xml
+qmltestrunner -platform offscreen -o qmlresults.xml,xml
 
