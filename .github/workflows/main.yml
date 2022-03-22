@@ -18,7 +18,7 @@ jobs:
       - name: Install qmltestrunner                               # install qmltestrunner packages
         run: sudo apt-get install -y qtdeclarative5-dev-tools
 
-      - name Run QML / C++ Tests
+      - name: Run QML / C++ Tests
         run: |
           set -x
           cd tests_qml && ./runTests.sh                             
