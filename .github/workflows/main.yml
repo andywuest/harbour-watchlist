@@ -27,7 +27,7 @@ jobs:
           set -x
           
           cd tests_qml 
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,junitxml          
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,xunitxml          
           ls -l
           cat qmlresults.xml
           cd ..                                                   
@@ -41,7 +41,7 @@ jobs:
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
           path: tests_qml/*.xml                       # Path to test results ,tests/*.xml
-          reporter: java-junit                                    # Format of test results
+          reporter: dotnet-trx                                    # Format of test results - because junit cannot be generated
 
   build:
     name: Build Versions
