@@ -1,4 +1,4 @@
-QT += testlib network sql
+QT += core testlib network sql
 QT -= gui
 
 CONFIG += c++11 qt
