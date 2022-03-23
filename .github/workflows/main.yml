@@ -33,7 +33,7 @@ jobs:
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
-          # make
+          make
 
       - name: Test Report
         uses: dorny/test-reporter@v1
