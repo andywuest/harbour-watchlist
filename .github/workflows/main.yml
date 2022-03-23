@@ -24,8 +24,9 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          LANGUAGE=de_DE
-          cd tests_qml && qmltestrunner -platform offscreen       
+          
+          cd tests_qml 
+          env LANGUAGE=de_DE qmltestrunner -platform offscreen       
           cd ..                                                   
           cd tests && ./runTests.sh                                
 
