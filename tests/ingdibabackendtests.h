@@ -20,7 +20,6 @@
 
 #include <QObject>
 
-#include "src/dividenddata/divvydiary.h"
 #include "src/ingdibautils.h"
 #include "src/newsdata/ingdibanews.h"
 #include "src/securitydata/ingdibabackend.h"
@@ -31,7 +30,6 @@ class IngDibaBackendTests : public QObject {
 private:
     IngDibaBackend *ingDibaBackend;
     IngDibaNews *ingDibaNews;
-    DivvyDiary *divvyDiary;
 
 protected:
     QByteArray readFileData(const QString &fileName);
