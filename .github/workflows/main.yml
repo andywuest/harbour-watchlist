@@ -19,14 +19,14 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
-          sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest
+          sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
 
       - name: Run QML / C++ Tests
         run: |
           set -x
           
           cd tests_qml 
-          env LANGUAGE=de_DE LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen       
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen       
           cd ..                                                   
           cd tests && ./runTests.sh                                
 
