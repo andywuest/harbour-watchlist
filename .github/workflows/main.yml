@@ -26,7 +26,7 @@ jobs:
           set -x
           
           cd tests_qml 
-          env LANGUAGE=de_DE qmltestrunner -platform offscreen       
+          env LANGUAGE=de_DE LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen       
           cd ..                                                   
           cd tests && ./runTests.sh                                
 
