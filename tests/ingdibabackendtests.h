@@ -48,8 +48,6 @@ private slots:
     void testIngDibaNewsProcessSearchResult();
     void testIngDibaNewsFilterContent();
 
-    // DivvDiary Dividends Backend
-    void testDivvDiaryDividendsProcessSearchResult();
 };
 
 #endif // ING_DIBA_BACKEND_TEST_H
