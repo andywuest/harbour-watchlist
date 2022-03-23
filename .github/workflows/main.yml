@@ -27,11 +27,19 @@ jobs:
           set -x
           
           cd tests_qml 
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen       
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,xml 
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
-          make
+          # make
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()                                # run this step even if previous step failed
+        with:
+          name: QML/C++ Tests                                     # Name of the check run which will be created
+          path: tests_qml/*.xml,tests/*.xml                       # Path to test results
+          reporter: java-junit                                    # Format of test results
 
   build:
     name: Build Versions
