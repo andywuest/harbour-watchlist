@@ -26,7 +26,7 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          cd tests_qml && qmltestrunner -platform offscreen -o qmlresults.xml,xml                       
+          cd tests_qml && qmltestrunner -platform offscreen       
           cd ..                                                   
           cd tests && ./runTests.sh                                
 
