@@ -22,7 +22,6 @@
 void IngDibaBackendTests::init() {
     ingDibaBackend = new IngDibaBackend(nullptr, nullptr);
     ingDibaNews = new IngDibaNews(nullptr, nullptr);
-    divvyDiary = new DivvyDiary(nullptr, nullptr);
 }
 
 void IngDibaBackendTests::testIngDibaUtilsConvertTimestampToLocalTimestamp() {
@@ -91,29 +90,6 @@ void IngDibaBackendTests::testIngDibaNewsFilterContent() {
         = " FRANKFURT (Dow Jones)--In der deutschen Die Vereinigten Staaten .. Lage wünschenswert. Kontakt zum Autor: "
           "unternehmen.de@dowjones.com DJG/sha (END) Dow Jones Newswires July 04, 2021 11:10 ET (15:10 GMT) ";
     QCOMPARE(ingDibaNews->filterContent(content), expectedContent);
-}
-
-void IngDibaBackendTests::testDivvDiaryDividendsProcessSearchResult() {
-    QByteArray data = readFileData("divvydiary.json");
-    if (data.isEmpty()) {
-        QString msg = "Testfile divvydiary.json not found!";
-        QFAIL(msg.toLocal8Bit().data());
-    }
-    QString parsedResult = divvyDiary->processSearchResult(data);
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(parsedResult.toUtf8());
-    QCOMPARE(jsonDocument.isObject(), true);
-
-    QJsonArray resultArray = jsonDocument["dividends"].toArray();
-    QCOMPARE(resultArray.size(), 3);
-
-    QJsonObject dividendEntry = resultArray.at(0).toObject();
-    QCOMPARE(dividendEntry["isin"], "US0259321042");
-    QCOMPARE(dividendEntry["wkn"], "894969");
-    QCOMPARE(dividendEntry["currency"], "USD");
-    QCOMPARE(dividendEntry["amount"], 0.56);
-
-    QJsonArray exchangeRatesArray = jsonDocument["exchangerates"].toArray();
-    QCOMPARE(exchangeRatesArray.isEmpty(), true);
 }
 
 QByteArray IngDibaBackendTests::readFileData(const QString &fileName) {
