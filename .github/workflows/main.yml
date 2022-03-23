@@ -20,8 +20,6 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
           sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
-          sudo apt-cache search qt5test
-          sudo apt-cache search qttest
           sudo apt-get install -y libqt5test5
 
       - name: Run QML / C++ Tests
@@ -31,7 +29,9 @@ jobs:
           cd tests_qml 
           env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen       
           cd ..                                                   
-          cd tests && ./runTests.sh                                
+          cd tests
+          qmake -o Makefile harbour-watchlist-tests.pro
+          make
 
   build:
     name: Build Versions
