@@ -17,9 +17,10 @@ jobs:
 
       - name: Install qmltestrunner                               # install qmltestrunner packages
         run: |
-          sudo apt-get update
-          sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage \
-            qml-module-qtquick-controls qtdeclarative5-test-plugin
+          sudo apt-get update -y
+          sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
+          sudo apt-get install -y qml-module-qtquick-controls
+          sudo apt-get install -y qtdeclarative5-test-plugin  
 
       - name: Run QML / C++ Tests
         run: |
