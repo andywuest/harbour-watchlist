@@ -20,12 +20,11 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
           sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest
-          sudo apt-cache search qtdeclarative5 
-          sudo apt-cache search qtquick
 
       - name: Run QML / C++ Tests
         run: |
           set -x
+          LANGUAGE=de
           cd tests_qml && qmltestrunner -platform offscreen       
           cd ..                                                   
           cd tests && ./runTests.sh                                
