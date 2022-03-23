@@ -20,6 +20,9 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
           sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
+          sudo apt-cache search qt5test
+          sudo apt-cache search qttest
+          sudo apt-get install -y libqt5test5
 
       - name: Run QML / C++ Tests
         run: |
