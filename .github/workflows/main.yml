@@ -35,6 +35,7 @@ jobs:
           ls -l
           cat qmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
+          sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
           cat qmlresults.tap.xml
           cd ..                                                   
           cd tests
@@ -47,6 +48,7 @@ jobs:
           tap2junit --verbose xmlresults.tap
           cat xmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
+          sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
           cat xmlresults.tap.xml
 
           
