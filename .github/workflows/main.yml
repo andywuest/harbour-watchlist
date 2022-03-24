@@ -33,13 +33,14 @@ jobs:
           cat qmlresults.tap
           tap2junit --verbose qmlresults.tap
           ls -l
+          cat qmlresults.tap.xml
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
           make
-          ./IngDibaBackendTest 
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest 
           # -o cppresults.xml,tap
-          cat cppresults.xml
+          # cat cppresults.xml
           ls -l
           
 
@@ -48,8 +49,8 @@ jobs:
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
-          path: tests_qml/*.xml                       # Path to test results ,tests/*.xml
-          reporter: dotnet-trx                                    # Format of test results - because junit cannot be generated
+          path: tests_qml/*.xml                                   # Path to test results ,tests/*.xml
+          reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
     name: Build Versions
