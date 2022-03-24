@@ -28,15 +28,17 @@ jobs:
           set -x
           
           cd tests_qml 
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,tap
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.tap,tap
           ls -l
-          cat qmlresults.xml
-          tap2junit --help
+          cat qmlresults.tap
+          tap2junit --verbose qmlresults.tap
+          ls -l
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
           make
-          ./IngDibaBackendTest -o cppresults.xml,tap
+          ./IngDibaBackendTest 
+          # -o cppresults.xml,tap
           cat cppresults.xml
           ls -l
           
