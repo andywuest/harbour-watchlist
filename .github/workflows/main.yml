@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2                                 # checkout the repo
 
-      - name: Install qmltestrunner                               # install qmltestrunner packages
+      - name: Install qmltestrunner                               # install required qmltestrunner packages
         run: |
           sudo apt-get update -y
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
@@ -26,32 +26,20 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          
           cd tests_qml 
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.tap,tap
-          ls -l
-          cat qmlresults.tap
+          ./runTests.sh
           tap2junit --verbose qmlresults.tap
-          ls -l
-          cat qmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
           sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
           sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' qmlresults.tap.xml
-          cat qmlresults.tap.xml
           cd ..                                                   
           cd tests
-          qmake -o Makefile harbour-watchlist-tests.pro
-          make
           sudo timedatectl set-timezone Europe/Berlin
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest -o xmlresults.tap,tap
-          ls -l
-          cat xmlresults.tap
+          ./runTests.sh
           tap2junit --verbose xmlresults.tap
-          cat xmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
           sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
           sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
-          cat xmlresults.tap.xml
 
       - name: Test Report
         uses: dorny/test-reporter@v1

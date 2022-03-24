@@ -49,4 +49,4 @@ Watchlist was translated to several languages. Thanks to all contributors!
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
 - Russian: [Viacheslav Dikonov](https://github.com/ApostolosB)
 - Swedish: [Åke Engelbrektson](https://github.com/eson57)
-
+- French: [Patrick Hervieux](https://github.com/pherjung)

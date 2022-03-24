@@ -1,11 +1,13 @@
 #/bin/bash
 
-rm *.o
-rm Makefile
-rm moc_*
+# execute with workaround with tap - because junit cannot be generated directly with the used version
 
+find . -name "*.o" -exec rm  {} \;
+find . -name "*.tap" -exec rm  {} \;
+find . -name "moc_*" -exec rm  {} \;
+find . -name "Makefile" -exec rm  {} \;
 
-qmake 
+qmake -o Makefile harbour-watchlist-tests.pro
 make
-./IngDibaBackendTest -o cppresults.xml,xml
+env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest -o xmlresults.tap,tap
 
