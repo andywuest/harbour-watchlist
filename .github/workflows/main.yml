@@ -31,13 +31,15 @@ jobs:
           env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,tap
           ls -l
           cat qmlresults.xml
+          tap2junit --help
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
           make
           ./IngDibaBackendTest -o cppresults.xml,tap
+          cat cppresults.xml
           ls -l
-          tap2junit --help
+          
 
       - name: Test Report
         uses: dorny/test-reporter@v1
