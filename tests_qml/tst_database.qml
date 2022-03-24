@@ -31,13 +31,12 @@ TestCase {
 
         var securityList = Database.loadAllStockData(watchlistId, Database.SORT_BY_NAME_ASC);
         var security = securityList[0];
-        console.log("Security : " + security.id);
-        console.log("Security : " + security.symbol1);
-        console.log("Security : " + security.watchlistId);
-        console.log("Security : " + security.isin);
-        console.log("Security : " + security.extRefId);
-        console.log("Security : " + security.currency);
-        console.log("Security : " + security.price);
+        compare(security.watchlistId, data.watchlistId);
+        compare(security.symbol1, data.symbol1);
+        compare(security.isin, data.isin);
+        compare(security.extRefId, data.extRefId);
+        compare(security.currency, data.currency);
+        compare(security.price, data.price);
     }
 
 }
