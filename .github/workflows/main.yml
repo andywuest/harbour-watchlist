@@ -36,7 +36,7 @@ jobs:
           cat qmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
           sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
-          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="2.50">/g' qmlresults.tap.xml
+          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' qmlresults.tap.xml
           cat qmlresults.tap.xml
           cd ..                                                   
           cd tests
@@ -50,16 +50,15 @@ jobs:
           cat xmlresults.tap.xml
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
           sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
+          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
           cat xmlresults.tap.xml
-
-          
 
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
-          path: tests_qml/*.xml                                   # Path to test results ,tests/*.xml
+          path: tests_qml/*.xml,tests/*.xml                       # Path to test results 
           reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
