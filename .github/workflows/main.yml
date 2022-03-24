@@ -39,10 +39,12 @@ jobs:
           qmake -o Makefile harbour-watchlist-tests.pro
           make
           sudo timedatectl set-timezone Europe/Berlin
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest 
-          # -o cppresults.xml,tap
-          # cat cppresults.xml
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest -o xmlresults.tap,tap
           ls -l
+          cat xmlresults.tap
+          tap2junit --verbose xmlresults.tap
+          cat xmlresults.tap.xml
+
           
 
       - name: Test Report
