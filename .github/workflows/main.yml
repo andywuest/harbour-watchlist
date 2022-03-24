@@ -38,6 +38,7 @@ jobs:
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
           make
+          sudo timedatectl set-timezone Europe/Berlin
           env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest 
           # -o cppresults.xml,tap
           # cat cppresults.xml
