@@ -21,19 +21,23 @@ jobs:
           sudo apt-get install -y qtdeclarative5-dev-tools qml-module-qtquick-localstorage
           sudo apt-get install -y qml-module-qtquick-controls qml-module-qttest qt5-qmake
           sudo apt-get install -y libqt5test5 qtbase5-dev qtdeclarative5-dev
+          sudo apt-get install -y libtap-formatter-junit-perl 
 
       - name: Run QML / C++ Tests
         run: |
           set -x
           
           cd tests_qml 
-          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,xunitxml          
+          env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 qmltestrunner -platform offscreen -o qmlresults.xml,tap
           ls -l
           cat qmlresults.xml
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
           make
+          ./IngDibaBackendTest -o cppresults.xml,tap
+          ls -l
+          tap2junit --help
 
       - name: Test Report
         uses: dorny/test-reporter@v1
