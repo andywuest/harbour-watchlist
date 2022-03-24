@@ -34,8 +34,9 @@ jobs:
           tap2junit --verbose qmlresults.tap
           ls -l
           cat qmlresults.tap.xml
-          cat qmlresults.tap.xml | sed 's/><\/t/ classname="-" time="0"><\/t/g' > qmlresults.tap.junit.xml
+          sed 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml > qmlresults.tap.junit.xml
           rm qmlresults.tap.xml
+          cat qmlresults.tap.junit.xml
           cd ..                                                   
           cd tests
           qmake -o Makefile harbour-watchlist-tests.pro
@@ -46,7 +47,7 @@ jobs:
           cat xmlresults.tap
           tap2junit --verbose xmlresults.tap
           cat xmlresults.tap.xml
-          cat xmlresults.tap.xml | sed 's/><\/t/ classname="-" time="0"><\/t/g' > xmlresults.tap.junit.xml
+          sed 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml > xmlresults.tap.junit.xml
           rm xmlresults.tap.xml
 
           
