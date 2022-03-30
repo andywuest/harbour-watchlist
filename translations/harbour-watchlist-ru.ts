@@ -114,16 +114,16 @@ AboutPage title - about text title</extracomment>
     <message>
         <source>Dividend dates</source>
         <extracomment>DividendsView page header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Даты выплаты дивидендов</translation>
     </message>
     <message>
         <source>The dividend dates have not yet been loaded. Please load them via the pulley menu.</source>
         <extracomment>DividendsView empty marketdata label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Даты выплаты дивидендов не загружены. Чтобы получить их, воспользуйтесь меню сверху.</translation>
     </message>
     <message>
         <source>Last update: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновлено: %1</translation>
     </message>
 </context>
 <context>
@@ -216,32 +216,32 @@ AboutPage title - about text title</extracomment>
     </message>
     <message>
         <source>Dividends</source>
-        <translation type="unfinished"></translation>
+        <translation>Дивиденды</translation>
     </message>
     <message>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Обновить даты выплаты</translation>
     </message>
 </context>
 <context>
     <name>ReferencePriceDialog</name>
     <message>
         <source>Reference price for the security which can be used to display the performance.</source>
-        <translation type="unfinished"></translation>
+        <translation>Справочная цена бумаги, которая помогает оценить результативность вложения.</translation>
     </message>
     <message>
         <source>Enter the reference price here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Введите ориентирную цену!</translation>
     </message>
     <message>
         <source>Configure reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройка ценового ориентира</translation>
     </message>
     <message>
         <source>Reference price</source>
-        <translation type="unfinished"></translation>
+        <translation>Ориентирная цена</translation>
     </message>
 </context>
 <context>
@@ -337,17 +337,17 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ing-Diba</translation>
     </message>
     <message>
         <source>Show performance row</source>
         <extracomment>SettingsPage show performance row title</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Линейка результативности</translation>
     </message>
     <message>
         <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
         <extracomment>SettingsPage show performance row description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Показывает общий результат вложения в бумагу. Для расчета результативности необходимо задать ориентирную цену бумаги.</translation>
     </message>
 </context>
 <context>
@@ -493,45 +493,45 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Additional information</source>
         <extracomment>StockDetailsView page additional information section header</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Дополнительные сведения</translation>
     </message>
     <message>
         <source>Reference price</source>
         <extracomment>StockDetailsView page reference price</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ориентирная цена</translation>
     </message>
     <message>
         <source>Performance</source>
         <extracomment>StockDetailsView page performance</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Результативность вложения</translation>
     </message>
 </context>
 <context>
     <name>StockNewsView</name>
     <message>
         <source>No news items found for this security.</source>
-        <translation type="unfinished"></translation>
+        <translation>Новости</translation>
     </message>
     <message>
         <source>Fetch news manually via pulley menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Получить новости вручную через команду в меню.</translation>
     </message>
 </context>
 <context>
     <name>StockNotesDialog</name>
     <message>
         <source>Stock notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Заметки</translation>
     </message>
     <message>
         <source>Enter your notes here!</source>
         <extracomment>StockNotesDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Здесь можно вносить свои заметки.</translation>
     </message>
     <message>
         <source>Clear</source>
         <extracomment>StockNotesDialog clear button</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Стереть</translation>
     </message>
 </context>
 <context>
@@ -551,7 +551,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Fetch news</source>
         <extracomment>StockOverviewPage fetch news menu item</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Получить новости</translation>
     </message>
 </context>
 <context>
@@ -579,17 +579,17 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Показывать заметки</translation>
     </message>
     <message>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Настроить ценовой ориентир</translation>
     </message>
     <message>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Результативность</translation>
     </message>
 </context>
 <context>
@@ -760,23 +760,23 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>EUR/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>EUR/RUB</translation>
     </message>
     <message>
         <source>GBP/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>GBP/RUB</translation>
     </message>
     <message>
         <source>USD/RUB</source>
-        <translation type="unfinished"></translation>
+        <translation>USD/RUB</translation>
     </message>
     <message>
         <source>EUR/CAD</source>
-        <translation type="unfinished"></translation>
+        <translation>EUR/CAD</translation>
     </message>
     <message>
         <source>Binance USD</source>
-        <translation type="unfinished"></translation>
+        <translation>Binance USD</translation>
     </message>
 </context>
 <context>
@@ -815,27 +815,27 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Watchlist data migrated</source>
-        <translation type="unfinished"></translation>
+        <translation>Данные Watchlist перенесены</translation>
     </message>
     <message>
         <source>Error migrating watchlist data</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при переносе данных Watchlist</translation>
     </message>
     <message>
         <source>Stock notes updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Заметки обновлены</translation>
     </message>
     <message>
         <source>Error updating stock notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка обновления заметок</translation>
     </message>
     <message>
         <source>Stock referencePrice updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Ориентирная цена обновлена</translation>
     </message>
     <message>
         <source>Error updating stock referencePrice</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при обновлении ориентирной цены</translation>
     </message>
 </context>
 <context>
