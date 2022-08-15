@@ -1,4 +1,5 @@
-// .pragma library
+.pragma library
+.import QtQuick.LocalStorage 2.0 as LS
 
 Qt.include("constants.js")
 Qt.include('functions.js')
@@ -9,7 +10,7 @@ var SORT_BY_CHANGE_DESC = " changeRelative DESC, name ASC ";
 
 // basic database functions
 function getOpenDatabase() {
-    var db = LocalStorage.openDatabaseSync(
+    var db = LS.LocalStorage.openDatabaseSync(
                 "harbour-watchlist", "",
                 "Database for the harbour-watchlist!", 10000000)
     return db

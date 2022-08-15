@@ -10,6 +10,9 @@
 - updated swedish translation
 - added french translation (thanks pherjung)
 - opt-out of sailjail (for now)
+- database.js functions are now a library
+- support for My Backup
+- dividends can now be updated every 3 days
 
 * 24.02.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.10.0-1
 - added new tab that shows the upcoming dividend payments for your sercurities

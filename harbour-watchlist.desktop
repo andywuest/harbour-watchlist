@@ -14,3 +14,6 @@ Name=Watchlist
 # Opt out for no - later i will try to migrate to sailjail
 [X-Sailjail]
 Sandboxing=Disabled
+[X-HarbourBackup]
+BackupPathList=.local/share/harbour-watchlist/
+BackupConfigList=/apps/harbour-watchlist/
