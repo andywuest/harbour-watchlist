@@ -69,7 +69,6 @@ DISTFILES += \
     qml/components/StockDetailsView.qml \
     qml/components/StockNewsView.qml \
     qml/components/WatchlistView.qml \
-    qml/components/thirdparty/AboutComponent.qml \
     qml/components/thirdparty/AboutDescription.qml \
     qml/components/thirdparty/AboutIconLabel.qml \
     qml/components/thirdparty/AppNotification.qml \
