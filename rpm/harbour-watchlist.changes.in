@@ -5,7 +5,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.xxxx Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.10.1-1
+* xx.xx.xxxx Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.11.0-1
 
 - updated swedish translation
 - added french translation (thanks pherjung)
@@ -13,6 +13,7 @@
 - database.js functions are now a library
 - support for My Backup
 - dividends can now be updated every 3 days
+- new About Page
 
 * 24.02.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.10.0-1
 - added new tab that shows the upcoming dividend payments for your sercurities

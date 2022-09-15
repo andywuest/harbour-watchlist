@@ -9,45 +9,48 @@
         <translation>Сброс базы данных</translation>
     </message>
     <message>
-        <source>About Watchlist</source>
-        <extracomment>AboutPage title - header
-----------
-AboutPage title - about text title</extracomment>
-        <translation>О программе</translation>
-    </message>
-    <message>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation>Простой инструмент слежения за курсами ценных бумаг для Sailfish OS. Исходный код Watchlist открыт и доступен под GPL v3.</translation>
     </message>
     <message>
-        <source>Version</source>
-        <extracomment>AboutPage version label</extracomment>
-        <translation>Версия</translation>
-    </message>
-    <message>
-        <source>Author</source>
-        <extracomment>AboutPage author label</extracomment>
-        <translation>Автор</translation>
-    </message>
-    <message>
-        <source>Translators</source>
-        <extracomment>AboutPage translators label</extracomment>
-        <translation>Переводчики</translation>
-    </message>
-    <message>
-        <source>Contributors</source>
-        <extracomment>AboutPage contributors label</extracomment>
-        <translation>Вклад внесли</translation>
-    </message>
-    <message>
-        <source>Source code</source>
-        <extracomment>AboutPage about source label</extracomment>
-        <translation>Исходный код</translation>
-    </message>
-    <message>
         <source>Viacheslav Dikonov (ru)</source>
+        <extracomment>AboutPage - translations</extracomment>
         <translation>Вячеслав Диконов (ru)</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <extracomment>AboutPage - Header</extracomment>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <source>Watchlist</source>
+        <extracomment>AboutPage - Name</extracomment>
+        <translation type="unfinished">Ценные бумаги</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <extracomment>AboutPage - Translations</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sources</source>
+        <extracomment>AboutPage - sources</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donations</source>
+        <extracomment>AboutPage - Donations</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <extracomment>AboutPage - donations info</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

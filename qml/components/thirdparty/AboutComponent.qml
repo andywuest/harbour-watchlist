@@ -1,27 +1,5 @@
-/*
- * harbour-watchlist - Sailfish OS Version
- * Copyright © 2022 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 import QtQuick 2.2
-import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
-
-import "../components/thirdparty"
-
-import "../js/database.js" as Database
 
 Page {
     id: page
@@ -29,20 +7,8 @@ Page {
     allowedOrientations: Orientation.All
 
     SilicaFlickable {
-        id: aboutPageFlickable
         anchors.fill: parent
         contentHeight: column.height
-
-        PullDownMenu {
-            MenuItem {
-                //: AboutPage pully - reset database
-                text: qsTr("Reset Database")
-                onClicked: {
-                    Database.resetApplication()
-                    Database.initApplicationTables()
-                }
-            }
-        }
 
         Column {
             id: column
@@ -50,13 +16,13 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeader {
-                //: AboutPage - Header
+                //: AboutComponent - Header
                 title: qsTr("About")
             }
 
             Image {
                 id: logo
-                source: "/usr/share/icons/hicolor/172x172/apps/harbour-watchlist.png"
+                source: "/usr/share/icons/hicolor/172x172/apps/harbour-watchlist.png" // TODO SVG
                 smooth: true
                 height: width
                 width: parent.width / 2
@@ -72,7 +38,7 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
                 color: Theme.secondaryHighlightColor
 
-                //: AboutPage - Name
+                //: AboutComponent - Name
                 text: qsTr("Watchlist")
             }
 
@@ -88,17 +54,17 @@ Page {
             }
 
             AboutDescription {
-                //: AboutPage text - about text
+                //: AboutComponent text - about text
                 description: qsTr("This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.")
             }
 
             SectionHeader {
-                //: AboutPage - Translations
+                //: AboutComponent - Translations
                 text: qsTr("Translations")
             }
 
             AboutDescription {
-                //: AboutPage - translations
+                //: AboutComponent - translations
                 description: qsTr("Viacheslav Dikonov (ru)") + "\n" +
                              "Åke Engelbrektson (sv)\n" +
                              "@KhanPuking (zh_CN)\n" +
@@ -107,30 +73,30 @@ Page {
 
             SectionHeader{
                 id: sectionHeaderSources
-                //: AboutPage - sources
+                //: AboutComponentn - sources
                 text: qsTr("Sources")
             }
 
             AboutIconLabel {
-                iconSource: "icons/github.svg"
+                iconSource: "../../../qml/pages/icons/github.svg"
                 label: "https://github.com/andywuest/harbour-watchlist"
                 targetUrl: "https://github.com/andywuest/harbour-watchlist"
             }
 
             SectionHeader{
-                //: AboutPage - Donations
+                //: AboutComponent - Donations
                 text: qsTr("Donations")
             }
 
             AboutDescription {
-                //: AboutPage - donations info
+                //: AboutComponent - donations info
                 description: qsTr("If you like my work why not buy me a beer?")
             }
 
             AboutIconLabel {
-                iconSource: "icons/paypal.svg"
+                iconSource: "../../../qml/pages/icons/paypal.svg"
                 label: qsTr("Donate with PayPal")
-                targetUrl: "https://www.paypal.com/paypalme/andywuest"
+                targetUrl: "https://www.paypal.com/paypalme/andywuest/TODO"
             }
 
             Item {
@@ -138,9 +104,5 @@ Page {
                 height: Theme.paddingSmall
             }
         }
-    }
-
-    VerticalScrollDecorator {
-        flickable: aboutPageFlickable
     }
 }
