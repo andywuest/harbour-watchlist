@@ -1,6 +1,6 @@
 /*
  * harbour-watchlist - Sailfish OS Version
- * Copyright © 2017 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ * Copyright © 2022 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,13 +24,14 @@ import "../components/thirdparty"
 import "../js/database.js" as Database
 
 Page {
-    id: aboutPage
-//    property bool showInfos: false
+    id: page
+
+    allowedOrientations: Orientation.All
 
     SilicaFlickable {
         id: aboutPageFlickable
         anchors.fill: parent
-        contentHeight: aboutColumn.height
+        contentHeight: column.height
 
         PullDownMenu {
             MenuItem {
@@ -44,129 +45,98 @@ Page {
         }
 
         Column {
+            id: column
+            width:parent.width
+            spacing: Theme.paddingLarge
+
             PageHeader {
-                //: AboutPage title - header
-                title: qsTr("About Watchlist")
+                //: AboutPage - Header
+                title: qsTr("About")
             }
 
-            id: aboutColumn
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            height: childrenRect.height
-
-            LabelText {
-                anchors {
-                    left: parent.left
-                    margins: Theme.paddingLarge
-                }
-                //: AboutPage title - about text title
-                label: qsTr("About Watchlist")
-                //: AboutPage text - about text
-                text: qsTr("This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.")
-                separator: true
+            Image {
+                id: logo
+                source: "/usr/share/icons/hicolor/172x172/apps/harbour-watchlist.png"
+                smooth: true
+                height: width
+                width: parent.width / 2
+                sourceSize.width: 512
+                sourceSize.height: 512
+                anchors.horizontalCenter: parent.horizontalCenter
+                opacity: 0.7
             }
 
-            LabelText {
-                anchors {
-                    left: parent.left
-                    margins: Theme.paddingLarge
-                }
-                //: AboutPage version label
-                label: qsTr("Version")
+            Label {
+                width: parent.width
+                x : Theme.horizontalPageMargin
+                font.pixelSize: Theme.fontSizeExtraLarge
+                color: Theme.secondaryHighlightColor
+
+                //: AboutPage - Name
+                text: qsTr("Watchlist")
+            }
+
+            Label {
+                width: parent.width
+                x : Theme.horizontalPageMargin
                 text: applicationVersion
-                separator: true
             }
 
-            BackgroundItem {
-                id: clickableUrlAuthor
-                contentHeight: labelAuthor.height
-                height: contentHeight
-                width: aboutPageFlickable.width
-                anchors {
-                    left: parent.left
-                }
-
-                LabelText {
-                    id: labelAuthor
-                    anchors {
-                        left: parent.left
-                        margins: Theme.paddingLarge
-                    }
-                    //: AboutPage author label
-                    label: qsTr("Author")
-                    text: "Andreas Wüst"
-                    separator: true
-                    color: clickableUrlAuthor.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
-//                onClicked: {
-//                    aboutPage.showInfos = !aboutPage.showInfos;
-//                }
+            Item {
+                height: Theme.paddingMedium
+                width: 1
             }
 
-            LabelText {
-                anchors {
-                    left: parent.left
-                    margins: Theme.paddingLarge
-                }
-                //: AboutPage translators label
-                label: qsTr("Translators")
-                text: qsTr("Viacheslav Dikonov (ru)") + "\n" +
-                      "Åke Engelbrektson (sv)\n" +
-                      "@KhanPuking (zh_CN)\n" +
-                      "pherjung (fr)"
-                separator: true
+            AboutDescription {
+                //: AboutPage text - about text
+                description: qsTr("This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.")
             }
 
-            LabelText {
-                anchors {
-                    left: parent.left
-                    margins: Theme.paddingLarge
-                }
-                //: AboutPage contributors label
-                label: qsTr("Contributors")
-                text: "Okxa (icon)\n" +
-                      "dikonov (small patch)\n" +
-                      "Dmitry Gerasimov (UI Cover patches)"
-                separator: true
+            SectionHeader {
+                //: AboutPage - Translations
+                text: qsTr("Translations")
             }
 
-            BackgroundItem {
-                id: clickableUrlSourceCode
-                contentHeight: labelUrl.height
-                height: contentHeight
-                width: aboutPageFlickable.width
-                anchors {
-                    left: parent.left
-                }
-
-                LabelText {
-                    id: labelUrl
-                    anchors {
-                        left: parent.left
-                        margins: Theme.paddingLarge
-                    }
-                    //: AboutPage about source label
-                    label: qsTr("Source code")
-                    text: "https://github.com/andywuest/harbour-watchlist"
-                    color: clickableUrlSourceCode.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
-                onClicked: Qt.openUrlExternally(labelUrl.text)
+            AboutDescription {
+                //: AboutPage - translations
+                description: qsTr("Viacheslav Dikonov (ru)") + "\n" +
+                             "Åke Engelbrektson (sv)\n" +
+                             "@KhanPuking (zh_CN)\n" +
+                             "pherjung (fr)"
             }
 
-//            LabelText {
-//                visible: aboutPage.showInfos
-//                anchors {
-//                    left: parent.left
-//                    margins: Theme.paddingLarge
-//                }
-//                //: AboutPage translators label
-//                label: qsTr("Debug Infos")
-//                text: "WiFi : " + (watchlist.isWiFi() ? "on" : "off") +
-//                      "\n" + qsTr("Screen size : ") + aboutPage.width + "x" + aboutPage.height;
-//                separator: true
-//            }
+            SectionHeader{
+                id: sectionHeaderSources
+                //: AboutPage - sources
+                text: qsTr("Sources")
+            }
+
+            AboutIconLabel {
+                iconSource: "icons/github.svg"
+                label: "https://github.com/andywuest/harbour-watchlist"
+                targetUrl: "https://github.com/andywuest/harbour-watchlist"
+            }
+
+            SectionHeader{
+                //: AboutPage - Donations
+                text: qsTr("Donations")
+            }
+
+            AboutDescription {
+                //: AboutPage - donations info
+                description: qsTr("If you like my work why not buy me a beer?")
+            }
+
+            AboutIconLabel {
+                iconSource: "icons/paypal.svg"
+                label: qsTr("Donate with PayPal")
+                targetUrl: "https://www.paypal.com/paypalme/andywuest"
+            }
+
+            Item {
+                width: 1
+                height: Theme.paddingSmall
+            }
         }
     }
 

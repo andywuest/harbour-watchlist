@@ -55,7 +55,6 @@ TRANSLATIONS += translations/harbour-watchlist-de.ts \
     translations/harbour-watchlist-zh_CN.ts \
     translations/harbour-watchlist-fr.ts
 
-
 DISTFILES += \
     qml/components/AlarmNotification.qml \
     qml/components/DividendsView.qml \
@@ -93,13 +92,13 @@ DISTFILES += \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/NewsPage.qml \
     qml/pages/icons/github.svg \
-    qml/pages/icons/paypal.svg \
-    tests_qml/tst_database.qml \
-    tests_qml/tst_functions.qml
+    qml/pages/icons/paypal.svg
+#    tests_qml/tst_database.qml \
+#    tests_qml/tst_functions.qml
 
-tests.files = tests_qml/tst_*
+# tests.files = tests_qml/tst_*
 # tests.path = /usr/share/harbour-watchlist/tests
-INSTALLS += tests_qml
-OTHER_FILES += tests_qml/tst_*
+# INSTALLS += tests_qml
+# OTHER_FILES += tests_qml/tst_*
 
 include(harbour-watchlist.pri)

@@ -4,60 +4,63 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Reset Database</source>
         <extracomment>AboutPage pully - reset database</extracomment>
         <translation>Datenbank zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <location filename="../qml/pages/AboutPage.qml" line="65"/>
-        <source>About Watchlist</source>
-        <extracomment>AboutPage title - header
-----------
-AboutPage title - about text title</extracomment>
-        <translation>Über Watchlist</translation>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>About</source>
+        <extracomment>AboutPage - Header</extracomment>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
+        <source>Watchlist</source>
+        <extracomment>AboutPage - Name</extracomment>
+        <translation>Watchlist</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <source>Translations</source>
+        <extracomment>AboutPage - Translations</extracomment>
+        <translation>Übersetzungen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="111"/>
+        <source>Sources</source>
+        <extracomment>AboutPage - sources</extracomment>
+        <translation>Quellen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="122"/>
+        <source>Donations</source>
+        <extracomment>AboutPage - Donations</extracomment>
+        <translation>Spenden</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="127"/>
+        <source>If you like my work why not buy me a beer?</source>
+        <extracomment>AboutPage - donations info</extracomment>
+        <translation>Wenn Du meine Arbeit magst, warum gibst du mir nicht einfach ein Bier aus?</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <source>Donate with PayPal</source>
+        <translation>Spenden via PayPal</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="92"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation>Diese Anwendung ist eine kleine Aktien-Watchlist für Sailfish OS. Watchlist ist Open Source und unter der GPL v3 lizensiert.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
-        <source>Version</source>
-        <extracomment>AboutPage version label</extracomment>
-        <translation>Version</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="98"/>
-        <source>Author</source>
-        <extracomment>AboutPage author label</extracomment>
-        <translation>Autor</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="114"/>
-        <source>Translators</source>
-        <extracomment>AboutPage translators label</extracomment>
-        <translation>Übersetzer</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="115"/>
+        <location filename="../qml/pages/AboutPage.qml" line="102"/>
         <source>Viacheslav Dikonov (ru)</source>
+        <extracomment>AboutPage - translations</extracomment>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="128"/>
-        <source>Contributors</source>
-        <extracomment>AboutPage contributors label</extracomment>
-        <translation>Beitragende</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="151"/>
-        <source>Source code</source>
-        <extracomment>AboutPage about source label</extracomment>
-        <translation>Quellcode</translation>
     </message>
 </context>
 <context>
@@ -943,76 +946,76 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="237"/>
+        <location filename="../qml/js/database.js" line="238"/>
         <source>Alarm added</source>
         <translation>Alarm hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="237"/>
+        <location filename="../qml/js/database.js" line="238"/>
         <source>Error adding alarm</source>
         <translation>Fehler beim Hinzufügen des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="244"/>
+        <location filename="../qml/js/database.js" line="245"/>
         <source>Alarm disabled</source>
         <translation>Alarm deaktiviert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="245"/>
+        <location filename="../qml/js/database.js" line="246"/>
         <source>Error disabling alarm</source>
         <translation>Fehler beim deaktivieren des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="253"/>
-        <location filename="../qml/js/database.js" line="258"/>
+        <location filename="../qml/js/database.js" line="254"/>
+        <location filename="../qml/js/database.js" line="259"/>
         <source>Stock notes updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="254"/>
-        <location filename="../qml/js/database.js" line="259"/>
+        <location filename="../qml/js/database.js" line="255"/>
+        <location filename="../qml/js/database.js" line="260"/>
         <source>Error updating stock notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/database.js" line="267"/>
-        <location filename="../qml/js/database.js" line="272"/>
-        <source>Stock referencePrice updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="268"/>
         <location filename="../qml/js/database.js" line="273"/>
+        <source>Stock referencePrice updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="269"/>
+        <location filename="../qml/js/database.js" line="274"/>
         <source>Error updating stock referencePrice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="289"/>
+        <location filename="../qml/js/database.js" line="290"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-Daten migriert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="290"/>
+        <location filename="../qml/js/database.js" line="291"/>
         <source>Error migrating watchlist data</source>
         <translation>Fehler beim Migrieren der Watchlist-Daten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="349"/>
+        <location filename="../qml/js/database.js" line="350"/>
         <source>Market data added</source>
         <translation>Marktdaten hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="349"/>
+        <location filename="../qml/js/database.js" line="350"/>
         <source>Error adding market data</source>
         <translation>Fehler beim Hinzufügen von Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="373"/>
+        <location filename="../qml/js/database.js" line="374"/>
         <source>Stock added</source>
         <translation>Aktie hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="375"/>
+        <location filename="../qml/js/database.js" line="376"/>
         <source>Error adding stock</source>
         <translation>Fehler beim Hinzufügen der Aktie</translation>
     </message>
