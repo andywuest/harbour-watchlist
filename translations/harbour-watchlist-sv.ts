@@ -13,42 +13,42 @@
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>About</source>
         <extracomment>AboutPage - Header</extracomment>
-        <translation type="unfinished">Om</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>Watchlist</source>
         <extracomment>AboutPage - Name</extracomment>
-        <translation type="unfinished">Watchlist</translation>
+        <translation>Watchlist</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="97"/>
         <source>Translations</source>
         <extracomment>AboutPage - Translations</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Översättningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="111"/>
         <source>Sources</source>
         <extracomment>AboutPage - sources</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Källor</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="122"/>
         <source>Donations</source>
         <extracomment>AboutPage - Donations</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Donationer</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="127"/>
         <source>If you like my work why not buy me a beer?</source>
         <extracomment>AboutPage - donations info</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Om du gillar mitt arbete, kanske du vill bjuda mig på en öl?</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="132"/>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Donera via PayPal</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="92"/>
