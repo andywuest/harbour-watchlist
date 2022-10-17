@@ -98,7 +98,7 @@ Page {
         Functions.log("[OverviewPage] dividend last update : " + watchlistSettings.dividendsDataLastUpdate)
         Functions.log("[OverviewPage] dividend calculated ref date : " + refDatePassed);
         Functions.log("[OverviewPage] now : " + new Date())
-        if (watchlistSettings.dividendsDataLastUpdate) {
+        if (watchlistSettings.dividendsDataLastUpdate && Functions.isValidDate(watchlistSettings.dividendsDataLastUpdate)) {
             return (watchlistSettings.dividendsDataLastUpdate < refDatePassed);
         }
         return true;
