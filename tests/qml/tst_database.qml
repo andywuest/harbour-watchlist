@@ -2,9 +2,9 @@ import QtQuick 2.0
 import QtTest 1.2
 import QtQuick.LocalStorage 2.0
 
-import "../qml/js/database.js" as Database
-import "../qml/js/functions.js" as Functions
-import "../qml/js/constants.js" as Constants
+import "../../qml/js/database.js" as Database
+import "../../qml/js/functions.js" as Functions
+import "../../qml/js/constants.js" as Constants
 
 TestCase {
     name: "Database Tests"

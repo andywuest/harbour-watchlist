@@ -9,8 +9,8 @@ SOURCES += testmain.cpp \
 HEADERS += \
     ingdibabackendtests.h
 
-INCLUDEPATH += ../
-include(../harbour-watchlist.pri)
+INCLUDEPATH += ../../
+include(../../harbour-watchlist.pri)
 
 TARGET = IngDibaBackendTest
 
