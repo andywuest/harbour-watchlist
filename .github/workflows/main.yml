@@ -2,11 +2,10 @@ name: Watchlist build
 
 on:
   push:
-    tags:
-      - '*'
-  pull_request:
     branches:
       - master
+    tags:
+      - '*'
 
 env:
   RELEASE: 4.2.0.21
