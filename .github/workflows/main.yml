@@ -26,14 +26,14 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          cd tests_qml 
+          cd tests/qml 
           ./runTests.sh
           tap2junit --verbose qmlresults.tap
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
           sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
           sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' qmlresults.tap.xml
           cd ..                                                   
-          cd tests
+          cd cpp
           sudo timedatectl set-timezone Europe/Berlin
           ./runTests.sh
           tap2junit --verbose xmlresults.tap
@@ -46,7 +46,7 @@ jobs:
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
-          path: tests_qml/*.xml,tests/*.xml                       # Path to test results 
+          path: tests/qml/*.xml,tests/cpp/*.xml                   # Path to test results
           reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
@@ -65,19 +65,19 @@ jobs:
         with:
           release: 4.2.0.21
 
-      - name: Build i486
-        id: build_i486
-        uses: coderus/github-sfos-build@master
-        with:
-          release: 4.2.0.21
-          arch: i486
-
       - name: Build aarch64
         id: build_aarch64
         uses: coderus/github-sfos-build@master
         with:
           release: 4.2.0.21
           arch: aarch64
+
+#      - name: Build i486
+#        id: build_i486
+#        uses: coderus/github-sfos-build@master
+#        with:
+#          release: 4.2.0.21
+#          arch: i486
 
       - name: Upload build result
         uses: actions/upload-artifact@v2
