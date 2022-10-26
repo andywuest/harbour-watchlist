@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-test:
-    name: Build & Test
+    name: Build & Run tests
     runs-on: ubuntu-latest
 
     steps:
@@ -53,6 +53,7 @@ jobs:
           reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:
+    name: Build & Package
     runs-on: ubuntu-latest
 
     steps:
