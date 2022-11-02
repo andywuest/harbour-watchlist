@@ -29,7 +29,7 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          cd tests/qml 
+          cd test/qml 
           ./runTests.sh
           tap2junit --verbose qmlresults.tap
           sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
@@ -49,7 +49,7 @@ jobs:
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
-          path: tests/qml/*.xml,tests/cpp/*.xml                   # Path to test results
+          path: test/qml/*.xml,test/cpp/*.xml                     # Path to test results
           reporter: jest-junit                                    # Format of test results - because junit cannot be generated
 
   build:

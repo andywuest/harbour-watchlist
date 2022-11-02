@@ -40,4 +40,4 @@ RPMS
 /watchlist.iml
 .directory
 /tests_qml/qmlresults.xml
-/tests/cppresults.xml
+/test/cppresults.xml
