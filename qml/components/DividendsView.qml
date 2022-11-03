@@ -34,6 +34,7 @@ SilicaFlickable {
 
     property bool loaded : false
     property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
+    property bool secondWatchlistVisible: watchlistSettings.showSecondWatchlist
 
     anchors.fill: parent
     contentHeight: watchlistColumn.height
@@ -75,7 +76,9 @@ SilicaFlickable {
     function reloadAllDividends() {
         Functions.log("[DividendsView] reloading all dividends ");
         var sortOrder = " payDateInteger ASC";
-        var dividends = Database.loadAllDividendData(watchlistId, sortOrder);
+        var dividends = Database.loadAllDividendData(sortOrder);
+
+        Functions.log("[DividendsView] found didivends : " + dividends.length);
 
         dividendsModel.clear()
         for (var i = 0; i < dividends.length; i++) {
@@ -160,7 +163,7 @@ SilicaFlickable {
                     Functions.log("[DividendsView] security selected " + index);
                     Functions.log("[DividendsView] security selected extRefId "
                                   + (selectedDividendData ? selectedDividendData.extRefId : "-"));
-                    var securities = Database.loadStockData(1, Database.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
+                    var securities = Database.loadStockData(watchlistId, Database.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
                     pageStack.push(Qt.resolvedUrl("../pages/StockOverviewPage.qml"), { stock: securities[0] });
                 }
 
@@ -256,6 +259,10 @@ SilicaFlickable {
             VerticalScrollDecorator {
             }
         }
+    }
+
+    onSecondWatchlistVisibleChanged: {
+        reloadAllDividends();
     }
 
     VerticalScrollDecorator {

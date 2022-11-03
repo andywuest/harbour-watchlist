@@ -118,17 +118,17 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="113"/>
+        <location filename="../qml/cover/CoverPage.qml" line="121"/>
         <source>Loading...</source>
         <translation>Läser in...</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="186"/>
+        <location filename="../qml/cover/CoverPage.qml" line="194"/>
         <source>Top</source>
         <translation>Topp</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="186"/>
+        <location filename="../qml/cover/CoverPage.qml" line="194"/>
         <source>Flop</source>
         <translation>Flopp</translation>
     </message>
@@ -136,18 +136,18 @@
 <context>
     <name>DividendsView</name>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="96"/>
+        <location filename="../qml/components/DividendsView.qml" line="99"/>
         <source>Last update: %1</source>
         <translation>Uppdaterat: %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="129"/>
+        <location filename="../qml/components/DividendsView.qml" line="132"/>
         <source>Dividend dates</source>
         <extracomment>DividendsView page header</extracomment>
         <translation>Utdelningsdatum</translation>
     </message>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="137"/>
+        <location filename="../qml/components/DividendsView.qml" line="140"/>
         <source>The dividend dates have not yet been loaded. Please load them via the pulley menu.</source>
         <extracomment>DividendsView empty marketdata label</extracomment>
         <translation>Utdelningsdatum har ännu inte hämtats. Hämta dem via toppmenyn.</translation>
@@ -210,59 +210,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="143"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="148"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="156"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Lägg till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="164"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>Uppdatera marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="173"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>Lägg till aktie</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="181"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="190"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera utdelningsdatum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="318"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
         <source>Market data</source>
         <translation>Marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="333"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
         <source>Watchlist</source>
-        <translation>Watchlist</translation>
+        <translation type="unfinished">Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="348"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
         <source>Dividends</source>
         <translation>Utdelningar</translation>
     </message>
@@ -294,26 +295,48 @@
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="76"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="79"/>
         <source>Settings</source>
         <extracomment>SettingsPage settings title</extracomment>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="82"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="85"/>
+        <source>Show second watchlist</source>
+        <extracomment>SettingsPage show second watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="87"/>
+        <source>Displays a second watchlist, e.g. for your portfolio holdings.</source>
+        <extracomment>SettingsPage show second watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <source>Name for first Watchlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
+        <source>Name for second Watchlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
         <source>Download chart data</source>
         <extracomment>SettingsPage download chart data</extracomment>
         <translation>Ladda ner diagramdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="85"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="114"/>
         <source>Defines strategy to download the chart data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>Strategi för att ladda ner diagramdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="144"/>
         <source>Always</source>
         <extracomment>SettingsPage download strategy always
 ----------
@@ -321,8 +344,8 @@ SettingsPage news download strategy always</extracomment>
         <translation>Alltid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Only on WiFi</source>
         <extracomment>SettingsPage download strategy only on wifi
 ----------
@@ -330,91 +353,91 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Endast över WiFi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="97"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>Only manually</source>
         <extracomment>SettingsPage download strategy only manually</extracomment>
         <translation>Endast manuellt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="135"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
         <source>Sorting order</source>
         <extracomment>SettingsPage sorting order watchlist page</extracomment>
         <translation>Sorteringsordning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
         <translation>Sorteringsordning för Watchlist-poster</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="171"/>
         <source>By change</source>
         <extracomment>SettingsPage sorting order by change</extracomment>
         <translation>Efter förändring</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
         <source>By name</source>
         <extracomment>SettingsPage sorting order by name</extracomment>
         <translation>Efter namn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="186"/>
         <source>Show performance row</source>
         <extracomment>SettingsPage show performance row title</extracomment>
         <translation>Visa prestandarad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="188"/>
         <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
         <extracomment>SettingsPage show performance row description</extracomment>
         <translation>Visar övergripande prestanda för en säkerhet. Prestanda beräknas bara om ett referenspris har konfigurerats för säkerheten.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="198"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
         <translation>Dataserver</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="201"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
         <translation>Dataserver att användas till aktielistan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="205"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
         <translation>Euroinvestor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
         <translation>Moscow Exchange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="213"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation>Ing-Diba</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="194"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation>OBS! Byte av dataserver kommer att återställa databasen. Det innebär att aktuell aktielista raderas och aktierna måste läggas till igen!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
         <source>Download news data</source>
         <extracomment>SettingsPage download news data</extracomment>
         <translation>Ladda ner nyheter</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="140"/>
         <source>Defines strategy to download the news data</source>
         <extracomment>SettingsPage download strategy explanation</extracomment>
         <translation>Definierar strategi för att ladda ner nyhetsdata</translation>
@@ -668,43 +691,43 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="190"/>
+        <location filename="../qml/components/WatchlistView.qml" line="191"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>Aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="197"/>
+        <location filename="../qml/components/WatchlistView.qml" line="198"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>Bevakningslistan är tom. Lägg till aktier via toppmenyn.</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="227"/>
+        <location filename="../qml/components/WatchlistView.qml" line="228"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>Konfigurera larm</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="235"/>
+        <location filename="../qml/components/WatchlistView.qml" line="236"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="240"/>
+        <location filename="../qml/components/WatchlistView.qml" line="241"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>Aktienotiser</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="249"/>
+        <location filename="../qml/components/WatchlistView.qml" line="251"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>Konfigurera referenspris</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="362"/>
+        <location filename="../qml/components/WatchlistView.qml" line="365"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>Prestanda</translation>
@@ -713,232 +736,232 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>constants</name>
     <message>
-        <location filename="../qml/js/constants.js" line="46"/>
+        <location filename="../qml/js/constants.js" line="49"/>
         <source>Index</source>
         <translation>Index</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="47"/>
+        <location filename="../qml/js/constants.js" line="50"/>
         <source>Commodity</source>
         <translation>Handelsvara</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="48"/>
+        <location filename="../qml/js/constants.js" line="51"/>
         <source>Currency</source>
         <translation>Valuta</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="49"/>
+        <location filename="../qml/js/constants.js" line="52"/>
         <source>Crypto</source>
         <translation>Krypto</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="64"/>
+        <location filename="../qml/js/constants.js" line="67"/>
         <source>DAX 40</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="65"/>
+        <location filename="../qml/js/constants.js" line="68"/>
         <source>MDAX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="66"/>
+        <location filename="../qml/js/constants.js" line="69"/>
         <source>SDAX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="67"/>
+        <location filename="../qml/js/constants.js" line="70"/>
         <source>TecDAX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="69"/>
+        <location filename="../qml/js/constants.js" line="72"/>
         <source>S&amp;P 500</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="70"/>
+        <location filename="../qml/js/constants.js" line="73"/>
         <source>NASDAQ Composite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="71"/>
+        <location filename="../qml/js/constants.js" line="74"/>
         <source>Dow Jones</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="73"/>
+        <location filename="../qml/js/constants.js" line="76"/>
         <source>CAC 40</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="74"/>
+        <location filename="../qml/js/constants.js" line="77"/>
         <source>SBF 120</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="75"/>
+        <location filename="../qml/js/constants.js" line="78"/>
         <source>CAC Next20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="77"/>
+        <location filename="../qml/js/constants.js" line="80"/>
         <source>OMX C25</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="78"/>
+        <location filename="../qml/js/constants.js" line="81"/>
         <source>OMX Stockholm 30</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="79"/>
+        <location filename="../qml/js/constants.js" line="82"/>
         <source>OSEBX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="82"/>
+        <location filename="../qml/js/constants.js" line="85"/>
         <source>Gold</source>
         <translation>Guld</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="83"/>
+        <location filename="../qml/js/constants.js" line="86"/>
         <source>Silver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="84"/>
+        <location filename="../qml/js/constants.js" line="87"/>
         <source>Platinum</source>
         <translation>Platina</translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="85"/>
+        <location filename="../qml/js/constants.js" line="88"/>
         <source>Palladium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="88"/>
+        <location filename="../qml/js/constants.js" line="91"/>
         <source>EUR/USD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="89"/>
+        <location filename="../qml/js/constants.js" line="92"/>
         <source>EUR/CAD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="90"/>
+        <location filename="../qml/js/constants.js" line="93"/>
         <source>EUR/RUB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="91"/>
+        <location filename="../qml/js/constants.js" line="94"/>
         <source>SEK/DKK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="95"/>
+        <location filename="../qml/js/constants.js" line="98"/>
         <source>GBP/RUB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="96"/>
+        <location filename="../qml/js/constants.js" line="99"/>
         <source>GBP/DKK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="97"/>
+        <location filename="../qml/js/constants.js" line="100"/>
         <source>GBP/USD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="110"/>
+        <location filename="../qml/js/constants.js" line="113"/>
         <source>Binance USD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="92"/>
+        <location filename="../qml/js/constants.js" line="95"/>
         <source>JPY/USD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="93"/>
+        <location filename="../qml/js/constants.js" line="96"/>
         <source>CHF/EUR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="94"/>
+        <location filename="../qml/js/constants.js" line="97"/>
         <source>GBP/EUR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="98"/>
+        <location filename="../qml/js/constants.js" line="101"/>
         <source>USD/EUR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="99"/>
+        <location filename="../qml/js/constants.js" line="102"/>
         <source>USD/RUB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="102"/>
+        <location filename="../qml/js/constants.js" line="105"/>
         <source>Bitcoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="103"/>
+        <location filename="../qml/js/constants.js" line="106"/>
         <source>Bitcoin Cash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="104"/>
+        <location filename="../qml/js/constants.js" line="107"/>
         <source>Litecoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="105"/>
+        <location filename="../qml/js/constants.js" line="108"/>
         <source>Dash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="106"/>
+        <location filename="../qml/js/constants.js" line="109"/>
         <source>Ethereum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="107"/>
+        <location filename="../qml/js/constants.js" line="110"/>
         <source>Tether</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="108"/>
+        <location filename="../qml/js/constants.js" line="111"/>
         <source>IOTA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="109"/>
+        <location filename="../qml/js/constants.js" line="112"/>
         <source>Monero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="111"/>
+        <location filename="../qml/js/constants.js" line="114"/>
         <source>XRP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="112"/>
+        <location filename="../qml/js/constants.js" line="115"/>
         <source>Tezos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="113"/>
+        <location filename="../qml/js/constants.js" line="116"/>
         <source>Cardano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/constants.js" line="114"/>
+        <location filename="../qml/js/constants.js" line="117"/>
         <source>Chainlink</source>
         <translation type="unfinished"></translation>
     </message>
@@ -946,76 +969,76 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="238"/>
+        <location filename="../qml/js/database.js" line="250"/>
         <source>Alarm added</source>
         <translation>Larm tillagt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="238"/>
+        <location filename="../qml/js/database.js" line="250"/>
         <source>Error adding alarm</source>
         <translation>Kunde inte lägga till larmet</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="245"/>
+        <location filename="../qml/js/database.js" line="257"/>
         <source>Alarm disabled</source>
         <translation>Larmet avaktiverat</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="246"/>
+        <location filename="../qml/js/database.js" line="258"/>
         <source>Error disabling alarm</source>
         <translation>Kunde inte avaktivera larmet</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="254"/>
-        <location filename="../qml/js/database.js" line="259"/>
+        <location filename="../qml/js/database.js" line="266"/>
+        <location filename="../qml/js/database.js" line="271"/>
         <source>Stock notes updated</source>
         <translation>Aktienotiser uppdaterade</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="255"/>
-        <location filename="../qml/js/database.js" line="260"/>
+        <location filename="../qml/js/database.js" line="267"/>
+        <location filename="../qml/js/database.js" line="272"/>
         <source>Error updating stock notes</source>
         <translation>Kunde inte uppdatera aktienotiser</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="268"/>
-        <location filename="../qml/js/database.js" line="273"/>
+        <location filename="../qml/js/database.js" line="280"/>
+        <location filename="../qml/js/database.js" line="285"/>
         <source>Stock referencePrice updated</source>
         <translation>Aktiereferenspris uppdaterat</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="269"/>
-        <location filename="../qml/js/database.js" line="274"/>
+        <location filename="../qml/js/database.js" line="281"/>
+        <location filename="../qml/js/database.js" line="286"/>
         <source>Error updating stock referencePrice</source>
         <translation>Kunde inte uppdatera aktiereferenspris</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="290"/>
+        <location filename="../qml/js/database.js" line="302"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-data migrerad</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="291"/>
+        <location filename="../qml/js/database.js" line="303"/>
         <source>Error migrating watchlist data</source>
         <translation>Fel vid migrering av Watchlist-data</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="350"/>
+        <location filename="../qml/js/database.js" line="363"/>
         <source>Market data added</source>
         <translation>Marknadsdata tillagd</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="350"/>
+        <location filename="../qml/js/database.js" line="363"/>
         <source>Error adding market data</source>
         <translation>Kunde inte lägga till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="374"/>
+        <location filename="../qml/js/database.js" line="387"/>
         <source>Stock added</source>
         <translation>Aktie tillagd</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="376"/>
+        <location filename="../qml/js/database.js" line="389"/>
         <source>Error adding stock</source>
         <translation>Kunde inte lägga till aktien</translation>
     </message>
@@ -1037,6 +1060,19 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/js/functions.js" line="71"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-watchlist</name>
+    <message>
+        <location filename="../qml/harbour-watchlist.qml" line="45"/>
+        <source>Watchlist</source>
+        <translation type="unfinished">Watchlist</translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-watchlist.qml" line="46"/>
+        <source>Holdings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

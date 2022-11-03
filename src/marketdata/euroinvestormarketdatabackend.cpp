@@ -105,7 +105,7 @@ QString EuroinvestorMarketDataBackend::getMarketDataExtRefId(const QString &mark
         return marketDataId2ExtRefId[marketDataId];
     }
 
-    return QString::null;
+    return QString();
 }
 
 void EuroinvestorMarketDataBackend::lookupMarketData(const QString &marketDataIds) {

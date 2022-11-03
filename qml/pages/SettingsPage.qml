@@ -27,29 +27,32 @@ import "../components"
 
 import "../js/database.js" as Database
 import "../js/constants.js" as Constants
+import "../js/functions.js" as Functions
 
 Page {
     id: settingsPage
     property int currentDataBackend : 0
-    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
     signal reloadOverviewSecurities()
 
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
-            console.log("store settings!");
+            Functions.log("[SettingsPage] store settings!");
             var reloadSecurities = false;
             if (settingsPage.currentDataBackend !== watchlistSettings.dataBackend) {
                 if (settingsPage.currentDataBackend === Constants.BACKEND_EUROINVESTOR
                         && watchlistSettings.dataBackend === Constants.BACKEND_ING_DIBA) {
-                    console.log("Migrate stockdata table to new backend");
-                    Database.migrateEuroinvestorToIngDiba(watchlistId);
+                    Functions.log("[SettingsPage] Migrate stockdata table to new backend");
+                    Database.migrateEuroinvestorToIngDiba(Constants.WATCHLIST_1);
+                    Database.migrateEuroinvestorToIngDiba(Constants.WATCHLIST_2);
                 } else {
-                    console.log("reset application database");
+                    Functions.log("[SettingsPage] reset application database");
                     Database.resetApplication()
                     Database.initApplicationTables()
                 }
                 reloadSecurities = true;
             }
+            watchlistSettings.firstWatchlistName = firstWatchlistTextField.text;
+            watchlistSettings.secondWatchlistName = secondWatchlistTextField.text;
             watchlistSettings.sync();
             if (reloadSecurities) {
                 reloadOverviewSecurities();
@@ -74,6 +77,32 @@ Page {
             PageHeader {
                 //: SettingsPage settings title
                 title: qsTr("Settings")
+            }
+
+            TextSwitch {
+                id: secondWatchlistTextSwitch
+                //: SettingsPage show second watchlist
+                text: qsTr("Show second watchlist")
+                //: SettingsPage show second watchlist
+                description: qsTr("Displays a second watchlist, e.g. for your portfolio holdings.")
+                checked: watchlistSettings.showSecondWatchlist
+                onCheckedChanged: watchlistSettings.showSecondWatchlist = checked;
+            }
+
+            TextField {
+                id: firstWatchlistTextField
+                width: parent.width
+                text: watchlistSettings.firstWatchlistName
+                placeholderText: qsTr("Name for first Watchlist")
+                visible: secondWatchlistTextSwitch.checked
+            }
+
+            TextField {
+                id: secondWatchlistTextField
+                width: parent.width
+                text: watchlistSettings.secondWatchlistName
+                placeholderText: qsTr("Name for second Watchlist")
+                visible: secondWatchlistTextSwitch.checked
             }
 
             ComboBox {
@@ -204,4 +233,5 @@ Page {
             settingsPage.currentDataBackend = watchlistSettings.dataBackend;
         }
     }
+
 }

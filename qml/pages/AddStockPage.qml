@@ -28,8 +28,8 @@ import "../js/functions.js" as Functions
 import "../components/thirdparty"
 
 Page {
-
     id: stockSearchPage
+    property int watchlistId
 
     allowedOrientations: Orientation.All
 
@@ -49,7 +49,7 @@ Page {
 
     function searchResultHandler(result) {
       var jsonResult = JSON.parse(result.toString())
-      Functions.log("json result from euroinvestor was: " +result)
+      Functions.log("json result from backend was: " + result)
 
       for (var i = 0; i < jsonResult.length; i++)   {
           if (jsonResult[i]) {
@@ -253,8 +253,8 @@ Page {
 
                     onClicked: {
                         var selectedItem = searchResultListModel.get(index)
-                        var result = Database.persistStockData(selectedItem,
-                                                               Database.getCurrentWatchlistId())
+                        var result = Database.persistStockData(selectedItem, watchlistId)
+                        app.securityAdded(watchlistId);
                         stockAddedNotification.show(result);
                     }
                 }

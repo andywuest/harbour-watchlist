@@ -155,6 +155,18 @@ function initApplicationTables() {
             })
         }
 
+        db = getOpenDatabase()
+        // version update 1.2 -> 1.3
+        if (db.version === "1.2") {
+            console.log("Performing DB update from 1.2 to 1.3!")
+            db.changeVersion("1.2", "1.3", function (tx) {
+                // create new, second watchlist
+                tx.executeSql(
+                            'INSERT INTO watchlist (name, backendId) VALUES ("SECOND", (SELECT id FROM backend WHERE name = "Euroinvestor"))');
+                // TODO backend column seems to be no longer required
+            })
+        }
+
         // open database again to make sure we have latest version
         db = getOpenDatabase()
     } catch (err) {
@@ -318,6 +330,7 @@ function loadValueFromTable(id, table, columnName) {
     return (result ? result[columnName] : '');
 }
 
+// TODO check if needed
 function getCurrentWatchlistId() {
     var result = null;
     try {
@@ -490,7 +503,7 @@ function loadAllMarketData() {
     return result;
 }
 
-function loadAllDividendData(watchlistId, sortString) {
+function loadAllDividendData(sortString) {
     var result = [];
     try {
         var db = getOpenDatabase();
@@ -530,7 +543,7 @@ function loadAllStockData(watchListId, sortString) {
     return loadStockData(watchListId, sortString, '');
 }
 
-function loadStockData(watchListId, sortString, extRefId) { // TODO implement watchlistid
+function loadStockData(watchListId, sortString, extRefId) {
     var result = [];
     try {
         var db = getOpenDatabase()
@@ -552,7 +565,8 @@ function loadStockData(watchListId, sortString, extRefId) { // TODO implement wa
                     + ' LEFT OUTER JOIN stockdata_ext se '
                     + ' ON s.id = se.id '
                     // restrict to single stock
-                    + (extRefId !== '' ? " WHERE s.extRefId = '" + extRefId + "'" : '')
+                    + ' WHERE 1 == 1 AND watchlistId = ' + watchListId
+                    + (extRefId !== '' ? " AND s.extRefId = '" + extRefId + "'" : '')
                     + ' ORDER BY ' + sortString;
             log("[loadStockData] query : " + query);
             var dbResult = tx.executeSql(query, [])

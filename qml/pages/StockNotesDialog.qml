@@ -27,7 +27,7 @@ import "../js/functions.js" as Functions
 Dialog {
     id: stockNotesDialog
     property var selectedSecurity
-    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
+    property int watchlistId
     signal updateNotesInModel(int securityId, string notes)
 
     Column {

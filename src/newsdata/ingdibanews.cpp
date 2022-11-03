@@ -76,7 +76,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
             QString headline = newsObject["headline"].toString();
             QString content = newsObject["content"].toString();
             QString source = newsObject["id"].toString();
-            QString url = QString::null;                          // not supported
+            QString url = QString();                          // not supported
             QString dateTime = newsObject["newsDate"].toString(); // TODO parsen in richtiges datetime
 
             QJsonObject resultObject;

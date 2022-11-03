@@ -27,7 +27,7 @@ import "../js/functions.js" as Functions
 
 CoverBackground {
     id: coverPage
-    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
+    property int watchlistId: Constants.WATCHLIST_1 // TODO so far hard code - maybe make it configurable
     property bool loading : false;
 
     function reloadAllStocks() {
@@ -70,7 +70,7 @@ CoverBackground {
 
     function quoteResultHandler(result) {
         var jsonResult = JSON.parse(result.toString())
-        console.log("json result from backend was: " + result)
+        Functions.log("[CoverPage] - quoteResultHandler json result from backend was: " + result)
         for (var i = 0; i < jsonResult.length; i++) {
             var stockQuote = jsonResult[i]
             var stock = Database.loadStockBy(watchlistId, '' + stockQuote.extRefId)
@@ -90,6 +90,14 @@ CoverBackground {
 
     function errorResultHandler(result) {
         loading = false
+    }
+
+    function securityAdded(updateWatchlistId) {
+        Functions.log("[CoverPage] security has been added to watchlist " + updateWatchlistId);
+        // TODO so far cover always display watchlist 1 -> make it configurable ?
+        if (updateWatchlistId === Constants.WATCHLIST_1) {
+            watchlistView.reloadAllStocks();
+        }
     }
 
     AlarmNotification {
@@ -252,14 +260,10 @@ CoverBackground {
         }
 
         Component.onCompleted: {
-            // Database.initApplicationTables()
             var dataBackend = getSecurityDataBackend(watchlistSettings.dataBackend);
             dataBackend.quoteResultAvailable.connect(quoteResultHandler)
             dataBackend.requestError.connect(errorResultHandler)
-            reloadAllStocks()
-        }
-
-        onVisibleChanged: {
+            app.securityAdded.connect(securityAdded);
             reloadAllStocks()
         }
     }

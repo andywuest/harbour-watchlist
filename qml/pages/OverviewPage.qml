@@ -17,11 +17,13 @@
  */
 import QtQuick 2.2
 import QtQuick.LocalStorage 2.0
+import QtQml.Models 2.2
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
 
 import "../components"
 
+import "../js/constants.js" as Constants
 import "../js/database.js" as Database
 import "../js/functions.js" as Functions
 
@@ -29,28 +31,46 @@ Page {
     id: overviewPage
 
     readonly property int dividendsUpdateDays: 3 // allow update only every x days
-    property int watchlistId: 1
     allowedOrientations: Orientation.Portrait // so far only Portait mode
 
     property int activeTabId: 0
+    property bool secondWatchlistVisible: watchlistSettings.showSecondWatchlist
+    property int numberOfTabs: 3 + (secondWatchlistVisible ? 1 : 0)
 
     function openTab(tabId) {
         activeTabId = tabId
+        Functions.log("[OverviewPage] opening tab :" + tabId);
 
         switch (tabId) {
         case 0:
             marketdataButtonPortrait.isActive = true
             watchlistButtonPortrait.isActive = false
+            secondWatchlistButtonPortrait.isActive = false
             dividendsButtonPortrait.isActive = false
             break
         case 1:
             marketdataButtonPortrait.isActive = false
             watchlistButtonPortrait.isActive = true
+            secondWatchlistButtonPortrait.isActive = false
             dividendsButtonPortrait.isActive = false
             break
         case 2:
+            if (secondWatchlistVisible) {
+                marketdataButtonPortrait.isActive = false
+                watchlistButtonPortrait.isActive = false
+                secondWatchlistButtonPortrait.isActive = true
+                dividendsButtonPortrait.isActive = false
+            } else {
+                marketdataButtonPortrait.isActive = false
+                watchlistButtonPortrait.isActive = false
+                secondWatchlistButtonPortrait.isActive = false
+                dividendsButtonPortrait.isActive = true
+            }
+            break
+        case 3:
             marketdataButtonPortrait.isActive = false
             watchlistButtonPortrait.isActive = false
+            secondWatchlistButtonPortrait.isActive = false
             dividendsButtonPortrait.isActive = true
             break
         default:
@@ -82,13 +102,25 @@ Page {
         }
     }
 
-    function handleDividendsClicked() {
-        if (overviewPage.activeTabId === 2) {
+    function handleSecondWatchlistClicked() {
+        var secondWatchListTabIndex = 2;
+        if (overviewPage.activeTabId === secondWatchListTabIndex) {
             watchlistView.scrollToTop()
         } else {
             viewsSlideshow.opacity = 0
-            slideshowVisibleTimer.goToTab(2)
-            openTab(2)
+            slideshowVisibleTimer.goToTab(secondWatchListTabIndex)
+            openTab(secondWatchListTabIndex)
+        }
+    }
+
+    function handleDividendsClicked() {
+        var dividendTabIndex = (secondWatchlistVisible ? 3 : 2);
+        if (overviewPage.activeTabId === dividendTabIndex) {
+            dividendsView.scrollToTop()
+        } else {
+            viewsSlideshow.opacity = 0
+            slideshowVisibleTimer.goToTab(dividendTabIndex)
+            openTab(dividendTabIndex)
         }
     }
 
@@ -112,21 +144,86 @@ Page {
         watchlistView.connectSlots();
     }
 
+    function securityAdded(updateWatchlistId) {
+        Functions.log("[OverviewPage] security has been added to watchlist " + updateWatchlistId);
+        if (updateWatchlistId === Constants.WATCHLIST_1) {
+            watchlistView.reloadAllStocks();
+        }
+        if (secondWatchlistVisible && updateWatchlistId === Constants.WATCHLIST_2) {
+            secondWatchlistView.reloadAllStocks();
+        }
+    }
+
+    function repopulateTabs() {
+        Functions.log("[OverviewPage] updating the tabs model views");
+        viewsModel.clear();
+        viewsModel.append(marketdataColumn)
+        viewsModel.append(watchlistColumn)
+        if (secondWatchlistVisible) {
+            viewsModel.append(secondWatchlistColumn)
+        }
+        viewsModel.append(dividendsColumn)
+    }
+
     onStatusChanged: {
         if (status === PageStatus.Active) {
-            // TODO this comparison sucks, because it does not properly detect when a stock is changed
-            // TODO also we are selecting twice the securities of the watchlist
-            // TODO we need a better way to indicate security changes
-            var watchlistItemCount = Database.loadAllStockData(watchlistId, Database.SORT_BY_CHANGE_ASC).length;
-            if (watchlistItemCount !== watchlistView.getWatchlistItemCount()) {
-                watchlistView.reloadAllStocks();
-            }
             var marketDataItemCount = Database.loadAllMarketData().length;
             if (marketDataItemCount !== marketdataView.getMarketDataItemCount()) {
                 marketdataView.reloadAllMarketData();
             }
 
             console.log("overview page active");
+        }
+    }
+
+    Item {
+        id: marketdataColumn
+        width: viewsSlideshow.width
+        height: viewsSlideshow.height
+
+        MarketdataView {
+            id: marketdataView
+            width: parent.width
+            height: parent.height
+        }
+    }
+
+    Item {
+        id: watchlistColumn
+        width: viewsSlideshow.width
+        height: viewsSlideshow.height
+
+        WatchlistView {
+            id: watchlistView
+            width: parent.width
+            height: parent.height
+            watchlistId: Constants.WATCHLIST_1
+        }
+    }
+
+    Item {
+        id: secondWatchlistColumn
+        width: viewsSlideshow.width
+        height: viewsSlideshow.height
+        visible: secondWatchlistVisible
+
+        WatchlistView {
+            id: secondWatchlistView
+            width: parent.width
+            height: parent.height
+            watchlistId: Constants.WATCHLIST_2
+        }
+    }
+
+    Item {
+        id: dividendsColumn
+        width: viewsSlideshow.width
+        height: viewsSlideshow.height
+
+        DividendsView {
+            id: dividendsView
+            width: parent.width
+            height: parent.height
         }
     }
 
@@ -171,9 +268,10 @@ Page {
             MenuItem {
                 //: OverviewPage add stock menu item
                 text: qsTr("Add stock")
-                visible: activeTabId == 1
+                visible: (activeTabId == 1 || (secondWatchlistVisible && activeTabId == 2))
                 onClicked: {
-                    var dialog = pageStack.push(Qt.resolvedUrl("AddStockPage.qml"))
+                    var selectedWatchlistId = (activeTabId == 1 ? Constants.WATCHLIST_1 : Constants.WATCHLIST_2);
+                    var dialog = pageStack.push(Qt.resolvedUrl("AddStockPage.qml"), { watchlistId: selectedWatchlistId })
                 }
             }
             MenuItem {
@@ -181,14 +279,23 @@ Page {
                 text: qsTr("Refresh all quotes")
                 visible: activeTabId == 1 && watchlistView.isWatchlistNotEmpty()
                 onClicked: {
-                    console.log("Refresh quotes ")
+                    Functions.log("Refresh quotes Watchlist 1")
                     watchlistView.updateQuotes()
                 }
             }
             MenuItem {
                 //: OverviewPage refresh all quotes menu item
+                text: qsTr("Refresh all quotes")
+                visible: secondWatchlistVisible && activeTabId == 2 && secondWatchlistView.isWatchlistNotEmpty()
+                onClicked: {
+                    Functions.log("Refresh quotes Watchlist 2")
+                    secondWatchlistView.updateQuotes()
+                }
+            }
+            MenuItem {
+                //: OverviewPage refresh all quotes menu item
                 text: qsTr("Refresh dividend dates")
-                visible: activeTabId == 2 && isDividendUpdateLongEnoughInThePast()
+                visible: activeTabId === (secondWatchlistVisible ? 3 : 2) && isDividendUpdateLongEnoughInThePast()
                 onClicked: dividendsView.updateDividendDates()
             }
         }
@@ -210,44 +317,8 @@ Page {
                 height: parent.height - getNavigationRowSize() // - overviewColumnHeader.height
                 spacing: Theme.paddingSmall
 
-                VisualItemModel {
+                ObjectModel {
                     id: viewsModel
-
-                    Item {
-                        id: marketdataColumn
-                        width: viewsSlideshow.width
-                        height: viewsSlideshow.height
-
-                        MarketdataView {
-                            id: marketdataView
-                            width: parent.width
-                            height: parent.height
-                        }
-                    }
-
-                    Item {
-                        id: watchlistColumn
-                        width: viewsSlideshow.width
-                        height: viewsSlideshow.height
-
-                        WatchlistView {
-                            id: watchlistView
-                            width: parent.width
-                            height: parent.height
-                        }
-                    }
-
-                    Item {
-                        id: dividendsColumn
-                        width: viewsSlideshow.width
-                        height: viewsSlideshow.height
-
-                        DividendsView {
-                            id: dividendsView
-                            width: parent.width
-                            height: parent.height
-                        }
-                    }
                 }
 
                 Timer {
@@ -310,7 +381,7 @@ Page {
                     width: parent.width
                     Item {
                         id: marketdataButtonColumn
-                        width: parent.width / 3
+                        width: parent.width / numberOfTabs
                         height: parent.height - Theme.paddingMedium
                         NavigationRowButton {
                             id: marketdataButtonPortrait
@@ -325,12 +396,12 @@ Page {
                     }
                     Item {
                         id: watchlistButtonColumn
-                        width: parent.width / 3
+                        width: parent.width / numberOfTabs
                         height: parent.height - navigationRowSeparator.height
                         NavigationRowButton {
                             id: watchlistButtonPortrait
                             anchors.top: parent.top
-                            buttonText: qsTr("Watchlist")
+                            buttonText: secondWatchlistVisible ? watchlistSettings.firstWatchlistName : qsTr("Watchlist")
                             iconSource: "image://theme/icon-m-note"
 
                             function runOnClick() {
@@ -339,8 +410,24 @@ Page {
                         }
                     }
                     Item {
+                        id: secondWatchlistButtonColumn
+                        width: parent.width / numberOfTabs
+                        height: parent.height - navigationRowSeparator.height
+                        visible: secondWatchlistVisible
+                        NavigationRowButton {
+                            id: secondWatchlistButtonPortrait
+                            anchors.top: parent.top
+                            buttonText: watchlistSettings.secondWatchlistName
+                            iconSource: "image://theme/icon-m-note"
+
+                            function runOnClick() {
+                                handleSecondWatchlistClicked()
+                            }
+                        }
+                    }
+                    Item {
                         id: dividendsButtonColumn
-                        width: parent.width / 3
+                        width: parent.width / numberOfTabs
                         height: parent.height - navigationRowSeparator.height
                         NavigationRowButton {
                             id: dividendsButtonPortrait
@@ -359,8 +446,18 @@ Page {
 
         Component.onCompleted: {
             Database.initApplicationTables();
+            app.securityAdded.connect(securityAdded);
+            repopulateTabs();
             openTab(0)
         }
 
     }
+
+    onNumberOfTabsChanged: {
+        Functions.log("[OverviewPage] Number of tabs changed to " + numberOfTabs);
+        repopulateTabs();
+        openTab(0);
+        viewsSlideshow.positionViewAtIndex(0, PathView.SnapPosition);
+    }
+
 }

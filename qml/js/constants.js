@@ -1,5 +1,8 @@
 .pragma library
 
+var WATCHLIST_1 = 1;
+var WATCHLIST_2 = 2;
+
 var loggingEnabled = true;
 var POSITIVE_COLOR = '#00FF00';
 var NEGATIVE_COLOR = '#FF0000';
