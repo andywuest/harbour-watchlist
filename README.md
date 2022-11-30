@@ -39,6 +39,17 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 ## Build
 Simply clone this repository.
 
+## Debugging
+
+### SQLite Database
+
+For easier analysis just copy the database to your local machine to you can check it with a db tool of 
+your choice: 
+
+```
+scp -P 2223 -i ~/SailfishOS/vmshare/ssh/private_keys/sdk defaultuser@localhost:~/.local/share/harbour-watchlist/harbour-watchlist/QML/OfflineStorage/Databases/* ~/projects/sailfishos/github/harbour-watchlist/
+```
+
 ## License
 Licensed under GNU GPLv3
 

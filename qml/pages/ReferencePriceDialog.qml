@@ -27,7 +27,7 @@ import "../js/functions.js" as Functions
 Dialog {
     id: referencePriceDialog
     property var selectedSecurity
-    property int watchlistId: 1 // TODO the default watchlistId as long as we only support one watchlist
+    property int watchlistId
     property bool referencePriceEnabled: false
     signal updateReferencePriceInModel(int securityId, real referencePrice)
 

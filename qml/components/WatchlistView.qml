@@ -34,7 +34,7 @@ SilicaFlickable {
 
     property real maxChange: 0.0
     property bool loaded : false
-    property int watchlistId: 1 // the default watchlistId as long as we only support one watchlist
+    property int watchlistId
 
     anchors.fill: parent
     contentHeight: watchlistColumn.height
@@ -45,6 +45,7 @@ SilicaFlickable {
     }
 
     function getWatchlistItemCount() {
+        Functions.log("watchlist is : " + watchlistId);
         return stocksModel.count;
     }
 
@@ -92,7 +93,7 @@ SilicaFlickable {
     }
 
     function reloadAllStocks() {
-        console.log("reloading all stocks");
+        console.log("reloading all stocks for watchlist " + watchlistId);
         var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
         var stocks = Database.loadAllStockData(watchlistId, sortOrder);
 
@@ -126,7 +127,7 @@ SilicaFlickable {
     }
 
     function updateQuotes() {
-        console.log("updateQuotes");
+        Functions.log("[WatchlistView] : updateQuotes for watchlist " + watchlistId);
 
         var numberOfQuotes = stocksModel.count
 
@@ -240,7 +241,8 @@ SilicaFlickable {
                         text: qsTr("Stock notes")
                         onClicked: {
                             var selectedStock = stockQuotesListView.model.get(index);
-                            var notesPage = pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"), { selectedSecurity: selectedStock })
+                            var notesPage = pageStack.push(Qt.resolvedUrl("../pages/StockNotesDialog.qml"),
+                                                           { selectedSecurity: selectedStock, watchlistId: watchlistId})
                             notesPage.updateNotesInModel.connect(updateNotesInModel)
                         }
                     }
@@ -249,7 +251,8 @@ SilicaFlickable {
                         text: qsTr("Configure reference price")
                         onClicked: {
                             var selectedStock = stockQuotesListView.model.get(index);
-                            var referencePricePage = pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"), { selectedSecurity: selectedStock })
+                            var referencePricePage = pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"),
+                                                                    { selectedSecurity: selectedStock, watchlistId: watchlistId })
                             referencePricePage.updateReferencePriceInModel.connect(updateReferencePriceInModel);
                         }
                     }

@@ -26,6 +26,9 @@ import "js/constants.js" as Constants
 import "js/functions.js" as Functions
 
 ApplicationWindow {
+    id: app
+
+    signal securityAdded(int watchlistId)
 
     // Global Settings Storage
     ConfigurationGroup {
@@ -38,6 +41,9 @@ ApplicationWindow {
         property int newsDataDownloadStrategy: Constants.NEWS_DATA_DOWNLOAD_STRATEGY_ONLY_ON_WIFI
         property bool showPerformanceRow: false
         property date dividendsDataLastUpdate
+        property bool showSecondWatchlist: false
+        property string firstWatchlistName: qsTr("Watchlist")
+        property string secondWatchlistName: qsTr("Holdings")
     }
 
     function getSecurityDataBackend(backendId) {

@@ -184,10 +184,6 @@
         <translation>Котировки</translation>
     </message>
     <message>
-        <source>Watchlist</source>
-        <translation>Ценные бумаги</translation>
-    </message>
-    <message>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>О программе</translation>
@@ -225,6 +221,10 @@
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Обновить даты выплаты</translation>
+    </message>
+    <message>
+        <source>Watchlist</source>
+        <translation type="unfinished">Ценные бумаги</translation>
     </message>
 </context>
 <context>
@@ -351,6 +351,24 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Displays the overall performance for a security. Performance will only be calculated, if a reference price was configured for the security.</source>
         <extracomment>SettingsPage show performance row description</extracomment>
         <translation>Показывает общий результат вложения в бумагу. Для расчета результативности необходимо задать ориентирную цену бумаги.</translation>
+    </message>
+    <message>
+        <source>Show second watchlist</source>
+        <extracomment>SettingsPage show second watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays a second watchlist, e.g. for your portfolio holdings.</source>
+        <extracomment>SettingsPage show second watchlist</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name for first Watchlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name for second Watchlist</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -854,6 +872,17 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-watchlist</name>
+    <message>
+        <source>Watchlist</source>
+        <translation type="unfinished">Ценные бумаги</translation>
+    </message>
+    <message>
+        <source>Holdings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

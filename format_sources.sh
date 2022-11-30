@@ -1,8 +1,13 @@
 #/bin/bash
+
+export CLANG_VERSION=14
+
 cd src
-clang-format-9 --sort-includes -i **/*.cpp **/*.h --verbose
+clang-format-$CLANG_VERSION --sort-includes -i **/*.cpp **/*.h --verbose
 cd ..
-cd tests
-clang-format-9 --sort-includes -i *.cpp *.h --verbose
+cd test
+cd cpp
+clang-format-$CLANG_VERSION --sort-includes -i *.cpp *.h --verbose
+cd ..
 cd ..
 

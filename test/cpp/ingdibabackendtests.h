@@ -45,7 +45,6 @@ private slots:
     // ING-DIBA News Backend
     void testIngDibaNewsProcessSearchResult();
     void testIngDibaNewsFilterContent();
-
 };
 
 #endif // ING_DIBA_BACKEND_TEST_H
