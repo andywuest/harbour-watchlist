@@ -13,7 +13,7 @@ env:
 jobs:
   build-test:
     name: Build & Run tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v2                                 # checkout the repo
@@ -39,10 +39,10 @@ jobs:
           cd cpp
           sudo timedatectl set-timezone Europe/Berlin
           ./runTests.sh
-          tap2junit --verbose xmlresults.tap
-          sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
-          sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
-          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
+          # tap2junit --verbose xmlresults.tap
+          # sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
+          # sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
+          # sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
 
       - name: Test Report
         uses: dorny/test-reporter@v1
