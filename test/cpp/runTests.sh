@@ -12,6 +12,5 @@ make
 env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest -o xmlresults.tap,tap
 # env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./IngDibaBackendTest -junitxml -o junit.xml
 cat *.tap
-cat *.xml
 
 
