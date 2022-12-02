@@ -45,7 +45,7 @@ jobs:
           # sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v1.6.0
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
