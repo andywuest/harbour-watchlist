@@ -39,13 +39,13 @@ jobs:
           cd cpp
           sudo timedatectl set-timezone Europe/Berlin
           ./runTests.sh
-          # tap2junit --verbose xmlresults.tap
-          # sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
-          # sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
-          # sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
+          tap2junit --verbose xmlresults.tap
+          sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' xmlresults.tap.xml 
+          sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
+          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
 
       - name: Test Report
-        uses: dorny/test-reporter@v1.6.0
+        uses: dorny/test-reporter@v1
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
