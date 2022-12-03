@@ -1023,22 +1023,22 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Fel vid migrering av Watchlist-data</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
+        <location filename="../qml/js/database.js" line="339"/>
         <source>Market data added</source>
         <translation>Marknadsdata tillagd</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
+        <location filename="../qml/js/database.js" line="339"/>
         <source>Error adding market data</source>
         <translation>Kunde inte lägga till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="387"/>
+        <location filename="../qml/js/database.js" line="363"/>
         <source>Stock added</source>
         <translation>Aktie tillagd</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="389"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Error adding stock</source>
         <translation>Kunde inte lägga till aktien</translation>
     </message>

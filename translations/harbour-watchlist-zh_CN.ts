@@ -1023,22 +1023,22 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>迁移清单数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
+        <location filename="../qml/js/database.js" line="339"/>
         <source>Market data added</source>
         <translation>已添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
+        <location filename="../qml/js/database.js" line="339"/>
         <source>Error adding market data</source>
         <translation>添加股市数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="387"/>
+        <location filename="../qml/js/database.js" line="363"/>
         <source>Stock added</source>
         <translation>已添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="389"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Error adding stock</source>
         <translation>加载股票出错</translation>
     </message>
