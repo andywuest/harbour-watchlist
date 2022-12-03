@@ -184,22 +184,6 @@ Page {
                 delegate: ListItem {
                     id: delegate
 
-//                    menu: ContextMenu {
-//                        MenuItem {
-//                            visible: true
-//                            //: AddStockPage add menu item
-//                            text: qsTr("Add")
-//                            onClicked: {
-//                                var selectedItem = searchResultListModel.get(
-//                                            index)
-//                                var result = Database.persistStockData(
-//                                            selectedItem,
-//                                            Database.getCurrentWatchlistId())
-//                                stockAddedNotification.show(result)
-//                            }
-//                        }
-//                    }
-
                     Column {
                         id: resultColumn
                         width: parent.width - (2 * Theme.horizontalPageMargin)

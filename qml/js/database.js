@@ -330,30 +330,6 @@ function loadValueFromTable(id, table, columnName) {
     return (result ? result[columnName] : '');
 }
 
-// TODO check if needed
-function getCurrentWatchlistId() {
-    var result = null;
-    try {
-        var db = getOpenDatabase();
-        db.transaction(function (tx) {
-            var dbResult = tx.executeSql(
-                        'SELECT id FROM watchlist WHERE name = ?',
-                        ['DEFAULT']);
-            if (dbResult.rows.length > 0) {
-                console.log("watchlist row count : " + dbResult.rows.length);
-                var watchlistId = dbResult.rows.item(0).id;
-                console.log("watchlistId is " + watchlistId);
-                result = watchlistId;
-            } else {
-                console.log("watchlistId not found !");
-            }
-        })
-    } catch (err) {
-        console.log("Error selecting watchlistId from database: " + err)
-    }
-    return result;
-}
-
 function persistMarketdata(data) {
     var query = 'INSERT OR REPLACE INTO marketdata(id, typeId, name, longName, extRefId, currency, symbol, stockMarketSymbol, stockMarketName, '
                         + 'last, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp) '
