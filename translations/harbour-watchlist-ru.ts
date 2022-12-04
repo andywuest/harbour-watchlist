@@ -819,14 +819,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Ошибка при отмене оповещения</translation>
     </message>
     <message>
-        <source>Stock added</source>
-        <translation>Бумага добавлена</translation>
-    </message>
-    <message>
-        <source>Error adding stock</source>
-        <translation>Ошибка при добавлении бумаги</translation>
-    </message>
-    <message>
         <source>Market data added</source>
         <translation>Котировка добавлена</translation>
     </message>
@@ -857,6 +849,14 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <source>Error updating stock referencePrice</source>
         <translation>Ошибка при обновлении ориентирной цены</translation>
+    </message>
+    <message>
+        <source>Security added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error adding security</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

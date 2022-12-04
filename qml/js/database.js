@@ -341,31 +341,15 @@ function persistMarketdata(data) {
 
 // persists the stock data - either insert or update
 function persistStockData(data, watchlistId) {
-    var result = ""
-    try {
-        var db = getOpenDatabase()
-        // TODO (watchlistId) ? :
-        var finalWatchlistId = (watchlistId === null || watchlistId === undefined) ? data.watchlistId : watchlistId;
-        console.log("trying to insert row for " + data.symbol + ", " + data.name + ", and watchlist : " + watchlistId + ", " + data.watchlistId);
-        console.log("final watchlist id " + finalWatchlistId);
-
-        var numberOfPersistedStockData = countTableColumns(db, "stockdata");
-
-        db.transaction(function (tx) {
-            tx.executeSql(
-                        'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, currencySymbol, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
-                        + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, volume, watchlistId) '
-                        + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        [data.id, '' + data.extRefId, data.name, data.currency, data.currencySymbol, data.stockMarketSymbol, data.stockMarketName, data.isin, data.symbol1, data.symbol2,
-                         data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp, data.lastChangeTimestamp, data.currency, data.high,
-                         data.low, data.ask, data.bid, data.volume, finalWatchlistId])
-        })
-        result = qsTr("Stock added")
-    } catch (err) {
-        result = qsTr("Error adding stock")
-        console.log(result + err)
-    }
-    return result
+    // TODO (watchlistId) ? :
+    var finalWatchlistId = (watchlistId === null || watchlistId === undefined) ? data.watchlistId : watchlistId;
+    var query = 'INSERT OR REPLACE INTO stockdata(id, extRefId, name, currency, currencySymbol, stockMarketSymbol, stockMarketName, isin, symbol1, symbol2, '
+            + 'price, changeAbsolute, changeRelative, quoteTimestamp, lastChangeTimestamp, currency, high, low, ask, bid, volume, watchlistId) '
+            + 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    var parameters = [data.id, '' + data.extRefId, data.name, data.currency, data.currencySymbol, data.stockMarketSymbol, data.stockMarketName,
+                      data.isin, data.symbol1, data.symbol2, data.price, data.changeAbsolute, data.changeRelative, data.quoteTimestamp,
+                      data.lastChangeTimestamp, data.currency, data.high, data.low, data.ask, data.bid, data.volume, finalWatchlistId];
+    return executeInsertUpdateDeleteForTable("stockdata", query, parameters, qsTr("Security added"), qsTr("Error adding security"));
 }
 
 // TODO rename for more consistency - change parameter to alarm.id

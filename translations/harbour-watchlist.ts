@@ -1033,13 +1033,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
-        <source>Stock added</source>
+        <location filename="../qml/js/database.js" line="351"/>
+        <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="365"/>
-        <source>Error adding stock</source>
+        <location filename="../qml/js/database.js" line="351"/>
+        <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

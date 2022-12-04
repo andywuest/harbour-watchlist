@@ -1033,14 +1033,14 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Erreur lors de l&apos;ajout de données de marchée</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="363"/>
-        <source>Stock added</source>
-        <translation>Action ajoutée</translation>
+        <location filename="../qml/js/database.js" line="351"/>
+        <source>Security added</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="365"/>
-        <source>Error adding stock</source>
-        <translation>Erreur lors de l&apos;ajout de l&apos;action</translation>
+        <location filename="../qml/js/database.js" line="351"/>
+        <source>Error adding security</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
