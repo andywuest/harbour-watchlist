@@ -440,8 +440,13 @@ function loadAllMarketData() {
     try {
         var db = getOpenDatabase()
         db.transaction(function (tx) {
-            var query = 'SELECT id, typeId, extRefId, name, longName, currency, symbol, stockMarketSymbol, stockMarketName, last, changeAbsolute '
-                    +' ,changeRelative, quoteTimestamp, lastChangeTimestamp FROM marketdata';
+            var query = 'SELECT id, typeId, extRefId, name, longName, COALESCE(currency, "-") AS currency,'
+                    + ' symbol, stockMarketSymbol, stockMarketName, '
+                    + ' COALESCE(last, 0.0) AS last,'
+                    + ' COALESCE(changeAbsolute, 0.0) AS changeAbsolute,'
+                    + ' COALESCE(changeRelative, 0.0) AS changeRelative,'
+                    + ' COALESCE(quoteTimestamp, "") AS quoteTimestamp,'
+                    + ' COALESCE(lastChangeTimestamp, "") AS lastChangeTimestamp FROM marketdata';
             console.log("query : " + query);
             var dbResult = tx.executeSql(query, [])
             // create same object as from json response
@@ -456,16 +461,16 @@ function loadAllMarketData() {
                     entry.extRefId = row.extRefId;
                     entry.name = row.name;
                     entry.longName = row.longName;
-                    entry.currency = (row.currency === null ? "-" : row.currency);
+                    entry.currency = row.currency;
                     entry.symbol = row.symbol;
                     entry.stockMarketSymbol = row.stockMarketSymbol;
                     entry.stockMarketName = row.stockMarketName;
                     // nicht gesetzt attribute koennen speater nicht mehr gesetzt werden (wenn mal als model verwendet)
-                    entry.last = (row.last === null ? 0.0 : row.last);
-                    entry.changeAbsolute = (row.changeAbsolute === null ? 0.0 : row.changeAbsolute);
-                    entry.changeRelative = (row.changeRelative === null ? 0.0 : row.changeRelative);
-                    entry.quoteTimestamp = (row.quoteTimestamp === null ? "" : row.quoteTimestamp);
-                    entry.lastChangeTimestamp = (row.lastChangeTimestamp === null ? "" : row.lastChangeTimestamp);
+                    entry.last = row.last;
+                    entry.changeAbsolute = row.changeAbsolute;
+                    entry.changeRelative = row.changeRelative;
+                    entry.quoteTimestamp = row.quoteTimestamp;
+                    entry.lastChangeTimestamp = row.lastChangeTimestamp;
                     result.push(entry);
                 }
                 console.log("loading marketdata data from database done");

@@ -44,6 +44,8 @@ TestCase {
         Database.resetApplication();
         Database.initApplicationTables();
 
+        var now = new Date();
+
         var marketData = {};
         marketData.id = '3';
         marketData.typeId = 3;
@@ -55,9 +57,7 @@ TestCase {
         marketData.stockMarketName = 'Frankfurt';
         marketData.last = 12523.12;
         marketData.changeAbsolute = 120.00;
-        marketData.changeRelative = 1.3;
-        marketData.quoteTimestamp = new Date();
-        marketData.lastChangeTimestamp = new Date();
+        marketData.lastChangeTimestamp = now;
 
         Database.persistMarketdata(marketData);
 
@@ -69,6 +69,9 @@ TestCase {
         compare(result.symbol, marketData.symbol);
         compare(result.last, marketData.last);
         compare(result.changeAbsolute, marketData.changeAbsolute);
+        compare(result.changeRelative, 0.0); // undefined
+        compare(result.quoteTimestamp, ""); // undefined
+        compare(result.currency, "-"); // undefined
     }
 
 }
