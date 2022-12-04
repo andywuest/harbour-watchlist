@@ -31,10 +31,11 @@ jobs:
           set -x
           cd test/qml 
           ./runTests.sh
-          tap2junit --verbose qmlresults.tap
-          sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
-          sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
-          sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' qmlresults.tap.xml
+          # tap2junit --verbose qmlresults.tap
+          # sed -i -e 's/><\/t/ classname="-" time="0"><\/t/g' qmlresults.tap.xml
+          # sed -i -e 's/testsuite /testsuite time="0" /g' qmlresults.tap.xml
+          # sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' qmlresults.tap.xml
+          ./fixJunit.sh
           cd ..                                                   
           cd cpp
           sudo timedatectl set-timezone Europe/Berlin
