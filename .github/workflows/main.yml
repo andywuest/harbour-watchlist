@@ -44,7 +44,7 @@ jobs:
           # sed -i -e 's/testsuite /testsuite time="0" /g' xmlresults.tap.xml
           # sed -i -e 's/<testsuites>/<testsuites name="awtest" tests="0" failures="0" errors="0" time="0.0">/g' xmlresults.tap.xml
           sed -i -e 's/<\/testsuite>/<\/testsuite><\/testsuites>/g' junit.xml
-          sed -i -e 's/<testsuite /<testsuites><testsuite /g' junit.xml
+          sed -i -e 's/<testsuite /<testsuites name="workaround" time="0.0"><testsuite /g' junit.xml
           cat *.xml
 
       - name: Test Report
