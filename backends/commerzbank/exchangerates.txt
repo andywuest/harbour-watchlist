@@ -1,0 +1,3 @@
+# exchange rates - to be used in combination with the payed dividends
+https://www.commerzbank.com/de/hauptnavigation/kunden/kursinfo/devisenk/taegliche_devisenmarktkurse/taegliche_devisenkurse.html
+https://commander.commerzbank.com/efx-rates/payments/fixingrates/null/false?lang=de
