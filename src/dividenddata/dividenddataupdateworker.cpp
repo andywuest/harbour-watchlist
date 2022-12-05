@@ -141,5 +141,8 @@ QString DividendDataUpdateWorker::convertCurrency(const QString &currencyString)
     if (QString("GBP").compare(currencyString, Qt::CaseInsensitive) == 0) {
         return QString("\u00A3");
     }
+    if (QString("JPY").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString("\u00A5");
+    }
     return currencyString;
 }

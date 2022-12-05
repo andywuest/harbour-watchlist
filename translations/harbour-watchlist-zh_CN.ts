@@ -1033,12 +1033,12 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>添加股市数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="351"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="351"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>
