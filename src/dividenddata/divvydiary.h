@@ -46,11 +46,15 @@ private:
 
     void initializeDatabase();
 
+    void fetchExchangeRates();
+    void fetchDividendData(const QMap<QString, QVariant> exchangeRateMap);
+
     void executeQuery(QString &queryString, QMap<QString, QVariant> &dataMap);
 
 private slots:
     void handleRequestError(QNetworkReply::NetworkError error);
     void handleFetchDividendDates();
+    void handleFetchExchangeRates();
     void handleDividendDataUpdateCompleted(int);
 
 #ifdef UNIT_TEST

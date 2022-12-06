@@ -210,60 +210,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="241"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="254"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Lägg till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="262"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>Uppdatera marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="271"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>Lägg till aktie</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="280"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="289"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="298"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera utdelningsdatum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="390"/>
         <source>Market data</source>
         <translation>Marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="405"/>
         <source>Watchlist</source>
         <translation type="unfinished">Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="436"/>
         <source>Dividends</source>
         <translation>Utdelningar</translation>
     </message>
@@ -969,76 +969,76 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="250"/>
+        <location filename="../qml/js/database.js" line="263"/>
         <source>Alarm added</source>
         <translation>Larm tillagt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="250"/>
+        <location filename="../qml/js/database.js" line="263"/>
         <source>Error adding alarm</source>
         <translation>Kunde inte lägga till larmet</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="257"/>
+        <location filename="../qml/js/database.js" line="270"/>
         <source>Alarm disabled</source>
         <translation>Larmet avaktiverat</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="258"/>
+        <location filename="../qml/js/database.js" line="271"/>
         <source>Error disabling alarm</source>
         <translation>Kunde inte avaktivera larmet</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="266"/>
-        <location filename="../qml/js/database.js" line="271"/>
+        <location filename="../qml/js/database.js" line="279"/>
+        <location filename="../qml/js/database.js" line="284"/>
         <source>Stock notes updated</source>
         <translation>Aktienotiser uppdaterade</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="267"/>
-        <location filename="../qml/js/database.js" line="272"/>
+        <location filename="../qml/js/database.js" line="280"/>
+        <location filename="../qml/js/database.js" line="285"/>
         <source>Error updating stock notes</source>
         <translation>Kunde inte uppdatera aktienotiser</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="280"/>
-        <location filename="../qml/js/database.js" line="285"/>
+        <location filename="../qml/js/database.js" line="293"/>
+        <location filename="../qml/js/database.js" line="298"/>
         <source>Stock referencePrice updated</source>
         <translation>Aktiereferenspris uppdaterat</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="281"/>
-        <location filename="../qml/js/database.js" line="286"/>
+        <location filename="../qml/js/database.js" line="294"/>
+        <location filename="../qml/js/database.js" line="299"/>
         <source>Error updating stock referencePrice</source>
         <translation>Kunde inte uppdatera aktiereferenspris</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="302"/>
+        <location filename="../qml/js/database.js" line="315"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-data migrerad</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="303"/>
+        <location filename="../qml/js/database.js" line="316"/>
         <source>Error migrating watchlist data</source>
         <translation>Fel vid migrering av Watchlist-data</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="339"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Market data added</source>
         <translation>Marknadsdata tillagd</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="339"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Error adding market data</source>
         <translation>Kunde inte lägga till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>

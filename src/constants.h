@@ -49,6 +49,8 @@ const char ING_DIBA_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/co
 
 const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/upcoming";
 
+const char EXCHANGE_RATES[] = "https://commander.commerzbank.com/efx-rates/payments/fixingrates/null/false";
+
 // NetworkReply Property constants
 const char NETWORK_REPLY_PROPERTY_CHART_TYPE[] = "chartType";
 const char NETWORK_REPLY_PROPERTY_EXT_REF_ID[] = "extRefId";

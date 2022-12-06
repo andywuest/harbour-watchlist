@@ -42,8 +42,21 @@ void DivvyDiary::handleDividendDataUpdateCompleted(int rows) {
 }
 
 void DivvyDiary::fetchDividendDates() {
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS)));
+  fetchExchangeRates();
+}
 
+void DivvyDiary::fetchExchangeRates() {
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(EXCHANGE_RATES)));
+
+    connect(reply,
+            SIGNAL(error(QNetworkReply::NetworkError)),
+            this, SLOT(handleFetchExchangeRates()));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFetchExchangeRates()));
+}
+
+void DivvyDiary::fetchDividendData(const QMap<QString, QVariant> exchangeRateMap) {
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS)));
+    reply->setProperty("exchangeRateMap", QVariant(exchangeRateMap));
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),
             this,
@@ -51,12 +64,31 @@ void DivvyDiary::fetchDividendDates() {
     connect(reply, SIGNAL(finished()), this, SLOT(handleFetchDividendDates()));
 }
 
-QNetworkReply *DivvyDiary::executeGetRequest(const QUrl &url) {
-    qDebug() << "DivvyDiary::executeGetRequest " << url;
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+void DivvyDiary::handleFetchExchangeRates() {
+    qDebug() << "DivvyDiary::handleFetchExchangeRates";
 
-    return manager->get(request);
+    QMap<QString, QVariant> exchangeRateMap;
+
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        // if fetching the exchange rates fail - fetch dividend data anyway
+        fetchDividendData(exchangeRateMap);
+    } else {
+        QJsonObject rootObject = QJsonDocument::fromJson(reply->readAll()).object();
+        QJsonArray exchangeRateArray = rootObject["fixingRates"].toArray();
+
+        bool ok;
+        foreach (const QJsonValue &exchangeRateEntry, exchangeRateArray) {
+            QJsonObject exchangeRateObject = exchangeRateEntry.toObject();
+            double exchangeRate = exchangeRateObject["midRate"].toString().toDouble(&ok);
+            if (ok) {
+                exchangeRateMap[exchangeRateObject["currency"].toString()] = QVariant(exchangeRate);
+            }
+        }
+
+        fetchDividendData(exchangeRateMap);
+    }
 }
 
 void DivvyDiary::handleFetchDividendDates() {
@@ -70,8 +102,17 @@ void DivvyDiary::handleFetchDividendDates() {
     while (this->dividendDataUpdateWorker.isRunning()) {
         this->dividendDataUpdateWorker.requestInterruption();
     }
-    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()));
+    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()), reply->property("exchangeRateMap").toMap());
     this->dividendDataUpdateWorker.start();
+}
+
+
+QNetworkReply *DivvyDiary::executeGetRequest(const QUrl &url) {
+    qDebug() << "DivvyDiary::executeGetRequest " << url;
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+
+    return manager->get(request);
 }
 
 void DivvyDiary::handleRequestError(QNetworkReply::NetworkError error) {

@@ -210,60 +210,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="241"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="254"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="262"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>刷新股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="271"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="280"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="289"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>刷新全部报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="298"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="390"/>
         <source>Market data</source>
         <translation>股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="405"/>
         <source>Watchlist</source>
         <translation type="unfinished">清单</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="436"/>
         <source>Dividends</source>
         <translation type="unfinished"></translation>
     </message>
@@ -969,76 +969,76 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="250"/>
+        <location filename="../qml/js/database.js" line="263"/>
         <source>Alarm added</source>
         <translation>已添加提醒</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="250"/>
+        <location filename="../qml/js/database.js" line="263"/>
         <source>Error adding alarm</source>
         <translation>添加提醒出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="257"/>
+        <location filename="../qml/js/database.js" line="270"/>
         <source>Alarm disabled</source>
         <translation>已禁用提醒</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="258"/>
+        <location filename="../qml/js/database.js" line="271"/>
         <source>Error disabling alarm</source>
         <translation>禁用提醒出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="266"/>
-        <location filename="../qml/js/database.js" line="271"/>
+        <location filename="../qml/js/database.js" line="279"/>
+        <location filename="../qml/js/database.js" line="284"/>
         <source>Stock notes updated</source>
         <translation>股票证明已更新</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="267"/>
-        <location filename="../qml/js/database.js" line="272"/>
+        <location filename="../qml/js/database.js" line="280"/>
+        <location filename="../qml/js/database.js" line="285"/>
         <source>Error updating stock notes</source>
         <translation>更新股票证明出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="280"/>
-        <location filename="../qml/js/database.js" line="285"/>
+        <location filename="../qml/js/database.js" line="293"/>
+        <location filename="../qml/js/database.js" line="298"/>
         <source>Stock referencePrice updated</source>
         <translation>股票参考价更新</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="281"/>
-        <location filename="../qml/js/database.js" line="286"/>
+        <location filename="../qml/js/database.js" line="294"/>
+        <location filename="../qml/js/database.js" line="299"/>
         <source>Error updating stock referencePrice</source>
         <translation>更新股票参考价出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="302"/>
+        <location filename="../qml/js/database.js" line="315"/>
         <source>Watchlist data migrated</source>
         <translation>清单数据已迁移</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="303"/>
+        <location filename="../qml/js/database.js" line="316"/>
         <source>Error migrating watchlist data</source>
         <translation>迁移清单数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="339"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Market data added</source>
         <translation>已添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="339"/>
+        <location filename="../qml/js/database.js" line="352"/>
         <source>Error adding market data</source>
         <translation>添加股市数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="365"/>
         <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>
