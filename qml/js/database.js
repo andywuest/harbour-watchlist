@@ -167,6 +167,19 @@ function initApplicationTables() {
             })
         }
 
+        db = getOpenDatabase()
+        // version update 1.3 -> 1.4
+        if (db.version === "1.3") {
+            console.log("Performing DB update from 1.3 to 1.4!")
+            db.changeVersion("1.3", "1.4", function (tx) {
+                // add new columns to dividends
+                tx.executeSql(
+                            "ALTER TABLE dividends ADD COLUMN convertedAmount real");
+                tx.executeSql(
+                            "ALTER TABLE dividends ADD COLUMN convertedAmountCurrency text");
+            })
+        }
+
         // open database again to make sure we have latest version
         db = getOpenDatabase()
     } catch (err) {
@@ -475,6 +488,7 @@ function loadAllDividendData(sortString) {
         db.transaction(function (tx) {
             // use COALESCE to set null values to default values
             var query = 'SELECT d.exDate, d.payDate, d.symbol, d.wkn, d.isin, d.amount, d.currency, s.name, s.extRefId '
+                    + ' , d.convertedAmount, d.convertedAmountCurrency '
                     + ' FROM stockdata s '
                     + ' INNER JOIN dividends d '
                     + ' ON s.isin = d.isin '
@@ -494,6 +508,8 @@ function loadAllDividendData(sortString) {
                     entry.amount = row.amount;
                     entry.currency = row.currency;
                     entry.extRefId = row.extRefId;
+                    entry.convertedAmount = row.convertedAmount;
+                    entry.convertedAmountCurrency = row.convertedAmountCurrency;
                     result.push(entry);
                 }
             }

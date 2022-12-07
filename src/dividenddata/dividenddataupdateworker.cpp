@@ -54,8 +54,10 @@ DividendDataUpdateWorker::~DividendDataUpdateWorker() {
     database.close();
 }
 
-void DividendDataUpdateWorker::setParameters(const QJsonDocument &jsonDocument) {
+void DividendDataUpdateWorker::setParameters(const QJsonDocument &jsonDocument,
+                                             const QMap<QString, QVariant> exchangeRateMap) {
     this->jsonDocument = jsonDocument;
+    this->exchangeRateMap = exchangeRateMap;
 }
 
 void DividendDataUpdateWorker::performUpdate() {
@@ -66,6 +68,8 @@ void DividendDataUpdateWorker::performUpdate() {
 
         QJsonObject rootObject = jsonDocument.object();
         QJsonArray dividendsArray = rootObject["dividends"].toArray();
+
+        QVariant empty;
 
         // TODO run in worker
         foreach (const QJsonValue &dividendsEntry, dividendsArray) {
@@ -78,9 +82,14 @@ void DividendDataUpdateWorker::performUpdate() {
             QDateTime exDateTime = QDateTime(exDate, QTime(0, 0), Qt::LocalTime);
 
             QString query = QString("INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
-                                    "symbol, amount, currency) ")
+                                    "symbol, amount, currency, convertedAmount, convertedAmountCurrency) ")
                             + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
-                                      ":symbol, :amount, :currency)");
+                                      ":symbol, :amount, :currency, :convertedAmount, :convertedAmountCurrency)");
+
+            double amount = dividendsObject["amount"].toDouble();
+            QString currency = dividendsObject["currency"].toString();
+            bool hasConvertedAmount = this->exchangeRateMap.contains(currency);
+            double convertedAmount = (hasConvertedAmount ? (amount / this->exchangeRateMap[currency].toDouble()) : 0.0);
 
             QMap<QString, QVariant> dataMap;
             dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
@@ -91,8 +100,10 @@ void DividendDataUpdateWorker::performUpdate() {
             dataMap.insert(":isin", dividendsObject["isin"].toString());
             dataMap.insert(":wkn", dividendsObject["wkn"].toString());
             dataMap.insert(":symbol", dividendsObject["symbol"].toString());
-            dataMap.insert(":amount", dividendsObject["amount"].toDouble());
-            dataMap.insert(":currency", convertCurrency(dividendsObject["currency"].toString()));
+            dataMap.insert(":amount", amount);
+            dataMap.insert(":currency", convertCurrency(currency));
+            dataMap.insert(":convertedAmount", hasConvertedAmount ? convertedAmount : empty);
+            dataMap.insert(":convertedAmountCurrency", hasConvertedAmount ? convertCurrency("EUR") : empty);
 
             executeQuery(query, dataMap);
             rows++;
