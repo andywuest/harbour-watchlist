@@ -54,5 +54,6 @@ const char EXCHANGE_RATES[] = "https://commander.commerzbank.com/efx-rates/payme
 // NetworkReply Property constants
 const char NETWORK_REPLY_PROPERTY_CHART_TYPE[] = "chartType";
 const char NETWORK_REPLY_PROPERTY_EXT_REF_ID[] = "extRefId";
+const char NETWORK_REPLY_PROPERTY_EXCHANGE_RATE[] = "exchangeRateMap";
 
 #endif // CONSTANTS_H

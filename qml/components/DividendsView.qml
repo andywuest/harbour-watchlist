@@ -235,7 +235,7 @@ SilicaFlickable {
                                 Text {
                                     width: parent.width / 2
                                     height: parent.height
-                                    text: Functions.renderPrice(convertedAmount, convertedAmountCurrency, Constants.MARKET_DATA_TYPE_NONE);
+                                    text: convertedAmount ? Functions.renderPrice(convertedAmount, convertedAmountCurrency, Constants.MARKET_DATA_TYPE_NONE) : '';
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight

@@ -42,21 +42,19 @@ void DivvyDiary::handleDividendDataUpdateCompleted(int rows) {
 }
 
 void DivvyDiary::fetchDividendDates() {
-  fetchExchangeRates();
+    fetchExchangeRates();
 }
 
 void DivvyDiary::fetchExchangeRates() {
     QNetworkReply *reply = executeGetRequest(QUrl(QString(EXCHANGE_RATES)));
 
-    connect(reply,
-            SIGNAL(error(QNetworkReply::NetworkError)),
-            this, SLOT(handleFetchExchangeRates()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFetchExchangeRates()));
     connect(reply, SIGNAL(finished()), this, SLOT(handleFetchExchangeRates()));
 }
 
 void DivvyDiary::fetchDividendData(const QMap<QString, QVariant> exchangeRateMap) {
     QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS)));
-    reply->setProperty("exchangeRateMap", QVariant(exchangeRateMap));
+    reply->setProperty(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE, QVariant(exchangeRateMap));
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),
             this,
@@ -102,10 +100,10 @@ void DivvyDiary::handleFetchDividendDates() {
     while (this->dividendDataUpdateWorker.isRunning()) {
         this->dividendDataUpdateWorker.requestInterruption();
     }
-    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()), reply->property("exchangeRateMap").toMap());
+    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()),
+                                                 reply->property(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE).toMap());
     this->dividendDataUpdateWorker.start();
 }
-
 
 QNetworkReply *DivvyDiary::executeGetRequest(const QUrl &url) {
     qDebug() << "DivvyDiary::executeGetRequest " << url;

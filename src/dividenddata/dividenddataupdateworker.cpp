@@ -54,7 +54,8 @@ DividendDataUpdateWorker::~DividendDataUpdateWorker() {
     database.close();
 }
 
-void DividendDataUpdateWorker::setParameters(const QJsonDocument &jsonDocument, const QMap<QString, QVariant> exchangeRateMap) {
+void DividendDataUpdateWorker::setParameters(const QJsonDocument &jsonDocument,
+                                             const QMap<QString, QVariant> exchangeRateMap) {
     this->jsonDocument = jsonDocument;
     this->exchangeRateMap = exchangeRateMap;
 }
