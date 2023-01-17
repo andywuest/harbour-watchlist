@@ -10,54 +10,54 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>About</source>
         <extracomment>AboutPage - Header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="76"/>
+        <location filename="../qml/pages/AboutPage.qml" line="78"/>
         <source>Watchlist</source>
         <extracomment>AboutPage - Name</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutPage.qml" line="99"/>
         <source>Translations</source>
         <extracomment>AboutPage - Translations</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="111"/>
+        <location filename="../qml/pages/AboutPage.qml" line="113"/>
         <source>Sources</source>
         <extracomment>AboutPage - sources</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="122"/>
+        <location filename="../qml/pages/AboutPage.qml" line="124"/>
         <source>Donations</source>
         <extracomment>AboutPage - Donations</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="127"/>
+        <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>If you like my work why not buy me a beer?</source>
         <extracomment>AboutPage - donations info</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="132"/>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Donate with PayPal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutPage.qml" line="94"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="102"/>
+        <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>Viacheslav Dikonov (ru)</source>
         <extracomment>AboutPage - translations</extracomment>
         <translation type="unfinished"></translation>
@@ -210,60 +210,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="241"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="254"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="262"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="271"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="280"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="289"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="298"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="390"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
         <source>Market data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="405"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
         <source>Watchlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="436"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
         <source>Dividends</source>
         <translation type="unfinished"></translation>
     </message>

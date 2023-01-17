@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 17.01.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.12.1-1
+
+- added remorse timer when deleting database.
+- fixed bitcoin market data
+
 * 07.12.2022 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.12.0-1
 
 - added option to add second watchlist via settings

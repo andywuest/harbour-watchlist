@@ -38,8 +38,10 @@ Page {
                 //: AboutPage pully - reset database
                 text: qsTr("Reset Database")
                 onClicked: {
-                    Database.resetApplication()
-                    Database.initApplicationTables()
+                    var remorse = Remorse.popupAction(root, "", function () {
+                        Database.resetApplication()
+                        Database.initApplicationTables()
+                    }, 4000);
                 }
             }
         }
