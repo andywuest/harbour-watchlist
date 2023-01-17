@@ -260,7 +260,7 @@
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="404"/>
         <source>Watchlist</source>
-        <translation type="unfinished">Watchlist</translation>
+        <translation>Bevakningslista</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="435"/>
@@ -304,23 +304,23 @@
         <location filename="../qml/pages/SettingsPage.qml" line="85"/>
         <source>Show second watchlist</source>
         <extracomment>SettingsPage show second watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visa en andra bevakningslista</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="87"/>
         <source>Displays a second watchlist, e.g. for your portfolio holdings.</source>
         <extracomment>SettingsPage show second watchlist</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visar en andra bevakningslista, t.ex. för dina portföljinnehav.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="96"/>
         <source>Name for first Watchlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn på första bevakningslistan</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>Name for second Watchlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn på andra bevakningslistan</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="111"/>
@@ -369,7 +369,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>Defines sorting order of watchlist entries</source>
         <extracomment>SettingsPage sorting order description</extracomment>
-        <translation>Sorteringsordning för Watchlist-poster</translation>
+        <translation>Sorteringsordningen för poster i bevakningslistan</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="171"/>
@@ -405,7 +405,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="201"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
-        <translation>Dataserver att användas till aktielistan</translation>
+        <translation>Dataserver att användas till bevakningslistan</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="205"/>
@@ -1035,12 +1035,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/database.js" line="365"/>
         <source>Security added</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhet tillagd</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="365"/>
         <source>Error adding security</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte lägga till säkerhet</translation>
     </message>
 </context>
 <context>
@@ -1067,12 +1067,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/harbour-watchlist.qml" line="45"/>
         <source>Watchlist</source>
-        <translation type="unfinished">Watchlist</translation>
+        <translation>Bevakningslista</translation>
     </message>
     <message>
         <location filename="../qml/harbour-watchlist.qml" line="46"/>
         <source>Holdings</source>
-        <translation type="unfinished"></translation>
+        <translation>Innehav</translation>
     </message>
 </context>
 </TS>
