@@ -31,10 +31,16 @@ function renderPrice(price, currencyString, marketDataType) {
 }
 
 function formatPrice(price, locale, precision) {
-    var localPrecision = (price >= 1.0 ? DEFAULT_FRACTION_DIGITS : EXTENDED_FRACTION_DIGITS);
+    var localPrecision = DEFAULT_FRACTION_DIGITS; // 0-0.5 -> 6 digits, 0.5 -> 1.5 -> 4 digits, else 2 digits
+    if (price >= 0.5 && price < 1.50) {
+        localPrecision = MEDIUM_FRACTION_DIGITS;
+    } else if (price < 0.5) {
+        localPrecision = EXTENDED_FRACTION_DIGITS;
+    }
     if (precision) {
         localPrecision = precision;
     }
+    console.log("precision is : " + localPrecision)
     return Number(price).toLocaleString(locale, 'f', localPrecision);
 }
 

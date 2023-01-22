@@ -24,13 +24,15 @@ TestCase {
         compare(Functions.renderPrice(65.34123, 'EUR'), "65,34 EUR")
         compare(Functions.renderPrice(1.545234, 'EUR'), "1,55 EUR")
         compare(Functions.renderPrice(12.12, '$'), "12,12 $")
+        // 4 fraction digits
+        compare(Functions.renderPrice(0.7412, 'EUR'), "0,7412 EUR")
         // 6 fraction digits
-        compare(Functions.renderPrice(0.541234, 'EUR'), "0,541234 EUR")
+        compare(Functions.renderPrice(0.241234, 'EUR'), "0,241234 EUR")
     }
 
     function test_functions_renderPrice_withMarketData() {
-        compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_COMMODITY), "0,541234 EUR")
-        compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_CURRENCY), "0,5412 EUR")
+        compare(Functions.renderPrice(0.341234, 'EUR', Constants.MARKET_DATA_TYPE_COMMODITY), "0,341234 EUR")
+        compare(Functions.renderPrice(0.441234, 'EUR', Constants.MARKET_DATA_TYPE_CURRENCY), "0,4412 EUR")
         compare(Functions.renderPrice(12.1213, 'EUR', Constants.MARKET_DATA_TYPE_CRYPTO), "12,12 EUR")
         compare(Functions.renderPrice(12.1213, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "12,12 EUR")
         compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "0,54 EUR")
