@@ -96,7 +96,7 @@ CoverBackground {
         Functions.log("[CoverPage] security has been added to watchlist " + updateWatchlistId);
         // TODO so far cover always display watchlist 1 -> make it configurable ?
         if (updateWatchlistId === Constants.WATCHLIST_1) {
-            watchlistView.reloadAllStocks();
+            reloadAllStocks();
         }
     }
 
