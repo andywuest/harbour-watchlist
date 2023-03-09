@@ -11,12 +11,11 @@ Name=Watchlist
 # a different app name in German locale (de).
 # Name[de]=Watchlist
 
-# Opt out for now - later i will try to migrate to sailjail
 [X-Sailjail]
-Sandboxing=Disabled
-# OrganizationName=de.andreas-wuest-it-consulting
-# ApplicationName=watchlist
+OrganizationName=de.andreas-wuest-it-consulting
+ApplicationName=harbour-watchlist
+Permissions=Internet
 
 [X-HarbourBackup]
-BackupPathList=.local/share/harbour-watchlist/
+BackupPathList=.local/share/de.andreas-wuest-it-consulting/harbour-watchlist/
 BackupConfigList=/apps/harbour-watchlist/

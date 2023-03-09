@@ -27,9 +27,52 @@
 #include <QtQml>
 
 #include "watchlist.h"
+#include "constants.h"
+
+void migrateLocalStorage()
+{
+    // The new location of the LocalStorage database
+    QDir newDbDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)
+                  + QString("/%1/%2/QML/OfflineStorage/Databases/").arg(ORGANISATION, APP_NAME));
+
+    if (newDbDir.exists()) {
+        return;
+    }
+
+    newDbDir.mkpath(newDbDir.path());
+
+    QString dbname = QString(QCryptographicHash::hash((APP_NAME), QCryptographicHash::Md5).toHex());
+
+    qDebug() << "dbname: " + dbname;
+
+    QString pathOld = QString("/%1/%1/QML/OfflineStorage/Databases/").arg(APP_NAME);
+    QString pathNew = QString("/%1/%2/QML/OfflineStorage/Databases/").arg(ORGANISATION, APP_NAME);
+
+    qDebug() << "pathOld : " << pathOld;
+    qDebug() << "pathNew : " << pathNew;
+
+    // The old LocalStorage database
+    QFile oldDb(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) +  pathOld + dbname + ".sqlite");
+    QFile oldIni(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + pathOld + dbname + ".ini");
+
+    oldDb.copy(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) +  pathNew + dbname + ".sqlite");
+    oldIni.copy(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + pathNew + dbname + ".ini");
+    // proof of concept you can just move.
+    //oldDb.rename(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) +  pathNew + dbname + ".sqlite");
+    //oldIni.rename(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + pathNew + dbname + ".ini");
+}
 
 int main(int argc, char *argv[]) {
+    // first check if we've got the new paths in place
+    // this has to be done here, before we assign name below
+    migrateLocalStorage();
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+
+    app->setOrganizationDomain(ORGANISATION);
+    app->setOrganizationName(ORGANISATION); // needed for Sailjail
+    app->setApplicationName(APP_NAME);
+
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
     QQmlContext *context = view.data()->rootContext();
