@@ -251,12 +251,12 @@ QString IngDibaBackend::processSearchResult(QByteArray searchReply) {
 
     QJsonObject responseObject = jsonDocument.object();
     QJsonArray suggestionTypes = responseObject["suggestion_types"].toArray(); // -> type: "direct_hit"
-    QJsonArray suggestionGroups = suggestionTypes.at(0).toObject()["suggestion_groups"].toArray(); //  -> group: "wp"
+    // QJsonArray suggestionGroups = suggestionTypes.at(0).toObject()["suggestion_groups"].toArray(); //  -> group: "wp"
     QJsonArray suggestionGroupsDirectHit = findFirstValueFromJsonArray(suggestionTypes,
                                                                        "type",
                                                                        "direct_hit")["suggestion_groups"]
                                                .toArray(); //  -> group: "wp"
-    QJsonArray suggestions = suggestionGroups.at(0).toObject()["suggestions"].toArray();
+    // QJsonArray suggestions = suggestionGroups.at(0).toObject()["suggestions"].toArray();
     QJsonArray suggestionsWp = findFirstValueFromJsonArray(suggestionGroupsDirectHit, "group", "wp")["suggestions"]
                                    .toArray();
 

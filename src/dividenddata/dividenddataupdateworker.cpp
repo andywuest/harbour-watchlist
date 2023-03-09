@@ -15,8 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "dividenddataupdateworker.h"
-
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -26,6 +24,9 @@
 #include <QQmlApplicationEngine>
 #include <QSqlError>
 #include <QUrlQuery>
+
+#include "../constants.h"
+#include "dividenddataupdateworker.h"
 
 DividendDataUpdateWorker::DividendDataUpdateWorker(QObject *parent)
     : QThread(parent) {
@@ -38,7 +39,7 @@ DividendDataUpdateWorker::DividendDataUpdateWorker(QObject *parent)
 
         // https://lists.qt-project.org/pipermail/interest/2016-March/021316.html
         QString path(engine.offlineStoragePath() + "/Databases/"
-                     + QCryptographicHash::hash("harbour-watchlist", QCryptographicHash::Md5).toHex() + ".sqlite");
+                     + QCryptographicHash::hash(APP_NAME, QCryptographicHash::Md5).toHex() + ".sqlite");
 
         qDebug() << "path : " << path;
 
@@ -124,7 +125,8 @@ void DividendDataUpdateWorker::executeQuery(const QString &queryString, const QM
         query.prepare(queryString);
 
         if (!dataMap.empty()) {
-            for (QString &key : dataMap.keys()) {
+            const QList<QString> keys = dataMap.keys();
+            for (auto &key : keys) {
                 query.bindValue(key, dataMap.value(key));
             }
         }

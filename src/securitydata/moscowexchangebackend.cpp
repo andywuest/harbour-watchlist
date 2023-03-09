@@ -45,8 +45,7 @@ MoscowExchangeBackend::~MoscowExchangeBackend() {
 
 void MoscowExchangeBackend::searchName(const QString &searchString) {
     qDebug() << "MoscowExchangeBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(
-        QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString).arg(getLanguage())));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_API_SEARCH).arg(searchString, getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
@@ -55,7 +54,7 @@ void MoscowExchangeBackend::searchName(const QString &searchString) {
 void MoscowExchangeBackend::searchQuoteForNameSearch(const QString &searchString) {
     // TODO check if needed
     qDebug() << "MoscowExchangeBackend::searchQuoteForNameSearch";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString, getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
@@ -73,7 +72,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 
     // so far we get all data from the same service
     QNetworkReply *reply = executeGetRequest(
-        QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId).arg(startDateString).arg(getLanguage())));
+        QUrl(QString(MOSCOW_EXCHANGE_API_CLOSE_PRICES).arg(extRefId, startDateString, getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &MoscowExchangeBackend::handleFetchPricesForChartFinished);
@@ -84,7 +83,7 @@ void MoscowExchangeBackend::fetchPricesForChart(const QString &extRefId, const i
 void MoscowExchangeBackend::searchQuote(const QString &searchString) {
     // TODO check if needed
     qDebug() << "MoscowExchangeBackend::searchQuote";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString).arg(getLanguage())));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(MOSCOW_EXCHANGE_QUOTE).arg(searchString, getLanguage())));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));
