@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 09.03.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.12.2-1
+
+- added Sailsail migration code - activated Sailjail
+
 * 22.01.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.12.1-1
 
 - updated swedish translation
