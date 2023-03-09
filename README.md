@@ -50,6 +50,12 @@ your choice:
 scp -P 2223 -i ~/SailfishOS/vmshare/ssh/private_keys/sdk defaultuser@localhost:~/.local/share/harbour-watchlist/harbour-watchlist/QML/OfflineStorage/Databases/* ~/projects/sailfishos/github/harbour-watchlist/
 ```
 
+### SSH to Simulator 
+
+```
+ssh -p 2223 -i ~/SailfishOS/vmshare/ssh/private_keys/sdk defaultuser@localhost
+```
+
 ## License
 Licensed under GNU GPLv3
 
