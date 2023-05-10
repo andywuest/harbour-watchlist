@@ -61,8 +61,8 @@ function resetApplication() {
             tx.executeSql('DROP TABLE IF EXISTS stockdata_ext');
             tx.executeSql('DROP TABLE IF EXISTS dividends');
         })
-        console.log("Changing DB Version from " + currentDbVersion
-                    + " to \"\" to be able to start from scratch.")
+        console.log("Resetting DB Version from " + currentDbVersion
+                    + " to empty to be able to start from scratch.")
         db.changeVersion(currentDbVersion, "", function (tx) {})
     } catch (err) {
         console.log("Error deleting tables for application in database : " + err);
@@ -180,6 +180,16 @@ function initApplicationTables() {
             })
         }
 
+        db = getOpenDatabase()
+        // version update 1.4 -> 1.5
+        if (db.version === "1.4") {
+            console.log("Performing DB update from 1.4 to 1.5!")
+            db.changeVersion("1.4", "1.5", function (tx) {
+                // add new column to stockdata_ext
+                tx.executeSql("ALTER TABLE stockdata_ext ADD COLUMN pieces INTEGER");
+            })
+        }
+
         // open database again to make sure we have latest version
         db = getOpenDatabase()
     } catch (err) {
@@ -271,32 +281,30 @@ function disableAlarm(id) {
                                              qsTr("Error disabling alarm"));
 }
 
-function saveStockNotes(id, notes) {
-    var query = 'INSERT OR IGNORE INTO stockdata_ext(notes, id) VALUES (?, ?)';
-    var parameters = [notes, id];
+function saveGeneric(id, columnValue, columnName) {
+    var query = 'INSERT OR IGNORE INTO stockdata_ext(' + columnName + ', id) VALUES (?, ?)';
+    var parameters = [columnValue, id];
     executeInsertUpdateDeleteForTable("stockdata_ext", query,
                                              parameters,
-                                             qsTr("Stock notes updated"),
-                                             qsTr("Error updating stock notes"));
-    var updateQuery = 'UPDATE stockdata_ext SET notes = ? WHERE id = ?';
+                                             qsTr("Stock %1 updated").arg(columnName),
+                                             qsTr("Error updating stock %1").arg(columnName));
+    var updateQuery = 'UPDATE stockdata_ext SET ' + columnName + ' = ? WHERE id = ?';
     return executeInsertUpdateDeleteForTable("stockdata_ext", updateQuery,
                                              parameters,
-                                             qsTr("Stock notes updated"),
-                                             qsTr("Error updating stock notes"));
+                                             qsTr("Stock %1 updated").arg(columnName),
+                                             qsTr("Error updating stock %1").arg(columnName));
+}
+
+function saveStockNotes(id, notes) {
+    saveGeneric(id, notes, 'notes');
 }
 
 function saveReferencePrice(id, referencePrice) {
-    var query = 'INSERT OR IGNORE INTO stockdata_ext(referencePrice, id) VALUES (?, ?)';
-    var parameters = [referencePrice, id];
-    executeInsertUpdateDeleteForTable("stockdata_ext", query,
-                                             parameters,
-                                             qsTr("Stock referencePrice updated"),
-                                             qsTr("Error updating stock referencePrice"));
-    var updateQuery = 'UPDATE stockdata_ext SET referencePrice = ? WHERE id = ?';
-    return executeInsertUpdateDeleteForTable("stockdata_ext", updateQuery,
-                                             parameters,
-                                             qsTr("Stock referencePrice updated"),
-                                             qsTr("Error updating stock referencePrice"));
+    saveGeneric(id, referencePrice, 'referencePrice');
+}
+
+function savePieces(id, pieces) {
+    saveGeneric(id, pieces, 'pieces');
 }
 
 function loadStockNotes(id) {
@@ -305,6 +313,10 @@ function loadStockNotes(id) {
 
 function loadReferencePrice(id) {
     return loadValueFromTable(id, 'stockdata_ext', 'referencePrice');
+}
+
+function loadPieces(id) {
+    return loadValueFromTable(id, 'stockdata_ext', 'pieces');
 }
 
 function migrateEuroinvestorToIngDiba(watchlistId) {
