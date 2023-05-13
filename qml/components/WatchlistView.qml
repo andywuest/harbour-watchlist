@@ -154,6 +154,17 @@ SilicaFlickable {
         }
     }
 
+    function updatePiecesInModel(securityId, pieces) {
+        Functions.log("[WatchlistView] Received updatePiecesInModel " + securityId + ", " + pieces);
+        var numberOfQuotes = stocksModel.count
+        for (var i = 0; i < numberOfQuotes; i++) {
+            if (stocksModel.get(i).id === securityId) {
+                stocksModel.get(i).pieces = pieces;
+                Functions.log("[WatchlistView] Updated pieces in model!");
+            }
+        }
+    }
+
     function updateNotesInModel(securityId, notes) {
         Functions.log("[WatchlistView] Received updateNotesInModel " + securityId + ", " + notes);
         var numberOfQuotes = stocksModel.count
@@ -254,6 +265,7 @@ SilicaFlickable {
                             var referencePricePage = pageStack.push(Qt.resolvedUrl("../pages/ReferencePriceDialog.qml"),
                                                                     { selectedSecurity: selectedStock, watchlistId: watchlistId })
                             referencePricePage.updateReferencePriceInModel.connect(updateReferencePriceInModel);
+                            referencePricePage.updatePiecesInModel.connect(updatePiecesInModel);
                         }
                     }
                 }

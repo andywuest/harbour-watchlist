@@ -146,7 +146,7 @@ SilicaFlickable {
             id: additionalInformationSectionHeader
             //: StockDetailsView page additional information section header
             text: qsTr("Additional information")
-            visible: notesRow.visible || referencePriceLabelValueRow.visible
+            visible: notesRow.visible || referencePriceLabelValueRow.visible || piecesLabelValueRow.visible
         }
 
         LabelValueRow {
@@ -161,6 +161,14 @@ SilicaFlickable {
             id: performanceRelativeLabelValueRow
             //: StockDetailsView page performance
             label: qsTr("Performance")
+            value: ''
+            visible: false;
+        }
+
+        LabelValueRow {
+            id: piecesLabelValueRow
+            //: StockDetailsView page pieces
+            label: qsTr("Pieces")
             value: ''
             visible: false;
         }
@@ -200,6 +208,11 @@ SilicaFlickable {
                 performanceRelativeLabelValueRow.value = Functions.renderChange(stock.price, stock.performanceRelative, '%')
                 referencePriceLabelValueRow.visible = true;
                 performanceRelativeLabelValueRow.visible = true;
+            }
+            var pieces = stock.pieces;
+            if (pieces && pieces !== 0) {
+                piecesLabelValueRow.value = '' + pieces;
+                piecesLabelValueRow.visible = true;
             }
         }
     }

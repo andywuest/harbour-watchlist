@@ -553,6 +553,7 @@ function loadStockData(watchListId, sortString, extRefId) {
                     // columns from stockdata_ext
                     + ' COALESCE(se.notes, "") as notes, '
                     + ' COALESCE(se.referencePrice, 0.0) as referencePrice, '
+                    + ' COALESCE(se.pieces, 0) as pieces, '
                     + ' COALESCE(ROUND(100 * (price - COALESCE(referencePrice, 0.0)) / COALESCE(referencePrice, 0.0), 2), 0.0) as performanceRelative '
                     + ' FROM stockdata s '
                     + ' LEFT OUTER JOIN stockdata_ext se '
@@ -595,6 +596,7 @@ function loadStockData(watchListId, sortString, extRefId) {
                     // stockdata_ext
                     entry.notes = row.notes;
                     entry.referencePrice = row.referencePrice;
+                    entry.pieces = row.pieces;
                     entry.performanceRelative = row.performanceRelative; // calculated!
                     result.push(entry);
                 }
