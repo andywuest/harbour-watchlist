@@ -108,6 +108,16 @@ function calculateWidth(price, change, maxChange, parentWidth) {
     }
 }
 
+function calculateDepotValue(stocks) {
+  var sum = 0.0;
+  if (stocks && stocks.length > 0) {
+    for (var index = 0; index < stocks.length; index++) {
+      sum += stocks[index].positionValue;
+    }
+  }
+  return sum;
+}
+
 function log(message) {
     if (loggingEnabled && message) {
         console.log(message);

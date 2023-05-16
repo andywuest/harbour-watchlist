@@ -38,4 +38,21 @@ TestCase {
         compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "0,54 EUR")
     }
 
+    function test_functions_calculateDepotValue() {
+        // given
+        var stock1 = {};
+        stock1.positionValue = 1234.32;
+        var stock2 = {};
+        stock2.positionValue = 2453.10;
+        var stock3 = {};
+        stock3.positionValue = 4000.00;
+        var stocks = [];
+        stocks.push(stock1);
+        stocks.push(stock2);
+        stocks.push(stock3);
+
+        // when / then
+        compare(Functions.calculateDepotValue(stocks), 7687.42);
+    }
+
 }

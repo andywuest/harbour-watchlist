@@ -186,7 +186,7 @@ function initApplicationTables() {
             console.log("Performing DB update from 1.4 to 1.5!")
             db.changeVersion("1.4", "1.5", function (tx) {
                 // add new column to stockdata_ext
-                tx.executeSql("ALTER TABLE stockdata_ext ADD COLUMN pieces INTEGER");
+                tx.executeSql("ALTER TABLE stockdata_ext ADD COLUMN pieces INTEGER DEFAULT 0");
             })
         }
 
@@ -554,6 +554,8 @@ function loadStockData(watchListId, sortString, extRefId) {
                     + ' COALESCE(se.notes, "") as notes, '
                     + ' COALESCE(se.referencePrice, 0.0) as referencePrice, '
                     + ' COALESCE(se.pieces, 0) as pieces, '
+                    + ' COALESCE(se.referencePrice, 0.0) * COALESCE(se.pieces, 0) as positionValuePurchase, '
+                    + ' COALESCE(price, 0.0) * COALESCE(se.pieces, 0) as positionValueCurrent, '
                     + ' COALESCE(ROUND(100 * (price - COALESCE(referencePrice, 0.0)) / COALESCE(referencePrice, 0.0), 2), 0.0) as performanceRelative '
                     + ' FROM stockdata s '
                     + ' LEFT OUTER JOIN stockdata_ext se '
@@ -598,6 +600,8 @@ function loadStockData(watchListId, sortString, extRefId) {
                     entry.referencePrice = row.referencePrice;
                     entry.pieces = row.pieces;
                     entry.performanceRelative = row.performanceRelative; // calculated!
+                    entry.positionValuePurchase = row.positionValuePurchase; // calculated!
+                    entry.positionValueCurrent = row.positionValueCurrent; // calculated!
                     result.push(entry);
                 }
                 log("[loadStockData] loading stockdata data from database done");

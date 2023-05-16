@@ -173,6 +173,24 @@ SilicaFlickable {
             visible: false;
         }
 
+        // TODO check if displayed and with which label
+        LabelValueRow {
+            id: positionValuePurchaseLabelValueRow
+            //: StockDetailsView page position value purchase
+            label: qsTr("Position value purchase")
+            value: ''
+            visible: false;
+        }
+
+        // TODO check if displayed and with which label
+        LabelValueRow {
+            id: positionValueCurrentLabelValueRow
+            //: StockDetailsView page position value
+            label: qsTr("Position value current")
+            value: ''
+            visible: false;
+        }
+
         LabelOnlyRow {
             id: notesRow
             label: ''
@@ -214,6 +232,17 @@ SilicaFlickable {
                 piecesLabelValueRow.value = '' + pieces;
                 piecesLabelValueRow.visible = true;
             }
+            var positionValuePurchase = stock.positionValuePurchase;
+            if (positionValuePurchase && positionValuePurchase !== 0.0) {
+                positionValuePurchaseLabelValueRow.value = Functions.renderPrice(positionValuePurchase, currencySymbol);
+                positionValuePurchaseLabelValueRow.visible = true;
+            }
+            var positionValueCurrent = stock.positionValueCurrent;
+            if (positionValueCurrent && positionValueCurrent !== 0.0) {
+                positionValueCurrentLabelValueRow.value = Functions.renderPrice(positionValueCurrent, currencySymbol);
+                positionValueCurrentLabelValueRow.visible = true;
+            }
+
         }
     }
 
