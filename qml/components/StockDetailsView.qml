@@ -185,7 +185,7 @@ SilicaFlickable {
         // TODO check if displayed and with which label
         LabelValueRow {
             id: positionValueCurrentLabelValueRow
-            //: StockDetailsView page position value
+            //: StockDetailsView page position value current
             label: qsTr("Position value current")
             value: ''
             visible: false;
@@ -242,7 +242,6 @@ SilicaFlickable {
                 positionValueCurrentLabelValueRow.value = Functions.renderPrice(positionValueCurrent, currencySymbol);
                 positionValueCurrentLabelValueRow.visible = true;
             }
-
         }
     }
 

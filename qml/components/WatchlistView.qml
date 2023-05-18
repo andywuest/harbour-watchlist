@@ -97,6 +97,7 @@ SilicaFlickable {
         var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
         var stocks = Database.loadAllStockData(watchlistId, sortOrder);
 
+
         // stockQuotePage.
         maxChange = Functions.calculateMaxChange(stocks)
 
@@ -114,10 +115,14 @@ SilicaFlickable {
             connectSlots();
         }
 
+        var currencySymbol = "";
         stocksModel.clear()
         for (var i = 0; i < stocks.length; i++) {
-            stocksModel.append(stocks[i])
+            stocksModel.append(stocks[i]);
+            currencySymbol = stocks[i].currencySymbol;
         }
+
+        stockQuotesHeader.description = Functions.calculatePortfolioPerformanceString(stocks, currencySymbol);
 
         updateEmptyModelColumnVisibility();
 

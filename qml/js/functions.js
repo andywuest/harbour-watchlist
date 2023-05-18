@@ -108,14 +108,48 @@ function calculateWidth(price, change, maxChange, parentWidth) {
     }
 }
 
-function calculateDepotValue(stocks) {
+function calculateAttributeSumValue(stocks, callback) {
   var sum = 0.0;
   if (stocks && stocks.length > 0) {
     for (var index = 0; index < stocks.length; index++) {
-      sum += stocks[index].positionValue;
+      sum += callback(stocks[index]);
     }
   }
   return sum;
+}
+
+function cbPositionValuePurchase(stock) {
+    return stock.positionValuePurchase;
+}
+
+function cbPositionValueCurrent(stock) {
+    return stock.positionValueCurrent;
+}
+
+function calculatePortfolioPerformanceString(stocks, currencySymbol) {
+    if (!stocks || stocks.length === 0) {
+        return "";
+    }
+
+    var depotPurchaseValue = calculateAttributeSumValue(stocks, cbPositionValuePurchase);
+    var depotCurrentValue = calculateAttributeSumValue(stocks, cbPositionValueCurrent);
+
+    if (isNonNullValue(depotPurchaseValue) && isNonNullValue(depotPurchaseValue)) {
+        var depotValueChangeAbsolute = depotCurrentValue - depotPurchaseValue;
+        var depotValueChangeRelative = (depotCurrentValue * 100.0 / depotPurchaseValue) - 100.0;
+
+        return renderChange(depotValueChangeAbsolute, depotValueChangeAbsolute, currencySymbol)
+                + "  /  " + renderChange(depotValueChangeRelative, depotValueChangeRelative, "%");
+    }
+
+    return "";
+}
+
+function isNonNullValue(value) {
+    if (value && value !== 0.0) {
+        return true;
+    }
+    return false;
 }
 
 function log(message) {
