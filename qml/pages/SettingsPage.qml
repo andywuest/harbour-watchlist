@@ -192,6 +192,18 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id: portfolioShareRowRowTextSwitch
+                //: SettingsPage show portfolio share row title
+                text: qsTr("Show portfolio share row")
+                //: SettingsPage show portfolio share row description
+                description: qsTr("Displays the portfolio share of the for a security. Portfolio share will only be calculated, if a reference price and the number of pieces were configured for the security.")
+                checked: watchlistSettings.showPortfolioShareRow
+                onCheckedChanged: {
+                    watchlistSettings.showPortfolioShareRow = checked
+                }
+            }
+
             ComboBox {
                 id: dataBackendComboBox
                 //: SettingsPage data backend for watchlist

@@ -299,6 +299,7 @@ SilicaFlickable {
                             height: firstRow.height + changeRow.height
                             /* + secondRow.height*/ + changeValuesRow.height
                                     + (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
+                                    + (watchlistSettings.showPortfolioShareRow ? portfolioShareRow.height : 0)
 
                             anchors.verticalCenter: parent.verticalCenter
 
@@ -397,6 +398,33 @@ SilicaFlickable {
                                     horizontalAlignment: Text.AlignRight
                                 }
                             }
+
+                            Row {
+                                id: portfolioShareRow
+                                width: parent.width
+                                visible: watchlistSettings.showPortfolioShareRow
+                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    //: WatchlistView Portfolio share label
+                                    text: qsTr("Portfolio share")
+                                    color: Theme.primaryColor
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignLeft
+                                }
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    text: Functions.isNonNullValue(portfolioShare) ? Functions.renderPercentage(portfolioShare) : ''
+                                    color: Theme.highlightColor
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignRight
+                                }
+                            }
+
                         }
                     }
 
