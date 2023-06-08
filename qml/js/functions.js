@@ -10,8 +10,11 @@ function renderChange(price, change, symbol) {
     if (change > 0.0) {
         prefix = "+"
     }
-    var locale = Qt.locale();
-    return prefix + Number(change).toLocaleString(locale) + " " + symbol
+    return prefix + Number(change).toLocaleString(Qt.locale()) + " " + symbol;
+}
+
+function renderPercentage(value) {
+    return Number(value).toLocaleString(Qt.locale()) + " %";
 }
 
 function renderPriceOnly(price) {
@@ -118,12 +121,19 @@ function calculateAttributeSumValue(stocks, callback) {
   return sum;
 }
 
-function cbPositionValuePurchase(stock) {
-    return stock.positionValuePurchase;
+function cbPositionCostValue(stock) {
+    return stock.positionCostValue;
 }
 
-function cbPositionValueCurrent(stock) {
-    return stock.positionValueCurrent;
+function cbPositionCurrentValue(stock) {
+    return stock.positionCurrentValue;
+}
+
+function calculatePercentage(positionValue, overallValue) {
+    if (isNonNullValue(positionValue) && isNonNullValue(overallValue)) {
+        return (positionValue * 100.0 / overallValue);
+    }
+    return 0.0;
 }
 
 function calculatePortfolioPerformanceString(stocks, currencySymbol) {
@@ -131,12 +141,12 @@ function calculatePortfolioPerformanceString(stocks, currencySymbol) {
         return "";
     }
 
-    var depotPurchaseValue = calculateAttributeSumValue(stocks, cbPositionValuePurchase);
-    var depotCurrentValue = calculateAttributeSumValue(stocks, cbPositionValueCurrent);
+    var depotCostValue = calculateAttributeSumValue(stocks, cbPositionCostValue);
+    var depotCurrentValue = calculateAttributeSumValue(stocks, cbPositionCurrentValue);
 
-    if (isNonNullValue(depotPurchaseValue) && isNonNullValue(depotPurchaseValue)) {
-        var depotValueChangeAbsolute = depotCurrentValue - depotPurchaseValue;
-        var depotValueChangeRelative = (depotCurrentValue * 100.0 / depotPurchaseValue) - 100.0;
+    if (isNonNullValue(depotCostValue) && isNonNullValue(depotCurrentValue)) {
+        var depotValueChangeAbsolute = depotCurrentValue - depotCostValue;
+        var depotValueChangeRelative = (depotCurrentValue * 100.0 / depotCostValue) - 100.0;
 
         return renderChange(depotValueChangeAbsolute, depotValueChangeAbsolute, currencySymbol)
                 + "  /  " + renderChange(depotValueChangeRelative, depotValueChangeRelative, "%");

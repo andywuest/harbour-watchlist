@@ -115,9 +115,12 @@ SilicaFlickable {
             connectSlots();
         }
 
+        var depotCurrentValue = Functions.calculateAttributeSumValue(stocks, Functions.cbPositionCurrentValue);
+
         var currencySymbol = "";
         stocksModel.clear()
         for (var i = 0; i < stocks.length; i++) {
+            stocks[i].portfolioShare = Functions.calculatePercentage(stocks[i].positionCurrentValue, depotCurrentValue);
             stocksModel.append(stocks[i]);
             currencySymbol = stocks[i].currencySymbol;
         }

@@ -173,20 +173,26 @@ SilicaFlickable {
             visible: false;
         }
 
-        // TODO check if displayed and with which label
         LabelValueRow {
-            id: positionValuePurchaseLabelValueRow
-            //: StockDetailsView page position value purchase
-            label: qsTr("Position value purchase")
+            id: positionCostValueLabelValueRow
+            //: StockDetailsView page position cost value
+            label: qsTr("Cost value")
             value: ''
             visible: false;
         }
 
-        // TODO check if displayed and with which label
         LabelValueRow {
-            id: positionValueCurrentLabelValueRow
-            //: StockDetailsView page position value current
-            label: qsTr("Position value current")
+            id: positionCurrentValueLabelValueRow
+            //: StockDetailsView page position current value
+            label: qsTr("Current value")
+            value: ''
+            visible: false;
+        }
+
+        LabelValueRow {
+            id: positionPortfolioShareLabelValueRow
+            //: StockDetailsView page portfolio share of the position
+            label: qsTr("Portfolio share")
             value: ''
             visible: false;
         }
@@ -221,7 +227,7 @@ SilicaFlickable {
                 notesRow.visible = true;
             }
             var referencePrice = stock.referencePrice;
-            if (referencePrice && referencePrice !== 0.0) {
+            if (Functions.isNonNullValue(referencePrice)) {
                 referencePriceLabelValueRow.value = Functions.renderPrice(referencePrice, currencySymbol);
                 performanceRelativeLabelValueRow.value = Functions.renderChange(stock.price, stock.performanceRelative, '%')
                 referencePriceLabelValueRow.visible = true;
@@ -232,15 +238,20 @@ SilicaFlickable {
                 piecesLabelValueRow.value = '' + pieces;
                 piecesLabelValueRow.visible = true;
             }
-            var positionValuePurchase = stock.positionValuePurchase;
-            if (positionValuePurchase && positionValuePurchase !== 0.0) {
-                positionValuePurchaseLabelValueRow.value = Functions.renderPrice(positionValuePurchase, currencySymbol);
-                positionValuePurchaseLabelValueRow.visible = true;
+            var positionCostValue = stock.positionCostValue;
+            if (Functions.isNonNullValue(positionCostValue)) {
+                positionCostValueLabelValueRow.value = Functions.renderPrice(positionCostValue, currencySymbol);
+                positionCostValueLabelValueRow.visible = true;
             }
-            var positionValueCurrent = stock.positionValueCurrent;
-            if (positionValueCurrent && positionValueCurrent !== 0.0) {
-                positionValueCurrentLabelValueRow.value = Functions.renderPrice(positionValueCurrent, currencySymbol);
-                positionValueCurrentLabelValueRow.visible = true;
+            var positionCurrentValue = stock.positionCurrentValue;
+            if (Functions.isNonNullValue(positionCurrentValue)) {
+                positionCurrentValueLabelValueRow.value = Functions.renderPrice(positionCurrentValue, currencySymbol);
+                positionCurrentValueLabelValueRow.visible = true;
+            }
+            var positionPortfolioShare = stock.portfolioShare;
+            if (Functions.isNonNullValue(positionPortfolioShare)) {
+                positionPortfolioShareLabelValueRow.value = Functions.renderPercentage(positionPortfolioShare);
+                positionPortfolioShareLabelValueRow.visible = true;
             }
         }
     }

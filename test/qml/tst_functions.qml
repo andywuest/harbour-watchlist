@@ -38,25 +38,41 @@ TestCase {
         compare(Functions.renderPrice(0.541234, 'EUR', Constants.MARKET_DATA_TYPE_NONE), "0,54 EUR")
     }
 
+    function test_functions_renderPercentage() {
+        compare(Functions.renderPercentage(0.0), "0,00 %");
+        compare(Functions.renderPercentage(12.3), "12,30 %");
+        compare(Functions.renderPercentage(31.2), "31,20 %");
+    }
+
+    function test_functions_calculatePercentage() {
+        // wrong / values to be ignored
+        compare(Functions.calculatePercentage(0.0, 1.0), 0.0);
+        compare(Functions.calculatePercentage(1.0, 0.0), 0.0);
+        compare(Functions.calculatePercentage(0.0, 0.0), 0.0);
+        // usable values
+        compare(Functions.calculatePercentage(50.0, 100.0), 50.0);
+        compare(Functions.calculatePercentage(100.0, 2000.0), 5.0);
+    }
+
     function test_functions_calculateAttributeSumValue() {
         // given
         var stock1 = {};
-        stock1.positionValuePurchase = 1234.32;
-        stock1.positionValueCurrent = 200.00;
+        stock1.positionCostValue = 1234.32;
+        stock1.positionCurrentValue = 200.00;
         var stock2 = {};
-        stock2.positionValuePurchase = 2453.10;
-        stock2.positionValueCurrent = 300.10;
+        stock2.positionCostValue = 2453.10;
+        stock2.positionCurrentValue = 300.10;
         var stock3 = {};
-        stock3.positionValuePurchase = 4000.00;
-        stock3.positionValueCurrent = 400.20;
+        stock3.positionCostValue = 4000.00;
+        stock3.positionCurrentValue = 400.20;
         var stocks = [];
         stocks.push(stock1);
         stocks.push(stock2);
         stocks.push(stock3);
 
         // when / then
-        compare(Functions.calculateAttributeSumValue(stocks, Functions.cbPositionValuePurchase), 7687.42);
-        compare(Functions.calculateAttributeSumValue(stocks, Functions.cbPositionValueCurrent), 900.30);
+        compare(Functions.calculateAttributeSumValue(stocks, Functions.cbPositionCostValue), 7687.42);
+        compare(Functions.calculateAttributeSumValue(stocks, Functions.cbPositionCurrentValue), 900.30);
     }
 
     function test_functions_isNonNullValue() {
@@ -92,14 +108,14 @@ TestCase {
 
     function createStockList() {
         var stock1 = {};
-        stock1.positionValuePurchase = 1000.00;
-        stock1.positionValueCurrent = 1200.00;  // 200 Euro, 20% plus
+        stock1.positionCostValue = 1000.00;
+        stock1.positionCurrentValue = 1200.00;  // 200 Euro, 20% plus
         var stock2 = {};
-        stock2.positionValuePurchase = 2000.00;
-        stock2.positionValueCurrent = 3000.00;  // 1000 Euro, 50% plus
+        stock2.positionCostValue = 2000.00;
+        stock2.positionCurrentValue = 3000.00;  // 1000 Euro, 50% plus
         var stock3 = {};
-        stock3.positionValuePurchase = 1000.00; // -700 Euro, 70% minus
-        stock3.positionValueCurrent = 300.00;
+        stock3.positionCostValue = 1000.00; // -700 Euro, 70% minus
+        stock3.positionCurrentValue = 300.00;
         var stocks = [];
         stocks.push(stock1);
         stocks.push(stock2);
