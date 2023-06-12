@@ -193,7 +193,7 @@
 <context>
     <name>MoscowExchangeBackend</name>
     <message>
-        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="318"/>
+        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="317"/>
         <source>RUB</source>
         <translation></translation>
     </message>
@@ -271,25 +271,36 @@
 <context>
     <name>ReferencePriceDialog</name>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="49"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="54"/>
         <source>Configure reference price</source>
         <translation>Referenzkurs festlegen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="50"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="55"/>
         <source>Reference price for the security which can be used to display the performance.</source>
         <translation>Referenzkurs für das Wertpapier um sich die Performance anzeigen zu lassen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="58"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="63"/>
         <source>Reference price</source>
         <translation>Referenzkurs</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ReferencePriceDialog.qml" line="65"/>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="70"/>
         <source>Enter the reference price here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
         <translation>Referenzkurs hier eingeben!</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="82"/>
+        <source>Pieces</source>
+        <translation>Stückzahl</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ReferencePriceDialog.qml" line="89"/>
+        <source>Enter the number of pieces here!</source>
+        <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
+        <translation>Geben Sie die Stückzahl hier ein!</translation>
     </message>
 </context>
 <context>
@@ -397,36 +408,48 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="198"/>
+        <source>Show portfolio share row</source>
+        <extracomment>SettingsPage show portfolio share row title</extracomment>
+        <translation>Portfolioanteil Zeile anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="200"/>
+        <source>Displays the portfolio share of the for a security. Portfolio share will only be calculated, if a reference price and the number of pieces were configured for the security.</source>
+        <extracomment>SettingsPage show portfolio share row description</extracomment>
+        <translation>Portfolioanteil für das Wertpapier anzeigen. Portfolioanteil wird nur berechnet, wenn eine Referenzpreis und die Stückzahl konfiguriert wurde.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Data Backend</source>
         <extracomment>SettingsPage data backend for watchlist</extracomment>
         <translation>Datenquelle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="201"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="213"/>
         <source>Data backend to be used for the watchlist</source>
         <extracomment>SettingsPage data backend for watchlist description</extracomment>
         <translation>Datenquelle, welche für die Watchlist verwendet werden soll</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="205"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="217"/>
         <source>Euroinvestor</source>
         <extracomment>SettingsPage data backend Euroinvestor (default)</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="221"/>
         <source>Moscow Exchange</source>
         <extracomment>SettingsPage data backend Moscow Exchange</extracomment>
         <translation>Börse Moskau</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="213"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="225"/>
         <source>Ing-Diba</source>
         <extracomment>SettingsPage data backend Ing-Diba</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>NOTE: Changing the data backend will reset the database. This means that the current watchlist will be reset and the stocks have to be added again!</source>
         <translation>ACHTUNG: Ein Wechsel der Datenquelle führt zum Zurücksetzen der Datenbank. Dies bedeutet, dass die aktuelle Watchlist gelöscht wird und die Aktien neu hinzugefügt werden müssen!</translation>
     </message>
@@ -630,6 +653,30 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>StockDetailsView page performance</extracomment>
         <translation>Performance</translation>
     </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="171"/>
+        <source>Pieces</source>
+        <extracomment>StockDetailsView page pieces</extracomment>
+        <translation>Stückzahl</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="179"/>
+        <source>Cost value</source>
+        <extracomment>StockDetailsView page position cost value</extracomment>
+        <translation>Einstandswert</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="187"/>
+        <source>Current value</source>
+        <extracomment>StockDetailsView page position current value</extracomment>
+        <translation>Aktueller Wert</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/StockDetailsView.qml" line="195"/>
+        <source>Portfolio share</source>
+        <extracomment>StockDetailsView page portfolio share of the position</extracomment>
+        <translation>Portfolioanteil</translation>
+    </message>
 </context>
 <context>
     <name>StockNewsView</name>
@@ -691,46 +738,52 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="191"/>
+        <location filename="../qml/components/WatchlistView.qml" line="210"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>Aktienkurse</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="198"/>
+        <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>Keine Aktien in der Watchlist enthalten. Bitte fügen Sie neue Aktien über das Pulley-Menü hinzu.</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="228"/>
+        <location filename="../qml/components/WatchlistView.qml" line="247"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>Alarm konfigurieren</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="236"/>
+        <location filename="../qml/components/WatchlistView.qml" line="255"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="241"/>
+        <location filename="../qml/components/WatchlistView.qml" line="260"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>Wertpapier Notizen</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="251"/>
+        <location filename="../qml/components/WatchlistView.qml" line="270"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>Referenzkurs konfigurieren</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="365"/>
+        <location filename="../qml/components/WatchlistView.qml" line="386"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>Performance</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WatchlistView.qml" line="412"/>
+        <source>Portfolio share</source>
+        <extracomment>WatchlistView Portfolio share label</extracomment>
+        <translation>Portfolioanteil</translation>
     </message>
 </context>
 <context>
@@ -969,76 +1022,64 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>database</name>
     <message>
-        <location filename="../qml/js/database.js" line="263"/>
+        <location filename="../qml/js/database.js" line="273"/>
         <source>Alarm added</source>
         <translation>Alarm hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="263"/>
+        <location filename="../qml/js/database.js" line="273"/>
         <source>Error adding alarm</source>
         <translation>Fehler beim Hinzufügen des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="270"/>
+        <location filename="../qml/js/database.js" line="280"/>
         <source>Alarm disabled</source>
         <translation>Alarm deaktiviert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="271"/>
+        <location filename="../qml/js/database.js" line="281"/>
         <source>Error disabling alarm</source>
         <translation>Fehler beim deaktivieren des Alarms</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="279"/>
-        <location filename="../qml/js/database.js" line="284"/>
-        <source>Stock notes updated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/database.js" line="280"/>
-        <location filename="../qml/js/database.js" line="285"/>
-        <source>Error updating stock notes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/database.js" line="293"/>
-        <location filename="../qml/js/database.js" line="298"/>
-        <source>Stock referencePrice updated</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../qml/js/database.js" line="289"/>
         <location filename="../qml/js/database.js" line="294"/>
-        <location filename="../qml/js/database.js" line="299"/>
-        <source>Error updating stock referencePrice</source>
+        <source>Stock %1 updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="315"/>
+        <location filename="../qml/js/database.js" line="290"/>
+        <location filename="../qml/js/database.js" line="295"/>
+        <source>Error updating stock %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/database.js" line="327"/>
         <source>Watchlist data migrated</source>
         <translation>Watchlist-Daten migriert</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="316"/>
+        <location filename="../qml/js/database.js" line="328"/>
         <source>Error migrating watchlist data</source>
         <translation>Fehler beim Migrieren der Watchlist-Daten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="364"/>
         <source>Market data added</source>
         <translation>Marktdaten hinzugefügt</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="352"/>
+        <location filename="../qml/js/database.js" line="364"/>
         <source>Error adding market data</source>
         <translation>Fehler beim Hinzufügen von Marktdaten</translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="365"/>
+        <location filename="../qml/js/database.js" line="377"/>
         <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/js/database.js" line="365"/>
+        <location filename="../qml/js/database.js" line="377"/>
         <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1046,31 +1087,31 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>functions</name>
     <message>
-        <location filename="../qml/js/functions.js" line="61"/>
-        <source>hh:mm:ss</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/functions.js" line="75"/>
-        <source>hh:mm</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../qml/js/functions.js" line="61"/>
-        <location filename="../qml/js/functions.js" line="77"/>
+        <location filename="../qml/js/functions.js" line="64"/>
+        <location filename="../qml/js/functions.js" line="80"/>
         <source>dd.MM.yyyy</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/functions.js" line="64"/>
+        <source>hh:mm:ss</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/js/functions.js" line="78"/>
+        <source>hh:mm</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>harbour-watchlist</name>
     <message>
-        <location filename="../qml/harbour-watchlist.qml" line="45"/>
+        <location filename="../qml/harbour-watchlist.qml" line="46"/>
         <source>Watchlist</source>
         <translation type="unfinished">Watchlist</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-watchlist.qml" line="46"/>
+        <location filename="../qml/harbour-watchlist.qml" line="47"/>
         <source>Holdings</source>
         <translation>Positionen</translation>
     </message>

@@ -246,6 +246,15 @@
         <source>Reference price</source>
         <translation>Ориентирная цена</translation>
     </message>
+    <message>
+        <source>Enter the number of pieces here!</source>
+        <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pieces</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -368,6 +377,16 @@ SettingsPage news download strategy only on wifi</extracomment>
     </message>
     <message>
         <source>Name for second Watchlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show portfolio share row</source>
+        <extracomment>SettingsPage show portfolio share row title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays the portfolio share of the for a security. Portfolio share will only be calculated, if a reference price and the number of pieces were configured for the security.</source>
+        <extracomment>SettingsPage show portfolio share row description</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -526,6 +545,26 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>StockDetailsView page performance</extracomment>
         <translation>Результативность вложения</translation>
     </message>
+    <message>
+        <source>Pieces</source>
+        <extracomment>StockDetailsView page pieces</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cost value</source>
+        <extracomment>StockDetailsView page position cost value</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current value</source>
+        <extracomment>StockDetailsView page position current value</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portfolio share</source>
+        <extracomment>StockDetailsView page portfolio share of the position</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockNewsView</name>
@@ -611,6 +650,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>Результативность</translation>
+    </message>
+    <message>
+        <source>Portfolio share</source>
+        <extracomment>WatchlistView Portfolio share label</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -835,22 +879,6 @@ SettingsPage news download strategy only on wifi</extracomment>
         <translation>Ошибка при переносе данных Watchlist</translation>
     </message>
     <message>
-        <source>Stock notes updated</source>
-        <translation>Заметки обновлены</translation>
-    </message>
-    <message>
-        <source>Error updating stock notes</source>
-        <translation>Ошибка обновления заметок</translation>
-    </message>
-    <message>
-        <source>Stock referencePrice updated</source>
-        <translation>Ориентирная цена обновлена</translation>
-    </message>
-    <message>
-        <source>Error updating stock referencePrice</source>
-        <translation>Ошибка при обновлении ориентирной цены</translation>
-    </message>
-    <message>
         <source>Security added</source>
         <translation type="unfinished"></translation>
     </message>
@@ -858,20 +886,28 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Error adding security</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Stock %1 updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error updating stock %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>functions</name>
     <message>
+        <source>dd.MM.yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>hh:mm:ss</source>
-        <translation>hh:mm:ss</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>hh:mm</source>
-        <translation>hh:mm</translation>
-    </message>
-    <message>
-        <source>dd.MM.yyyy</source>
-        <translation>dd.MM.yyyy</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
