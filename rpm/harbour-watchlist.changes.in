@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.0-1
+
+- updated swedish translation
+
 * 13.06.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.0-1
 
 - implemented feature "Add Option to display Capital Gain...." (https://github.com/andywuest/harbour-watchlist/issues/105)
