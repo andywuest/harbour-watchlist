@@ -294,13 +294,13 @@
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="82"/>
         <source>Pieces</source>
-        <translation type="unfinished"></translation>
+        <translation>Delar</translation>
     </message>
     <message>
         <location filename="../qml/pages/ReferencePriceDialog.qml" line="89"/>
         <source>Enter the number of pieces here!</source>
         <extracomment>ReferencePriceDialog textarea to enter notes</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ange antal delar här!</translation>
     </message>
 </context>
 <context>
@@ -410,13 +410,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="198"/>
         <source>Show portfolio share row</source>
         <extracomment>SettingsPage show portfolio share row title</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visa portföljandelsrad</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="200"/>
         <source>Displays the portfolio share of the for a security. Portfolio share will only be calculated, if a reference price and the number of pieces were configured for the security.</source>
         <extracomment>SettingsPage show portfolio share row description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visar portföljandelen för ett värdepapper. Portföljandel kommer endast att beräknas om ett referenspris och antalet enheter har konfigurerats för värdepapperet.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="210"/>
@@ -657,25 +657,25 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/StockDetailsView.qml" line="171"/>
         <source>Pieces</source>
         <extracomment>StockDetailsView page pieces</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Delar</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="179"/>
         <source>Cost value</source>
         <extracomment>StockDetailsView page position cost value</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Kostnadsvärde</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="187"/>
         <source>Current value</source>
         <extracomment>StockDetailsView page position current value</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Aktuellt värde</translation>
     </message>
     <message>
         <location filename="../qml/components/StockDetailsView.qml" line="195"/>
         <source>Portfolio share</source>
         <extracomment>StockDetailsView page portfolio share of the position</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Portföljandel</translation>
     </message>
 </context>
 <context>
@@ -783,7 +783,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/components/WatchlistView.qml" line="412"/>
         <source>Portfolio share</source>
         <extracomment>WatchlistView Portfolio share label</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Portföljandel</translation>
     </message>
 </context>
 <context>
@@ -1045,13 +1045,13 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/js/database.js" line="289"/>
         <location filename="../qml/js/database.js" line="294"/>
         <source>Stock %1 updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktie %1 uppdaterad</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="290"/>
         <location filename="../qml/js/database.js" line="295"/>
         <source>Error updating stock %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte uppdatera aktie %1</translation>
     </message>
     <message>
         <location filename="../qml/js/database.js" line="327"/>
