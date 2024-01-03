@@ -5,9 +5,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.0-1
+* xx.xx.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.1-1
 
+- thanks to Nico H. for his generous donation
 - updated swedish translation
+- changed market data backend - since did not work reliably anymore (cryptos still need work)
+- added some more markets indices dropped not supported ones
 
 * 13.06.2023 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.0-1
 

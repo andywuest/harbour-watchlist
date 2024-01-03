@@ -843,6 +843,26 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Binance USD</source>
         <translation>Binance USD</translation>
     </message>
+    <message>
+        <source>Euro Stoxx 50</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SMI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ATX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EUR/GBP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EUR/CHF</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>database</name>

@@ -62,7 +62,8 @@ ApplicationWindow {
     }
 
     function getMarketDataBackend() {
-        return euroinvestorMarketDataBackend;
+        return ingMarketDataBackend;
+        // return euroinvestorMarketDataBackend;
     }
 
     function getDividendBackend() {

@@ -81,6 +81,9 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("INDEX_OMC_C25", qsTr("OMX C25"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_OMXS30", qsTr("OMX Stockholm 30"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_OSEBX", qsTr("OSEBX"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_EUROSTOXX50", qsTr("Euro Stoxx 50"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_SMI", qsTr("SMI"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_ATX", qsTr("ATX"), MARKET_DATA_TYPE_INDEX));
 
     // Commodity
     marketDataList.push(addMarketDataItem("COM_GOLD", qsTr("Gold"), MARKET_DATA_TYPE_COMMODITY));
@@ -92,6 +95,8 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("CUR_EUR_USD", qsTr("EUR/USD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_EUR_CAD", qsTr("EUR/CAD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_EUR_RUB", qsTr("EUR/RUB"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_EUR_GBP", qsTr("EUR/GBP"), MARKET_DATA_TYPE_CURRENCY));
+    marketDataList.push(addMarketDataItem("CUR_EUR_CHF", qsTr("EUR/CHF"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_SEK_DKK", qsTr("SEK/DKK"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_JPY_USD", qsTr("JPY/USD"), MARKET_DATA_TYPE_CURRENCY));
     marketDataList.push(addMarketDataItem("CUR_CHF_EUR", qsTr("CHF/EUR"), MARKET_DATA_TYPE_CURRENCY));

@@ -1,6 +1,6 @@
 /*
  * harbour-watchlist - Sailfish OS Version
- * Copyright © 2019 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ * Copyright © 2019-2024 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ Watchlist::Watchlist(QObject *parent)
     ingDibaBackend = new IngDibaBackend(this->networkAccessManager, this);
     // market data backends
     euroinvestorMarketDataBackend = new EuroinvestorMarketDataBackend(this->networkAccessManager, this);
+    ingMarketDataBackend = new IngMarketDataBackend(this->networkAccessManager, this);
     // news backends
     onvistaNews = new OnvistaNews(this->networkAccessManager, this);
     ingDibaNews = new IngDibaNews(this->networkAccessManager, this);
@@ -52,6 +53,10 @@ bool Watchlist::isWiFi() {
 
 EuroinvestorBackend *Watchlist::getEuroinvestorBackend() {
     return this->euroinvestorBackend;
+}
+
+IngMarketDataBackend *Watchlist::getIngMarketDataBackend() {
+    return this->ingMarketDataBackend;
 }
 
 MoscowExchangeBackend *Watchlist::getMoscowExchangeBackend() {

@@ -24,6 +24,7 @@
 #include <QSettings>
 
 #include "marketdata/euroinvestormarketdatabackend.h"
+#include "marketdata/ingmarketdatabackend.h"
 #include "newsdata/onvistanews.h"
 #include "newsdata/ingdibanews.h"
 #include "securitydata/euroinvestorbackend.h"
@@ -36,12 +37,17 @@ class Watchlist : public QObject {
 public:
     explicit Watchlist(QObject *parent = nullptr);
     ~Watchlist() = default;
+    // market backend
     EuroinvestorBackend *getEuroinvestorBackend();
+    IngMarketDataBackend *getIngMarketDataBackend();
+    // quote backends
     MoscowExchangeBackend *getMoscowExchangeBackend();
     EuroinvestorMarketDataBackend *getEuroinvestorMarketDataBackend();
     IngDibaBackend *getIngDibaBackend();
+    // news backends
     OnvistaNews *getOnvistaNews();
     IngDibaNews *getIngDibaNews();
+    // dividend backends
     DivvyDiary *getDivvyDiaryBackend();
 
     Q_INVOKABLE bool isWiFi();
@@ -61,6 +67,7 @@ private:
 
     // market data backends
     EuroinvestorMarketDataBackend *euroinvestorMarketDataBackend;
+    IngMarketDataBackend *ingMarketDataBackend;
 
     // news backends
     OnvistaNews *onvistaNews;
