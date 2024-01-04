@@ -26,8 +26,8 @@
 #include <QJsonObject>
 #include <QUrl>
 
-IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent)
-{
+IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObject *parent)
+    : QObject(parent) {
     qDebug() << "Initializing Ing Market Data Backend...";
     this->manager = manager;
 
@@ -90,7 +90,7 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     extRefIdToIsinMap["287642"] = "XD0002876429";
 
     // Currencies
-//    marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
+    //    marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
 
     marketDataId2ExtRefId["CUR_EUR_USD"] = "EU0009652759";
     extRefIdToIsinMap["946681"] = "EU0009652759";
@@ -107,36 +107,36 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     marketDataId2ExtRefId["CUR_EUR_RUB"] = "EU0001458346";
     extRefIdToIsinMap["946869"] = "EU0001458346";
 
-//    marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
-//    marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
-//    marketDataId2ExtRefId["CUR_GBP_EUR"] = "216236";
-//    marketDataId2ExtRefId["CUR_GBP_RUB"] = "216298";
+    //    marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
+    //    marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
+    //    marketDataId2ExtRefId["CUR_GBP_EUR"] = "216236";
+    //    marketDataId2ExtRefId["CUR_GBP_RUB"] = "216298";
 
     marketDataId2ExtRefId["CUR_GBP_USD"] = "GB0031973075";
     extRefIdToIsinMap["275017"] = "GB0031973075";
 
-//    marketDataId2ExtRefId["CUR_GBP_DKK"] = "216231";
+    //    marketDataId2ExtRefId["CUR_GBP_DKK"] = "216231";
 
     marketDataId2ExtRefId["CUR_USD_EUR"] = "XD0009689841";
     extRefIdToIsinMap["968984"] = "XD0009689841";
 
-//    marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
+    //    marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
 
-//    // Crypto Currencies
-//    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "275903";
-//    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "252699";
-//    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "252302";
-//    marketDataId2ExtRefId["CRYPTO_DASH"] = "252674";
-//    marketDataId2ExtRefId["CRYPTO_ETHEREUM"] = "252268";
-//    marketDataId2ExtRefId["CRYPTO_TETHER"] = "252204";
-//    marketDataId2ExtRefId["CRYPTO_IOTA"] = "252568";
-//    marketDataId2ExtRefId["CRYPTO_MONERO"] = "252587";
-//    marketDataId2ExtRefId["CRYPTO_EOS"] = "252557";
-//    marketDataId2ExtRefId["CRYPTO_BINANCE_USD"] = "252094";
-//    marketDataId2ExtRefId["CRYPTO_XRP"] = "252294";
-//    marketDataId2ExtRefId["CRYPTO_CARDANO"] = "99577";
-//    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "252574";
-//    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "238649";
+    //    // Crypto Currencies
+    //    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "275903";
+    //    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "252699";
+    //    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "252302";
+    //    marketDataId2ExtRefId["CRYPTO_DASH"] = "252674";
+    //    marketDataId2ExtRefId["CRYPTO_ETHEREUM"] = "252268";
+    //    marketDataId2ExtRefId["CRYPTO_TETHER"] = "252204";
+    //    marketDataId2ExtRefId["CRYPTO_IOTA"] = "252568";
+    //    marketDataId2ExtRefId["CRYPTO_MONERO"] = "252587";
+    //    marketDataId2ExtRefId["CRYPTO_EOS"] = "252557";
+    //    marketDataId2ExtRefId["CRYPTO_BINANCE_USD"] = "252094";
+    //    marketDataId2ExtRefId["CRYPTO_XRP"] = "252294";
+    //    marketDataId2ExtRefId["CRYPTO_CARDANO"] = "99577";
+    //    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "252574";
+    //    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "238649";
 }
 
 IngMarketDataBackend::~IngMarketDataBackend() {
@@ -218,8 +218,8 @@ void IngMarketDataBackend::handleLookupMarketDataFinished() {
 
 void IngMarketDataBackend::handleRequestError(QNetworkReply::NetworkError error) {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "IngMarketDataBackend::handleRequestError:" << static_cast<int>(error)
-               << reply->errorString() << reply->readAll();
+    qWarning() << "IngMarketDataBackend::handleRequestError:" << static_cast<int>(error) << reply->errorString()
+               << reply->readAll();
 
     emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
 }
@@ -259,14 +259,14 @@ QJsonObject IngMarketDataBackend::processQuoteResultSingle(QByteArray searchQuot
     resultObject.insert("name", rootObject.value("name"));
     resultObject.insert("currency", rootObject.value("currencySign"));
     resultObject.insert("last", rootObject.value("price"));
-    resultObject.insert("symbol", QString()); // not availabl
+    resultObject.insert("symbol", QString());          // not availabl
     resultObject.insert("stockMarketName", QString()); // not available
     resultObject.insert("changeAbsolute", rootObject.value("changeAbsolute"));
     resultObject.insert("changeRelative", rootObject.value("changePercent"));
 
     QJsonValue jsonPriceChangeDate = rootObject.value("priceChangeDate");
     QDateTime updatedAtLocalTime = IngDibaUtils::convertTimestampToLocalTimestamp(jsonPriceChangeDate.toString(),
-                                                                                     QTimeZone::systemTimeZone());
+                                                                                  QTimeZone::systemTimeZone());
 
     resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
 

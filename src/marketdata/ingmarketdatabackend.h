@@ -22,8 +22,7 @@
 #include <QNetworkReply>
 #include <QObject>
 
-class IngMarketDataBackend : public QObject
-{
+class IngMarketDataBackend : public QObject {
     Q_OBJECT
 public:
     explicit IngMarketDataBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
