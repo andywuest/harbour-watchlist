@@ -389,6 +389,11 @@ SettingsPage news download strategy only on wifi</extracomment>
         <extracomment>SettingsPage show portfolio share row description</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>By performance</source>
+        <extracomment>SettingsPage sorting order by performance</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StockAlarmDialog</name>

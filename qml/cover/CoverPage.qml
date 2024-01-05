@@ -32,8 +32,7 @@ CoverBackground {
 
     function reloadAllStocks() {
         coverModel.clear()
-        var stocks = Database.loadAllStockData(watchlistId,
-                                               Database.SORT_BY_CHANGE_ASC)
+        var stocks = Database.loadAllStockData(watchlistId, Constants.SORT_BY_CHANGE_ASC)
         if (coverActionPrevious.enabled) {
             stocks.reverse()
         }
@@ -53,8 +52,7 @@ CoverBackground {
         loading = true;
 
         // listView.model.get(index)
-        var stocks = Database.loadAllStockData(watchlistId,
-                                               Database.SORT_BY_CHANGE_ASC)
+        var stocks = Database.loadAllStockData(watchlistId, Constants.SORT_BY_CHANGE_ASC)
         var stockExtRefIds = []
         for (var i = 0; i < stocks.length; i++) {
             stockExtRefIds.push(stocks[i].extRefId)

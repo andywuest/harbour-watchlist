@@ -14,16 +14,37 @@ TestCase {
         Database.initApplicationTables();
     }
 
+    function test_sortByPerformance() {
+        // given
+        var watchlistId = Constants.WATCHLIST_1;
+        Database.persistStockData(createRandomSecurity(100, 62.30), watchlistId);
+        Database.persistStockData(createRandomSecurity(101, 62.30), watchlistId);
+        Database.persistStockData(createRandomSecurity(102, 62.30), watchlistId);
+        Database.saveReferencePrice(100, 50.00)
+        Database.saveReferencePrice(101, 70.00)
+        Database.saveReferencePrice(102, 40.00)
+
+        // when
+        var securityList = Database.loadAllStockData(watchlistId, Constants.SORT_BY_PERFORMANCE_DESC);
+
+        // then
+        compare(securityList.length, 3);
+        compare(securityList[0].id, 102);
+        compare(securityList[1].id, 100);
+        compare(securityList[2].id, 101);
+    }
+
     function test_loadPersistStockData() {
         // given
         var watchlistId = Constants.WATCHLIST_1;
-        var data = createRandomSecurity();
+        var securityId = 11;
+        var data = createRandomSecurity(securityId, 62.30);
 
         // when
         Database.persistStockData(data, watchlistId);
 
         // then
-        var securityList = Database.loadAllStockData(watchlistId, Database.SORT_BY_NAME_ASC);
+        var securityList = Database.loadAllStockData(watchlistId, Constants.SORT_BY_NAME_ASC);
         compare(securityList.length, 1);
         var security = securityList[0];
         compare(security.watchlistId, data.watchlistId);
@@ -37,7 +58,7 @@ TestCase {
     function test_loadSaveStockNotes() {
         // given
         var securityId = 15;
-        Database.persistStockData(createRandomSecurity(securityId), Constants.WATCHLIST_1);
+        Database.persistStockData(createRandomSecurity(securityId, 62.30), Constants.WATCHLIST_1);
 
         // when
         Database.saveStockNotes(securityId, 'some info');
@@ -50,7 +71,7 @@ TestCase {
     function test_loadSavePieces() {
         // given
         var securityId = 26;
-        Database.persistStockData(createRandomSecurity(securityId), Constants.WATCHLIST_1);
+        Database.persistStockData(createRandomSecurity(securityId, 62.30), Constants.WATCHLIST_1);
 
         // when
         Database.savePieces(securityId, 10);
@@ -63,7 +84,7 @@ TestCase {
     function test_loadSaveReferencePrice() {
         // given
         var securityId = 10;
-        Database.persistStockData(createRandomSecurity(securityId), Constants.WATCHLIST_1);
+        Database.persistStockData(createRandomSecurity(securityId, 62.30), Constants.WATCHLIST_1);
 
         // when
         Database.saveReferencePrice(securityId, 23.3);
@@ -94,7 +115,7 @@ TestCase {
         compare(result.currency, "-"); // undefined
     }
 
-    function createRandomSecurity(id) {
+    function createRandomSecurity(id, price) {
         var data = {};
         if (id) {
             data.id = id;
@@ -109,7 +130,7 @@ TestCase {
         data.isin = 'DE234234234';
         data.symbol1 = 'BA1';
         data.symbol2 = 'BA2';
-        data.price = 62.30;
+        data.price = price;
         return data;
     }
 

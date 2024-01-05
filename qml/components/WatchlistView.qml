@@ -94,9 +94,8 @@ SilicaFlickable {
 
     function reloadAllStocks() {
         console.log("reloading all stocks for watchlist " + watchlistId);
-        var sortOrder = (watchlistSettings.sortingOrder === Constants.SORTING_ORDER_BY_CHANGE ? Database.SORT_BY_CHANGE_DESC : Database.SORT_BY_NAME_ASC);
+        var sortOrder = Functions.determineSecuritySortOrder(watchlistSettings.sortingOrder);
         var stocks = Database.loadAllStockData(watchlistId, sortOrder);
-
 
         // stockQuotePage.
         maxChange = Functions.calculateMaxChange(stocks)

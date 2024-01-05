@@ -56,6 +56,15 @@ function determineChangeColor(change, defaultColor) {
     return defaultColor;
 }
 
+function determineSecuritySortOrder(sortingOrder) {
+    if (sortingOrder === SORTING_ORDER_BY_CHANGE) {
+        return SORT_BY_CHANGE_DESC;
+    } else if (sortingOrder === SORTING_ORDER_BY_PERFORMANCE) {
+        return SORT_BY_PERFORMANCE_DESC;
+    }
+    return SORT_BY_NAME_ASC;
+}
+
 function renderDateTimeString(dateTimeString) {
     // TODO undefined check here
     if (dateTimeString !== null && dateTimeString !== "undefined"

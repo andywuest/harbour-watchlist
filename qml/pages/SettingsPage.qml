@@ -174,6 +174,10 @@ Page {
                         //: SettingsPage sorting order by name
                         text: qsTr("By name")
                     }
+                    MenuItem {
+                        //: SettingsPage sorting order by performance
+                        text: qsTr("By performance")
+                    }
                     onActivated: {
                         watchlistSettings.sortingOrder = index
                     }

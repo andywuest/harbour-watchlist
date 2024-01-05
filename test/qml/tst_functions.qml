@@ -7,6 +7,13 @@ import "../../qml/js/constants.js" as Constants
 TestCase {
     name: "Function Tests"
 
+    function test_determineSecuritySortOrder() {
+        compare(Functions.determineSecuritySortOrder(0), Constants.SORT_BY_CHANGE_DESC);
+        compare(Functions.determineSecuritySortOrder(1), Constants.SORT_BY_NAME_ASC);
+        compare(Functions.determineSecuritySortOrder(2), Constants.SORT_BY_PERFORMANCE_DESC);
+        compare(Functions.determineSecuritySortOrder(3), Constants.SORT_BY_NAME_ASC); // nonexistentn - fall back to default
+    }
+
     function test_functions_renderChange() {
         compare(Functions.renderChange(0.0, -2.1, '%'), "-")
         compare(Functions.renderChange(23.23, -2.1, '%'), "-2,10 %")

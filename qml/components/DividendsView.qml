@@ -163,7 +163,7 @@ SilicaFlickable {
                     Functions.log("[DividendsView] security selected " + index);
                     Functions.log("[DividendsView] security selected extRefId "
                                   + (selectedDividendData ? selectedDividendData.extRefId : "-"));
-                    var securities = Database.loadStockData(watchlistId, Database.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
+                    var securities = Database.loadStockData(watchlistId, Constants.SORT_BY_NAME_ASC, selectedDividendData.extRefId);
                     pageStack.push(Qt.resolvedUrl("../pages/StockOverviewPage.qml"), { stock: securities[0] });
                 }
 

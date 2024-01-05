@@ -23,6 +23,12 @@ var CHART_TYPE_MAXIMUM = 128;
 
 var SORTING_ORDER_BY_CHANGE = 0;
 var SORTING_ORDER_BY_NAME = 1;
+var SORTING_ORDER_BY_PERFORMANCE = 2;
+
+var SORT_BY_NAME_ASC = " name ASC ";
+var SORT_BY_CHANGE_ASC = " changeRelative ASC, name ASC ";
+var SORT_BY_CHANGE_DESC = " changeRelative DESC, name ASC ";
+var SORT_BY_PERFORMANCE_DESC = " performanceRelative DESC, name ASC ";
 
 var BACKEND_EUROINVESTOR = 0;
 var BACKEND_MOSCOW_EXCHANGE = 1;

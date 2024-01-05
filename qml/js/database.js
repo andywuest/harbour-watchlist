@@ -4,10 +4,6 @@
 Qt.include("constants.js")
 Qt.include('functions.js')
 
-var SORT_BY_NAME_ASC = " name ASC ";
-var SORT_BY_CHANGE_ASC = " changeRelative ASC, name ASC ";
-var SORT_BY_CHANGE_DESC = " changeRelative DESC, name ASC ";
-
 // basic database functions
 function getOpenDatabase() {
     var db = LS.LocalStorage.openDatabaseSync(
