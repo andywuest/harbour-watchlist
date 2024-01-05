@@ -71,7 +71,8 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("INDEX_TECDAX", qsTr("TecDAX"), MARKET_DATA_TYPE_INDEX));
     // US
     marketDataList.push(addMarketDataItem("INDEX_S&P500", qsTr("S&P 500"), MARKET_DATA_TYPE_INDEX));
-    marketDataList.push(addMarketDataItem("INDEX_NASDAQ", qsTr("NASDAQ Composite"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_NASDAQ_COMP", qsTr("NASDAQ Composite"), MARKET_DATA_TYPE_INDEX));
+    marketDataList.push(addMarketDataItem("INDEX_NASDAQ_100", qsTr("NASDAQ 100"), MARKET_DATA_TYPE_INDEX));
     marketDataList.push(addMarketDataItem("INDEX_DOWJONES", qsTr("Dow Jones"), MARKET_DATA_TYPE_INDEX));
     // France
     marketDataList.push(addMarketDataItem("INDEX_CAC40", qsTr("CAC 40"), MARKET_DATA_TYPE_INDEX));
@@ -90,6 +91,8 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("COM_SILVER", qsTr("Silver"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_PLATINUM", qsTr("Platinum"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_PALLADIUM", qsTr("Palladium"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_OIL_BRENT", qsTr("Oil Brent"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_OIL_WTI", qsTr("Oil WTI"), MARKET_DATA_TYPE_COMMODITY));
 
     // Currency
     marketDataList.push(addMarketDataItem("CUR_EUR_USD", qsTr("EUR/USD"), MARKET_DATA_TYPE_CURRENCY));

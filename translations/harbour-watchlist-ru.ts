@@ -863,6 +863,18 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>EUR/CHF</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>NASDAQ 100</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oil Brent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oil WTI</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>database</name>

@@ -18,6 +18,7 @@
 #include "ingmarketdatabackend.h"
 #include "../constants.h"
 #include "../ingdibautils.h"
+#include "ingmarketdata.h"
 
 #include <QDateTime>
 #include <QDebug>
@@ -31,95 +32,55 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     qDebug() << "Initializing Ing Market Data Backend...";
     this->manager = manager;
 
+    QList<IngMarketData> marketDataList;
+
     // Index
     // DE
-    marketDataId2ExtRefId["INDEX_DAX"] = "DE0008469008";
-    extRefIdToIsinMap["998032"] = "DE0008469008";
-
-    marketDataId2ExtRefId["INDEX_MDAX"] = "DE0008467416";
-    extRefIdToIsinMap["252367"] = "DE0008467416";
-
-    marketDataId2ExtRefId["INDEX_SDAX"] = "DE0009653386";
-    extRefIdToIsinMap["701259"] = "DE0009653386";
-
-    marketDataId2ExtRefId["INDEX_TECDAX"] = "DE0007203275";
-    extRefIdToIsinMap["1548840"] = "DE0007203275";
+    marketDataList.append(IngMarketData("DE0008469008", "998032", "INDEX_DAX"));
+    marketDataList.append(IngMarketData("DE0008467416", "252367", "INDEX_MDAX"));
+    marketDataList.append(IngMarketData("DE0009653386", "701259", "INDEX_SDAX"));
+    marketDataList.append(IngMarketData("DE0007203275", "1548840", "INDEX_TECDAX"));
 
     // US
-    marketDataId2ExtRefId["INDEX_S&P500"] = "US78378X1072";
-    extRefIdToIsinMap["998434"] = "US78378X1072";
-
-    marketDataId2ExtRefId["INDEX_NASDAQ"] = "US6311031081";
-    extRefIdToIsinMap["1251097"] = "US6311031081";
-
-    marketDataId2ExtRefId["INDEX_DOWJONES"] = "US2605661048";
-    extRefIdToIsinMap["998313"] = "US2605661048";
+    marketDataList.append(IngMarketData("US78378X1072", "998434", "INDEX_S&P500"));
+    marketDataList.append(IngMarketData("XC0009694271", "998356", "INDEX_NASDAQ_COMP"));
+    marketDataList.append(IngMarketData("US6311011026", "985336", "INDEX_NASDAQ_100"));
+    marketDataList.append(IngMarketData("US2605661048", "998313", "INDEX_DOWJONES"));
 
     // France
+    marketDataList.append(IngMarketData("FR0003500008", "998033", "INDEX_CAC40"));
     // marketDataId2ExtRefId["INDEX_CN20"] = "78560";
-
-    marketDataId2ExtRefId["INDEX_CAC40"] = "FR0003500008";
-    extRefIdToIsinMap["998033"] = "FR0003500008";
-
     // marketDataId2ExtRefId["INDEX_SFB120"] = "70498";
 
     // Other
-    marketDataId2ExtRefId["INDEX_EUROSTOXX50"] = "EU0009658145";
-    extRefIdToIsinMap["846480"] = "EU0009658145";
-
-    marketDataId2ExtRefId["INDEX_SMI"] = "CH0009980894";
-    extRefIdToIsinMap["998089"] = "CH0009980894";
-
-    marketDataId2ExtRefId["INDEX_ATX"] = "AT0000999982";
-    extRefIdToIsinMap["998663"] = "AT0000999982";
-
+    marketDataList.append(IngMarketData("EU0009658145", "846480", "INDEX_EUROSTOXX50"));
+    marketDataList.append(IngMarketData("CH0009980894", "998089", "INDEX_SMI"));
+    marketDataList.append(IngMarketData("AT0000999982", "998663", "INDEX_ATX"));
     // marketDataId2ExtRefId["INDEX_OSEBX"] = "69309";
     // marketDataId2ExtRefId["INDEX_OMC_C25"] = "64283";
 
     // Commodities
-    marketDataId2ExtRefId["COM_GOLD"] = "XD0002747026";
-    extRefIdToIsinMap["274702"] = "XD0002747026";
-
-    marketDataId2ExtRefId["COM_SILVER"] = "XD0002747208";
-    extRefIdToIsinMap["274720"] = "XD0002747208";
-
-    marketDataId2ExtRefId["COM_PLATINUM"] = "XD0002876395";
-    extRefIdToIsinMap["287639"] = "XD0002876395";
-
-    marketDataId2ExtRefId["COM_PALLADIUM"] = "XD0002876429";
-    extRefIdToIsinMap["287642"] = "XD0002876429";
+    marketDataList.append(IngMarketData("XD0002747026", "274702", "COM_GOLD"));
+    marketDataList.append(IngMarketData("XD0002747208", "274720", "COM_SILVER"));
+    marketDataList.append(IngMarketData("XD0002876395", "287639", "COM_PLATINUM"));
+    marketDataList.append(IngMarketData("XD0002876429", "287642", "COM_PALLADIUM"));
+    marketDataList.append(IngMarketData("XC0009677409", "274207", "COM_OIL_BRENT"));
+    marketDataList.append(IngMarketData("XD0257705190", "25770519", "COM_OIL_WTI"));
 
     // Currencies
     //    marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
-
-    marketDataId2ExtRefId["CUR_EUR_USD"] = "EU0009652759";
-    extRefIdToIsinMap["946681"] = "EU0009652759";
-
-    marketDataId2ExtRefId["CUR_EUR_CAD"] = "EU0009654664";
-    extRefIdToIsinMap["946690"] = "EU0009654664";
-
-    marketDataId2ExtRefId["CUR_EUR_GBP"] = "EU0009653088";
-    extRefIdToIsinMap["946684"] = "EU0009653088";
-
-    marketDataId2ExtRefId["CUR_EUR_CHF"] = "EU0009654078";
-    extRefIdToIsinMap["897789"] = "EU0009654078";
-
-    marketDataId2ExtRefId["CUR_EUR_RUB"] = "EU0001458346";
-    extRefIdToIsinMap["946869"] = "EU0001458346";
-
+    marketDataList.append(IngMarketData("EU0009654664", "946690", "CUR_EUR_CAD"));
+    marketDataList.append(IngMarketData("EU0009654078", "897789", "CUR_EUR_CHF"));
+    marketDataList.append(IngMarketData("EU0009653088", "946684", "CUR_EUR_GBP"));
+    marketDataList.append(IngMarketData("EU0001458346", "946869", "CUR_EUR_RUB"));
+    marketDataList.append(IngMarketData("EU0009652759", "946681", "CUR_EUR_USD"));
+    marketDataList.append(IngMarketData("GB0031973075", "275017", "CUR_GBP_USD"));
+    marketDataList.append(IngMarketData("XD0009689841", "968984", "CUR_USD_EUR"));
     //    marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
     //    marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
     //    marketDataId2ExtRefId["CUR_GBP_EUR"] = "216236";
     //    marketDataId2ExtRefId["CUR_GBP_RUB"] = "216298";
-
-    marketDataId2ExtRefId["CUR_GBP_USD"] = "GB0031973075";
-    extRefIdToIsinMap["275017"] = "GB0031973075";
-
     //    marketDataId2ExtRefId["CUR_GBP_DKK"] = "216231";
-
-    marketDataId2ExtRefId["CUR_USD_EUR"] = "XD0009689841";
-    extRefIdToIsinMap["968984"] = "XD0009689841";
-
     //    marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
 
     //    // Crypto Currencies
@@ -137,6 +98,11 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     //    marketDataId2ExtRefId["CRYPTO_CARDANO"] = "99577";
     //    marketDataId2ExtRefId["CRYPTO_TEZOS"] = "252574";
     //    marketDataId2ExtRefId["CRYPTO_CHAINLINK"] = "238649";
+
+    foreach (const IngMarketData &marketData, marketDataList) {
+        marketDataId2ExtRefId[marketData.getIndexName()] = marketData.getExtRefId();
+        extRefIdToIsinMap[marketData.getInternalId()] = marketData.getExtRefId();
+    }
 }
 
 IngMarketDataBackend::~IngMarketDataBackend() {
@@ -169,9 +135,7 @@ void IngMarketDataBackend::lookupMarketData(const QString &marketDataIds) {
     searchQuoteResults.clear();
 
     foreach (const QString &id, idList) {
-        qDebug() << "looking up id " << id;
         QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_QUOTE).arg(id)));
-
         connectErrorSlot(reply);
         connect(reply, SIGNAL(finished()), this, SLOT(handleLookupMarketDataFinished()));
     }
@@ -183,7 +147,7 @@ void IngMarketDataBackend::connectErrorSlot(QNetworkReply *reply) {
             static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
             [=](QNetworkReply::NetworkError error) {
                 // TODO test reply->deleteLater();
-                qWarning() << "AbstractDataBackend::handleRequestError:" << static_cast<int>(error)
+                qWarning() << "IngMarketDataBackend::handleRequestError:" << static_cast<int>(error)
                            << reply->errorString() << reply->readAll();
                 emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - "
                                   + reply->errorString());
@@ -239,18 +203,13 @@ QString IngMarketDataBackend::convertToDatabaseDateTimeFormat(const QDateTime &t
 }
 
 QJsonObject IngMarketDataBackend::processQuoteResultSingle(QByteArray searchQuoteReply) {
-    qDebug() << "IngDibaBackend::processQuoteResultSingle";
+    qDebug() << "IngMarketDataBackend::processQuoteResultSingle";
     QJsonDocument jsonDocument = QJsonDocument::fromJson(searchQuoteReply);
     if (!jsonDocument.isObject()) {
         qDebug() << "not a json object!";
     }
 
     QJsonObject rootObject = jsonDocument.object();
-
-    // for US stocks the isin is not populated, but the internationalIsin - in this
-    // case use the internationalIsin
-    //bool useIsin = (!responseObject.value("isin").toString().isEmpty());
-    //QJsonValue isin = (useIsin ? responseObject.value("isin") : responseObject.value("internalIsin"));
 
     QString extRefIdString = QString::number(rootObject.value("id").toInt());
 
@@ -259,7 +218,7 @@ QJsonObject IngMarketDataBackend::processQuoteResultSingle(QByteArray searchQuot
     resultObject.insert("name", rootObject.value("name"));
     resultObject.insert("currency", rootObject.value("currencySign"));
     resultObject.insert("last", rootObject.value("price"));
-    resultObject.insert("symbol", QString());          // not availabl
+    resultObject.insert("symbol", QString());          // not available
     resultObject.insert("stockMarketName", QString()); // not available
     resultObject.insert("changeAbsolute", rootObject.value("changeAbsolute"));
     resultObject.insert("changeRelative", rootObject.value("changePercent"));
@@ -269,7 +228,6 @@ QJsonObject IngMarketDataBackend::processQuoteResultSingle(QByteArray searchQuot
                                                                                   QTimeZone::systemTimeZone());
 
     resultObject.insert("quoteTimestamp", convertToDatabaseDateTimeFormat(updatedAtLocalTime));
-
     resultObject.insert("lastChangeTimestamp", convertToDatabaseDateTimeFormat(QDateTime::currentDateTime()));
 
     return resultObject;

@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.2-1
+
+- fixed Nasdaq Composite Index
+- added more commodities and indices
+
 * 04.01.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.1-1
 
 - thanks to Nico H. for his generous donation
