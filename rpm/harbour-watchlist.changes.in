@@ -9,6 +9,7 @@
 
 - fixed Nasdaq Composite Index
 - added more commodities and indices
+- implemented feature "Add Option to Sort Stock Quotes by Performance" (https://github.com/andywuest/harbour-watchlist/issues/107)
 
 * 04.01.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.1-1
 
