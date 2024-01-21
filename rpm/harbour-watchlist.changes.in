@@ -1,11 +1,11 @@
 # Add new changelog entries following the format below.
 # Add newest entries to the top of the list.
-# Separate entries from eachother with a blank line.
+# Separate entries from each other with a blank line.
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.2-1
+* 21.01.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.2-1
 
 - fixed Nasdaq Composite Index
 - added more commodities and indices

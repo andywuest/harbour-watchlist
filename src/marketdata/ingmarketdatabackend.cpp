@@ -166,17 +166,14 @@ void IngMarketDataBackend::handleLookupMarketDataFinished() {
     searchQuoteResults.append(result);
 
     if (searchQuoteResults.size() == this->numberOfRequestedIds) {
-        QJsonDocument resultDocument;
         QJsonArray resultArray;
 
         foreach (const QJsonObject &quoteResultObject, searchQuoteResults) {
             resultArray.push_back(quoteResultObject);
         }
 
-        resultDocument.setArray(resultArray);
-        QString dataToString(resultDocument.toJson());
-
-        emit marketDataResultAvailable(dataToString);
+        QJsonDocument resultDocument(resultArray);
+        emit marketDataResultAvailable(QString(resultDocument.toJson()));
     }
 }
 
