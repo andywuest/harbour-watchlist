@@ -398,7 +398,7 @@ SettingsPage news download strategy only on wifi</extracomment>
         <location filename="../qml/pages/SettingsPage.qml" line="179"/>
         <source>By performance</source>
         <extracomment>SettingsPage sorting order by performance</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Efter prestation</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="190"/>
@@ -887,17 +887,17 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="91"/>
         <source>Euro Stoxx 50</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="92"/>
         <source>SMI</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="93"/>
         <source>ATX</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="96"/>
@@ -922,12 +922,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="100"/>
         <source>Oil Brent</source>
-        <translation type="unfinished"></translation>
+        <translation>Olja Brent</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="101"/>
         <source>Oil WTI</source>
-        <translation type="unfinished"></translation>
+        <translation>Olja WTI</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="104"/>
