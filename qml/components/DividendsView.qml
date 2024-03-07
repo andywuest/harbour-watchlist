@@ -90,7 +90,6 @@ SilicaFlickable {
 
     function updateDividendDates() {
         Functions.log("[DividendsView] - DividendDates");
-
         loaded = false;
         getDividendBackend().fetchDividendDates();
     }
@@ -185,7 +184,7 @@ SilicaFlickable {
                         Column {
                             id: dividendColumn
                             width: parent.width
-                            height: dividenNamePayDateRow.height + dividendDateRow.height
+                            height: dividenNamePayDateRow.height + dividendDateRow.height + dividendTotalRow.height
 
                             anchors.verticalCenter: parent.verticalCenter
 
@@ -236,6 +235,31 @@ SilicaFlickable {
                                     width: parent.width / 2
                                     height: parent.height
                                     text: convertedAmount ? Functions.renderPrice(convertedAmount, convertedAmountCurrency, Constants.MARKET_DATA_TYPE_NONE) : '';
+                                    color: Theme.primaryColor
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignRight
+                                }
+                            }
+
+
+                            Row {
+                                id: dividendTotalRow
+                                width: parent.width
+                                height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    text: qsTr("Total dividends")
+                                    color: Theme.primaryColor
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    horizontalAlignment: Text.AlignLeft
+                                }
+
+                                Text {
+                                    width: parent.width / 2
+                                    height: parent.height
+                                    text: totalConvertedAmount ? Functions.renderPrice(totalConvertedAmount, convertedAmountCurrency, Constants.MARKET_DATA_TYPE_NONE) : '-';
                                     color: Theme.primaryColor
                                     font.pixelSize: Theme.fontSizeExtraSmall
                                     horizontalAlignment: Text.AlignRight

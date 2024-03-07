@@ -53,7 +53,9 @@ void DivvyDiary::fetchExchangeRates() {
 }
 
 void DivvyDiary::fetchDividendData(const QMap<QString, QVariant> exchangeRateMap) {
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS)));
+    const QString year = QString::number(QDate::currentDate().year());
+    const QString month = QString::number(QDate::currentDate().month());
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS).arg(month, year)));
     reply->setProperty(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE, QVariant(exchangeRateMap));
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),

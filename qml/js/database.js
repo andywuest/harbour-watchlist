@@ -496,10 +496,14 @@ function loadAllDividendData(sortString) {
         db.transaction(function (tx) {
             // use COALESCE to set null values to default values
             var query = 'SELECT d.exDate, d.payDate, d.symbol, d.wkn, d.isin, d.amount, d.currency, s.name, s.extRefId '
-                    + ' , d.convertedAmount, d.convertedAmountCurrency '
+                    + ' , d.convertedAmount, d.convertedAmountCurrency, '
+                    + ' COALESCE(se.pieces, 0) as pieces, '
+                    + ' (COALESCE(se.pieces, 0) * d.convertedAmount) as totalConvertedAmount '
                     + ' FROM stockdata s '
                     + ' INNER JOIN dividends d '
                     + ' ON s.isin = d.isin '
+                    + ' LEFT OUTER JOIN stockdata_ext se '
+                    + ' ON s.id = se.id '
                     + ' ORDER BY ' + sortString;
 
             console.log("[loadDividendData] query : " + query);
@@ -518,6 +522,7 @@ function loadAllDividendData(sortString) {
                     entry.extRefId = row.extRefId;
                     entry.convertedAmount = row.convertedAmount;
                     entry.convertedAmountCurrency = row.convertedAmountCurrency;
+                    entry.totalConvertedAmount = row.totalConvertedAmount;
                     result.push(entry);
                 }
             }

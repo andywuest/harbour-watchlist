@@ -136,21 +136,26 @@
 <context>
     <name>DividendsView</name>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="99"/>
+        <location filename="../qml/components/DividendsView.qml" line="98"/>
         <source>Last update: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="132"/>
+        <location filename="../qml/components/DividendsView.qml" line="131"/>
         <source>Dividend dates</source>
         <extracomment>DividendsView page header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/DividendsView.qml" line="140"/>
+        <location filename="../qml/components/DividendsView.qml" line="139"/>
         <source>The dividend dates have not yet been loaded. Please load them via the pulley menu.</source>
         <extracomment>DividendsView empty marketdata label</extracomment>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DividendsView.qml" line="253"/>
+        <source>Total dividends</source>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -128,6 +128,10 @@
         <source>Last update: %1</source>
         <translation>Обновлено: %1</translation>
     </message>
+    <message>
+        <source>Total dividends</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GraphData</name>

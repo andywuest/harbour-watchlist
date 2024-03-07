@@ -1,1 +1,8 @@
+# seems not to work anymore
 Upcoming dividends: https://api.divvydiary.com/dividends/upcoming
+
+working:
+
+https://api.divvydiary.com/dividends/calendar?month=3&year=2024
+https://api.divvydiary.com/dividends/calendar?month=3&year=2024&prefDate=payDate
+https://api.divvydiary.com/dividends/calendar?month=3&year=2024&prefDate=exDate

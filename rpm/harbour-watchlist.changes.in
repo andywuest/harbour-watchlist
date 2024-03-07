@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 07.03.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.3-1
+
+- fixed Dividend calendar fetch aborts with error (https://github.com/andywuest/harbour-watchlist/issues/109)
+- display total amount if dividends, if number of stocks is configured
+
 * 21.01.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.2-1
 
 - fixed Nasdaq Composite Index
