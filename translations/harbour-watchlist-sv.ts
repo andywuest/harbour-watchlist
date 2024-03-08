@@ -155,7 +155,7 @@
     <message>
         <location filename="../qml/components/DividendsView.qml" line="253"/>
         <source>Total dividends</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalt antal utdelningar</translation>
     </message>
 </context>
 <context>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../qml/components/thirdparty/GraphData.qml" line="19"/>
         <source>No data - Click to fetch data</source>
-        <translation>Ingen data. - Tryck för att hämta.</translation>
+        <translation>Ingen data - Tryck för att hämta data</translation>
     </message>
 </context>
 <context>
@@ -927,7 +927,7 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="100"/>
         <source>Oil Brent</source>
-        <translation>Olja Brent</translation>
+        <translation>Brentolja</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="101"/>
