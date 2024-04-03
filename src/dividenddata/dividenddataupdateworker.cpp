@@ -70,27 +70,27 @@ void DividendDataUpdateWorker::performUpdate() {
         QJsonObject rootObject = jsonDocument.object();
         QJsonArray dividendsArray = rootObject["dividends"].toArray();
 
-        QVariant empty;
+        const QString convertedEuroCurrency = convertCurrency("EUR");
+        const QString query = QString(
+                                  "INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
+                                  "symbol, amount, currency, convertedAmount, convertedAmountCurrency) ")
+                              + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
+                                        ":symbol, :amount, :currency, :convertedAmount, :convertedAmountCurrency)");
 
-        // TODO run in worker
+        const QTime defaultTime = QTime(0, 0);
+
         foreach (const QJsonValue &dividendsEntry, dividendsArray) {
             QJsonObject dividendsObject = dividendsEntry.toObject();
 
             // add new ones
             QDate payDate = QDate::fromString(dividendsObject["payDate"].toString(), "yyyy-MM-dd");
             QDate exDate = QDate::fromString(dividendsObject["exDate"].toString(), "yyyy-MM-dd");
-            QDateTime payDateTime = QDateTime(payDate, QTime(0, 0), Qt::LocalTime);
-            QDateTime exDateTime = QDateTime(exDate, QTime(0, 0), Qt::LocalTime);
-
-            QString query = QString("INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
-                                    "symbol, amount, currency, convertedAmount, convertedAmountCurrency) ")
-                            + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
-                                      ":symbol, :amount, :currency, :convertedAmount, :convertedAmountCurrency)");
+            QDateTime payDateTime = QDateTime(payDate, defaultTime, Qt::LocalTime);
+            QDateTime exDateTime = QDateTime(exDate, defaultTime, Qt::LocalTime);
 
             double amount = dividendsObject["amount"].toDouble();
             QString currency = dividendsObject["currency"].toString();
-            bool hasConvertedAmount = this->exchangeRateMap.contains(currency);
-            double convertedAmount = (hasConvertedAmount ? (amount / this->exchangeRateMap[currency].toDouble()) : 0.0);
+            double convertedAmount = calculateConvertedAmount(amount, currency);
 
             QMap<QString, QVariant> dataMap;
             dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
@@ -103,8 +103,8 @@ void DividendDataUpdateWorker::performUpdate() {
             dataMap.insert(":symbol", dividendsObject["symbol"].toString());
             dataMap.insert(":amount", amount);
             dataMap.insert(":currency", convertCurrency(currency));
-            dataMap.insert(":convertedAmount", hasConvertedAmount ? convertedAmount : empty);
-            dataMap.insert(":convertedAmountCurrency", hasConvertedAmount ? convertCurrency("EUR") : empty);
+            dataMap.insert(":convertedAmount", convertedAmount);
+            dataMap.insert(":convertedAmountCurrency", convertedEuroCurrency);
 
             executeQuery(query, dataMap);
             rows++;
@@ -117,6 +117,18 @@ void DividendDataUpdateWorker::performUpdate() {
     }
 
     emit updateCompleted(rows);
+}
+
+// TODO testcase
+double DividendDataUpdateWorker::calculateConvertedAmount(double amount, QString currency) {
+    if (QString("EUR").compare(currency) == 0) {
+        qDebug() << " EURO amount " << amount << ", currency : " << currency;
+        return amount;
+    }
+    bool hasConvertedAmount = this->exchangeRateMap.contains(currency);
+    qDebug() << " EURO amount calculated " << (amount / this->exchangeRateMap[currency].toDouble())
+             << ", currency : " << currency;
+    return (hasConvertedAmount ? (amount / this->exchangeRateMap[currency].toDouble()) : 0.0);
 }
 
 void DividendDataUpdateWorker::executeQuery(const QString &queryString, const QMap<QString, QVariant> &dataMap) {
