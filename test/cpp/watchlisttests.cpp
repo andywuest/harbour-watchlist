@@ -15,16 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include "ingdibabackendtests.h"
+#include "watchlisttests.h"
 #include <QtTest/QtTest>
 
-// TODO rename
-void IngDibaBackendTests::init() {
+void WatchlistTests::init() {
     ingDibaBackend = new IngDibaBackend(nullptr, nullptr);
     ingDibaNews = new IngDibaNews(nullptr, nullptr);
+    dividendDataUpdateWorker = new DividendDataUpdateWorker(nullptr);
 }
 
-void IngDibaBackendTests::testIngDibaUtilsConvertTimestampToLocalTimestamp() {
+void WatchlistTests::testIngDibaUtilsConvertTimestampToLocalTimestamp() {
     qDebug() << "dir : " << QCoreApplication::applicationFilePath();
     qDebug() << "Timezone for test : " << QTimeZone::systemTimeZone();
     QString testDate = QString("2020-10-14T20:22:24+02:00");
@@ -34,25 +34,19 @@ void IngDibaBackendTests::testIngDibaUtilsConvertTimestampToLocalTimestamp() {
     QCOMPARE(dateTimeFormatted, QString("2020-10-14 20:22:24"));
 }
 
-void IngDibaBackendTests::testIngDibaBackendIsValidSecurityCategory() {
+void WatchlistTests::testIngDibaBackendIsValidSecurityCategory() {
     QCOMPARE(ingDibaBackend->isValidSecurityCategory("Fonds"), true);
     QCOMPARE(ingDibaBackend->isValidSecurityCategory("Aktien"), true);
     QCOMPARE(ingDibaBackend->isValidSecurityCategory("etfs"), true);
     QCOMPARE(ingDibaBackend->isValidSecurityCategory("NIX"), false);
 }
 
-void IngDibaBackendTests::testIngDibaBackendProcessSearchResult() {
-    // TODO use readFileData
-
-    QString testFile = "ie00b57x3v84.json";
-    QFile f("testdata/" + testFile);
-    if (!f.open(QFile::ReadOnly | QFile::Text)) {
-        QString msg = "Testfile " + testFile + " not found!";
-        QFAIL(msg.toLocal8Bit().data());
+void WatchlistTests::testIngDibaBackendProcessSearchResult() {
+    QByteArray data = readFileData("ie00b57x3v84.json");
+    if (data.isEmpty()) {
+        QFAIL("Testfile ie00b57x3v84.json not found!");
     }
 
-    QTextStream in(&f);
-    QByteArray data = in.readAll().toUtf8();
     QString parsedResult = ingDibaBackend->processSearchResult(data);
     QJsonDocument jsonDocument = QJsonDocument::fromJson(parsedResult.toUtf8());
     QCOMPARE(jsonDocument.isArray(), true);
@@ -60,12 +54,12 @@ void IngDibaBackendTests::testIngDibaBackendProcessSearchResult() {
     QCOMPARE(resultArray.size(), 1);
 }
 
-void IngDibaBackendTests::testIngDibaNewsProcessSearchResult() {
+void WatchlistTests::testIngDibaNewsProcessSearchResult() {
     QByteArray data = readFileData("ing_news.json");
     if (data.isEmpty()) {
-        QString msg = "Testfile ing_news.json not found!";
-        QFAIL(msg.toLocal8Bit().data());
+        QFAIL("Testfile ing_news.json not found!");
     }
+
     QString parsedResult = ingDibaNews->processSearchResult(data);
     QJsonDocument jsonDocument = QJsonDocument::fromJson(parsedResult.toUtf8());
     QCOMPARE(jsonDocument.isObject(), true);
@@ -81,7 +75,7 @@ void IngDibaBackendTests::testIngDibaNewsProcessSearchResult() {
     // TODO QCOMPARE first news data entry
 }
 
-void IngDibaBackendTests::testIngDibaNewsFilterContent() {
+void WatchlistTests::testIngDibaNewsFilterContent() {
     QString content = "<p>\n  FRANKFURT (Dow Jones)--In der deutschen  </p>\n<p>\n  Die Vereinigten Staaten .. Lage "
                       "wünschenswert. </p>\n<p>\n  Kontakt zum Autor: unternehmen.de@dowjones.com </p>\n<p>\n  DJG/sha "
                       "</p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht "
@@ -92,7 +86,22 @@ void IngDibaBackendTests::testIngDibaNewsFilterContent() {
     QCOMPARE(ingDibaNews->filterContent(content), expectedContent);
 }
 
-QByteArray IngDibaBackendTests::readFileData(const QString &fileName) {
+void WatchlistTests::testDividendDataUpdateWorkerCalculateConvertedAmount() {
+    // given
+    QMap<QString, QVariant> exchangeRateMap;
+    exchangeRateMap.insert("USD", 0.8);
+    exchangeRateMap.insert("CHF", 1.2);
+    dividendDataUpdateWorker->setParameters(QJsonDocument(), exchangeRateMap);
+
+    // when - then
+    QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(1.6, QString("EUR")), 1.6);
+    QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(1.4, QString("EUR")), 1.4);
+    QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(2.0, QString("USD")), 2.5);
+    QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(6, QString("CHF")), 5);
+    QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(1.4, QString("GBP")), 0.0);
+}
+
+QByteArray WatchlistTests::readFileData(const QString &fileName) {
     QFile f("testdata/" + fileName);
     if (!f.open(QFile::ReadOnly | QFile::Text)) {
         QString msg = "Testfile " + fileName + " not found!";

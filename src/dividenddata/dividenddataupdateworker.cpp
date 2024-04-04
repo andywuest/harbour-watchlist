@@ -119,15 +119,11 @@ void DividendDataUpdateWorker::performUpdate() {
     emit updateCompleted(rows);
 }
 
-// TODO testcase
 double DividendDataUpdateWorker::calculateConvertedAmount(double amount, QString currency) {
     if (QString("EUR").compare(currency) == 0) {
-        qDebug() << " EURO amount " << amount << ", currency : " << currency;
         return amount;
     }
     bool hasConvertedAmount = this->exchangeRateMap.contains(currency);
-    qDebug() << " EURO amount calculated " << (amount / this->exchangeRateMap[currency].toDouble())
-             << ", currency : " << currency;
     return (hasConvertedAmount ? (amount / this->exchangeRateMap[currency].toDouble()) : 0.0);
 }
 

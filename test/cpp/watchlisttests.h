@@ -15,19 +15,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef ING_DIBA_BACKEND_TEST_H
-#define ING_DIBA_BACKEND_TEST_H
+#ifndef WATCHLIST_TESTS_H
+#define WATCHLIST_TESTS_H
 
 #include <QObject>
 
+#include "src/dividenddata/dividenddataupdateworker.h"
 #include "src/ingdibautils.h"
 #include "src/newsdata/ingdibanews.h"
 #include "src/securitydata/ingdibabackend.h"
 
-class IngDibaBackendTests : public QObject {
+class WatchlistTests : public QObject {
     Q_OBJECT
 
 private:
+    DividendDataUpdateWorker *dividendDataUpdateWorker;
     IngDibaBackend *ingDibaBackend;
     IngDibaNews *ingDibaNews;
 
@@ -45,6 +47,9 @@ private slots:
     // ING-DIBA News Backend
     void testIngDibaNewsProcessSearchResult();
     void testIngDibaNewsFilterContent();
+
+    // DividendDataUpdate Worker
+    void testDividendDataUpdateWorkerCalculateConvertedAmount();
 };
 
-#endif // ING_DIBA_BACKEND_TEST_H
+#endif // WATCHLIST_TESTS_H

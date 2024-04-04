@@ -66,7 +66,7 @@ private slots:
     void handleFetchPricesForChartFinished();
 
 #ifdef UNIT_TEST
-    friend class IngDibaBackendTests;
+    friend class WatchlistTests;
 #endif
 };
 

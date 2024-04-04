@@ -4,15 +4,15 @@ QT -= gui
 CONFIG += c++11 qt
 
 SOURCES += testmain.cpp \
-    ingdibabackendtests.cpp
+    watchlisttests.cpp
 
 HEADERS += \
-    ingdibabackendtests.h
+    watchlisttests.h
 
 INCLUDEPATH += ../../
 include(../../harbour-watchlist.pri)
 
-TARGET = IngDibaBackendTest
+TARGET = WatchlistTests
 
 DISTFILES += \
     testdata/ie00b57x3v84.json \
