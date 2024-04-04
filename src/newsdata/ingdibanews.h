@@ -49,7 +49,7 @@ private slots:
     void handleSearchStockNews();
 
 #ifdef UNIT_TEST
-    friend class IngDibaBackendTests; // to test non public methods
+    friend class WatchlistTests; // to test non public methods
 #endif
 };
 

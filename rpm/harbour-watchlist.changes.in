@@ -5,9 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.4-1
+* 04.04.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.4-1
 
 - hide dividends payed in the past (for current month)
+- fixed calculation of total dividend (if number of securities is maintained)
+- added testcase / testcase cleanup
 
 * 07.03.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.3-1
 

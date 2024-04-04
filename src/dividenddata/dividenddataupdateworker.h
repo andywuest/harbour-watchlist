@@ -45,6 +45,7 @@ signals:
 
 protected:
     QString convertCurrency(const QString &currencyString);
+    double calculateConvertedAmount(double amount, QString currency);
 
 private:
     QSqlDatabase database;
@@ -53,6 +54,10 @@ private:
 
     void performUpdate();
     void executeQuery(const QString &queryString, const QMap<QString, QVariant> &dataMap);
+
+#ifdef UNIT_TEST
+    friend class WatchlistTests; // to test non public methods
+#endif
 };
 
 #endif // DIVIDEND_DATA_UPDATE_WORKER_H
