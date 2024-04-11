@@ -112,6 +112,7 @@ QString IngDibaNews::filterContent(QString &content) {
     QRegExp whiteSpaces("[\\s\\n]+");
     content.replace(allTagsRegExp, " ");
     content.replace(whiteSpaces, " ");
+    content.replace("&amp;", "&");
     return content;
 }
 

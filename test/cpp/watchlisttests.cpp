@@ -76,14 +76,22 @@ void WatchlistTests::testIngDibaNewsProcessSearchResult() {
 }
 
 void WatchlistTests::testIngDibaNewsFilterContent() {
-    QString content = "<p>\n  FRANKFURT (Dow Jones)--In der deutschen  </p>\n<p>\n  Die Vereinigten Staaten .. Lage "
-                      "wünschenswert. </p>\n<p>\n  Kontakt zum Autor: unternehmen.de@dowjones.com </p>\n<p>\n  DJG/sha "
-                      "</p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht "
-                      "Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  July 04, 2021 11:10 ET (15:10 GMT)</p>";
-    const QString expectedContent
+    // given
+    QString content1
+        = "<p>\n  FRANKFURT (Dow Jones)--In der deutschen  </p>\n<p>\n  Die Vereinigten Staaten .. Lage "
+          "wünschenswert. </p>\n<p>\n  Kontakt zum Autor: unternehmen.de@dowjones.com </p>\n<p>\n  DJG/sha "
+          "</p>\n<p>\n  (END) <a href=\"/DE/Showpage.aspx?pageID=45&ISIN=US2605661048&\" title=\"Übersicht "
+          "Dow Jones\">Dow Jones</a> Newswires</p>\n<p>\n  July 04, 2021 11:10 ET (15:10 GMT)</p>";
+    const QString expectedContent1
         = " FRANKFURT (Dow Jones)--In der deutschen Die Vereinigten Staaten .. Lage wünschenswert. Kontakt zum Autor: "
           "unternehmen.de@dowjones.com DJG/sha (END) Dow Jones Newswires July 04, 2021 11:10 ET (15:10 GMT) ";
-    QCOMPARE(ingDibaNews->filterContent(content), expectedContent);
+    QString content2 = "<a href=\"/DE/Showpage.aspx?pageID=23&ISIN=US4781601046&\" title=\"Übersicht Johnson & "
+                       "Johnson\">Johnson &amp; Johnson</a> steigerte";
+    const QString expectedContent2 = " Johnson & Johnson steigerte";
+
+    // when - then
+    QCOMPARE(ingDibaNews->filterContent(content1), expectedContent1);
+    QCOMPARE(ingDibaNews->filterContent(content2), expectedContent2);
 }
 
 void WatchlistTests::testDividendDataUpdateWorkerCalculateConvertedAmount() {
@@ -104,7 +112,6 @@ void WatchlistTests::testDividendDataUpdateWorkerCalculateConvertedAmount() {
 QByteArray WatchlistTests::readFileData(const QString &fileName) {
     QFile f("testdata/" + fileName);
     if (!f.open(QFile::ReadOnly | QFile::Text)) {
-        QString msg = "Testfile " + fileName + " not found!";
         return QByteArray();
     }
 
