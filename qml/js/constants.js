@@ -97,6 +97,8 @@ function buildMarketDataList() {
     marketDataList.push(addMarketDataItem("COM_SILVER", qsTr("Silver"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_PLATINUM", qsTr("Platinum"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_PALLADIUM", qsTr("Palladium"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_COPPER", qsTr("Copper"), MARKET_DATA_TYPE_COMMODITY));
+    marketDataList.push(addMarketDataItem("COM_WHEAT", qsTr("Wheat"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_OIL_BRENT", qsTr("Oil Brent"), MARKET_DATA_TYPE_COMMODITY));
     marketDataList.push(addMarketDataItem("COM_OIL_WTI", qsTr("Oil WTI"), MARKET_DATA_TYPE_COMMODITY));
 

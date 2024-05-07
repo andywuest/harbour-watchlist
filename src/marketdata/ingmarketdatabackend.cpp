@@ -49,26 +49,23 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
 
     // France
     marketDataList.append(IngMarketData("FR0003500008", "998033", "INDEX_CAC40"));
-    // marketDataId2ExtRefId["INDEX_CN20"] = "78560";
-    // marketDataId2ExtRefId["INDEX_SFB120"] = "70498";
 
     // Other
     marketDataList.append(IngMarketData("EU0009658145", "846480", "INDEX_EUROSTOXX50"));
     marketDataList.append(IngMarketData("CH0009980894", "998089", "INDEX_SMI"));
     marketDataList.append(IngMarketData("AT0000999982", "998663", "INDEX_ATX"));
-    // marketDataId2ExtRefId["INDEX_OSEBX"] = "69309";
-    // marketDataId2ExtRefId["INDEX_OMC_C25"] = "64283";
 
     // Commodities
     marketDataList.append(IngMarketData("XD0002747026", "274702", "COM_GOLD"));
     marketDataList.append(IngMarketData("XD0002747208", "274720", "COM_SILVER"));
     marketDataList.append(IngMarketData("XD0002876395", "287639", "COM_PLATINUM"));
     marketDataList.append(IngMarketData("XD0002876429", "287642", "COM_PALLADIUM"));
+    marketDataList.append(IngMarketData("XC0007203216", "274234", "COM_COPPER"));
+    marketDataList.append(IngMarketData("XD0002742308", "274230", "COM_WHEAT"));
     marketDataList.append(IngMarketData("XC0009677409", "274207", "COM_OIL_BRENT"));
     marketDataList.append(IngMarketData("XD0257705190", "25770519", "COM_OIL_WTI"));
 
     // Currencies
-    //    marketDataId2ExtRefId["CUR_SEK_DKK"] = "216830";
     marketDataList.append(IngMarketData("EU0009654664", "946690", "CUR_EUR_CAD"));
     marketDataList.append(IngMarketData("EU0009654078", "897789", "CUR_EUR_CHF"));
     marketDataList.append(IngMarketData("EU0009653088", "946684", "CUR_EUR_GBP"));
@@ -76,12 +73,6 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     marketDataList.append(IngMarketData("EU0009652759", "946681", "CUR_EUR_USD"));
     marketDataList.append(IngMarketData("GB0031973075", "275017", "CUR_GBP_USD"));
     marketDataList.append(IngMarketData("XD0009689841", "968984", "CUR_USD_EUR"));
-    //    marketDataId2ExtRefId["CUR_JPY_USD"] = "216503";
-    //    marketDataId2ExtRefId["CUR_CHF_EUR"] = "215878";
-    //    marketDataId2ExtRefId["CUR_GBP_EUR"] = "216236";
-    //    marketDataId2ExtRefId["CUR_GBP_RUB"] = "216298";
-    //    marketDataId2ExtRefId["CUR_GBP_DKK"] = "216231";
-    //    marketDataId2ExtRefId["CUR_USD_RUB"] = "217091";
 
     //    // Crypto Currencies
     //    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "275903";
@@ -183,16 +174,6 @@ void IngMarketDataBackend::handleRequestError(QNetworkReply::NetworkError error)
                << reply->readAll();
 
     emit requestError("Return code: " + QString::number(static_cast<int>(error)) + " - " + reply->errorString());
-}
-
-// TODO check if we need this
-QDateTime IngMarketDataBackend::convertUTCDateTimeToLocalDateTime(const QString &utcDateTimeString) {
-    QDateTime utcDateTime = QDateTime::fromString(utcDateTimeString, Qt::ISODate);
-    QDateTime localDateTime = QDateTime(utcDateTime.date(), utcDateTime.time(), Qt::UTC).toLocalTime();
-
-    qDebug() << " converted date from " << utcDateTimeString << " to " << localDateTime;
-
-    return localDateTime;
 }
 
 QString IngMarketDataBackend::convertToDatabaseDateTimeFormat(const QDateTime &time) {

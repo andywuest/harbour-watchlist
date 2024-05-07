@@ -884,6 +884,14 @@ SettingsPage news download strategy only on wifi</extracomment>
         <source>Oil WTI</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Copper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wheat</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>database</name>
