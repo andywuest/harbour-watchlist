@@ -927,12 +927,12 @@ SettingsPage news download strategy only on wifi</extracomment>
     <message>
         <location filename="../qml/js/constants.js" line="100"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation>Koppar</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="101"/>
         <source>Wheat</source>
-        <translation type="unfinished"></translation>
+        <translation>Vete</translation>
     </message>
     <message>
         <location filename="../qml/js/constants.js" line="102"/>
