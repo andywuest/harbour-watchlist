@@ -52,10 +52,17 @@ void DivvyDiary::fetchExchangeRates() {
     connect(reply, SIGNAL(finished()), this, SLOT(handleFetchExchangeRates()));
 }
 
-void DivvyDiary::fetchDividendData(const QMap<QString, QVariant> exchangeRateMap) {
-    const QString year = QString::number(QDate::currentDate().year());
-    const QString month = QString::number(QDate::currentDate().month());
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS).arg(month, year)));
+void DivvyDiary::fetchDividendData(const QMap<QString, QVariant> exchangeRateMap, int offsetMonths) {
+    int month = QDate::currentDate().month() + offsetMonths;
+    int year = QDate::currentDate().year();
+    if (month == 13) {
+        month = 1;
+        year++;
+    }
+    const QString yearString = QString::number(year);
+    const QString monthString = QString::number(month);
+
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(DIVVYDIARY_DIVIDENDS).arg(monthString, yearString)));
     reply->setProperty(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE, QVariant(exchangeRateMap));
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),
@@ -71,10 +78,8 @@ void DivvyDiary::handleFetchExchangeRates() {
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
-    if (reply->error() != QNetworkReply::NoError) {
-        // if fetching the exchange rates fail - fetch dividend data anyway
-        fetchDividendData(exchangeRateMap);
-    } else {
+
+    if (reply->error() == QNetworkReply::NoError) {
         QJsonObject rootObject = QJsonDocument::fromJson(reply->readAll()).object();
         QJsonArray exchangeRateArray = rootObject["fixingRates"].toArray();
 
@@ -86,9 +91,15 @@ void DivvyDiary::handleFetchExchangeRates() {
                 exchangeRateMap[exchangeRateObject["currency"].toString()] = QVariant(exchangeRate);
             }
         }
-
-        fetchDividendData(exchangeRateMap);
     }
+
+    searchDividendResults.clear();
+    this->numberOfRequestedMonths = 2;
+
+    // if fetching the exchange rates failed - fetch dividend data anyway
+    // fetch for current month and the next one (only monthOffset = 1 is supported)
+    fetchDividendData(exchangeRateMap, 0); // current month
+    fetchDividendData(exchangeRateMap, 1); // next month
 }
 
 void DivvyDiary::handleFetchDividendDates() {
@@ -102,9 +113,14 @@ void DivvyDiary::handleFetchDividendDates() {
     while (this->dividendDataUpdateWorker.isRunning()) {
         this->dividendDataUpdateWorker.requestInterruption();
     }
-    this->dividendDataUpdateWorker.setParameters(QJsonDocument::fromJson(reply->readAll()),
-                                                 reply->property(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE).toMap());
-    this->dividendDataUpdateWorker.start();
+
+    searchDividendResults.append(QJsonDocument::fromJson(reply->readAll()));
+
+    if (searchDividendResults.size() == this->numberOfRequestedMonths) {
+        this->dividendDataUpdateWorker.setParameters(searchDividendResults,
+                                                     reply->property(NETWORK_REPLY_PROPERTY_EXCHANGE_RATE).toMap());
+        this->dividendDataUpdateWorker.start();
+    }
 }
 
 QNetworkReply *DivvyDiary::executeGetRequest(const QUrl &url) {

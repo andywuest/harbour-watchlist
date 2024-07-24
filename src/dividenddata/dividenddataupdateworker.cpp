@@ -55,59 +55,61 @@ DividendDataUpdateWorker::~DividendDataUpdateWorker() {
     database.close();
 }
 
-void DividendDataUpdateWorker::setParameters(const QJsonDocument &jsonDocument,
+void DividendDataUpdateWorker::setParameters(const QList<QJsonDocument> &jsonDocumentList,
                                              const QMap<QString, QVariant> exchangeRateMap) {
-    this->jsonDocument = jsonDocument;
+    this->jsonDocumentList = jsonDocumentList;
     this->exchangeRateMap = exchangeRateMap;
 }
 
 void DividendDataUpdateWorker::performUpdate() {
     int rows = 0;
-    if (jsonDocument.isObject()) {
-        qDebug() << "removing old dividend data";
-        executeQuery(QString("DELETE FROM dividends"), QMap<QString, QVariant>());
 
-        QJsonObject rootObject = jsonDocument.object();
-        QJsonArray dividendsArray = rootObject["dividends"].toArray();
+    qDebug() << "removing old dividend data";
+    executeQuery(QString("DELETE FROM dividends"), QMap<QString, QVariant>());
 
-        const QString convertedEuroCurrency = convertCurrency("EUR");
-        const QString query = QString(
-                                  "INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
+    const QString convertedEuroCurrency = convertCurrency("EUR");
+    const QString query = QString("INSERT INTO dividends(exDate, exDateInteger, payDate, payDateInteger, isin, wkn, "
                                   "symbol, amount, currency, convertedAmount, convertedAmountCurrency) ")
-                              + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
-                                        ":symbol, :amount, :currency, :convertedAmount, :convertedAmountCurrency)");
+                          + QString("VALUES (:exDate, :exDateInteger, :payDate, :payDateInteger, :isin, :wkn, "
+                                    ":symbol, :amount, :currency, :convertedAmount, :convertedAmountCurrency)");
 
-        const QTime defaultTime = QTime(0, 0);
+    const QTime defaultTime = QTime(0, 0);
 
-        foreach (const QJsonValue &dividendsEntry, dividendsArray) {
-            QJsonObject dividendsObject = dividendsEntry.toObject();
+    foreach (const QJsonDocument &jsonDocument, jsonDocumentList) {
+        if (jsonDocument.isObject()) {
+            QJsonObject rootObject = jsonDocument.object();
+            QJsonArray dividendsArray = rootObject["dividends"].toArray();
 
-            // add new ones
-            QDate payDate = QDate::fromString(dividendsObject["payDate"].toString(), "yyyy-MM-dd");
-            QDate exDate = QDate::fromString(dividendsObject["exDate"].toString(), "yyyy-MM-dd");
-            QDateTime payDateTime = QDateTime(payDate, defaultTime, Qt::LocalTime);
-            QDateTime exDateTime = QDateTime(exDate, defaultTime, Qt::LocalTime);
+            foreach (const QJsonValue &dividendsEntry, dividendsArray) {
+                QJsonObject dividendsObject = dividendsEntry.toObject();
 
-            double amount = dividendsObject["amount"].toDouble();
-            QString currency = dividendsObject["currency"].toString();
-            double convertedAmount = calculateConvertedAmount(amount, currency);
+                // add new ones
+                QDate payDate = QDate::fromString(dividendsObject["payDate"].toString(), "yyyy-MM-dd");
+                QDate exDate = QDate::fromString(dividendsObject["exDate"].toString(), "yyyy-MM-dd");
+                QDateTime payDateTime = QDateTime(payDate, defaultTime, Qt::LocalTime);
+                QDateTime exDateTime = QDateTime(exDate, defaultTime, Qt::LocalTime);
 
-            QMap<QString, QVariant> dataMap;
-            dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":payDate", payDate.toString("dd.MM.yyyy"));
-            dataMap.insert(":exDateInteger", exDateTime.toMSecsSinceEpoch());
-            dataMap.insert(":payDateInteger", payDateTime.toMSecsSinceEpoch());
-            dataMap.insert(":isin", dividendsObject["isin"].toString());
-            dataMap.insert(":wkn", dividendsObject["wkn"].toString());
-            dataMap.insert(":symbol", dividendsObject["symbol"].toString());
-            dataMap.insert(":amount", amount);
-            dataMap.insert(":currency", convertCurrency(currency));
-            dataMap.insert(":convertedAmount", convertedAmount);
-            dataMap.insert(":convertedAmountCurrency", convertedEuroCurrency);
+                double amount = dividendsObject["amount"].toDouble();
+                QString currency = dividendsObject["currency"].toString();
+                double convertedAmount = calculateConvertedAmount(amount, currency);
 
-            executeQuery(query, dataMap);
-            rows++;
+                QMap<QString, QVariant> dataMap;
+                dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
+                dataMap.insert(":exDate", exDate.toString("dd.MM.yyyy"));
+                dataMap.insert(":payDate", payDate.toString("dd.MM.yyyy"));
+                dataMap.insert(":exDateInteger", exDateTime.toMSecsSinceEpoch());
+                dataMap.insert(":payDateInteger", payDateTime.toMSecsSinceEpoch());
+                dataMap.insert(":isin", dividendsObject["isin"].toString());
+                dataMap.insert(":wkn", dividendsObject["wkn"].toString());
+                dataMap.insert(":symbol", dividendsObject["symbol"].toString());
+                dataMap.insert(":amount", amount);
+                dataMap.insert(":currency", convertCurrency(currency));
+                dataMap.insert(":convertedAmount", convertedAmount);
+                dataMap.insert(":convertedAmountCurrency", convertedEuroCurrency);
+
+                executeQuery(query, dataMap);
+                rows++;
+            }
         }
     }
 
