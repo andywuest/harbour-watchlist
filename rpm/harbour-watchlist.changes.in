@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* xx.xx.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.6-1
+
+- load & show next two month of dividend payments
+
 * 21.07.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.5-1
 
 - fixed special character rendering in news (e.g. Johnson & Johnson)
