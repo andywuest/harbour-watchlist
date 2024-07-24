@@ -99,7 +99,8 @@ void WatchlistTests::testDividendDataUpdateWorkerCalculateConvertedAmount() {
     QMap<QString, QVariant> exchangeRateMap;
     exchangeRateMap.insert("USD", 0.8);
     exchangeRateMap.insert("CHF", 1.2);
-    dividendDataUpdateWorker->setParameters(QJsonDocument(), exchangeRateMap);
+    const QList<QJsonDocument> documentList({QJsonDocument()});
+    dividendDataUpdateWorker->setParameters(documentList, exchangeRateMap);
 
     // when - then
     QCOMPARE(dividendDataUpdateWorker->calculateConvertedAmount(1.6, QString("EUR")), 1.6);
