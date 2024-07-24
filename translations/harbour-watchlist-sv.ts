@@ -215,60 +215,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="244"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="249"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="257"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Lägg till marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="265"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>Uppdatera marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="274"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>Lägg till aktie</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="283"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="292"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera alla aktiekurser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="301"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Uppdatera utdelningsdatum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="393"/>
         <source>Market data</source>
         <translation>Marknadsdata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="408"/>
         <source>Watchlist</source>
         <translation>Bevakningslista</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="439"/>
         <source>Dividends</source>
         <translation>Utdelningar</translation>
     </message>

@@ -41,13 +41,16 @@ private:
     QNetworkAccessManager *manager;
     QNetworkReply *executeGetRequest(const QUrl &url);
 
+    int numberOfRequestedMonths = 0;
+    QList<QJsonDocument> searchDividendResults;
+
     // worker - separate thread since expensive
     DividendDataUpdateWorker dividendDataUpdateWorker;
 
     void initializeDatabase();
 
     void fetchExchangeRates();
-    void fetchDividendData(const QMap<QString, QVariant> exchangeRateMap);
+    void fetchDividendData(const QMap<QString, QVariant> exchangeRateMap, int offsetMonths);
 
     void executeQuery(QString &queryString, QMap<QString, QVariant> &dataMap);
 

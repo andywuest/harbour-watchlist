@@ -38,7 +38,7 @@ class DividendDataUpdateWorker : public QThread {
 public:
     explicit DividendDataUpdateWorker(QObject *parent = nullptr);
     ~DividendDataUpdateWorker() override;
-    void setParameters(const QJsonDocument &jsonDocument, const QMap<QString, QVariant> exchangeRateMap);
+    void setParameters(const QList<QJsonDocument> &jsonDocumentList, const QMap<QString, QVariant> exchangeRateMap);
 
 signals:
     void updateCompleted(int);
@@ -49,7 +49,7 @@ protected:
 
 private:
     QSqlDatabase database;
-    QJsonDocument jsonDocument;
+    QList<QJsonDocument> jsonDocumentList;
     QMap<QString, QVariant> exchangeRateMap;
 
     void performUpdate();
