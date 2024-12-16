@@ -84,22 +84,6 @@ Page {
                 delegate: ListItem {
                     id: delegate
 
-//                    menu: ContextMenu {
-//                        MenuItem {
-//                            visible: true
-//                            //: AddMarketdataPage add menu item
-//                            text: qsTr("Add")
-//                            onClicked: {
-//                                var selectedItem = searchResultListModel.get(
-//                                            index)
-//                                var result = Database.persistMarketdata(
-//                                            selectedItem)
-//                                marketdataAddedNotification.show(result)
-//                                searchResultListModel.remove(index);
-//                            }
-//                        }
-//                    }
-
                     Column {
                         id: resultColumn
                         width: parent.width - (2 * Theme.horizontalPageMargin)

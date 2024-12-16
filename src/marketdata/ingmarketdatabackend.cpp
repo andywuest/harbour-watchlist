@@ -74,8 +74,9 @@ IngMarketDataBackend::IngMarketDataBackend(QNetworkAccessManager *manager, QObje
     marketDataList.append(IngMarketData("GB0031973075", "275017", "CUR_GBP_USD"));
     marketDataList.append(IngMarketData("XD0009689841", "968984", "CUR_USD_EUR"));
 
-    //    // Crypto Currencies
-    //    marketDataId2ExtRefId["CRYPTO_BITCOIN"] = "275903";
+    // Crypto Currencies
+    marketDataList.append(IngMarketData("XD0394751214", "39475121", "CRYPTO_BITCOIN"));
+    marketDataList.append(IngMarketData("XD0401495615", "40149561", "CRYPTO_ETHEREUM"));
     //    marketDataId2ExtRefId["CRYPTO_BITCOIN_CASH"] = "252699";
     //    marketDataId2ExtRefId["CRYPTO_LITECOIN"] = "252302";
     //    marketDataId2ExtRefId["CRYPTO_DASH"] = "252674";
@@ -146,7 +147,7 @@ void IngMarketDataBackend::connectErrorSlot(QNetworkReply *reply) {
 }
 
 void IngMarketDataBackend::handleLookupMarketDataFinished() {
-    qDebug() << "IngMarketDataBackend::handleSearchQuoteFinished";
+    qDebug() << "IngMarketDataBackend::handleLookupMarketDataFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
