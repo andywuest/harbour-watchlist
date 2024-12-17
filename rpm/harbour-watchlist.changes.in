@@ -5,7 +5,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* xx.xx.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.6-1
+* 17.12.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.6-1
 
 - load & show next two month of dividend payments
 - add crypto currencies to market data (Bitcoin / Ethereum)
