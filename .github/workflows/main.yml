@@ -13,7 +13,7 @@ env:
 jobs:
   build-test:
     name: Build & Run tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v2                                 # checkout the repo
@@ -28,6 +28,7 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
+          qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
           ./fixJunit.sh
@@ -38,7 +39,7 @@ jobs:
           ./fixJunit.sh
 
       - name: Test Report
-        uses: dorny/test-reporter@v1.6.0
+        uses: dorny/test-reporter@v1.9.1
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
