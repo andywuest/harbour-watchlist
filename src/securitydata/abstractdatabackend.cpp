@@ -38,6 +38,8 @@ QNetworkReply *AbstractDataBackend::executeGetRequest(const QUrl &url) {
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
     request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+    request.setRawHeader("Accept-Language", "en-US,en;q=0.5");
+    request.setRawHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
 
     return manager->get(request);
 }
