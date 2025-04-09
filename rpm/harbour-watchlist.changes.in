@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 09.04.2025 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.7-1
+
+- updated user agent string to latest Firefox - should fix problems with Euroinvestor backend
+
 * 17.12.2024 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.6-1
 
 - load & show next two month of dividend payments
