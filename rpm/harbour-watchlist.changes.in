@@ -5,6 +5,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 25.01.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.8-1
+
+- fixed no longer working security search backend for ING (https://github.com/andywuest/harbour-watchlist/issues/118)
+- updated user agent string to latest Firefox
+
 * 09.04.2025 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.7-1
 
 - updated user agent string to latest Firefox - should fix problems with Euroinvestor backend
