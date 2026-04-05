@@ -31,12 +31,12 @@ jobs:
           qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
-          ./fixJunit.sh
+          # ./fixJunit.sh
           cd ..                                                   
           cd cpp
           sudo timedatectl set-timezone Europe/Berlin
           ./runTests.sh
-          ./fixJunit.sh
+          # ./fixJunit.sh
 
       - name: Test Report
         uses: dorny/test-reporter@v3
