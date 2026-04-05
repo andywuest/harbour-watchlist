@@ -28,19 +28,19 @@ jobs:
       - name: Run QML / C++ Tests
         run: |
           set -x
-          qtdiag | head -n 1
+          # qtdiag | head -n 1
           cd test/qml 
           ./runTests.sh
-          # ./fixJunit.sh
+          ./fixJunit.sh
           cd ..                                                   
           cd cpp
           sudo timedatectl set-timezone Europe/Berlin
           ./runTests.sh
-          # ./fixJunit.sh
+          ./fixJunit.sh
 
       - name: Test Report
         uses: dorny/test-reporter@v3
-        if: success() || failure()                                # run this step even if previous step failed
+        if: ${{ !cancelled() }}                                   # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
           path: test/qml/*.xml,test/cpp/*.xml                     # Path to test results
