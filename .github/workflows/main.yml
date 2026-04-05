@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v2                                 # checkout the repo
+      - uses: actions/checkout@v6                                 # checkout the repo
 
       - name: Install qmltestrunner                               # install required qmltestrunner packages
         run: |
@@ -39,7 +39,7 @@ jobs:
           ./fixJunit.sh
 
       - name: Test Report
-        uses: dorny/test-reporter@v1.9.1
+        uses: dorny/test-reporter@v3
         if: success() || failure()                                # run this step even if previous step failed
         with:
           name: QML/C++ Tests                                     # Name of the check run which will be created
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
       - name: Prepare
         run: mkdir output
