@@ -36,7 +36,7 @@ IngDibaNews::~IngDibaNews() {
 }
 
 void IngDibaNews::searchStockNews(const QString &isin) {
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_NEWS).arg(isin).arg(1))); // pageNumber 1
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_NEWS).arg(isin).arg(1))); // pageNumber 1
 
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),

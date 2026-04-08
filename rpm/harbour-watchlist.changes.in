@@ -5,6 +5,13 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 08.04.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.9-1
+
+- fixed broken ING backend (https://github.com/andywuest/harbour-watchlist/issues/120)
+- updated user agent string
+- added liberapay donation link
+- cleanup of configuration files
+
 * 25.01.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.8-1
 
 - fixed no longer working security search backend for ING (https://github.com/andywuest/harbour-watchlist/issues/118)

@@ -24,7 +24,7 @@ const char ORGANISATION[] = "de.andreas-wuest-it-consulting";
 
 // data for rest calls
 const char MIME_TYPE_JSON[] = "application/json";
-const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0";
+const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/149.0";
 
 // euroinvestor
 const char EUROINVESTOR_API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
@@ -43,14 +43,15 @@ const char MOSCOW_EXCHANGE_API_CLOSE_PRICES[]
     = "https://iss.moex.com/iss/history/engines/stock/markets/shares/boards/TQBR/securities/"
       "%1.json?from=%2%3";
 
-// Ing-Diba
-const char ING_DIBA_API_SEARCH[] = "https://api.www.ing.de/searchopenshift/autocomplete/?query=%1";
-const char ING_DIBA_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/v1/components/instrumentheader/%1";
-// currencyId and exchangeId seem not to be relevant
-const char ING_DIBA_API_CHART_PRICES[] = "https://component-api.wertpapiere.ing.de/api/v1/charts/shm/%1?timeRange=%2";
-const char ING_DIBA_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/api/v1/components/chart/%1";
+// Ing
+const char ING_API_SEARCH[] = "https://api.www.ing.de/searchopenshift/autocomplete/?query=%1";
+const char ING_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/v1/instrument-header?isinOrSearchTerm=%1&isKnownIsin=true&includeAvailableExchanges=true";
 
-const char ING_DIBA_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/%1?pageNumber=%2&newsCategory=0";
+// currencyId and exchangeId seem not to be relevant
+const char ING_API_CHART_PRICES[] = "https://component-api.wertpapiere.ing.de/api/v1/charts/shm/%1?timeRange=%2";
+const char ING_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/api/v1/components/chart/%1";
+
+const char ING_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/%1?pageNumber=%2&newsCategory=0";
 
 const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/calendar?month=%1&year=%2";
 

@@ -55,7 +55,7 @@ IngDibaBackend::~IngDibaBackend() {
 
 void IngDibaBackend::searchName(const QString &searchString) {
     qDebug() << "IngDibaBackend::searchName";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_SEARCH).arg(searchString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_API_SEARCH).arg(searchString)));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchNameFinished()));
@@ -64,7 +64,7 @@ void IngDibaBackend::searchName(const QString &searchString) {
 void IngDibaBackend::searchQuoteForNameSearch(const QString &searchString) {
     // TODO check if needed
     qDebug() << "IngDibaBackend::searchQuoteForNameSearch";
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_QUOTE).arg(searchString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_API_QUOTE).arg(searchString)));
 
     connectErrorSlot(reply);
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteForNameFinished()));
@@ -80,7 +80,7 @@ void IngDibaBackend::fetchPricesForChart(const QString &extRefId, const int char
 
     QNetworkReply *reply;
 
-    reply = executeGetRequest(QUrl(QString(ING_DIBA_API_PREQUOTE_DATA).arg(extRefId)));
+    reply = executeGetRequest(QUrl(QString(ING_API_PREQUOTE_DATA).arg(extRefId)));
     reply->setProperty(NETWORK_REPLY_PROPERTY_CHART_TYPE, chartType);
     reply->setProperty(NETWORK_REPLY_PROPERTY_EXT_REF_ID, extRefId);
     connectErrorSlot(reply);
@@ -114,7 +114,7 @@ void IngDibaBackend::processPreQuoteData(QNetworkReply *preChartReply) {
     qDebug() << "chartTypeString : " << chartTypeString;
     qDebug() << "chartPeriods : " << chartPeriods;
 
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_CHART_PRICES).arg(extRefId, chartTypeString)));
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_API_CHART_PRICES).arg(extRefId, chartTypeString)));
     reply->setProperty("type", chartType);
     connectErrorSlot(reply);
     connect(reply, &QNetworkReply::finished, this, &IngDibaBackend::handleFetchPricesForChartFinished);
@@ -130,7 +130,7 @@ void IngDibaBackend::searchQuote(const QString &searchString) {
 
     foreach (const QString &iban, ibanList) {
         qDebug() << "looking up " << iban;
-        QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_QUOTE).arg(iban)));
+        QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_API_QUOTE).arg(iban)));
 
         connectErrorSlot(reply);
         connect(reply, SIGNAL(finished()), this, SLOT(handleSearchQuoteFinished()));

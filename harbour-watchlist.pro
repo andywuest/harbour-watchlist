@@ -91,13 +91,7 @@ DISTFILES += \
     qml/pages/StockAlarmDialog.qml \
     qml/pages/NewsPage.qml \
     qml/pages/icons/github.svg \
+    qml/pages/icons/liberapay.svg \
     qml/pages/icons/paypal.svg
-#    tests_qml/tst_database.qml \
-#    tests_qml/tst_functions.qml
-
-# tests.files = tests_qml/tst_*
-# tests.path = /usr/share/harbour-watchlist/tests
-# INSTALLS += tests_qml
-# OTHER_FILES += tests_qml/tst_*
 
 include(harbour-watchlist.pri)

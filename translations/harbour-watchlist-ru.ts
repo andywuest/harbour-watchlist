@@ -52,6 +52,10 @@
         <source>Donate with PayPal</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Donate with Liberapay</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddMarketDataPage</name>

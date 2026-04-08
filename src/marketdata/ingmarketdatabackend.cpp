@@ -127,7 +127,7 @@ void IngMarketDataBackend::lookupMarketData(const QString &marketDataIds) {
     searchQuoteResults.clear();
 
     foreach (const QString &id, idList) {
-        QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_DIBA_API_QUOTE).arg(id)));
+        QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_API_QUOTE).arg(id)));
         connectErrorSlot(reply);
         connect(reply, SIGNAL(finished()), this, SLOT(handleLookupMarketDataFinished()));
     }

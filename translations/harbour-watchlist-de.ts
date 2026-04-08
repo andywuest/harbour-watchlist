@@ -51,6 +51,11 @@
         <translation>Spenden via PayPal</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="140"/>
+        <source>Donate with Liberapay</source>
+        <translation>Spenden via Liberapay</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="94"/>
         <source>This is app is a simple stock watchlist for Sailfish OS. Watchlist is open source and licensed under the GPL v3.</source>
         <extracomment>AboutPage text - about text</extracomment>
