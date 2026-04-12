@@ -43,7 +43,7 @@ function formatPrice(price, locale, precision) {
     if (precision) {
         localPrecision = precision;
     }
-    console.log("precision is : " + localPrecision)
+    // console.log("precision is : " + localPrecision)
     return Number(price).toLocaleString(locale, 'f', localPrecision);
 }
 

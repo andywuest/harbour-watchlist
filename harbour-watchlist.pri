@@ -4,6 +4,9 @@ HEADERS += $$PWD/src/securitydata/ingdibabackend.h \
         $$PWD/src/ingdibautils.h \
         $$PWD/src/marketdata/ingmarketdata.h \
         $$PWD/src/marketdata/ingmarketdatabackend.h \
+        $$PWD/src/marketdata/euroinvestormarketdatabackend.h \
+        $$PWD/src/securitydata/euroinvestorbackend.h \
+        $$PWD/src/securitydata/moscowexchangebackend.h \
         $$PWD/src/securitydata/abstractdatabackend.h \
         $$PWD/src/securitydata/chartdatacalculator.h \
         $$PWD/src/newsdata/ingdibanews.h \
@@ -16,7 +19,10 @@ SOURCES += $$PWD/src/securitydata/ingdibabackend.cpp \
             $$PWD/src/ingdibautils.cpp \
             $$PWD/src/marketdata/ingmarketdata.cpp \
             $$PWD/src/marketdata/ingmarketdatabackend.cpp \
+            $$PWD/src/marketdata/euroinvestormarketdatabackend.cpp \
             $$PWD/src/securitydata/abstractdatabackend.cpp \
             $$PWD/src/securitydata/chartdatacalculator.cpp \
+            $$PWD/src/securitydata/euroinvestorbackend.cpp \
+            $$PWD/src/securitydata/moscowexchangebackend.cpp \
             $$PWD/src/newsdata/ingdibanews.cpp \
             $$PWD/src/newsdata/onvistanews.cpp

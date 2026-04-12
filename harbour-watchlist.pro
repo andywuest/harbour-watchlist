@@ -18,17 +18,11 @@ QT += sql \
     core
 
 SOURCES += \
-    src/securitydata/euroinvestorbackend.cpp \
-    src/securitydata/moscowexchangebackend.cpp \
-    src/marketdata/euroinvestormarketdatabackend.cpp \
     src/harbour-watchlist.cpp \
     src/watchlist.cpp
 
 HEADERS += \
     src/constants.h \
-    src/securitydata/euroinvestorbackend.h \
-    src/securitydata/moscowexchangebackend.h \
-    src/marketdata/euroinvestormarketdatabackend.h \
     src/watchlist.h
 
 DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"

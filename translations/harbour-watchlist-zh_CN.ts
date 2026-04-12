@@ -220,60 +220,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="241"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="254"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>添加股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="262"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>刷新股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="271"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>添加股票</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="280"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="289"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>刷新全部报价</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="298"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="390"/>
         <source>Market data</source>
         <translation>股市数据</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="405"/>
         <source>Watchlist</source>
         <translation type="unfinished">清单</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="436"/>
         <source>Dividends</source>
         <translation type="unfinished"></translation>
     </message>
@@ -754,49 +754,49 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="211"/>
+        <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>股票报价</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="218"/>
+        <location filename="../qml/components/WatchlistView.qml" line="224"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>清单为空。请通过滑轮菜单添加股票。</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="248"/>
+        <location filename="../qml/components/WatchlistView.qml" line="254"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>配置提醒</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="256"/>
+        <location filename="../qml/components/WatchlistView.qml" line="262"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="261"/>
+        <location filename="../qml/components/WatchlistView.qml" line="267"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>股票证明</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="271"/>
+        <location filename="../qml/components/WatchlistView.qml" line="277"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>配置参考价</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="387"/>
+        <location filename="../qml/components/WatchlistView.qml" line="393"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>表现</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="413"/>
+        <location filename="../qml/components/WatchlistView.qml" line="419"/>
         <source>Portfolio share</source>
         <extracomment>WatchlistView Portfolio share label</extracomment>
         <translation type="unfinished"></translation>

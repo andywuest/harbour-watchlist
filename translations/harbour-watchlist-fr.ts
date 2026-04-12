@@ -220,60 +220,60 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="241"/>
         <source>About</source>
         <extracomment>OverviewPage about menu item</extracomment>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="245"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
         <source>Settings</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="253"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="254"/>
         <source>Add market data</source>
         <extracomment>OverviewPage settings menu item</extracomment>
         <translation>Ajouter des données de marché</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="261"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="262"/>
         <source>Refresh market data</source>
         <extracomment>OverviewPage refresh market data menu item</extracomment>
         <translation>Rafraîchir des données de marché</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="270"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="271"/>
         <source>Add stock</source>
         <extracomment>OverviewPage add stock menu item</extracomment>
         <translation>Ajouter des actions</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="279"/>
-        <location filename="../qml/pages/OverviewPage.qml" line="288"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="280"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="289"/>
         <source>Refresh all quotes</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Rafraîchir toutes les cotes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="297"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="298"/>
         <source>Refresh dividend dates</source>
         <extracomment>OverviewPage refresh all quotes menu item</extracomment>
         <translation>Rafraîchir les dates des dividendes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="389"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="390"/>
         <source>Market data</source>
         <translation>Données de marché</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="404"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="405"/>
         <source>Watchlist</source>
         <translation type="unfinished">Liste de surveillance</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="435"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="436"/>
         <source>Dividends</source>
         <translation>Dividendes</translation>
     </message>
@@ -754,49 +754,49 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="211"/>
+        <location filename="../qml/components/WatchlistView.qml" line="217"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>Cotation boursière</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="218"/>
+        <location filename="../qml/components/WatchlistView.qml" line="224"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>La liste de surveillance est vide. Ajoute des actions via le pulley menu.</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="248"/>
+        <location filename="../qml/components/WatchlistView.qml" line="254"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>Configurer une alarme</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="256"/>
+        <location filename="../qml/components/WatchlistView.qml" line="262"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="261"/>
+        <location filename="../qml/components/WatchlistView.qml" line="267"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>Billets d&apos;action</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="271"/>
+        <location filename="../qml/components/WatchlistView.qml" line="277"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>Configurer un prix de référence</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="387"/>
+        <location filename="../qml/components/WatchlistView.qml" line="393"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>Performance</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="413"/>
+        <location filename="../qml/components/WatchlistView.qml" line="419"/>
         <source>Portfolio share</source>
         <extracomment>WatchlistView Portfolio share label</extracomment>
         <translation type="unfinished"></translation>

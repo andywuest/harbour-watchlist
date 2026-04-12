@@ -93,7 +93,7 @@ SilicaFlickable {
     }
 
     function reloadAllStocks() {
-        console.log("reloading all stocks for watchlist " + watchlistId);
+        console.log("[WatchlistView] reloading all stocks for watchlist " + watchlistId);
         var sortOrder = Functions.determineSecuritySortOrder(watchlistSettings.sortingOrder);
         var stocks = Database.loadAllStockData(watchlistId, sortOrder);
 
@@ -125,6 +125,8 @@ SilicaFlickable {
             stocksModel.append(stock);
             currencySymbol = stocks[i].currencySymbol;
         }
+
+        Functions.log("[WatchlistView] : determined currency symbol " + currencySymbol);
 
         stockQuotesHeader.description = Functions.calculatePortfolioPerformanceString(stocks, currencySymbol);
 
@@ -297,8 +299,7 @@ SilicaFlickable {
                             id: stockQuoteColumn
                             width: parent.width // - (2 * Theme.horizontalPageMargin)
                             // x: Theme.horizontalPageMargin
-                            height: firstRow.height + changeRow.height
-                            /* + secondRow.height*/ + changeValuesRow.height
+                            height: firstRow.height + changeRow.height + changeValuesRow.height
                                     + (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
                                     + (watchlistSettings.showPortfolioShareRow ? portfolioShareRow.height : 0)
 
