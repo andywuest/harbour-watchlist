@@ -329,8 +329,8 @@ QJsonObject IngDibaBackend::processQuoteResultSingle(QByteArray searchQuoteReply
     resultObject.insert("isin", isin);
     resultObject.insert("extRefId", isin);
     resultObject.insert("symbol1", responseObject.value("wkn"));
-    resultObject.insert("currency", responseObject.value("currency"));
-    resultObject.insert("currencySymbol", convertCurrency(responseObject.value("currency").toString()));
+    resultObject.insert("currency", responseObject.value("currencySign"));
+    resultObject.insert("currencySymbol", convertCurrency(responseObject.value("currencySign").toString()));
     resultObject.insert("price", responseObject.value("price"));
     resultObject.insert("ask", responseObject.value("ask"));
     resultObject.insert("bid", responseObject.value("bid"));
@@ -377,6 +377,8 @@ QString IngDibaBackend::processQuoteResult(QByteArray searchReply) {
 QString IngDibaBackend::convertCurrency(const QString &currencyString) {
     if (QString("EUR").compare(currencyString, Qt::CaseInsensitive) == 0) {
         return QString("\u20AC");
+    } else if (QString("USD").compare(currencyString, Qt::CaseInsensitive) == 0) {
+        return QString("$");
     }
     return currencyString;
 }

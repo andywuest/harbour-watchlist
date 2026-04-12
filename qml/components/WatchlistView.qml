@@ -120,7 +120,9 @@ SilicaFlickable {
         stocksModel.clear()
         for (var i = 0; i < stocks.length; i++) {
             stocks[i].portfolioShare = Functions.calculatePercentage(stocks[i].positionCurrentValue, depotCurrentValue);
-            stocksModel.append(stocks[i]);
+            // for some reason appending stock[i] does not work - currencySymbol attribute not know
+            var stock = JSON.parse(JSON.stringify(stocks[i]));
+            stocksModel.append(stock);
             currencySymbol = stocks[i].currencySymbol;
         }
 

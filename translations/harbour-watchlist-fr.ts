@@ -754,49 +754,49 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="209"/>
+        <location filename="../qml/components/WatchlistView.qml" line="211"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>Cotation boursière</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="216"/>
+        <location filename="../qml/components/WatchlistView.qml" line="218"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>La liste de surveillance est vide. Ajoute des actions via le pulley menu.</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="246"/>
+        <location filename="../qml/components/WatchlistView.qml" line="248"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>Configurer une alarme</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="254"/>
+        <location filename="../qml/components/WatchlistView.qml" line="256"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="259"/>
+        <location filename="../qml/components/WatchlistView.qml" line="261"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>Billets d&apos;action</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="269"/>
+        <location filename="../qml/components/WatchlistView.qml" line="271"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>Configurer un prix de référence</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="385"/>
+        <location filename="../qml/components/WatchlistView.qml" line="387"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>Performance</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="411"/>
+        <location filename="../qml/components/WatchlistView.qml" line="413"/>
         <source>Portfolio share</source>
         <extracomment>WatchlistView Portfolio share label</extracomment>
         <translation type="unfinished"></translation>
