@@ -184,6 +184,11 @@
         <extracomment>NewsPage news page header</extracomment>
         <translation>Новости</translation>
     </message>
+    <message>
+        <source>Fetch full data</source>
+        <extracomment>NewsPage fetch news menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>

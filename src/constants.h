@@ -51,7 +51,8 @@ const char ING_API_QUOTE[] = "https://component-api.wertpapiere.ing.de/api/v1/in
 const char ING_API_CHART_PRICES[] = "https://component-api.wertpapiere.ing.de/api/v1/charts/shm/%1?timeRange=%2";
 const char ING_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/api/v1/components/chart/%1";
 
-const char ING_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/components/companyprofilenews/%1?pageNumber=%2&newsCategory=0";
+const char ING_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/exchangesMarkets/marketNewsOverview?searchTerm=%1&category=All&pageSize=%2&offset=0";
+const char ING_NEWS_DETAILS[] = "https://component-api.wertpapiere.ing.de/api/v1/exchangesMarkets/marketNews?newsId=%1";
 
 const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/calendar?month=%1&year=%2";
 

@@ -18,11 +18,21 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
+import "../components/thirdparty"
+
 import "../js/functions.js" as Functions
 
 Page {
     id: newsPage
     property var newsItem
+    property bool loaded : true
+
+    function fetchNewsDetails() {
+        Functions.log("[NewsPage] fetching details for " + newsItem.externalId)
+        loaded = false;
+        var newsBackend = getNewsBackend()
+        newsBackend.searchNewsDetails(newsItem.externalId)
+    }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
@@ -33,6 +43,15 @@ Page {
 
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
+
+        PullDownMenu {
+            visible: newsItem.supportsDetails
+            MenuItem {
+                //: NewsPage fetch news menu item
+                text: qsTr("Fetch full data")
+                onClicked: fetchNewsDetails();
+            }
+        }
 
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
@@ -71,6 +90,37 @@ Page {
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeExtraSmall
             }
+        }
+    }
+
+    LoadingIndicator {
+        id: newsLoadingIndicator
+        visible: !loaded
+        Behavior on opacity {
+            NumberAnimation {
+            }
+        }
+        opacity: loaded ? 0 : 1
+        height: parent.height
+        width: parent.width
+    }
+
+    Connections {
+        target: getNewsBackend()
+
+        onSearchNewsDetailsResultAvailable: {
+            Functions.log("[NewsPage] searchDetailsResult : " + reply)
+            var response = JSON.parse(reply);
+            if (response && response.newsItem && response.newsItem.content) {
+                contentLabel.text = response.newsItem.content;
+            }
+            loaded = true;
+        }
+
+        onRequestError: {
+            Functions.log("[NewsPage] requestError : " + reply)
+            // TODO show error
+            loaded = true;
         }
     }
 

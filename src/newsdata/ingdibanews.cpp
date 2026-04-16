@@ -36,13 +36,26 @@ IngDibaNews::~IngDibaNews() {
 }
 
 void IngDibaNews::searchStockNews(const QString &isin) {
-    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_NEWS).arg(isin).arg(1))); // pageNumber 1
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_NEWS).arg(isin).arg(30))); // pageSize
 
     connect(reply,
             SIGNAL(error(QNetworkReply::NetworkError)),
             this,
             SLOT(handleRequestError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchStockNews()));
+}
+
+void IngDibaNews::searchNewsDetails(const QString &newsId) {
+    QNetworkReply *reply = executeGetRequest(QUrl(QString(ING_NEWS_DETAILS).arg(newsId)));
+
+    connect(reply,
+            SIGNAL(error(QNetworkReply::NetworkError)),
+            this,
+            SLOT(handleRequestError(QNetworkReply::NetworkError)));
+    connect(reply, &QNetworkReply::finished, [this, reply]() {
+        reply->deleteLater();
+        emit searchNewsDetailsResultAvailable(processSearchNewsDetailsResult(reply->readAll()));
+    });
 }
 
 QNetworkReply *IngDibaNews::executeGetRequest(const QUrl &url) {
@@ -69,10 +82,11 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
     QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
     if (jsonDocument.isObject()) {
         QJsonObject rootObject = jsonDocument.object();
-        QJsonArray newsItemArray = rootObject["items"].toArray();
+        QJsonArray newsItemArray = rootObject["news"].toArray();
 
         foreach (const QJsonValue &newsEntry, newsItemArray) {
             QJsonObject newsObject = newsEntry.toObject();
+            QString externalId = newsObject["id"].toString();
             QString headline = newsObject["headline"].toString();
             QString content = newsObject["content"].toString();
             QString source = newsObject["id"].toString();
@@ -81,6 +95,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
 
             QJsonObject resultObject;
 
+            resultObject.insert("externalId", externalId);
             resultObject.insert("headline", headline);
             resultObject.insert("content", filterContent(content));
             resultObject.insert("source", source);
@@ -88,6 +103,7 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
             resultObject.insert("dateTime",
                                 IngDibaUtils::convertTimestampToLocalTimestamp(dateTime, QTimeZone::systemTimeZone())
                                     .toString());
+            resultObject.insert("supportsDetails", true);
 
             // TODO evtl. html tags filtern -  Link-Tags entfernen <a>
 
@@ -98,6 +114,36 @@ QString IngDibaNews::processSearchResult(QByteArray searchReply) {
     // response objects
     QJsonObject resultObject;
     resultObject.insert("newsItems", resultArray);
+
+    QJsonDocument resultDocument;
+    resultDocument.setObject(resultObject);
+
+    QString dataToString(resultDocument.toJson());
+
+    return dataToString;
+}
+
+QString IngDibaNews::processSearchNewsDetailsResult(QByteArray searchReply) {
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
+
+    // response object
+    QJsonObject resultObject;
+
+    if (jsonDocument.isObject()) {
+        QJsonObject rootObject = jsonDocument.object();
+        QString dateTime = rootObject["newsDate"].toString(); // TODO parsen in richtiges datetime
+
+        QJsonObject resultItem;
+        resultItem.insert("headline", rootObject["headline"].toString());
+        resultItem.insert("content", rootObject["content"].toString());
+        resultItem.insert("source", "");
+        resultItem.insert("url", "");
+        resultItem
+            .insert("dateTime",
+                    IngDibaUtils::convertTimestampToLocalTimestamp(dateTime, QTimeZone::systemTimeZone()).toString());
+
+        resultObject.insert("newsItem", resultItem);
+    }
 
     QJsonDocument resultDocument;
     resultDocument.setObject(resultObject);

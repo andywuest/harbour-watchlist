@@ -211,7 +211,13 @@
 <context>
     <name>NewsPage</name>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="47"/>
+        <location filename="../qml/pages/NewsPage.qml" line="53"/>
+        <source>Fetch full data</source>
+        <extracomment>NewsPage fetch news menu item</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/NewsPage.qml" line="68"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation>消息</translation>
@@ -754,49 +760,49 @@ SettingsPage news download strategy only on wifi</extracomment>
 <context>
     <name>WatchlistView</name>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="217"/>
+        <location filename="../qml/components/WatchlistView.qml" line="213"/>
         <source>Stock quotes</source>
         <extracomment>WatchlistView page header</extracomment>
         <translation>股票报价</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="224"/>
+        <location filename="../qml/components/WatchlistView.qml" line="220"/>
         <source>The watchlist is empty. Please add stocks via the pulley menu.</source>
         <extracomment>WatchlistView empty marketdata label</extracomment>
         <translation>清单为空。请通过滑轮菜单添加股票。</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="254"/>
+        <location filename="../qml/components/WatchlistView.qml" line="250"/>
         <source>Configure alarm</source>
         <extracomment>WatchlistView configure alarm menu item</extracomment>
         <translation>配置提醒</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="262"/>
+        <location filename="../qml/components/WatchlistView.qml" line="258"/>
         <source>Remove</source>
         <extracomment>WatchlistView remove menu item</extracomment>
         <translation>移除</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="267"/>
+        <location filename="../qml/components/WatchlistView.qml" line="263"/>
         <source>Stock notes</source>
         <extracomment>WatchlistView show stock notes dialog</extracomment>
         <translation>股票证明</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="277"/>
+        <location filename="../qml/components/WatchlistView.qml" line="273"/>
         <source>Configure reference price</source>
         <extracomment>WatchlistView show refenrence price dialog</extracomment>
         <translation>配置参考价</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="393"/>
+        <location filename="../qml/components/WatchlistView.qml" line="388"/>
         <source>Performance</source>
         <extracomment>WatchlistView Performance label</extracomment>
         <translation>表现</translation>
     </message>
     <message>
-        <location filename="../qml/components/WatchlistView.qml" line="419"/>
+        <location filename="../qml/components/WatchlistView.qml" line="414"/>
         <source>Portfolio share</source>
         <extracomment>WatchlistView Portfolio share label</extracomment>
         <translation type="unfinished"></translation>

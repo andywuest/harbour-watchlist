@@ -28,14 +28,17 @@ public:
     explicit IngDibaNews(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~IngDibaNews() override;
     Q_INVOKABLE void searchStockNews(const QString &isin);
+    Q_INVOKABLE void searchNewsDetails(const QString &newsId);
 
     Q_SIGNAL void searchNewsResultAvailable(const QString &reply);
+    Q_SIGNAL void searchNewsDetailsResultAvailable(const QString &reply);
     Q_SIGNAL void requestError(const QString &errorMessage);
 
 signals:
 
 protected:
-    QString processSearchResult(QByteArray searchReply);
+    QString processSearchResult(QByteArray reply);
+    QString processSearchNewsDetailsResult(QByteArray reply);
 
 public slots:
 
