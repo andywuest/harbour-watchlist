@@ -1,4 +1,6 @@
-#/bin/bash
+#!/bin/bash
+
+set -x
 
 # execute with workaround with tap - because junit cannot be generated directly with the used version
 
