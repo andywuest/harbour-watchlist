@@ -9,6 +9,9 @@ find . -name "Makefile" -exec rm  {} \;
 
 qmake -o Makefile harbour-watchlist-tests.pro
 make
+
+ls -l
+
 env LC_ALL=de_DE.UTF-8 LC_NUMERIC=de_DE.utf8 ./WatchlistTests -junitxml -o junit.xml
 
 
