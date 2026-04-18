@@ -65,15 +65,14 @@ void WatchlistTests::testIngDibaNewsProcessSearchResult() {
     QCOMPARE(jsonDocument.isObject(), true);
 
     QJsonArray resultArray = jsonDocument["newsItems"].toArray();
-    QCOMPARE(resultArray.size(), 8);
+    QCOMPARE(resultArray.size(), 3);
 
     QJsonObject newsEntry = resultArray.at(0).toObject();
-    QCOMPARE(newsEntry["source"], "DJN.576664");
-    QCOMPARE(newsEntry["headline"], "Merkel-Vertraute reisen nach Washington zu Gesprächen über Nord Stream 2");
-    QCOMPARE(newsEntry["dateTime"], "Di. Juni 1 01:00:00 2021"); // TODO richtiger conversion fehlt noch
-
-    // TODO QCOMPARE first news data entry
+    QCOMPARE(newsEntry["externalId"], "DJN.1419239");
+    QCOMPARE(newsEntry["headline"].toString(), "XETRA-SCHLUSS/DAX mit Kursfeuerwerk nach Oeffnung der Strasse von Hormus");
+    QCOMPARE(newsEntry["dateTime"].toString(), "Fr. Apr. 17 17:56:00 2026");
 }
+
 
 void WatchlistTests::testIngDibaNewsFilterContent() {
     // given
