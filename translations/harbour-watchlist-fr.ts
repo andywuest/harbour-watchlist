@@ -203,7 +203,7 @@
 <context>
     <name>MoscowExchangeBackend</name>
     <message>
-        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="317"/>
+        <location filename="../src/securitydata/moscowexchangebackend.cpp" line="320"/>
         <source>RUB</source>
         <translation>RUB</translation>
     </message>
@@ -211,13 +211,13 @@
 <context>
     <name>NewsPage</name>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="53"/>
+        <location filename="../qml/pages/NewsPage.qml" line="51"/>
         <source>Fetch full data</source>
         <extracomment>NewsPage fetch news menu item</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/NewsPage.qml" line="68"/>
+        <location filename="../qml/pages/NewsPage.qml" line="66"/>
         <source>News</source>
         <extracomment>NewsPage news page header</extracomment>
         <translation>Nouvelles</translation>
