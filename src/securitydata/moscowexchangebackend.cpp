@@ -218,7 +218,7 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
         QJsonArray resultDataArray = value.toArray();
 
         // id is not mapped so far - is it used ??
-        const QString isin = resultDataArray.at(4).toString();          // isin
+        const QString isin = resultDataArray.at(4).toString(); // isin
         QJsonObject resultObject;
         resultObject.insert("extRefId", resultDataArray.at(0));         // secId
         resultObject.insert("symbol1", resultDataArray.at(0));          // secId
@@ -227,7 +227,7 @@ QString MoscowExchangeBackend::processSearchResult(QByteArray searchReply) {
         resultObject.insert("stockMarketName", resultDataArray.at(12)); // primary_boardid
         resultObject.insert("currency", "-");                           // dummy for currency
         // not persisted - displayed on the add stock page
-        resultObject.insert("genericText1", "");                        // stockMarketName - no longer exists
+        resultObject.insert("genericText1", ""); // stockMarketName - no longer exists
 
         if (!isin.trimmed().isEmpty()) {
             resultArray.push_back(resultObject);
@@ -291,7 +291,7 @@ QString MoscowExchangeBackend::processQuoteResult(QByteArray searchReply) {
         resultObject.insert("changeRelative", tmpMarketDataArray.at(25)); // LASTTOPREVPRICE
 
         QString timestampString = QString("");
-        QString systimeString = tmpMarketDataArray.at(48).toString();     // SYSTIME
+        QString systimeString = tmpMarketDataArray.at(48).toString(); // SYSTIME
         if (!systimeString.isEmpty() && systimeString.length() > 10) {
             timestampString.append(systimeString.midRef(0, 10));
             QString updateTimeString = tmpMarketDataArray.at(32).toString();

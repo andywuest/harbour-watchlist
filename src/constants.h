@@ -24,7 +24,7 @@ const char ORGANISATION[] = "de.andreas-wuest-it-consulting";
 
 // data for rest calls
 const char MIME_TYPE_JSON[] = "application/json";
-const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/149.0";
+const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0";
 
 // euroinvestor
 const char EUROINVESTOR_API_SEARCH[] = "https://search.euroinvestor.dk/instruments?q=";
@@ -54,7 +54,7 @@ const char ING_API_PREQUOTE_DATA[] = "https://component-api.wertpapiere.ing.de/a
 const char ING_NEWS[] = "https://component-api.wertpapiere.ing.de/api/v1/exchangesMarkets/marketNewsOverview?searchTerm=%1&category=All&pageSize=%2&offset=0";
 const char ING_NEWS_DETAILS[] = "https://component-api.wertpapiere.ing.de/api/v1/exchangesMarkets/marketNews?newsId=%1";
 
-const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/calendar?month=%1&year=%2";
+const char DIVVYDIARY_DIVIDENDS[] = "https://api.divvydiary.com/dividends/calendar?month=%1&year=%2&prefDate=payDate&perDay=20&perSecurityType=7";
 
 const char EXCHANGE_RATES[] = "https://commander.commerzbank.com/efx-rates/payments/fixingrates/null/false";
 // futher exchange rates (e.g. brazil) : https://commander.commerzbank.com/efx-rates/payments/fixingrates/null/true

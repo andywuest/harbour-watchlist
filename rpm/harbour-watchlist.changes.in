@@ -5,6 +5,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* 09.10.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.13-1
+
+- fixed loading of dividend data - broken due to stricter API usage requirements
+
 * 22.07.2026 Andreas Wüst <andreas.wuest.freelancer@gmail.com> 0.13.12-1
 
 - added Finnish translation (thanks Elmeri Länsiharju)

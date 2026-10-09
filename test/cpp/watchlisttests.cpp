@@ -69,10 +69,10 @@ void WatchlistTests::testIngDibaNewsProcessSearchResult() {
 
     QJsonObject newsEntry = resultArray.at(0).toObject();
     QCOMPARE(newsEntry["externalId"], "DJN.1419239");
-    QCOMPARE(newsEntry["headline"].toString(), "XETRA-SCHLUSS/DAX mit Kursfeuerwerk nach Oeffnung der Strasse von Hormus");
+    QCOMPARE(newsEntry["headline"].toString(),
+             "XETRA-SCHLUSS/DAX mit Kursfeuerwerk nach Oeffnung der Strasse von Hormus");
     QCOMPARE(newsEntry["dateTime"].toString(), "Fr. Apr. 17 17:56:00 2026");
 }
-
 
 void WatchlistTests::testIngDibaNewsFilterContent() {
     // given
